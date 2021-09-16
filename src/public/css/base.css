@@ -1,0 +1,50 @@
+@media screen and (min-width: 960px) {
+    #loginForm form,#signupForm form{
+        margin-left: 20vw;
+        margin-right: 20vw;
+    }
+
+    #profile{
+        width: 50vw;
+        text-align: center;
+        justify-content: center;
+    }
+}
+
+body{
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    justify-content: space-between;
+}
+
+.bd-placeholder-img {
+font-size: 1.125rem;
+text-anchor: middle;
+-webkit-user-select: none;
+-moz-user-select: none;
+user-select: none;
+}
+
+@media (min-width: 768px) {
+.bd-placeholder-img-lg {
+    font-size: 3.5rem;
+}
+}
+
+.form-error{
+    font-size: 0.9em;
+    color:red;
+}
+
+#carouselExampleCaptions, .carousel-item{
+    width: 99vw;
+    height:70vh;
+}
+
+#carouselExampleCaptions img{
+    background-color: black;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
