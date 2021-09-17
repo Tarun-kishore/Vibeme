@@ -7,12 +7,12 @@
     <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
     <link rel="stylesheet" href="/css/base.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
-    <title>Blogger</title>
+    <title>Networking Site</title>
 </head>
 <body class="d-flex flex-column h-100">
     <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
   <div class="container-fluid">
-    <a class="navbar-brand" href="/">Blogger Page</a>
+    <a class="navbar-brand" href="/">Networking</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarScroll" aria-controls="navbarScroll" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -25,14 +25,14 @@
           <a class="nav-link" href="/about">About</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="/blogs">Blogs</a>
+          <a class="nav-link" href="/posts">Posts</a>
         </li>
     </ul>
     <span class='d-flex'>
     {{#if loggedIn}}
         <ul class="navbar-nav d-flex me-auto my-2 my-lg-0 navbar-nav-scroll" style="--bs-scroll-height: 100px;">
             <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="/blog/my">My blogs</a>
+            <a class="nav-link active" aria-current="page" href="/post/my">My Posts</a>
             </li>
             <li class="nav-item">
             <a class="nav-link active" aria-current="page" href="/user/profile">Profile</a>
@@ -46,10 +46,10 @@
     {{else}}
         <ul class="navbar-nav d-flex me-auto my-2 my-lg-0 navbar-nav-scroll" style="--bs-scroll-height: 100px;">
             <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="/user/login">Login</a>
+            <a class="nav-link active" aria-current="page" href="/login">Login</a>
             </li>
             <li class="nav-item">
-            <a class="nav-link active" href="/user/signup">Sign Up</a>
+            <a class="nav-link active" href="/signup">Sign Up</a>
             </li>
         </ul>
     {{/if}}

@@ -1,4 +1,3 @@
-
 const $emailAlert = document.querySelector('#emailAlert')
 const $passwordAlert = document.querySelector('#passAlert')
 const $form = document.querySelector('#signup')
@@ -11,7 +10,7 @@ $form.addEventListener('submit',(e)=>{
     $passwordAlert.innerHTML = ''
 
     $email.value = $email.value.toLowerCase()
-
+    e.preventDefault()
     data={email:$email.value}
     fetch('/user/exist',{
         method: 'post',
@@ -23,19 +22,13 @@ $form.addEventListener('submit',(e)=>{
     ).then((response)=>{
         if(response.exist){
             $emailAlert.innerHTML = '<div class="form-error">Email ID already exists</div>'
-            e.preventDefault()
         }
+        else if($password.value.length < 8){
+            $passwordAlert.innerHTML = '<div class="form-error">Password should be atleast 8 characters long</div>'
+        }
+        else if($password.value !== $confirmPassword.value){
+            $passwordAlert.innerHTML = '<div class="form-error">Password and confirm password should have same value</div>'
+        }
+        else $form.submit()
     })
-    
-    
-    if($password.value.length < 8){
-        $passwordAlert.innerHTML = '<div class="form-error">Password should be atleast 8 characters long</div>'
-        e.preventDefault()
-    }
-    
-    if($password.value !== $confirmPassword.value){
-        $passwordAlert.innerHTML = '<div class="form-error">Password and confirm password should have same value</div>'
-        e.preventDefault()
-    }
-
 })

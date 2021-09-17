@@ -9,6 +9,7 @@ require('./db/sql')
 
 //Routes
 const userRoutes = require('./routes/user')
+const indexRouter = require('./routes/index')
 
 app.set('view engine','hbs')
 app.set('views','src/templates/views')
@@ -23,9 +24,7 @@ app.use(express.json())
 app.use(express.static('src/public'))
 
 app.use('/user',userRoutes)
-app.get('/',(req,res)=>{
-    res.render('index')
-})
+app.use('/',indexRouter)
 
 const port = process.env.port || 3000
 
