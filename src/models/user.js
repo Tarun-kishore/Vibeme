@@ -66,6 +66,16 @@ User.prototype.generateAuthToken = async function(){
   return token
 }
 
+User.beforeDestroy( async(user,options)=>{
+  const tokens = await Token.findAll({where:{user: user.id}})
+
+  tokens.forEach(async (token) =>{
+      await token.destroy()
+    }  
+  )
+
+})
+
 User.beforeSave( async(user, options)=>{
   if(user.changed('password')){
     user.password = await bcrypt.hash(user.password,8)

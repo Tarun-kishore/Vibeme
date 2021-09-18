@@ -78,4 +78,22 @@ router.post('/exist',async (req,res)=>{
     }
 })
 
+router.get('/profile',auth,(req,res)=>{
+    try {
+        res.render('profile',{loggedIn:true, ...req.user.getPublicProfile()})
+    } catch (e) {
+        res.status(500).send()
+    }
+})
+
+router.delete('/delete',auth,async (req,res)=>{
+    try {
+        await req.user.destroy()
+        res.clearCookie("token")
+        .send('deleted')
+    } catch (e) {
+        res.status(400).send()
+    }
+})
+
 module.exports = router
