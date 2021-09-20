@@ -4,6 +4,7 @@ const router = express.Router()
 const User = require('../models/user')
 const auth = require('../middlewares/auth')
 const Token = require('../models/tokens')
+const bcrypt = require('bcrypt')
 
 router.post('/login',async (req,res)=>{
     try {
@@ -91,6 +92,42 @@ router.delete('/delete',auth,async (req,res)=>{
         await req.user.destroy()
         res.clearCookie("token")
         .send('deleted')
+    } catch (e) {
+        res.status(400).send()
+    }
+})
+
+router.post('/update',auth,(req,res)=>{
+    const data={loggedIn:true, ...req.user.getPublicProfile()}
+    res.render('updateProfile',data)
+})
+
+router.put('/update',auth,async (req,res)=>{
+    const updates = Object.keys(req.body)
+    updates.forEach(update => req.user[update] = req.body[update])
+    try {
+        await req.user.save()
+        res.send('done')
+    } catch (e) {
+        res.send(e)
+    }
+})
+
+
+router.post('/change',auth,(req,res)=>{
+    res.render('changePassword',{loggedIn:true})
+})
+
+router.put('/change',auth,async (req,res)=>{
+    try {
+        isMatch = await bcrypt.compare(req.body.oldPassword,req.user.password)
+        console.log('done')
+        if(!isMatch)
+            return res.render('changePassword',{error: 'Wrong Old Password',loggedIn: true});
+        req.user.password = req.body.password
+        await req.user.save()
+        res.send('done')
+        
     } catch (e) {
         res.status(400).send()
     }
