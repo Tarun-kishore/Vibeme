@@ -121,7 +121,6 @@ router.post('/change',auth,(req,res)=>{
 router.put('/change',auth,async (req,res)=>{
     try {
         isMatch = await bcrypt.compare(req.body.oldPassword,req.user.password)
-        console.log('done')
         if(!isMatch)
             return res.render('changePassword',{error: 'Wrong Old Password',loggedIn: true});
         req.user.password = req.body.password
