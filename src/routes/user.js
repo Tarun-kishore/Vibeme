@@ -9,8 +9,7 @@ const bcrypt = require('bcrypt')
 router.post('/login',async (req,res)=>{
     try {
         const user = await User.findByCredentials(req.body)
-        // console.log(user.getPublicProfile())
-        // console.log(user)
+        
         const token = await user.generateAuthToken()
 
         return res
@@ -21,7 +20,7 @@ router.post('/login',async (req,res)=>{
         .redirect('/')
         
     } catch (e) {
-        console.log(e)
+        
         res.status(400).send(e)
     }
 })
@@ -91,7 +90,7 @@ router.delete('/delete',auth,async (req,res)=>{
     try {
         await req.user.destroy()
         res.clearCookie("token")
-        .send('deleted')
+        .redirect('/success')
     } catch (e) {
         res.status(400).send()
     }
@@ -107,7 +106,7 @@ router.put('/update',auth,async (req,res)=>{
     updates.forEach(update => req.user[update] = req.body[update])
     try {
         await req.user.save()
-        res.send('done')
+        res.redirect('/success')
     } catch (e) {
         res.send(e)
     }
@@ -125,7 +124,7 @@ router.put('/change',auth,async (req,res)=>{
             return res.render('changePassword',{error: 'Wrong Old Password',loggedIn: true});
         req.user.password = req.body.password
         await req.user.save()
-        res.send('done')
+        res.redirect('/success')
         
     } catch (e) {
         res.status(400).send()
