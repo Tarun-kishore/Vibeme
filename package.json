@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "node src/index.js",
-    "devstart": "nodemon src/index.js"
+    "devstart": "nodemon src/index.js -e js,hbs"
   },
   "author": "",
   "license": "ISC",

@@ -1,0 +1,26 @@
+{{>header}}
+
+<div class="d-grid gap-2 col-6 mt-3 mx-auto">
+<a class="btn btn-primary" href="/post/create" role="button">Create Post</a>
+</div>
+
+<style> img{
+    height: 10vh;
+    object-fit: contain;
+}
+</style>
+
+{{#if posts}}
+
+    {{#each posts}}
+
+    {{>post this}}
+
+    {{/each}}
+
+{{else}}
+<h1>you have not created any posts</h1>
+
+{{/if}}
+
+{{>footer}}

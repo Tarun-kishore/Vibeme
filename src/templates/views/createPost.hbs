@@ -1,0 +1,29 @@
+{{>header}}<link href="https://unpkg.com/filepond/dist/filepond.css" rel="stylesheet" />
+<link href="https://unpkg.com/filepond-plugin-image-preview/dist/filepond-plugin-image-preview.css" rel="stylesheet">
+<link href="/css/filepond.css" rel="stylesheet">
+<form action="/post/create" method="post">
+
+
+{{!-- do not change class filepond here --}}
+
+<input type="file" name="image" placeholder="image" class="filepond" required>    Upload image
+{{#if error}}
+    {{error}}
+{{/if}}
+<textarea name="content" id="" cols="30" rows="10" required></textarea>
+<button type="submit">Create</button>
+</form>
+<script src="https://unpkg.com/filepond@^4/dist/filepond.js"></script>
+
+<script src="https://unpkg.com/filepond-plugin-image-preview/dist/filepond-plugin-image-preview.js"></script>
+<script src="https://unpkg.com/filepond-plugin-file-encode/dist/filepond-plugin-file-encode.js"></script>
+<script src="https://unpkg.com/filepond-plugin-image-resize/dist/filepond-plugin-image-resize.js"></script>
+
+<script src="https://unpkg.com/filepond-plugin-image-transform/dist/filepond-plugin-image-transform.js"></script>
+
+<script src="/script/filepond.js"></script>
+
+
+
+
+{{>footer}}

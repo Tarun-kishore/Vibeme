@@ -17,6 +17,14 @@ router.get('/signup',(req,res)=>{
     res.render('signup',)
 })
 
+router.get('/success',(req,res)=>{
+    const options={}
+    if(req.cookies.token)
+        options.loggedIn = true
+    
+    res.render('success',options)
+})
+
 
 router.get('/',(req,res)=>{
     const options={}
