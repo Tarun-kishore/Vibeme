@@ -38,8 +38,6 @@ Post.beforeSave(async(post,options)=>{
     
     post.creator = user.firstName +' '+ user.lastName
     
-
-    console.log(post)
 })
 
 

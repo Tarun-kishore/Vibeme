@@ -9,8 +9,7 @@ const bcrypt = require('bcrypt')
 router.post('/login',async (req,res)=>{
     try {
         const user = await User.findByCredentials(req.body)
-        // console.log(user.getPublicProfile())
-        // console.log(user)
+        
         const token = await user.generateAuthToken()
 
         return res
@@ -21,7 +20,7 @@ router.post('/login',async (req,res)=>{
         .redirect('/')
         
     } catch (e) {
-        console.log(e)
+        
         res.status(400).send(e)
     }
 })

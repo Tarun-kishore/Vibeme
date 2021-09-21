@@ -20,7 +20,6 @@ router.get('/my',auth,async(req,res)=>{
         
         res.render('myPosts.hbs',{loggedIn: true,posts:{...options}})    
     } catch (error) {
-        console.log(error)
         res.status(500).send()
     } 
 })
@@ -31,15 +30,12 @@ router.get('/create',auth,(req,res)=>{
 
 router.post('/create',auth,async (req,res)=>{
     try {
-        console.log('working')
         const img= JSON.parse(req.body.image)
         const buffer = new Buffer.from(img.data, 'base64')
-        console.log(buffer)
 
         const post = Post.build({owner: req.user.id, image: buffer, content: req.body.content})
-        console.log(post)
         await post.save()
-        // res.send('working')
+        
         res.redirect('/post/my')
     } catch (e) {
         res.status(400).render('createPost',{loggedIn:true,error:e})
