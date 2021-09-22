@@ -142,7 +142,6 @@ router.get('/view/:id',async (req,res)=>{
             delete userObject.email
             res.render('publicProfile',{...options,...userObject})
         } catch (e) {
-            console.log(e)
             res.status(500).send()
         }
 })

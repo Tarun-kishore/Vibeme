@@ -26,7 +26,7 @@ router.get('/all',async(req,res)=>{
         res.render('feed',{...options,post:{...posts}})
         
     } catch (e) {
-        console.log(e)
+        res.status(400).send()
     }
 
 })
@@ -108,12 +108,10 @@ router.put('/edit/:id',auth,async(req,res)=>{
     try {
         const post = await Post.findByPk(req.params.id)
     
-        // console.log(post.content)
         if(post.owner !== req.user.id){
             return res.render('notAuth',{loggedIn:true})
         }
-        // post=post.toJSON()
-        // console.log(post)
+        
         let changed=false;
         if(req.body.image){
             const img= JSON.parse(req.body.image)
