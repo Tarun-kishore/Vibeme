@@ -4,6 +4,7 @@ const { nextTick } = require('process');
 const { DataTypes, where } = require('sequelize');
 const sequelize = require('../db/sql');
 const Token = require('./tokens')
+const Post = require('./posts')
 
 const User = sequelize.define('User', {
   firstName: {
@@ -55,6 +56,24 @@ User.prototype.getPublicProfile = function(){
   return userObject
 }
 
+User.prototype.getPosts = async function(){
+  const user = this
+  const userObject = user.dataValues
+
+  const posts = await Post.findAll({where:{owner:userObject.id}})
+        
+  let options = []
+  let postData
+  
+  posts.forEach((post) => {
+    postData =post.getPost()
+
+    options = options.concat({...postData, creator:`${userObject.firstName} ${user.lastName}`})
+  })
+
+  return options
+}
+
 User.prototype.generateAuthToken = async function(){
   const user =this
   const token = await jwt.sign({_id: user.id},process.env.SECRET)
@@ -73,6 +92,12 @@ User.beforeDestroy( async(user,options)=>{
       await token.destroy()
     }  
   )
+
+  const posts = await Post.findAll({where:{owner : user.id}})
+
+  posts.forEach(async(post)=>{
+    await post.destroy()
+  })
 
 })
 

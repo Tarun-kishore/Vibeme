@@ -131,4 +131,13 @@ router.put('/change',auth,async (req,res)=>{
     }
 })
 
+router.get('/view/:id',async (req,res)=>{
+    const options={}
+    if(req.cookies.token)
+        options.loggedIn = true
+
+    const user = await User.findByPk(req.params.id)
+    res.render('publicProfile',{...options,...user.getPublicProfile()})
+})
+
 module.exports = router

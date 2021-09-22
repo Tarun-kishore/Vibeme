@@ -1,6 +1,14 @@
-.filepond--root {
+/* .filepond--root {
     max-height: 10em;
 }
 .filepond--list.filepond--list{
     max-height: 10em;
 }
+
+.filepond--root .filepond--list-scroller{
+    max-height: 10em;
+}
+
+.filepond--image-preview-wrapper, .filepond--file,.filepond--file-wrapper,.filepond--item{
+    max-height: 10em;
+} */
