@@ -6,14 +6,15 @@
 
 
 {{!-- do not change class filepond here --}}
-<div style="height: 10em;">
 
-<input type="file" name="image" placeholder="image" class="filepond" required>    Upload image
+<div class="container-md">
+
+<input type="file" name="image" placeholder="image" required>    Upload image
 </div>
 {{#if error}}
     {{error}}
 {{/if}}
-<textarea name="content" id="" cols="30" rows="10" required></textarea>
+<textarea name="content" style="border: 2px solid black;" cols="30" rows="10" required></textarea>
 <button type="submit">Create</button>
 </form>
 <script src="https://unpkg.com/filepond@^4/dist/filepond.js"></script>

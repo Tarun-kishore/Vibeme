@@ -136,8 +136,15 @@ router.get('/view/:id',async (req,res)=>{
     if(req.cookies.token)
         options.loggedIn = true
 
-    const user = await User.findByPk(req.params.id)
-    res.render('publicProfile',{...options,...user.getPublicProfile()})
+        try {
+            const user = await User.findByPk(req.params.id)
+            const userObject = user.getPublicProfile()
+            delete userObject.email
+            res.render('publicProfile',{...options,...userObject})
+        } catch (e) {
+            console.log(e)
+            res.status(500).send()
+        }
 })
 
 module.exports = router

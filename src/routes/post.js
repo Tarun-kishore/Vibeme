@@ -5,6 +5,32 @@ const Post = require('../models/posts')
 const User = require('../models/user')
 
 
+//getting all posts
+router.get('/all',async(req,res)=>{
+    const options={}
+    if(req.cookies.token)
+        options.loggedIn = true
+
+    try {
+        const users =await User.findAll({})
+
+        
+        let posts = []
+
+        for (let index = 0; index < users.length; index++) {
+            const userPosts = await users[index].getPosts()
+            posts = posts.concat(userPosts)
+            
+        }
+        
+        res.render('feed',{...options,post:{...posts}})
+        
+    } catch (e) {
+        console.log(e)
+    }
+
+})
+
 //geting user posts
 router.get('/my',auth,async(req,res)=>{
     try {

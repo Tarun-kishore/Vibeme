@@ -9,11 +9,13 @@
 <form action="/post/edit/{{id}}?_method=PUT" method="post">
     
 Leave the image if you don't want to change
+
+<div class="container-md">
 <input type="file" name="image" placeholder="image" class="filepond" value="{{image}}">    Upload image
-    <input type="text" value="{{content}}" name="content" required>
+    <input type="textarea" value="{{content}}" name="content" style="border: 2px solid black;" cols="30" rows="10" required>
     <button type="submit">Edit</button>
 </form>
-
+</div>
 <script src="https://unpkg.com/filepond@^4/dist/filepond.js"></script>
 
 <script src="https://unpkg.com/filepond-plugin-image-preview/dist/filepond-plugin-image-preview.js"></script>
