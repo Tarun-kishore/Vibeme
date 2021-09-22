@@ -15,9 +15,9 @@ router.get('/my',auth,async(req,res)=>{
         posts.forEach((post) => {
             postData =post.getPost()
 
-            options = options.concat(postData)
+            options = options.concat({...postData, creator:`${req.user.firstName} ${req.user.lastName}`})
         })
-        
+
         res.render('myPosts.hbs',{loggedIn: true,posts:{...options}})    
     } catch (error) {
         res.status(500).send()

@@ -17,10 +17,6 @@ const Post = sequelize.define('Post',{
     content:{
         type: DataTypes.STRING,
         allowNull: false
-    },
-    creator:{
-        type: DataTypes.STRING,
-        defaultValue: 'Anonymous'
     }
 },
 {
@@ -32,13 +28,6 @@ Post.prototype.getPost = function(){
     post.dataValues.image = post.dataValues.image.toString('base64')
     return post.dataValues
 }
-
-Post.beforeSave(async(post,options)=>{
-    const user =  await User.findOne({where:{id: post.owner}})
-    
-    post.creator = user.firstName +' '+ user.lastName
-    
-})
 
 
 
