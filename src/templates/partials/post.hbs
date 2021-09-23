@@ -1,9 +1,23 @@
-  <div class="col p-4 d-flex flex-column position-static">
-    <a href="/user/view/{{this.owner}}">
-      <h3 class="mb-0">{{this.creator}}</h3>
-    </a>
-<a href="/post/view/{{this.id}}">
-    <img src="data:image/png;charset=utf-8;base64,{{this.image}}" >
-    <p class="card-text mb-auto">{{this.content}}</p>
-</a>
+<div class="col p-4 d-flex flex-column position-static">
+  <a href="/user/view/{{this.owner}}">
+    <h3 class="mb-0">{{this.creator}}</h3>
+  </a>
+  <a href="/post/view/{{this.id}}">
+    <img src="data:image/png;charset=utf-8;base64,{{this.image}}" />
+  </a>
+  <p class="card-text mb-auto">{{this.content}}</p>
+
+  {{!-- Word of Caution
+   Do not change onclick, class and id attribute
+   Do not change the order of child tree i.e. order should be same as button -> text(':')->p-4
+   tags may be changes but should reflext accordingly in likes.js
+    --}}
+
+  <div>
+    <button type="submit"  class="like" id="{{this.id}}" onclick="hitlike(this)" >Like</button>
+    :
+    <p>{{this.likesCount}}</p>
+
   </div>
+</div>
+
