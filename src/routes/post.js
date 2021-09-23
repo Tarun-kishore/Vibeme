@@ -3,6 +3,7 @@ const router = express.Router()
 const auth = require('../middlewares/auth')
 const Post = require('../models/posts')
 const User = require('../models/user')
+const Likes = require('../models/likes')
 
 
 //getting all posts
@@ -22,8 +23,13 @@ router.get('/all',async(req,res)=>{
             posts = posts.concat(userPosts)
             
         }
+
+        options.post = posts
+
+        if(posts)
+            return res.render('feed',options)
+        res.render('feed',{...options})
         
-        res.render('feed',{...options,post:{...posts}})
         
     } catch (e) {
         res.status(400).send()
@@ -34,9 +40,15 @@ router.get('/all',async(req,res)=>{
 //geting user posts
 router.get('/my',auth,async(req,res)=>{
     try {
-        const options =await req.user.getPosts()    
+        const send=[]
+        send.loggedIn= true
+        const options =await req.user.getPosts() 
+        const likedPost = await req.user.getLikedPosts() 
+        send.posts= options
+        send.likedPosts = likedPost
 
-        res.render('myPosts.hbs',{loggedIn: true,posts:{...options}})    
+        return res.render('myPosts.hbs',send)    
+        
     } catch (error) {
         res.status(500).send()
     } 
@@ -74,7 +86,7 @@ router.get('/view/:id',async (req,res)=>{
 
     try {
         const post = await Post.findByPk(req.params.id)
-        const postObject = post.getPost()
+        const postObject =await  post.getPost()
     
         const user = await User.findByPk(postObject.owner)
         const creator = `${user.dataValues.firstName} ${user.dataValues.lastName}`
@@ -95,8 +107,10 @@ router.post('/edit/:id',auth,async(req,res)=>{
             return res.render('notAuth',{loggedIn:true})
         }
 
+        const postData= await post.getPost()
+
         const creator = `${req.user.firstName} ${req.user.lastName}`
-        res.render('editPost',{loggedIn:true,...post.getPost(),creator})
+        res.render('editPost',{loggedIn:true,...postData,creator})
         
     } catch (e) {
         res.status(500).render('404',{loggedIn:true})
@@ -153,6 +167,50 @@ router.delete('/delete/:id',auth,async(req,res)=>{
         res.status(500).render('404',{loggedIn:true})
     }
 
+})
+
+
+//handling likes on post
+router.post('/isLiked',auth,async(req,res)=>{
+    try {
+        const post = await Post.findByPk(req.body.post)
+        
+        if(!post)   throw new Error('no such post exist')
+
+        const like = await Likes.findOne({where:{likedBy: req.user.id, likedPost: req.body.post}})
+
+        if(!like)
+            return res.send({liked: false})
+        
+        res.send({liked: true})
+    } catch (e) {
+        res.send(e)
+    }
+})
+
+router.post('/hit',auth,async(req,res)=>{
+    try {
+        const post = await Post.findByPk(req.body.post)
+        
+        if(!post)   throw new Error('no such post exist')
+
+        const like = await Likes.findOne({where:{likedBy: req.user.id, likedPost: req.body.post}})
+
+        if(!like){
+            const likeObject = Likes.build({likedBy: req.user.id, likedPost: req.body.post})
+
+            await likeObject.save()
+
+            return res.send({like : true})
+        }
+
+        await like.destroy()
+        
+        res.send({like: false})
+        
+    } catch (e) {
+        res.send(e)
+    }
 })
 
 

@@ -10,6 +10,21 @@
 }
 </style>
 
+<h2>My Liked Posts</h2>
+{{#if likedPosts}}
+
+    {{#each likedPosts}}
+
+    {{>post this}}
+
+    {{/each}}
+
+{{else}}
+<h1>you have not liked any posts</h1>
+
+{{/if}}
+
+<h2>My Posts</h2>
 {{#if posts}}
 
     {{#each posts}}
@@ -30,5 +45,10 @@
 <h1>you have not created any posts</h1>
 
 {{/if}}
+
+
+{{! This script takes care of likes functionality }}
+
+<script src="/script/likes.js"></script>
 
 {{>footer}}
