@@ -1,22 +1,21 @@
 {{>header}}
+
+
 <link href="https://unpkg.com/filepond/dist/filepond.css" rel="stylesheet" />
 <link href="https://unpkg.com/filepond-plugin-image-preview/dist/filepond-plugin-image-preview.css" rel="stylesheet">
 <link href="/css/filepond.css" rel="stylesheet">
-<form action="/post/create" method="post">
 
-
-{{!-- do not change class filepond here --}}
+<h1>{{creator}}</h1>
+<form action="/post/edit/{{id}}?_method=PUT" method="post">
+    
+Leave the image if you don't want to change
 
 <div class="container-md">
-
-<input type="file" name="image" placeholder="image" required>    Upload image
-</div>
-{{#if error}}
-    {{error}}
-{{/if}}
-<textarea name="content" style="border: 2px solid black;" cols="30" rows="10" required></textarea>
-<button type="submit">Create</button>
+<input type="file" name="image" placeholder="image" class="filepond" value="{{image}}">    Upload image
+    <input type="textarea" value="{{content}}" name="content" style="border: 2px solid black;" cols="30" rows="10" required>
+    <button type="submit">Edit</button>
 </form>
+</div>
 <script src="https://unpkg.com/filepond@^4/dist/filepond.js"></script>
 
 <script src="https://unpkg.com/filepond-plugin-image-preview/dist/filepond-plugin-image-preview.js"></script>
@@ -26,8 +25,5 @@
 <script src="https://unpkg.com/filepond-plugin-image-transform/dist/filepond-plugin-image-transform.js"></script>
 
 <script src="/script/filepond.js"></script>
-
-
-
 
 {{>footer}}

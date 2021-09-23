@@ -34,5 +34,20 @@ router.get('/',(req,res)=>{
     res.render('index',options)
 })
 
+router.get('/about',(req,res)=>{
+    const options={}
+    if(req.cookies.token)
+        options.loggedIn = true
+
+    res.render('about',options)
+})
+
+router.get('*',(req,res)=>{
+    const options={}
+    if(req.cookies.token)
+        options.loggedIn = true
+
+    res.render('404',options)
+})
 
 module.exports = router

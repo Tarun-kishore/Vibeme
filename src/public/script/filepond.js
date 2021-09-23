@@ -1,16 +1,13 @@
-FilePond.registerPlugin(FilePondPluginFileEncode);
+FilePond.registerPlugin(FilePondPluginFileEncode,FilePondPluginImagePreview,FilePondPluginImageResize,FilePondPluginImageTransform);
+FilePond.parse(document.body)
 
-FilePond.registerPlugin(FilePondPluginImagePreview);
-
-FilePond.registerPlugin(FilePondPluginImageResize);
-
-FilePond.registerPlugin(FilePondPluginImageTransform);
+const inputElement = document.querySelector('input[type="file"]');
+const pond = FilePond.create( inputElement );
 
 FilePond.setOptions({
-    stylePanelAspectRatio : 20/30,
-    imageResizeTargetWidth: 100,
+    stylePanelAspectRatio : 100/150,
+    // stylePanelLayout:'circle',
+    imageResizeTargetWidth: 1,
     imageResizeTargetHeight: 75,
     imageTransformOutputMimeType: 'image/png'
 })
-
-FilePond.parse(document.body)

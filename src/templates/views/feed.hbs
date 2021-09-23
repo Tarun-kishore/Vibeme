@@ -1,0 +1,15 @@
+{{>header}}
+
+{{#if post}}
+
+    {{#each post}}
+
+        {{>post this}}
+
+    {{/each}}
+
+{{else}}
+    <h1>no post yet</h1>
+
+{{/if}}
+{{>footer}}
