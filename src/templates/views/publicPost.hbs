@@ -2,6 +2,33 @@
 
 {{>post postData}}
 
+<form action="/post/comment/create/{{postData.id}}" method="post">
+<textarea name="comment" id="comment" cols="30" rows="10" required></textarea>
+<button type="submit">Create</button>
+</form>
+
+
+<h3>
+Comments
+
+</h3>
+
+{{#if comments}}
+
+    {{#each comments}}
+
+        {{>comment this}}
+
+    {{/each}}
+
+{{else}}
+<h5>
+
+ No comments yet
+</h5>
+
+{{/if}}
+
 
 {{! This script takes care of likes functionality }}
 

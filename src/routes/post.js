@@ -4,6 +4,8 @@ const auth = require('../middlewares/auth')
 const Post = require('../models/posts')
 const User = require('../models/user')
 const Likes = require('../models/likes')
+const Comment= require('../models/comments')
+const jwt = require('jsonwebtoken')
 
 
 //getting all posts
@@ -81,8 +83,11 @@ router.post('/create',auth,async (req,res)=>{
 // Viewing a post
 router.get('/view/:id',async (req,res)=>{
     const options={}
-    if(req.cookies.token)
+    let userId=''
+    if(req.cookies.token){
         options.loggedIn = true
+        decoded= jwt.verify(req.cookies.token, process.env.SECRET)
+    }
 
     try {
         const post = await Post.findByPk(req.params.id)
@@ -90,8 +95,16 @@ router.get('/view/:id',async (req,res)=>{
     
         const user = await User.findByPk(postObject.owner)
         const creator = `${user.dataValues.firstName} ${user.dataValues.lastName}`
+
+        const comments = await post.getComments(decoded._id)
+
+        console.log(comments)
+
+        if(comments.length !== 0)
+            return res.render('publicPost',{...options,postData:{...postObject,creator},comments:{...comments}})
         res.render('publicPost',{...options,postData:{...postObject,creator}})
     } catch (e) {
+        console.log(e)
         res.status(400).render('404',options)
     }
 

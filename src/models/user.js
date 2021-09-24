@@ -5,7 +5,9 @@ const { DataTypes, where } = require('sequelize');
 const sequelize = require('../db/sql');
 const Token = require('./tokens')
 const Post = require('./posts')
-const Like =require('./likes');
+const Like =require('./likes')
+const Comment = require('./comments')
+const Reply = require('./replies')
 
 const User = sequelize.define('User', {
   firstName: {
@@ -49,6 +51,12 @@ User.findByCredentials = async function({email,password}){
   return user
 }
 
+User.prototype.getFullName = function(){
+  const user =this.toJSON()
+
+  return `${user.firstName} ${user.lastName}`
+}
+
 User.prototype.getPublicProfile = function(){
   const userObject = this.toJSON()
 
@@ -88,7 +96,7 @@ User.prototype.getLikedPosts = async function(){
 
     postData =await post.getPost()
 
-    options = options.concat({...postData, creator:`${user.firstName} ${user.lastName}`})
+    options = options.concat({...postData, creator:user.getFullName})
   }
 
   return options
@@ -117,6 +125,24 @@ User.beforeDestroy( async(user,options)=>{
 
   posts.forEach(async(post)=>{
     await post.destroy()
+  })
+
+  const likes = await Like.findAll({where:{likedBy: user.id}})
+
+  likes.forEach(async(like)=>{
+    await like.destroy()
+  })
+
+  const comments = await Comments.findAll({where:{commentedBy:user.id}})
+
+  comments.forEach(async(comment)=>{
+    await comment.destroy()
+  })
+
+  const replies = await Reply.findAll({where:{repliedBy: user.id}})
+
+  replies.forEach(async(reply)=>{
+    await reply.destroy()
   })
 
 })
