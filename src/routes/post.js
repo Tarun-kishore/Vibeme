@@ -1,218 +1,224 @@
-const express = require('express')
-const router = express.Router()
-const auth = require('../middlewares/auth')
-const Post = require('../models/posts')
-const User = require('../models/user')
-const Likes = require('../models/likes')
-
+const express = require("express");
+const router = express.Router();
+const auth = require("../middlewares/auth");
+const Post = require("../models/posts");
+const User = require("../models/user");
+const Likes = require("../models/likes");
+const Comment = require("../models/comments");
+const jwt = require("jsonwebtoken");
 
 //getting all posts
-router.get('/all',async(req,res)=>{
-    const options={}
-    if(req.cookies.token)
-        options.loggedIn = true
+router.get("/all", async (req, res) => {
+  const options = {};
+  if (req.cookies.token) options.loggedIn = true;
 
-    try {
-        const users =await User.findAll({})
+  try {
+    const users = await User.findAll({ include: Post });
 
-        
-        let posts = []
+    let posts = [];
 
-        for (let index = 0; index < users.length; index++) {
-            const userPosts = await users[index].getPosts()
-            posts = posts.concat(userPosts)
-            
-        }
-
-        options.post = posts
-
-        if(posts)
-            return res.render('feed',options)
-        res.render('feed',{...options})
-        
-        
-    } catch (e) {
-        res.status(400).send()
+    for (let index = 0; index < users.length; index++) {
+      const userPosts = await users[index].getPosts();
+      posts = posts.concat(userPosts);
     }
 
-})
+    options.post = posts;
+    if (posts) return res.render("feed", options);
+    res.render("feed", ...options);
+  } catch (e) {
+    res.status(400).send();
+  }
+});
 
 //geting user posts
-router.get('/my',auth,async(req,res)=>{
-    try {
-        const send=[]
-        send.loggedIn= true
-        const options =await req.user.getPosts() 
-        const likedPost = await req.user.getLikedPosts() 
-        send.posts= options
-        send.likedPosts = likedPost
+router.get("/my", auth, async (req, res) => {
+  try {
+    const send = [];
+    send.loggedIn = true;
+    const options = await req.user.getPosts();
+    const likedPost = await req.user.getLikedPosts();
+    const commentedPosts = await req.user.getCommentedPosts();
+    const repliedPosts = await req.user.getRepliedPosts();
+    send.posts = options;
+    send.likedPosts = likedPost;
+    send.commentedPosts = commentedPosts;
+    send.repliedPosts = repliedPosts;
 
-        return res.render('myPosts.hbs',send)    
-        
-    } catch (error) {
-        res.status(500).send()
-    } 
-})
+    return res.render("myPosts.hbs", send);
+  } catch (error) {
+    res.status(500).send();
+  }
+});
 
 //rendering create post page
-router.get('/create',auth,(req,res)=>{
-    res.render('createPost',{loggedIn:true})
-})
-
+router.get("/create", auth, (req, res) => {
+  res.render("createPost", { loggedIn: true });
+});
 
 // Creating post by a user
-router.post('/create',auth,async (req,res)=>{
-    try {
-        const img= JSON.parse(req.body.image)
-        const buffer = new Buffer.from(img.data, 'base64')
+router.post("/create", auth, async (req, res) => {
+  try {
+    const img = JSON.parse(req.body.image);
+    const buffer = new Buffer.from(img.data, "base64");
 
-        const post = Post.build({owner: req.user.id, image: buffer, content: req.body.content})
-        await post.save()
-        
-        res.redirect('/post/my')
-    } catch (e) {
-        res.status(400).render('createPost',{loggedIn:true,error:e})
-    }
+    const post = Post.build({
+      owner: req.user.id,
+      image: buffer,
+      content: req.body.content,
+    });
+    await post.save();
 
-    
-})
-
+    res.redirect("/post/my");
+  } catch (e) {
+    res.status(400).render("createPost", { loggedIn: true, error: e });
+  }
+});
 
 // Viewing a post
-router.get('/view/:id',async (req,res)=>{
-    const options={}
-    if(req.cookies.token)
-        options.loggedIn = true
+router.get("/view/:id", async (req, res) => {
+  const options = {};
+  let userId = "";
+  if (req.cookies.token) {
+    options.loggedIn = true;
+    decoded = jwt.verify(req.cookies.token, process.env.SECRET);
+  }
 
-    try {
-        const post = await Post.findByPk(req.params.id)
-        const postObject =await  post.getPost()
-    
-        const user = await User.findByPk(postObject.owner)
-        const creator = `${user.dataValues.firstName} ${user.dataValues.lastName}`
-        res.render('publicPost',{...options,postData:{...postObject,creator}})
-    } catch (e) {
-        res.status(400).render('404',options)
-    }
+  try {
+    const post = await Post.findByPk(req.params.id);
+    const postObject = await post.getPost();
 
-})
+    const user = await User.findByPk(postObject.owner);
+    const creator = user.getFullName();
 
+    const comments = await post.getComments(decoded._id);
+
+    if (comments.length !== 0)
+      return res.render("publicPost", {
+        ...options,
+        postData: { ...postObject, creator },
+        comments: { ...comments },
+      });
+    res.render("publicPost", {
+      ...options,
+      postData: { ...postObject, creator },
+    });
+  } catch (e) {
+    res.status(400).render("404", options);
+  }
+});
 
 //rendering edit page
-router.post('/edit/:id',auth,async(req,res)=>{
-    try {
-        const post = await Post.findByPk(req.params.id)
-        
-        if(post.owner !== req.user.id){
-            return res.render('notAuth',{loggedIn:true})
-        }
+router.post("/edit/:id", auth, async (req, res) => {
+  try {
+    const post = await Post.findByPk(req.params.id);
 
-        const postData= await post.getPost()
-
-        const creator = `${req.user.firstName} ${req.user.lastName}`
-        res.render('editPost',{loggedIn:true,...postData,creator})
-        
-    } catch (e) {
-        res.status(500).render('404',{loggedIn:true})
+    if (post.owner !== req.user.id) {
+      return res.render("notAuth", { loggedIn: true });
     }
-})
+
+    const postData = await post.getPost();
+
+    const creator = `${req.user.firstName} ${req.user.lastName}`;
+    res.render("editPost", { loggedIn: true, ...postData, creator });
+  } catch (e) {
+    res.status(500).render("404", { loggedIn: true });
+  }
+});
 
 //editing a post
-router.put('/edit/:id',auth,async(req,res)=>{
-    try {
-        const post = await Post.findByPk(req.params.id)
-    
-        if(post.owner !== req.user.id){
-            return res.render('notAuth',{loggedIn:true})
-        }
-        
-        let changed=false;
-        if(req.body.image){
-            const img= JSON.parse(req.body.image)
-            const buffer = new Buffer.from(img.data, 'base64')
+router.put("/edit/:id", auth, async (req, res) => {
+  try {
+    const post = await Post.findByPk(req.params.id);
 
-            changed=true
-            post.image = buffer
-        }
-        
-        if(req.body.content){
-            changed=true
-            post.content = req.body.content
-        }
-
-        if(changed) await post.save()
-
-        res.redirect('/post/my')
-
-    } catch (e) {
-        res.status(500).render('404',{loggedIn:true})
-    }
-})
-
-// Deleting a post 
-router.delete('/delete/:id',auth,async(req,res)=>{
-    
-    try {
-        const post = await Post.findByPk(req.params.id)
-    
-        if(post.owner !== req.user.id){
-            return res.render('notAuth',{loggedIn:true})
-        }
-
-        await post.destroy()
-
-        res.redirect('/post/my')
-        
-    } catch (e) {
-        res.status(500).render('404',{loggedIn:true})
+    if (post.owner !== req.user.id) {
+      return res.render("notAuth", { loggedIn: true });
     }
 
-})
+    let changed = false;
+    if (req.body.image) {
+      const img = JSON.parse(req.body.image);
+      const buffer = new Buffer.from(img.data, "base64");
 
+      changed = true;
+      post.image = buffer;
+    }
+
+    if (req.body.content) {
+      changed = true;
+      post.content = req.body.content;
+    }
+
+    if (changed) await post.save();
+
+    res.redirect("/post/my");
+  } catch (e) {
+    res.status(500).render("404", { loggedIn: true });
+  }
+});
+
+// Deleting a post
+router.delete("/delete/:id", auth, async (req, res) => {
+  try {
+    const post = await Post.findByPk(req.params.id);
+
+    if (post.owner !== req.user.id) {
+      return res.render("notAuth", { loggedIn: true });
+    }
+
+    await post.destroy();
+
+    res.redirect("/post/my");
+  } catch (e) {
+    res.status(500).render("404", { loggedIn: true });
+  }
+});
 
 //handling likes on post
-router.post('/isLiked',auth,async(req,res)=>{
-    try {
-        const post = await Post.findByPk(req.body.post)
-        
-        if(!post)   throw new Error('no such post exist')
+router.post("/isLiked", auth, async (req, res) => {
+  try {
+    const post = await Post.findByPk(req.body.post);
 
-        const like = await Likes.findOne({where:{likedBy: req.user.id, likedPost: req.body.post}})
+    if (!post) throw new Error("no such post exist");
 
-        if(!like)
-            return res.send({liked: false})
-        
-        res.send({liked: true})
-    } catch (e) {
-        res.send(e)
+    const like = await Likes.findOne({
+      where: { likedBy: req.user.id, likedPost: req.body.post },
+    });
+
+    if (!like) return res.send({ liked: false });
+
+    res.send({ liked: true });
+  } catch (e) {
+    res.send(e);
+  }
+});
+
+router.post("/hit", auth, async (req, res) => {
+  try {
+    const post = await Post.findByPk(req.body.post);
+
+    if (!post) throw new Error("no such post exist");
+
+    const like = await Likes.findOne({
+      where: { likedBy: req.user.id, likedPost: req.body.post },
+    });
+
+    if (!like) {
+      const likeObject = Likes.build({
+        likedBy: req.user.id,
+        likedPost: req.body.post,
+      });
+
+      await likeObject.save();
+
+      return res.send({ like: true });
     }
-})
 
-router.post('/hit',auth,async(req,res)=>{
-    try {
-        const post = await Post.findByPk(req.body.post)
-        
-        if(!post)   throw new Error('no such post exist')
+    await like.destroy();
 
-        const like = await Likes.findOne({where:{likedBy: req.user.id, likedPost: req.body.post}})
+    res.send({ like: false });
+  } catch (e) {
+    res.send(e);
+  }
+});
 
-        if(!like){
-            const likeObject = Likes.build({likedBy: req.user.id, likedPost: req.body.post})
-
-            await likeObject.save()
-
-            return res.send({like : true})
-        }
-
-        await like.destroy()
-        
-        res.send({like: false})
-        
-    } catch (e) {
-        res.send(e)
-    }
-})
-
-
-
-module.exports = router
+module.exports = router;

@@ -1,12 +1,11 @@
 const { DataTypes, where } = require('sequelize');
 const sequelize = require('../db/sql');
-// const User = require('./user');
 
 const Likes = sequelize.define('Likes',{
     likedBy:{
         type: DataTypes.INTEGER,
         references:{
-            model:'User',
+            model:'Users',
             key:'id'
         },
         allowNull: false
@@ -14,7 +13,7 @@ const Likes = sequelize.define('Likes',{
     likedPost:{
         type:DataTypes.INTEGER,
         references:{
-            model:'Post',
+            model:'Posts',
             key:'id'
         },
         allowNull: false
@@ -22,5 +21,6 @@ const Likes = sequelize.define('Likes',{
 })
 
 Likes.sync()
+
 
 module.exports = Likes

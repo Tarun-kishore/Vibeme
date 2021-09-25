@@ -1,0 +1,73 @@
+{{>header}}
+
+{{>post postData}}
+
+
+
+<h3>
+Comment
+
+</h3>
+
+{{#if comments}}
+
+    <div>
+    {{#if comments.isMine}}
+    <div>
+        {{comments.poster}}.You
+    </div>
+    {{else}}
+        {{comments.poster}}
+    {{/if}}
+
+    {{comments.comment}}    
+
+    Replies:
+    {{comments.repliesCount}}
+
+</div>
+
+
+
+<div>
+
+    <form action="/post/comment/reply/{{comments.id}}" method="post">
+    <textarea name="comment" id="comment" cols="30" rows="10" required></textarea>
+    <button type="submit">Create</button>
+    </form>
+
+</div>
+
+
+{{#if comments.replies}}
+
+    {{#each comments.replies}}
+
+        {{>reply this}}
+
+    {{/each}}
+
+{{else}}
+
+    No replies yet
+
+{{/if}}
+
+{{else}}
+<h5>
+
+ No comments yet
+</h5>
+
+{{/if}}
+
+
+{{! This script takes care of likes functionality }}
+
+<script src="/script/likes.js"></script>
+
+{{!-- This script takes care of likes functionality --}}
+
+<script src="/script/replies.js"></script>
+
+{{>footer}}
