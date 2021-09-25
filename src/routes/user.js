@@ -92,6 +92,7 @@ router.delete('/delete',auth,async (req,res)=>{
         res.clearCookie("token")
         .redirect('/success')
     } catch (e) {
+        console.log(e)
         res.status(400).send()
     }
 })

@@ -109,43 +109,48 @@ User.prototype.generateAuthToken = async function(){
   const tokenData = Token.build({user: user.id, token})
 
   await tokenData.save()
-
+  
   return token
 }
 
-User.beforeDestroy( async(user,options)=>{
-  const tokens = await Token.findAll({where:{user: user.id}})
+// User.beforeDestroy( async(user,options)=>{
+//   try {
+//     const tokens = await Token.findAll({where:{user: user.id}})
+    
+//     tokens.forEach(async (token) =>{
+//         await token.destroy()
+//       }  
+//     )
+    
+//     const posts = await Post.findAll({where:{owner : user.id}})
+    
+//     posts.forEach(async(post)=>{
+//       await post.destroy()
+//     })
+    
+//     const likes = await Like.findAll({where:{likedBy: user.id}})
+    
+//     likes.forEach(async(like)=>{
+//       await like.destroy()
+//     })
+    
+//     const comments = await Comment.findAll({where:{commentedBy:user.id}})
+    
+//     comments.forEach(async(comment)=>{
+//       await comment.destroy()
+//     })
+    
+//     const replies = await Reply.findAll({where:{repliedBy: user.id}})
+    
+//     replies.forEach(async(reply)=>{
+//       await reply.destroy()
+//     })
+    
+//   } catch (e) {
+//     throw new Error(e)
+//   }
 
-  tokens.forEach(async (token) =>{
-      await token.destroy()
-    }  
-  )
-
-  const posts = await Post.findAll({where:{owner : user.id}})
-
-  posts.forEach(async(post)=>{
-    await post.destroy()
-  })
-
-  const likes = await Like.findAll({where:{likedBy: user.id}})
-
-  likes.forEach(async(like)=>{
-    await like.destroy()
-  })
-
-  const comments = await Comments.findAll({where:{commentedBy:user.id}})
-
-  comments.forEach(async(comment)=>{
-    await comment.destroy()
-  })
-
-  const replies = await Reply.findAll({where:{repliedBy: user.id}})
-
-  replies.forEach(async(reply)=>{
-    await reply.destroy()
-  })
-
-})
+// })
 
 User.beforeSave( async(user, options)=>{
   if(user.changed('password')){
@@ -154,6 +159,42 @@ User.beforeSave( async(user, options)=>{
 
 })
 
+User.hasMany(Token,{
+  foreignKey: 'user',
+  onDelete:'CASCADE',
+  onUpdate:'CASCADE'
+})
+
+User.hasMany(Post,{
+  foreignKey: 'owner',
+  onDelete:'CASCADE',
+  onUpdate:'CASCADE'
+})
+
+User.hasMany(Like,{
+  foreignKey: 'likedBy',
+  onDelete:'CASCADE',
+  onUpdate:'CASCADE'
+})
+
+Like.belongsTo(User,{
+  foreignKey:'likedBy'
+})
+
+
+User.hasMany(Comment,{
+  foreignKey: 'commentedBy',
+  onDelete:'CASCADE',
+  onUpdate:'CASCADE'
+})
+
+User.hasMany(Reply,{
+  foreignKey: 'repliedBy',
+  onDelete:'CASCADE',
+  onUpdate:'CASCADE'
+})
+
 User.sync()
+
 
 module.exports = User

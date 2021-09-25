@@ -1,15 +1,16 @@
 const { DataTypes, where } = require('sequelize');
 const sequelize = require('../db/sql');
+const Comment = require('./comments')
 
 const Reply =sequelize.define('Reply',{
-    postReplied:{
-        type: DataTypes.INTEGER,
-        references:{
-            model:'Posts',
-            key:'id'
-        },
-        allowNull:false
-    },
+    // postReplied:{
+    //     type: DataTypes.INTEGER,
+    //     references:{
+    //         model:'Posts',
+    //         key:'id'
+    //     },
+    //     allowNull:false
+    // },
     repliedOn :{
         type: DataTypes.INTEGER,
         references:{
@@ -39,5 +40,6 @@ const Reply =sequelize.define('Reply',{
 })
 
 Reply.sync()
+
 
 module.exports = Reply

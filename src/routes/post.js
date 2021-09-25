@@ -94,7 +94,7 @@ router.get('/view/:id',async (req,res)=>{
         const postObject =await  post.getPost()
     
         const user = await User.findByPk(postObject.owner)
-        const creator = `${user.dataValues.firstName} ${user.dataValues.lastName}`
+        const creator = user.getFullName()
 
         const comments = await post.getComments(decoded._id)
 
@@ -177,6 +177,7 @@ router.delete('/delete/:id',auth,async(req,res)=>{
         res.redirect('/post/my')
         
     } catch (e) {
+        console.log(e)
         res.status(500).render('404',{loggedIn:true})
     }
 

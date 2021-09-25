@@ -7,7 +7,7 @@ const Post = sequelize.define('Post',{
     owner:{
         type: DataTypes.INTEGER,
         references:{
-            model:'User',
+            model:'Users',
             key:'id'
         }
     },
@@ -49,21 +49,48 @@ Post.prototype.getComments = async function(userId){
     return options
 }
 
-Post.beforeDestroy(async(post,options)=>{
-    const likes = await Likes.findAll({where:{likedPost: post.id}})
+// Post.beforeDestroy(async(post,options)=>{
+//     // try {
+//     const likes = await Likes.findAll({where:{likedPost: post.id}})
 
-    likes.forEach(async(like)=>{
-        await like.destroy();
-    })
+//     likes.forEach(async(like)=>{
+//         await like.destroy();
+//     })
 
-    const comments = await Comment.findAll({where:{commentedOn: post.id}})
+        
+//         const comments = await Comment.findAll({where:{commentedOn: post.id}})
+    
+//         comments.forEach(async(comment)=>{
+//             await comment.destroy()
+//         })
+//         // } catch (e) {
+//         //     console.log(e)
+//         // }
+// })
 
-    comments.forEach(async(comment)=>{
-        await comment.destroy()
-    })
+Post.hasMany(Comment,{
+    foreignKey:'commentedOn',
+    onDelete:'CASCADE',
+    onUpdate:'CASCADE'
+
+})
+Post.hasMany(Likes,{
+    foreignKey:'likedPost',
+    onDelete:'CASCADE',
+    onUpdate:'CASCADE'
+
 })
 
 
+Likes.belongsTo(Post,{
+    foreignKey:'likedPost'
+})
+
+
+Comment.belongsTo(Post,{
+    foreignKey:'commentedOn'
+})
 
 Post.sync()
+
 module.exports = Post
