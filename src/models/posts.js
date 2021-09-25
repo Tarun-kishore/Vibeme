@@ -2,6 +2,7 @@ const { DataTypes, where } = require('sequelize');
 const sequelize = require('../db/sql');
 const Likes = require('./likes')
 const Comment = require('./comments')
+const Reply = require('./replies')
 
 const Post = sequelize.define('Post',{
     owner:{
@@ -49,25 +50,6 @@ Post.prototype.getComments = async function(userId){
     return options
 }
 
-// Post.beforeDestroy(async(post,options)=>{
-//     // try {
-//     const likes = await Likes.findAll({where:{likedPost: post.id}})
-
-//     likes.forEach(async(like)=>{
-//         await like.destroy();
-//     })
-
-        
-//         const comments = await Comment.findAll({where:{commentedOn: post.id}})
-    
-//         comments.forEach(async(comment)=>{
-//             await comment.destroy()
-//         })
-//         // } catch (e) {
-//         //     console.log(e)
-//         // }
-// })
-
 Post.hasMany(Comment,{
     foreignKey:'commentedOn',
     onDelete:'CASCADE',
@@ -78,7 +60,12 @@ Post.hasMany(Likes,{
     foreignKey:'likedPost',
     onDelete:'CASCADE',
     onUpdate:'CASCADE'
+})
 
+Post.hasMany(Reply,{
+    foreignKey:'postId',
+    onDelete:'CASCADE',
+    onUpdate:'CASCADE'
 })
 
 
@@ -89,6 +76,11 @@ Likes.belongsTo(Post,{
 
 Comment.belongsTo(Post,{
     foreignKey:'commentedOn'
+})
+
+
+Reply.belongsTo(Post,{
+    foreignKey:'postId'
 })
 
 Post.sync()

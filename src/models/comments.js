@@ -92,4 +92,5 @@ Reply.belongsTo(Comment,{
     foreignKey:'repliedOn'
 })
 
+
 module.exports = Comment

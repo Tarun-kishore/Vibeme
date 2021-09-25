@@ -1,150 +1,141 @@
-const express = require('express')
-const { appendFile } = require('fs')
-const router = express.Router()
-const User = require('../models/user')
-const auth = require('../middlewares/auth')
-const Token = require('../models/tokens')
-const bcrypt = require('bcrypt')
+const express = require("express");
+const { appendFile } = require("fs");
+const router = express.Router();
+const User = require("../models/user");
+const auth = require("../middlewares/auth");
+const Token = require("../models/tokens");
+const bcrypt = require("bcrypt");
 
-router.post('/login',async (req,res)=>{
-    try {
-        const user = await User.findByCredentials(req.body)
-        
-        const token = await user.generateAuthToken()
+router.post("/login", async (req, res) => {
+  try {
+    const user = await User.findByCredentials(req.body);
 
-        return res
-        .cookie("token", token, {
-            maxAge: 90786787,
-            httpOnly: true
-        })
-        .redirect('/')
-        
-    } catch (e) {
-        
-        res.render('login',{error:e})
-    }
-})
+    const token = await user.generateAuthToken();
 
+    return res
+      .cookie("token", token, {
+        maxAge: 90786787,
+        httpOnly: true,
+      })
+      .redirect("/");
+  } catch (e) {
+    res.render("login", { error: e });
+  }
+});
 
-router.post('/signup',async (req,res)=>{
-    delete req.body.confirmPassword
-    req.body.firstName = req.body.firstName.trim()
-    req.body.lastName = req.body.lastName.trim()
-    req.body.email = req.body.email.trim()
-    req.body.email = req.body.email.toLowerCase()
-    
-    const user = User.build(req.body)
-    
-    try {
-        await user.save()
+router.post("/signup", async (req, res) => {
+  delete req.body.confirmPassword;
+  req.body.firstName = req.body.firstName.trim();
+  req.body.lastName = req.body.lastName.trim();
+  req.body.email = req.body.email.trim();
+  req.body.email = req.body.email.toLowerCase();
 
-        const token = await user.generateAuthToken()
+  const user = User.build(req.body);
 
-        return res
-        .cookie("token", token, {
-            maxAge: 30*24*60*60*1000,
-            httpOnly: true
-        })
-        .redirect('/')
-    } catch (e) {
-        res.status(400).send(e)
-    }
-})
+  try {
+    await user.save();
 
-router.post('/logout',auth,async (req,res)=>{
-    try {
-        await req.token.destroy()
+    const token = await user.generateAuthToken();
 
-        res
-        .clearCookie('token')
-        .redirect('/')
-    } catch (e) {
-        res.status(500).send(e)
-    }
+    return res
+      .cookie("token", token, {
+        maxAge: 30 * 24 * 60 * 60 * 1000,
+        httpOnly: true,
+      })
+      .redirect("/");
+  } catch (e) {
+    res.status(400).send(e);
+  }
+});
 
-})
+router.post("/logout", auth, async (req, res) => {
+  try {
+    await req.token.destroy();
 
-router.post('/exist',async (req,res)=>{
-    try {
-        req.body.email = req.body.email.trim()
-        req.body.email = req.body.email.toLowerCase()
-        const user = await User.findOne({where: req.body})
-        
-        if(user)
-            return res.status(200).send({exist:true})
-        res.status(404).send({exist:false})
-    } catch (e) {
-        res.status(400).send(e)
-    }
-})
+    res.clearCookie("token").redirect("/");
+  } catch (e) {
+    res.status(500).send(e);
+  }
+});
 
-router.get('/profile',auth,(req,res)=>{
-    try {
-        res.render('profile',{loggedIn:true, ...req.user.getPublicProfile()})
-    } catch (e) {
-        res.status(500).send()
-    }
-})
+router.post("/exist", async (req, res) => {
+  try {
+    req.body.email = req.body.email.trim();
+    req.body.email = req.body.email.toLowerCase();
+    const user = await User.findOne({ where: req.body });
 
-router.delete('/delete',auth,async (req,res)=>{
-    try {
-        await req.user.destroy()
-        res.clearCookie("token")
-        .redirect('/success')
-    } catch (e) {
-        console.log(e)
-        res.status(400).send()
-    }
-})
+    if (user) return res.status(200).send({ exist: true });
+    res.status(404).send({ exist: false });
+  } catch (e) {
+    res.status(400).send(e);
+  }
+});
 
-router.post('/update',auth,(req,res)=>{
-    const data={loggedIn:true, ...req.user.getPublicProfile()}
-    res.render('updateProfile',data)
-})
+router.get("/profile", auth, (req, res) => {
+  try {
+    res.render("profile", { loggedIn: true, ...req.user.getPublicProfile() });
+  } catch (e) {
+    res.status(500).send();
+  }
+});
 
-router.put('/update',auth,async (req,res)=>{
-    const updates = Object.keys(req.body)
-    updates.forEach(update => req.user[update] = req.body[update])
-    try {
-        await req.user.save()
-        res.redirect('/success')
-    } catch (e) {
-        res.send(e)
-    }
-})
+router.delete("/delete", auth, async (req, res) => {
+  try {
+    await req.user.destroy();
+    res.clearCookie("token").redirect("/success");
+  } catch (e) {
+    res.status(400).send();
+  }
+});
 
+router.post("/update", auth, (req, res) => {
+  const data = { loggedIn: true, ...req.user.getPublicProfile() };
+  res.render("updateProfile", data);
+});
 
-router.post('/change',auth,(req,res)=>{
-    res.render('changePassword',{loggedIn:true})
-})
+router.put("/update", auth, async (req, res) => {
+  const updates = Object.keys(req.body);
+  updates.forEach((update) => (req.user[update] = req.body[update]));
+  try {
+    await req.user.save();
+    res.redirect("/success");
+  } catch (e) {
+    res.send(e);
+  }
+});
 
-router.put('/change',auth,async (req,res)=>{
-    try {
-        isMatch = await bcrypt.compare(req.body.oldPassword,req.user.password)
-        if(!isMatch)
-            return res.render('changePassword',{error: 'Wrong Old Password',loggedIn: true});
-        req.user.password = req.body.password
-        await req.user.save()
-        res.redirect('/success')
-        
-    } catch (e) {
-        res.status(400).send()
-    }
-})
+router.post("/change", auth, (req, res) => {
+  res.render("changePassword", { loggedIn: true });
+});
 
-router.get('/view/:id',async (req,res)=>{
-    const options={}
-    if(req.cookies.token)
-        options.loggedIn = true
+router.put("/change", auth, async (req, res) => {
+  try {
+    isMatch = await bcrypt.compare(req.body.oldPassword, req.user.password);
+    if (!isMatch)
+      return res.render("changePassword", {
+        error: "Wrong Old Password",
+        loggedIn: true,
+      });
+    req.user.password = req.body.password;
+    await req.user.save();
+    res.redirect("/success");
+  } catch (e) {
+    res.status(400).send();
+  }
+});
 
-        try {
-            const user = await User.findByPk(req.params.id)
-            const userObject = user.getPublicProfile()
-            delete userObject.email
-            res.render('publicProfile',{...options,...userObject})
-        } catch (e) {
-            res.status(500).send()
-        }
-})
+router.get("/view/:id", async (req, res) => {
+  const options = {};
+  if (req.cookies.token) options.loggedIn = true;
 
-module.exports = router
+  try {
+    const user = await User.findByPk(req.params.id);
+    const userObject = user.getPublicProfile();
+    delete userObject.email;
+    res.render("publicProfile", { ...options, ...userObject });
+  } catch (e) {
+    res.status(500).send();
+  }
+});
+
+module.exports = router;
