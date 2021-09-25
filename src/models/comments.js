@@ -62,8 +62,6 @@ Comment.prototype.getCommentWithReplies = function(userId){
         comment.isMine =  true
     }
     else comment.isMine = false
-    // console.log('123')
-    // console.log(comment)
     const replies = comment.Replies
 
     comment.repliesCount = replies.length

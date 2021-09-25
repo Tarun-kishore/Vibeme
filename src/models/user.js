@@ -66,8 +66,13 @@ User.prototype.getPublicProfile = function(){
 
 User.prototype.getPosts = async function(){
   const userObject = this.toJSON()
+  console.log(userObject.Posts)
 
-  const posts = await Post.findAll({where:{owner:userObject.id}})
+  let posts
+  if(userObject.Posts)
+    posts = await Post.findAll({where:{owner:userObject.id}})
+  else
+    post = userObject.Posts
         
   let options = []
   let postData
@@ -79,6 +84,7 @@ User.prototype.getPosts = async function(){
     options = options.concat({...postData, creator:`${userObject.firstName} ${userObject.lastName}`})
   }
 
+  console.log(options)
   return options
 }
 
@@ -113,45 +119,6 @@ User.prototype.generateAuthToken = async function(){
   return token
 }
 
-// User.beforeDestroy( async(user,options)=>{
-//   try {
-//     const tokens = await Token.findAll({where:{user: user.id}})
-    
-//     tokens.forEach(async (token) =>{
-//         await token.destroy()
-//       }  
-//     )
-    
-//     const posts = await Post.findAll({where:{owner : user.id}})
-    
-//     posts.forEach(async(post)=>{
-//       await post.destroy()
-//     })
-    
-//     const likes = await Like.findAll({where:{likedBy: user.id}})
-    
-//     likes.forEach(async(like)=>{
-//       await like.destroy()
-//     })
-    
-//     const comments = await Comment.findAll({where:{commentedBy:user.id}})
-    
-//     comments.forEach(async(comment)=>{
-//       await comment.destroy()
-//     })
-    
-//     const replies = await Reply.findAll({where:{repliedBy: user.id}})
-    
-//     replies.forEach(async(reply)=>{
-//       await reply.destroy()
-//     })
-    
-//   } catch (e) {
-//     throw new Error(e)
-//   }
-
-// })
-
 User.beforeSave( async(user, options)=>{
   if(user.changed('password')){
     user.password = await bcrypt.hash(user.password,8)
@@ -165,10 +132,18 @@ User.hasMany(Token,{
   onUpdate:'CASCADE'
 })
 
+Token.belongsTo(User,{
+  foreignKey:'user'
+})
+
 User.hasMany(Post,{
   foreignKey: 'owner',
   onDelete:'CASCADE',
   onUpdate:'CASCADE'
+})
+
+Post.belongsTo(User,{
+  foreignKey:'owner'
 })
 
 User.hasMany(Like,{
@@ -188,12 +163,19 @@ User.hasMany(Comment,{
   onUpdate:'CASCADE'
 })
 
+Comment.belongsTo(User,{
+  foreignKey:'commentedBy'
+})
+
 User.hasMany(Reply,{
   foreignKey: 'repliedBy',
   onDelete:'CASCADE',
   onUpdate:'CASCADE'
 })
 
+Reply.belongsTo(User,{
+  foreignKey: 'repliedBy'
+})
 User.sync()
 
 

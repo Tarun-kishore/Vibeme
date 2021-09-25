@@ -15,8 +15,9 @@ router.get('/all',async(req,res)=>{
         options.loggedIn = true
 
     try {
-        const users =await User.findAll({})
+        const users =await User.findAll({include: Post})
 
+        // console.log(users)
         
         let posts = []
 
@@ -27,10 +28,9 @@ router.get('/all',async(req,res)=>{
         }
 
         options.post = posts
-
         if(posts)
             return res.render('feed',options)
-        res.render('feed',{...options})
+        res.render('feed',...options)
         
         
     } catch (e) {
