@@ -4,7 +4,10 @@ const sequelize = new Sequelize(process.env.DATABASE,process.env.ADMIN, process.
     port:process.env.DATABASE_PORT,
     dialect: process.env.DIALECT,
     dialectOptions:{
-        ssl: true
+        ssl:{
+            required:true,
+            rejectUnauthorized: false
+        } 
     }
   });
 
