@@ -3,7 +3,9 @@ const sequelize = new Sequelize(process.env.DATABASE,process.env.ADMIN, process.
     host: process.env.DATABASE_HOST,
     port:process.env.DATABASE_PORT,
     dialect: process.env.DIALECT,
-    ssl: true
+    dialectOptions:{
+        ssl: true
+    }
   });
 
   sequelize.authenticate().then(()=>{
