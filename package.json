@@ -1,7 +1,6 @@
 {
-  "name": "college-project",
+  "name": "vibeme",
   "version": "1.0.0",
-  "description": "",
   "main": "index.js",
   "scripts": {
     "start": "node src/index.js",
@@ -18,11 +17,20 @@
     "hbs": "^4.1.2",
     "jsonwebtoken": "^8.5.1",
     "method-override": "^3.0.0",
-    "mysql2": "^2.3.0",
     "nodemon": "^2.0.12",
     "npm": "^7.24.0",
     "pg": "^8.7.1",
     "pg-hstore": "^2.3.4",
     "sequelize": "^6.6.5"
-  }
+  },
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Tarun-kishore/NetworkingSite.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Tarun-kishore/NetworkingSite/issues"
+  },
+  "homepage": "https://github.com/Tarun-kishore/NetworkingSite#readme",
+  "description": ""
 }
