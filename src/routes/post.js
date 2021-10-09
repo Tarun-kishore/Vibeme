@@ -26,6 +26,7 @@ router.get("/all", async (req, res) => {
     if (posts) return res.render("feed", options);
     res.render("feed", ...options);
   } catch (e) {
+    console.log(e)
     res.status(400).send();
   }
 });

@@ -68,13 +68,11 @@ User.prototype.getPosts = async function () {
   const userObject = this.toJSON();
 
   let posts;
-  if (!userObject.Posts)
-    posts = await Post.findAll({ where: { owner: userObject.id } });
-  else posts = userObject.Posts;
-
+  posts = await Post.findAll({ where: { owner: userObject.id } });
+  
   let options = [];
   let postData;
-
+  
   for (let i = 0; i < posts.length; i++) {
     post = posts[i];
     postData = await post.getPost();
