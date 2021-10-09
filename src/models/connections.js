@@ -12,10 +12,10 @@ const Connection = sequelize.define('Connection', {
     },
     sentTo:{
         type: DataTypes.INTEGER,
-        references:{
-            model:'Users',
-            key:'id'
-        },
+        // references:{
+        //     model:'Users',
+        //     key:'id'
+        // },
         allowNull:false
     },
     pending:{
