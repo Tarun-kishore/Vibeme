@@ -27,6 +27,8 @@ const Connection = sequelize.define('Connection', {
     timestamps: true
 })
 
+
+
 Connection.sync()
 
 module.exports = Connection
