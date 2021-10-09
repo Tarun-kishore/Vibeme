@@ -215,16 +215,16 @@ Connection.belongsTo(User,{
   foreignKey:"sentBy"
 })
 
-// User.hasMany(Connection, {
-//   foreignKey:"sentTo",
-//   onDelete: "CASCADE",
-//   onUpdate: "CASCADE"
-// })
+User.hasMany(Connection, {
+  foreignKey:"sentTo",
+  onDelete: "CASCADE",
+  onUpdate: "CASCADE"
+})
 
 
-// Connection.belongsTo(User,{
-//   foreignKey:"sentTo"
-// })
+Connection.belongsTo(User,{
+  foreignKey:"sentTo"
+})
 
 
 User.sync();
