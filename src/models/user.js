@@ -8,6 +8,7 @@ const Post = require("./posts");
 const Like = require("./likes");
 const Comment = require("./comments");
 const Reply = require("./replies");
+const Connection = require("./connections")
 
 const User = sequelize.define("User",  {
     firstName: {
@@ -203,6 +204,26 @@ User.hasMany(Reply, {
 Reply.belongsTo(User, {
   foreignKey: "repliedBy",
 });
+
+User.hasMany(Connection, {
+  foreignKey:"sentBy",
+  onDelete: "CASCADE",
+  onUpdate: "CASCADE"
+})
+User.hasMany(Connection, {
+  foreignKey:"sentTo",
+  onDelete: "CASCADE",
+  onUpdate: "CASCADE"
+})
+
+Connection.belongsTo(User,{
+  foreignKey:"sentBy"
+})
+
+Connection.belongsTo(User,{
+  foreignKey:"sentTo"
+})
+
 User.sync();
 
 module.exports = User;
