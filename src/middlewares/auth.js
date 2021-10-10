@@ -5,14 +5,14 @@ const Token = require('../models/tokens')
 const auth = async (req,res,next)=>{
     try {
         if(!req.cookies.token)
-            return res.redirect('/')
+            return res.redirect('/login')
 
         const decoded = jwt.verify(req.cookies.token, process.env.SECRET)
 
         const token = await Token.findOne({where:{user : decoded._id, token: req.cookies.token}})
 
         if(!token)
-            return res.redirect('/')
+            return res.redirect('/login')
 
         const user = await User.findOne({where:{id: decoded._id}})
 

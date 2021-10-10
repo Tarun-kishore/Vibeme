@@ -79,6 +79,7 @@ router.post("/create", auth, async (req, res) => {
 router.get("/view/:id", async (req, res) => {
   const options = {};
   let userId = "";
+  let decoded
   if (req.cookies.token) {
     options.loggedIn = true;
     decoded = jwt.verify(req.cookies.token, process.env.SECRET);
@@ -91,7 +92,7 @@ router.get("/view/:id", async (req, res) => {
     const user = await User.findByPk(postObject.owner);
     const creator = user.getFullName();
 
-    const comments = await post.getComments(decoded._id);
+    const comments = await post.getComments((decoded ? decoded._id : undefined));
 
     if (comments.length !== 0)
       return res.render("publicPost", {
@@ -104,6 +105,7 @@ router.get("/view/:id", async (req, res) => {
       postData: { ...postObject, creator },
     });
   } catch (e) {
+    console.log(e)
     res.status(400).render("404", options);
   }
 });

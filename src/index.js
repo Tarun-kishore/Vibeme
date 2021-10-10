@@ -12,6 +12,7 @@ const userRoutes = require("./routes/user");
 const indexRouter = require("./routes/index");
 const postRouter = require("./routes/post");
 const commentRouter = require("./routes/comments");
+const connectionRouter = require("./routes/connection")
 
 app.set("view engine", "hbs");
 app.set("views", "src/templates/views");
@@ -27,6 +28,7 @@ app.use(express.static("src/public"));
 app.use("/user", userRoutes);
 app.use("/post", postRouter);
 app.use("/post/comment", commentRouter);
+app.use("/connect",connectionRouter );
 app.use("/", indexRouter);
 
 const port = process.env.PORT || 3000;
