@@ -205,15 +205,6 @@ Reply.belongsTo(User, {
   foreignKey: "repliedBy",
 });
 
-User.hasMany(Connection, {
-  foreignKey:"sentBy",
-  onDelete: "CASCADE",
-  onUpdate: "CASCADE"
-})
-
-Connection.belongsTo(User,{
-  foreignKey:"sentBy"
-})
 
 User.hasMany(Connection, {
   foreignKey:"sentTo",
@@ -223,7 +214,19 @@ User.hasMany(Connection, {
 
 
 Connection.belongsTo(User,{
-  foreignKey:"sentTo"
+  foreignKey:"sentTo",
+  as:'receiver'
+})
+
+User.hasMany(Connection, {
+  foreignKey:"sentBy",
+  onDelete: "CASCADE",
+  onUpdate: "CASCADE"
+})
+
+Connection.belongsTo(User,{
+  foreignKey:"sentBy",
+  as:'sender'
 })
 
 
