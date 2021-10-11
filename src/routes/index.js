@@ -2,7 +2,7 @@ const express = require("express");
 const router = express.Router();
 
 router.get("/login", (req, res) => {
-  if (req.cookies.token) return res.redirect("/");
+  if (req.cookies.token) return res.redirect("/user/profile");
   
   res.render("login");
 });
@@ -26,7 +26,21 @@ router.get("/about", (req, res) => {
   if (req.cookies.token) options.loggedIn = true;
   
   res.render("about", options);
-});
+})
+
+router.get("/feature", (req, res) => {
+  const options = {};
+  if (req.cookies.token) options.loggedIn = true;
+  
+  res.render("feature", options);
+})
+
+router.get("/help", (req, res) => {
+  const options = {};
+  if (req.cookies.token) options.loggedIn = true;
+  
+  res.render("help", options);
+})
 
 router.get("/", (req, res) => {
   res.redirect('/login')

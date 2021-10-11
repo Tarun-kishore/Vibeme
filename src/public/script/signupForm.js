@@ -5,7 +5,6 @@ const $email = document.querySelector('#email')
 const $password = document.querySelector('#exampleInputPassword2')
 const $confirmPassword = document.querySelector('#confirmPassword')
 
-
 $form.addEventListener('submit',(e)=>{
     // $emailAlert.innerHTML = ''
     // $passwordAlert.innerHTML = ''
