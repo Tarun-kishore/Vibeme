@@ -17,7 +17,7 @@ router.post("/login", async (req, res) => {
         maxAge: 90786787,
         httpOnly: true,
       })
-      .redirect("/");
+      .redirect("/user/profile");
   } catch (e) {
     res.render("login", { error: e });
   }
