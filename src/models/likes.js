@@ -18,6 +18,8 @@ const Likes = sequelize.define('Likes',{
         },
         allowNull: false
     }
+},{
+    timestamps:true
 })
 
 Likes.sync()
