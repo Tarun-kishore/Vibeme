@@ -2,7 +2,7 @@
 // const $passwordAlert = document.querySelector('#passAlert')
 const $form = document.querySelector('#signup')
 const $email = document.querySelector('#email')
-const $password = document.querySelector('#password')
+const $password = document.querySelector('#exampleInputPassword2')
 const $confirmPassword = document.querySelector('#confirmPassword')
 
 console.log('running')
