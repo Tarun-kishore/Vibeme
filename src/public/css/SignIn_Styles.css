@@ -1,8 +1,8 @@
   /* For whole webpage setting width and height to take 100% screen size */
-  .body {
+  /* .body {
     height: 100vh;
     width: 100vw;
-  }
+  } */
 
   /* For the login page div and making it in form of grid */
   .loginPage {

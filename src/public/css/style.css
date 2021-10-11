@@ -1,8 +1,8 @@
   /* For whole webpage setting width and height to take 100% screen size */
-  .body {
+  /* .body {
     height: 100vh;
     width: 100vw;
-  }
+  } */
 
  
   /* Change the font style of navbar text */
@@ -182,6 +182,16 @@
     .hori-selector .right:before {
       bottom: -25px;
       left: -25px;
+    }
+    #navbarSupportedContent > ul > li.active > a {
+      background: #FF00CC;
+      background: -webkit-linear-gradient(to bottom, #FF00CC 0%, #333399 100%);
+      background: -moz-linear-gradient(to bottom, #FF00CC 0%, #333399 100%);
+      background: linear-gradient(to bottom, #FF00CC 0%, #333399 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-color: transparent;
+      transition: all 1s;
     }
   }
 
