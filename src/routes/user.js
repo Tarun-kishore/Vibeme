@@ -43,7 +43,7 @@ router.post("/signup", async (req, res) => {
         maxAge: 30 * 24 * 60 * 60 * 1000,
         httpOnly: true,
       })
-      .redirect("/");
+      .redirect("/user/profile");
   } catch (e) {
     res.status(400).send(e);
   }
