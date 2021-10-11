@@ -31,7 +31,7 @@ app.use("/post/comment", commentRouter);
 app.use("/connect",connectionRouter );
 app.use("/", indexRouter);
 
-const port = process.env.PORT || 3000;
+const port = process.env.PORT || 6284;
 
 app.listen(port, () => {
   console.log("server runnning");
