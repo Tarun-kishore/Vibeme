@@ -1,5 +1,5 @@
-// const $emailAlert = document.querySelector('#emailAlert')
-// const $passwordAlert = document.querySelector('#passAlert')
+const $emailAlert = document.querySelector('#emailAlert')
+const $passwordAlert = document.querySelector('#passAlert')
 const $form = document.querySelector('#signup')
 const $email = document.querySelector('#email')
 const $password = document.querySelector('#exampleInputPassword2')
@@ -22,17 +22,20 @@ $form.addEventListener('submit',(e)=>{
         body:JSON.stringify(data)
     }).then((response)=> response.json()
     ).then((response)=>{
+        $emailAlert.classList.add('Invisible');
+        $passwordAlert.classList.add('Invisible');
         if(response.exist){
-            console.log('<div class="form-error">Email ID already exists</div>')
-            // $emailAlert.innerHTML = '<div class="form-error">Email ID already exists</div>'
+            $emailAlert.classList.remove('Invisible');
         }
         else if($password.value.length < 8){
             console.log('<div class="form-error">Password should be atleast 8 characters long</div>')
-            // $passwordAlert.innerHTML = '<div class="form-error">Password should be atleast 8 characters long</div>'
+            $passwordAlert.classList.remove('Invisible');
+            $passwordAlert.querySelector('p').innerText = "Password should be atleast 8 characters long";
         }
         else if($password.value !== $confirmPassword.value){
             console.log('<div class="form-error">Password and confirm password should have same value</div>')
-            // $passwordAlert.innerHTML = '<div class="form-error">Password and confirm password should have same value</div>'
+            $passwordAlert.classList.remove('Invisible');
+            $passwordAlert.querySelector('p').innerText = "Password and Confirm password doesn't match";
         }
         else $form.submit()
     })

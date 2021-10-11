@@ -214,17 +214,21 @@
                             <input type="email" class="form-control" id="email" aria-describedby="emailHelp"
                                 name="email" placeholder="Email Address" required>
                             <label>Email Address</label>
+                            <div class="Invisible" id="emailAlert">
+                                <p class="Invisible">Invalid Email Address</p>
+                                <i class="fas fa-exclamation-circle"></i>
+                            </div>
                         </div>
                         <!-- taking full name -->
                         <div class="mb-3 firstName container-fluid">
                             <input type="text" class="form-control" placeholder="First Name" name="firstName"
-                                aria-label="Full Name" required>
+                                aria-label="Full Name" autocomplete="off" required>
                             <label>First Name</label>
                         </div>
                         <!-- Taking username -->
                         <div class="mb-3 username container-fluid">
                             <input type="text" class="form-control" placeholder="Last Name" name="lastName"
-                                aria-label="Username" required>
+                                aria-label="Username" autocomplete="off" required>
                             <label>Last Name</label>
                         </div>
                         <!-- Taking password -->
@@ -233,6 +237,10 @@
                                 placeholder="Password">
                             <label>Password</label>
                             <i class="fas fa-eye-slash" id="togglePassword"></i>
+                            <div class="Invisible" id="passAlert">
+                                <p class="Invisible"></p>
+                                <i class="fas fa-exclamation-circle"></i>
+                            </div>
                         </div>
                         <!-- Confirming password -->
                         <div class="mb-3 passdiv container-fluid">

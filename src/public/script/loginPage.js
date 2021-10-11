@@ -1,4 +1,3 @@
-
 // password show feature for both signin and signup page
 const togglePassword1 = document.querySelector(".Box1 #togglePassword");
 const password1 = document.querySelector(".Box1 #exampleInputPassword1");
@@ -90,3 +89,17 @@ signUp.addEventListener('click', function(e) {
   }, 550);
 });
 
+const emailAlert = document.querySelector('#emailAlert');
+const passwordAlert = document.querySelector('#passAlert');
+emailAlert.querySelector("i").addEventListener('click', function() {
+  emailAlert.querySelector("p").classList.remove("Invisible");
+  setTimeout(function() {
+    emailAlert.querySelector("p").classList.add("Invisible");
+  }, 5000);
+})
+passwordAlert.querySelector("i").addEventListener('click', function() {
+  passwordAlert.querySelector("p").classList.remove("Invisible");
+  setTimeout(function() {
+    passwordAlert.querySelector("p").classList.add("Invisible");
+  }, 5000);
+})
