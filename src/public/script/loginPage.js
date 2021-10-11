@@ -3,7 +3,7 @@
 const togglePassword1 = document.querySelector(".Box1 #togglePassword");
 const password1 = document.querySelector(".Box1 #exampleInputPassword1");
 const togglePassword2 = document.querySelector(".Box2 #togglePassword");
-const password2 = document.querySelector(".Box2 #exampleInputPassword1");
+const password2 = document.querySelector(".Box2 #exampleInputPassword2");
 
 togglePassword1.addEventListener('click', function(e) {
   if(password1.type === "password")
