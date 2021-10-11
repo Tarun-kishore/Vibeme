@@ -1,4 +1,7 @@
 {{>header}}
+
+<link rel="stylesheet" href="/css/Signin_Styles.css">
+
 <main>
             <!-- background image -->
             <div class="bg-image">
@@ -6,7 +9,7 @@
             </div>
 
             <!-- Sign In box -->
-            <div class="Box1 container-fluid Invisible">
+            <div class="Box1 container-fluid">
 
                 <!-- Top section of box containing logo and text -->
                 <div class="form-header container-fluid">
@@ -26,22 +29,22 @@
 
                 <!-- last section of box -->
                 <div class="form-main container-fluid">
-                    <form>
+                    <form  action="/user/login" method="POSt">
                         <!-- Taking email -->
                         <div class="mb-3 email container-fluid">
                             <label for="exampleInputEmail1" class="form-label">Email address</label>
-                            <input type="email" class="form-control" id="exampleInputEmail1"
-                                aria-describedby="emailHelp" placeholder="abc@email.com">
+                            <input type="email" name="email" class="form-control" id="exampleInputEmail1"
+                                aria-describedby="emailHelp" placeholder="abc@email.com" required>
                         </div>
                         <!-- Taking password -->
                         <div class="mb-3 passdiv container-fluid">
                             <label for="exampleInputPassword1" class="form-label password">Password</label>
-                            <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+                            <input type="password" name="password" class="form-control" id="exampleInputPassword1" placeholder="Password" required>
                             <!-- icon to show password or not -->
                             <i class="fas fa-eye-slash" id="togglePassword"></i>
                         </div>
                         <!-- sign in button -->
-                        <button class="pushable" href="">
+                        <button class="pushable" type="submit">
                             <span class="front">
                               Sign In
                             </span>
@@ -51,12 +54,12 @@
             </div>
 
             <!-- Sign Up Box which is currently invisible -->
-            <div class="Box2 container-fluid">
+            <div class="Box2 container-fluid Invisible">
 
                 <!-- Top section of box -->
                 <div class="form-header container-fluid">
                     <div class="form-logo container-fluid">
-                        <img src="Logo/colorful.png" alt="Company Logo">
+                        <img src="/image/Logo/colorful.png" alt="Company Logo">
                     </div>
                     <div class="No-Account container-fluid">
                         <p>Have an account?</p>
@@ -71,44 +74,48 @@
 
                 <!-- Last section of box -->
                 <div class="form-main container-fluid">
-                    <form>
+                    <form id="signup" action="/user/signup" method="Post">
                         <!-- Taking email -->
                         <div class="mb-3 email container-fluid">
-                            <input type="email" class="form-control" id="exampleInputEmail1"
-                                aria-describedby="emailHelp" placeholder="Email Address">
+                            <input type="email" class="form-control" id="email"
+                                aria-describedby="emailHelp" name="email" placeholder="Email Address" required>
                             <label>Email Address</label>
                         </div>
                         <!-- taking full name -->
-                        <div class="mb-3 fullName container-fluid">
-                            <input type="text" class="form-control" placeholder="Full Name" aria-label="Full Name">
-                            <label>Full Name</label>
+                        <div class="mb-3 firstName container-fluid">
+                            <input type="text" class="form-control" placeholder="First Name" name="firstName" aria-label="Full Name" required>
+                            <label>First Name</label>
                         </div>
                         <!-- Taking username -->
                         <div class="mb-3 username container-fluid">
-                            <input type="text" class="form-control" placeholder="Username" aria-label="Username">
-                            <label>Username</label>
+                            <input type="text" class="form-control" placeholder="Last Name" name="lastName" aria-label="Username" required>
+                            <label>Last Name</label>
                         </div>
                         <!-- Taking password -->
                         <div class="mb-3 passdiv container-fluid">
-                            <input type="password" class="form-control" id="exampleInputPassword1"
+                            <input type="password" class="form-control" name="password" id="exampleInputPassword2"
                                 placeholder="Password">
                             <label>Password</label>
                             <i class="fas fa-eye-slash" id="togglePassword"></i>
                         </div>
                         <!-- Confirming password -->
                         <div class="mb-3 passdiv container-fluid">
-                            <input type="password" class="form-control" id="exampleInputPassword2"
-                                placeholder="Confirm Password">
+                            <input type="password" class="form-control" id="confirmPassword"
+                                placeholder="Confirm Password" required>
                             <label>Confirm Password</label>
                         </div>
                         <!-- Signup button -->
-                        <button class="pushable" href="">
+                        <button class="pushable" type="submit">
                             <span class="front">Sign Up</span>
                         </button>
                     </form>
                 </div>
+
+                <script src="/script/signupForm.js"></script>
             </div>
 
 </main>
+
+<script src="/script/loginPage.js"></script>
 
 {{>footer}}
