@@ -1,6 +1,6 @@
 .HelpPage {
     width: 100%;
-    height: 100%;
+    height: 100vh;
     display: grid;
     grid-template-rows: auto 1fr auto;
     grid-template-columns: 1fr;
@@ -15,7 +15,7 @@ main {
     font-family: "Inter", sans-serif;
     grid-column: 1/-1;
     grid-row: 2/span 1;
-    height: 632px;
+    /* height: 632px; */
     background-color: #ffd4e2;
     display: grid;
     justify-content: center;
