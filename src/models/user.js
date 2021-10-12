@@ -263,6 +263,6 @@ Connection.belongsTo(User,{
 })
 
 
-User.sync({alter:true});
+User.sync();
 
 module.exports = User;

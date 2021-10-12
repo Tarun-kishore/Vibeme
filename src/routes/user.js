@@ -45,6 +45,7 @@ router.post("/signup", async (req, res) => {
     res.send(`${request.headers.host}/user/verify/${user.id}/${token}`)
 
   } catch (e) {
+    console.log(e)
     res.status(400).send(e);
   }
 });
