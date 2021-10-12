@@ -45,7 +45,9 @@ var navbarContent = document.querySelector("#navbarContent");
 signIn.addEventListener('click', function(e) {
   loginBox.querySelector('form').reset();
   loginBox.querySelector('form #exampleInputEmail1').value = null;
-  loginBox.querySelector('#InvalidAlert').classList.add('Invisible');
+  if(loginBox.querySelector('#InvalidAlert')){
+      loginBox.querySelector('#InvalidAlert').classList.add('Invisible');
+  }
 
   loginBox.classList.remove("animate__fadeIn");
   loginBox.classList.toggle("animate__fadeOut");
