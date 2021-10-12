@@ -8,9 +8,9 @@ router.get("/login", (req, res) => {
 });
 
 router.get("/signup", (req, res) => {
-  if (req.cookies.token) return res.redirect("/");
+  if (req.cookies.token) return res.redirect("/user/profile");
   
-  res.render("signup");
+  res.render("login");
 });
 
 router.get("/success", (req, res) => {
