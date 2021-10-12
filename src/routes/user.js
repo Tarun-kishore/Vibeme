@@ -3,6 +3,8 @@ const { appendFile } = require("fs");
 const router = express.Router();
 const User = require("../models/user");
 const auth = require("../middlewares/auth");
+const jwt = require('jsonwebtoken')
+const confirmationToken = require('../models/confirmationToken')
 const Token = require("../models/tokens");
 const bcrypt = require("bcrypt");
 
@@ -30,29 +32,69 @@ router.post("/signup", async (req, res) => {
   req.body.email = req.body.email.trim();
   req.body.email = req.body.email.toLowerCase();
 
+  
   const user = User.build(req.body);
-
-  try {   
-
+  try {    
+    const preUser = await User.findOne({where:{email: req.body.email , verified: false}})
+    
+    if(preUser) await preUser.destroy()
     await user.save();
 
-    const token = await user.generateAuthToken();
+    const token  = await user.generateConfirmationToken()
 
-    res
-      .cookie("token", token, {
-        maxAge: 30 * 24 * 60 * 60 * 1000,
-        httpOnly: true,
-      })
-      .redirect("/user/profile");
+    res.send(`${request.headers.host}/user/verify/${user.id}/${token}`)
+
   } catch (e) {
     res.status(400).send(e);
   }
 });
 
-router.get("/logout", auth, async (req, res) => {
+router.get('/verify/:id/:token',async (req,res)=>{
+  
   try {
-    await req.token.destroy();
+    const decoded = jwt.verify(req.params.token, process.env.EMAIL_SECRET)
+    
+    const token = await confirmationToken.findOne({where:{user : decoded._id, token: req.params.token}})
+    
+    if(!token || decoded._id!= req.params.id)  return res.redirect('/signup')
+    
+    console.log("working")
+    const user = await User.findOne({where:{id: decoded._id, verified:false}})
 
+    if(!user){
+      await token.destroy()
+      return res.redirect('/signup')
+    }
+    
+    user.verified = true
+
+    await user.save()
+    
+    await token.destroy()
+    
+    const authToken = await user.generateAuthToken();
+    
+    console.log("working")
+      res
+        .cookie("token", authToken, {
+          maxAge: 30 * 24 * 60 * 60 * 1000,
+          httpOnly: true,
+        })
+        .redirect("/user/profile");
+      
+    } catch (e) {
+      console.log(e)
+      res.send(e)
+    }
+    
+    
+    
+  })
+  
+  router.get("/logout", auth, async (req, res) => {
+    try {
+      await req.token.destroy();
+      
     res.clearCookie("token").redirect("/");
   } catch (e) {
     res.status(500).send(e);
