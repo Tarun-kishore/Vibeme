@@ -1,4 +1,3 @@
-
 // password show feature for both signin and signup page
 const togglePassword1 = document.querySelector(".Box1 #togglePassword");
 const password1 = document.querySelector(".Box1 #exampleInputPassword1");
@@ -44,6 +43,12 @@ var signUp = signupBox.querySelector(".No-Account .SignIn-changer");
 var navbarContent = document.querySelector("#navbarContent");
 
 signIn.addEventListener('click', function(e) {
+  loginBox.querySelector('form').reset();
+  loginBox.querySelector('form #exampleInputEmail1').value = null;
+  if(loginBox.querySelector('#InvalidAlert')){
+      loginBox.querySelector('#InvalidAlert').classList.add('Invisible');
+  }
+
   loginBox.classList.remove("animate__fadeIn");
   loginBox.classList.toggle("animate__fadeOut");
   setTimeout(function() {
@@ -67,6 +72,9 @@ signIn.addEventListener('click', function(e) {
 });
 
 signUp.addEventListener('click', function(e) {
+  signupBox.querySelector('form').reset();
+  signupBox.querySelector('#emailAlert').classList.add('Invisible');
+  signupBox.querySelector('#passAlert').classList.add('Invisible');
   signupBox.classList.remove("animate__fadeIn");
   signupBox.classList.toggle("animate__fadeOut");
   backgroundPhoto.classList.toggle("animate__flip");
@@ -90,3 +98,29 @@ signUp.addEventListener('click', function(e) {
   }, 550);
 });
 
+const emailAlert = document.querySelector('#emailAlert');
+const passwordAlert = document.querySelector('#passAlert');
+const invalidAlert = document.querySelector("#InvalidAlert");
+
+emailAlert.querySelector("i").addEventListener('click', function() {
+  emailAlert.querySelector("p").classList.remove("Invisible");
+  setTimeout(function() {
+    emailAlert.querySelector("p").classList.add("Invisible");
+  }, 5000);
+})
+passwordAlert.querySelector("i").addEventListener('click', function() {
+  passwordAlert.querySelector("p").classList.remove("Invisible");
+  setTimeout(function() {
+    passwordAlert.querySelector("p").classList.add("Invisible");
+  }, 5000);
+})
+
+if(invalidAlert)
+{
+  invalidAlert.querySelector("i").addEventListener('click', function() {
+  invalidAlert.querySelector("p").classList.remove("Invisible");
+  setTimeout(function() {
+    invalidAlert.querySelector("p").classList.add("Invisible");
+  }, 5000);
+})
+}

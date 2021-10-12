@@ -9,6 +9,7 @@ const Like = require("./likes");
 const Comment = require("./comments");
 const Reply = require("./replies");
 const Connection = require("./connections")
+const confirmationToken = require("./confirmationToken")
 
 const User = sequelize.define("User",  {
     firstName: {
@@ -32,6 +33,11 @@ const User = sequelize.define("User",  {
       trim: true,
       allowNull: false,
     },
+    verified:{
+      type: DataTypes.BOOLEAN,
+      allowNull: false,
+      defaultValue:false,
+    }
   },
   {
     timestamps: true,
@@ -149,6 +155,23 @@ User.prototype.generateAuthToken = async function () {
   return token;
 };
 
+User.prototype.generateConfirmationToken = async function () {
+  const user = this;
+  const token = await jwt.sign({ _id: user.id }, process.env.EMAIL_SECRET);
+
+  const tokenData = confirmationToken.build({ user: user.id, token });
+
+  await tokenData.save();
+
+  return token;
+};
+
+User.beforeFind((options)=>{
+  if(options.where.verified === undefined){
+    options.where.verified = true;
+  }
+})
+
 User.beforeSave(async (user, options) => {
   if (user.changed("password")) {
     user.password = await bcrypt.hash(user.password, 8);
@@ -162,6 +185,16 @@ User.hasMany(Token, {
 });
 
 Token.belongsTo(User, {
+  foreignKey: "user",
+});
+
+User.hasMany(confirmationToken, {
+  foreignKey: "user",
+  onDelete: "CASCADE",
+  onUpdate: "CASCADE",
+});
+
+confirmationToken.belongsTo(User, {
   foreignKey: "user",
 });
 
@@ -230,6 +263,6 @@ Connection.belongsTo(User,{
 })
 
 
-User.sync();
+User.sync({alter:true});
 
 module.exports = User;
