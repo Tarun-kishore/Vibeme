@@ -160,7 +160,7 @@
     animation-name: fadeOut;
     animation-duration: 0.3s;
     animation-iteration-count: 1;
-    animation-timing-function: ease-in;
+    animation-timing-function: ease-in-out;
   }
 
   /* class for animation fade in */
@@ -168,7 +168,7 @@
     animation-name: fadeIn;
     animation-duration: 0.3s;
     animation-iteration-count: 1;
-    animation-timing-function: ease-out;
+    animation-timing-function: ease-in-out;
   }
 
   /* to make element invisible */
@@ -297,7 +297,7 @@
     cursor: pointer;
   }
 
-  #emailAlert i, #passAlert i {
+  #emailAlert i, #passAlert i{
     font-size: 20px;
     position: absolute;
     color: red;
@@ -306,6 +306,22 @@
     right: -13px;
   }
 
+  #InvalidAlert i{
+    font-size: 20px;
+    position: absolute;
+    color: red;
+    cursor: pointer;
+    top: 40px;
+    right: -13px;
+  }
+
+  #InvalidAlert p{
+    color: red;
+    font-size: 0.8em;
+    padding-left: 13px;
+    padding-bottom: 0;
+    margin-bottom: 0;
+  }
   #emailAlert p, #passAlert p{
     color: red;
     font-size: 0.8em;

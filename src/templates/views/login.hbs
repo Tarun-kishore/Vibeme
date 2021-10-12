@@ -168,6 +168,14 @@
                             <label for="exampleInputEmail1" class="form-label">Email address</label>
                             <input type="email" name="email" class="form-control" id="exampleInputEmail1"
                                 aria-describedby="emailHelp" placeholder="abc@email.com" required>
+                            {{#if error}}
+                            <input type="email" name="email" class="form-control" id="exampleInputEmail1"
+                                aria-describedby="emailHelp" placeholder="abc@email.com" required>
+                            <div id="InvalidAlert">
+                                <p class="Invisible">Invalid Credentials</p>
+                                <i class="fas fa-exclamation-circle"></i>
+                            </div>
+                            {{/if}}
                         </div>
                         <!-- Taking password -->
                         <div class="mb-3 passdiv container-fluid">

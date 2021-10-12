@@ -93,6 +93,8 @@ signUp.addEventListener('click', function(e) {
 
 const emailAlert = document.querySelector('#emailAlert');
 const passwordAlert = document.querySelector('#passAlert');
+const invalidAlert = document.querySelector("#InvalidAlert");
+
 emailAlert.querySelector("i").addEventListener('click', function() {
   emailAlert.querySelector("p").classList.remove("Invisible");
   setTimeout(function() {
@@ -103,5 +105,11 @@ passwordAlert.querySelector("i").addEventListener('click', function() {
   passwordAlert.querySelector("p").classList.remove("Invisible");
   setTimeout(function() {
     passwordAlert.querySelector("p").classList.add("Invisible");
+  }, 5000);
+})
+invalidAlert.querySelector("i").addEventListener('click', function() {
+  invalidAlert.querySelector("p").classList.remove("Invisible");
+  setTimeout(function() {
+    invalidAlert.querySelector("p").classList.add("Invisible");
   }, 5000);
 })
