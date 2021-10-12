@@ -8,6 +8,7 @@ const Post = require("./posts");
 const Like = require("./likes");
 const Comment = require("./comments");
 const Reply = require("./replies");
+const Connection = require("./connections")
 
 const User = sequelize.define("User",  {
     firstName: {
@@ -68,13 +69,11 @@ User.prototype.getPosts = async function () {
   const userObject = this.toJSON();
 
   let posts;
-  if (!userObject.Posts)
-    posts = await Post.findAll({ where: { owner: userObject.id } });
-  else posts = userObject.Posts;
-
+  posts = await Post.findAll({ where: { owner: userObject.id } });
+  
   let options = [];
   let postData;
-
+  
   for (let i = 0; i < posts.length; i++) {
     post = posts[i];
     postData = await post.getPost();
@@ -205,6 +204,32 @@ User.hasMany(Reply, {
 Reply.belongsTo(User, {
   foreignKey: "repliedBy",
 });
+
+
+User.hasMany(Connection, {
+  foreignKey:"sentTo",
+  onDelete: "CASCADE",
+  onUpdate: "CASCADE"
+})
+
+
+Connection.belongsTo(User,{
+  foreignKey:"sentTo",
+  as:'receiver'
+})
+
+User.hasMany(Connection, {
+  foreignKey:"sentBy",
+  onDelete: "CASCADE",
+  onUpdate: "CASCADE"
+})
+
+Connection.belongsTo(User,{
+  foreignKey:"sentBy",
+  as:'sender'
+})
+
+
 User.sync();
 
 module.exports = User;

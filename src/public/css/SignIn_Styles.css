@@ -1,0 +1,369 @@
+  /* For whole webpage setting width and height to take 100% screen size */
+  /* .body {
+    height: 100vh;
+    width: 100vw;
+  } */
+
+  /* For the login page div and making it in form of grid */
+  .loginPage {
+    height: 100vh;
+    width: 100vw;
+    display: grid;
+    grid-template-columns: 1fr;   
+    grid-template-rows: auto 1fr auto;
+  }
+
+  /* Making grid for middle section of screen of 2 columns */
+  main {
+    display: grid;
+    grid-template-columns: minmax(425px, 1fr) 2fr;
+    grid-template-rows: 1;
+  }
+
+  /* changing grid size for middle section when signup box is there */
+  .SignUpMain {
+    display: grid;
+    grid-template-columns: 2fr minmax(425px, 1fr);
+    grid-template-rows: 1;
+  }
+
+  /* positioning the image so that it goes in background */
+  .bg-image {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    grid-column: 1/-1;
+    grid-row: 1/-1;
+    object-fit: cover;
+    z-index: -1;
+  }
+
+  /* Login Form */
+
+  /* Sign In Box */
+  .Box1 {
+    grid-column: 1/span 1;
+    grid-row: 1/-1;
+    border-radius: 30px;
+    background-color: rgba(255,255,255,0.75);
+    backdrop-filter: blur(3px);
+    display: grid;
+    grid-template-rows: auto auto 1fr;
+    min-height: 550px;
+    height: 50%;
+    max-height: 800px;
+    width: calc(100% - 15%);
+    max-width: 700px;
+    margin-left: 15%;
+    box-shadow:none;
+    justify-self: center;
+    align-self: center;
+  }
+
+  /* Sign Up box */
+  .Box2 {
+    grid-column: 2/span 1;
+    grid-row: 1/2;
+    border-radius: 30px;
+    background-color: rgba(255,255,255,0.75);
+    backdrop-filter: blur(3px);
+    display: grid;
+    grid-template-rows: auto auto 1fr;
+    width: calc(100% - 15%);
+    max-width: 700px;
+    margin-right: 15%;
+    padding-bottom: 50px;
+    box-shadow:none;
+    justify-self: center;
+    align-self: center;
+  }
+
+  /* responsive nature for middle section */
+  @media (max-width: 425px) {
+    .main {
+      grid-template-columns: 1;
+    }
+
+    .Box1 {
+      margin-left:  5%;
+      margin-right: 5%;
+      width: calc(100% - 10%);
+    }
+  }
+
+  /* Animation for fade out feature */
+  @keyframes fadeOut {
+    from {
+      opacity: 1;
+    }
+
+    to {
+      opacity: 0;
+    }
+  }
+
+  /* Animation for fade in feature */
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+
+  /* Animation for flip */
+  @keyframes flip {
+    from {
+      transform: scaleX(1);
+      animation-timing-function: ease-out;
+    }
+
+    to {
+      transform: scaleX(-1);
+      animation-timing-function: ease-in;
+    }
+  }
+
+  /* Animation for another flip */
+  @keyframes flip2 {
+    from {
+      transform: scaleX(-1);
+      animation-timing-function: ease-out;
+    }
+
+    to {
+      transform: scaleX(1);
+      animation-timing-function: ease-in;
+    }
+  }
+
+  /* class for animation flip2*/
+  .animate__flip2 {
+    animation-duration: 0.5s;
+    animation-fill-mode: both;
+    backface-visibility: visible;
+    animation-name: flip2;
+  }
+
+  /* class for animation flip1 */
+  .animate__flip {
+    animation-duration: 0.5s;
+    animation-fill-mode: both;
+    backface-visibility: visible;
+    animation-name: flip;
+  }
+
+  /* class for animation fade out */
+  .animate__fadeOut {
+    animation-name: fadeOut;
+    animation-duration: 0.3s;
+    animation-iteration-count: 1;
+    animation-timing-function: ease-in;
+  }
+
+  /* class for animation fade in */
+  .animate__fadeIn {
+    animation-name: fadeIn;
+    animation-duration: 0.3s;
+    animation-iteration-count: 1;
+    animation-timing-function: ease-out;
+  }
+
+  /* to make element invisible */
+  .Invisible {
+    display: none;
+  }
+
+  /* opacity */
+  .Opacity {
+    opacity: 1;
+  }
+
+  /* box hover */
+  .Box1:hover, .Box2:hover{
+    box-shadow: 0 5px 30px 5px rgba(0, 0, 0, 0.1);
+  }
+
+  /* making grid on top of box */
+  .form-header {
+    display: grid;
+    grid-template-columns: 50% 50%;
+    padding: 40px 30px 0 30px;
+  }
+
+  /* form logo image */
+  .form-logo img {
+    height: 90%;
+    width: 90%;
+  }
+
+  /* aligning no account text */
+  .No-Account {
+    text-align: right;
+  }
+
+  /* text style for p in no account */
+  .No-Account p{
+    margin-bottom: 0;
+    text-decoration: none;
+    color: #0d6efd;
+    font-size: 0.9rem;
+  }
+
+  /* Cursor feature on sign in and sign up text */
+  .No-Account .SignUp-changer, .No-Account .SignIn-changer {
+  cursor: pointer;
+  }
+
+  /* sign in box */
+  .form-SignIn {
+    padding: 0 30px;
+  }
+
+  /* text style for sign in text */
+  .form-SignIn h1 {
+    font-family: 'Roboto', sans-serif;
+    box-sizing: border-box;
+    font-size: 4rem;
+    font-weight: 600;
+    margin-bottom: 0;
+    padding: 20px 10px 0 10px;
+    height: 100%;
+  }
+
+  /* main part of box */
+  .form-main {
+    padding: 0 30px 40px 30px;
+  }
+
+  /* positioning input divs for signup box */
+  .Box2 .form-main .mb-3 {
+    position: relative;
+    margin-bottom: 0.5rem !important;
+  }
+
+  /* styling input boxes for signup box */
+  .Box2 .form-main .form-control {
+    border-radius: 5px;
+  }
+
+  /* changing email position for signin box */
+  .Box1 .email
+  {
+    position: relative;
+    top: 32px;
+  }
+
+  /* changing email position for signup box */
+  .Box2 .email {
+    margin-top: 30px;
+  }
+
+  /* changing password position for signin box */
+  .Box1 .passdiv
+  {
+    position: relative;
+    top:30px
+  }
+
+  /* changing style for email,password for signin box*/
+  .form-label {
+    color: grey;
+    opacity: 0.8;
+    font-size: 0.8rem;
+    margin: 0 0 5px;
+  }
+
+  /* email password box for signin box */
+  .form-control {
+    border-radius: 8px;
+    height: 50px;
+  }
+
+  /* password box */
+  .passdiv .form-control { 
+    display: inline-block;
+  }
+
+  /* setting position for eye slash icon in signup box */
+  .Box2 .passdiv i {
+    display: none;
+    position: absolute;
+    top: 18px;
+    right: 28px;
+    color: grey;
+    cursor: pointer;
+  }
+
+  /* setting position for eye slash icon in signin box */
+  .Box1 .passdiv i {
+    display: none;
+    position: absolute;
+    top: 45px;
+    right: 30px;
+    color: grey;
+    cursor: pointer;
+  }
+
+  /* making eye slash to be inline block */
+  .passdiv input:not(:placeholder-shown) ~ i {
+    display: inline-block;
+  }
+
+  /* placeholder font style changes */
+  input:placeholder-shown {
+    font-style: normal;
+  }
+
+  /* text in input boxes of signup box but currently invisible*/
+  .Box2 .form-main label {
+    display: none;
+    position: absolute;
+    top: 13px;
+    left: 25px;
+    pointer-events: none;
+    color: rgb(165, 165, 165);
+    transition: all 0.2s;
+  }
+
+  /* making them visible */
+  .Box2 input:not(:placeholder-shown) ~ label {
+  display: inline-block;
+  font-size: 0.8em;
+  top: 3px;
+  left: 25px;
+  }
+
+  /* padding for text in input boxes for signup */
+  .Box2 input:not(:placeholder-shown) {
+  padding: 20px 0 2px 12px !important;
+  }
+
+  /* styling the buttons for signin and signup boxes */
+  .pushable {
+    position: relative;
+    left: 12px;
+    top: 30px;
+    background-color: darkgrey;
+    border-radius: 12px;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    outline-offset: 4px;
+  }
+  
+  .front {
+    display: block;
+    padding: 12px 20px;
+    border-radius: 12px;
+    font-size: 1.25rem;
+    background-color: black;
+    color: white;
+    transform: translateY(-6px);
+  }
+
+  .pushable:active .front {
+    transform: translateY(0px);
+  }

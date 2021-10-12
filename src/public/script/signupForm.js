@@ -1,15 +1,17 @@
-const $emailAlert = document.querySelector('#emailAlert')
-const $passwordAlert = document.querySelector('#passAlert')
+// const $emailAlert = document.querySelector('#emailAlert')
+// const $passwordAlert = document.querySelector('#passAlert')
 const $form = document.querySelector('#signup')
 const $email = document.querySelector('#email')
-const $password = document.querySelector('#password')
+const $password = document.querySelector('#exampleInputPassword2')
 const $confirmPassword = document.querySelector('#confirmPassword')
 
 $form.addEventListener('submit',(e)=>{
-    $emailAlert.innerHTML = ''
-    $passwordAlert.innerHTML = ''
+    // $emailAlert.innerHTML = ''
+    // $passwordAlert.innerHTML = ''
 
     $email.value = $email.value.toLowerCase()
+
+
     e.preventDefault()
     data={email:$email.value}
     fetch('/user/exist',{
@@ -21,13 +23,16 @@ $form.addEventListener('submit',(e)=>{
     }).then((response)=> response.json()
     ).then((response)=>{
         if(response.exist){
-            $emailAlert.innerHTML = '<div class="form-error">Email ID already exists</div>'
+            console.log('<div class="form-error">Email ID already exists</div>')
+            // $emailAlert.innerHTML = '<div class="form-error">Email ID already exists</div>'
         }
         else if($password.value.length < 8){
-            $passwordAlert.innerHTML = '<div class="form-error">Password should be atleast 8 characters long</div>'
+            console.log('<div class="form-error">Password should be atleast 8 characters long</div>')
+            // $passwordAlert.innerHTML = '<div class="form-error">Password should be atleast 8 characters long</div>'
         }
         else if($password.value !== $confirmPassword.value){
-            $passwordAlert.innerHTML = '<div class="form-error">Password and confirm password should have same value</div>'
+            console.log('<div class="form-error">Password and confirm password should have same value</div>')
+            // $passwordAlert.innerHTML = '<div class="form-error">Password and confirm password should have same value</div>'
         }
         else $form.submit()
     })

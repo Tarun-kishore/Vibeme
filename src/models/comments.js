@@ -80,7 +80,6 @@ Comment.prototype.getCommentWithReplies = function(userId){
     return comment
 }
 
-Comment.sync()
 
 Comment.hasMany(Reply,{
     foreignKey:'repliedOn',
@@ -92,5 +91,6 @@ Reply.belongsTo(Comment,{
     foreignKey:'repliedOn'
 })
 
+Comment.sync()
 
 module.exports = Comment
