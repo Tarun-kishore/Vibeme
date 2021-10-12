@@ -44,6 +44,9 @@ var navbarContent = document.querySelector("#navbarContent");
 
 signIn.addEventListener('click', function(e) {
   loginBox.querySelector('form').reset();
+  loginBox.querySelector('form #exampleInputEmail1').value = null;
+  loginBox.querySelector('#InvalidAlert').classList.add('Invisible');
+
   loginBox.classList.remove("animate__fadeIn");
   loginBox.classList.toggle("animate__fadeOut");
   setTimeout(function() {
@@ -68,6 +71,8 @@ signIn.addEventListener('click', function(e) {
 
 signUp.addEventListener('click', function(e) {
   signupBox.querySelector('form').reset();
+  signupBox.querySelector('#emailAlert').classList.add('Invisible');
+  signupBox.querySelector('#passAlert').classList.add('Invisible');
   signupBox.classList.remove("animate__fadeIn");
   signupBox.classList.toggle("animate__fadeOut");
   backgroundPhoto.classList.toggle("animate__flip");
@@ -107,9 +112,13 @@ passwordAlert.querySelector("i").addEventListener('click', function() {
     passwordAlert.querySelector("p").classList.add("Invisible");
   }, 5000);
 })
-invalidAlert.querySelector("i").addEventListener('click', function() {
+
+if(invalidAlert)
+{
+  invalidAlert.querySelector("i").addEventListener('click', function() {
   invalidAlert.querySelector("p").classList.remove("Invisible");
   setTimeout(function() {
     invalidAlert.querySelector("p").classList.add("Invisible");
   }, 5000);
 })
+}
