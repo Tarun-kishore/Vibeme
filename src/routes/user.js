@@ -17,7 +17,7 @@ router.post("/login", async (req, res) => {
         maxAge: 90786787,
         httpOnly: true,
       })
-      .redirect("/");
+      .redirect("/user/profile");
   } catch (e) {
     res.render("login", { error: e });
   }
@@ -32,23 +32,24 @@ router.post("/signup", async (req, res) => {
 
   const user = User.build(req.body);
 
-  try {
+  try {   
+
     await user.save();
 
     const token = await user.generateAuthToken();
 
-    return res
+    res
       .cookie("token", token, {
         maxAge: 30 * 24 * 60 * 60 * 1000,
         httpOnly: true,
       })
-      .redirect("/");
+      .redirect("/user/profile");
   } catch (e) {
     res.status(400).send(e);
   }
 });
 
-router.post("/logout", auth, async (req, res) => {
+router.get("/logout", auth, async (req, res) => {
   try {
     await req.token.destroy();
 
@@ -65,9 +66,9 @@ router.post("/exist", async (req, res) => {
     const user = await User.findOne({ where: req.body });
 
     if (user) return res.status(200).send({ exist: true });
-    res.status(404).send({ exist: false });
+    res.status(200).send({ exist: false });
   } catch (e) {
-    res.status(400).send(e);
+    res.status(200).send(e);
   }
 });
 
