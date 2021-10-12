@@ -43,6 +43,7 @@ var signUp = signupBox.querySelector(".No-Account .SignIn-changer");
 var navbarContent = document.querySelector("#navbarContent");
 
 signIn.addEventListener('click', function(e) {
+  loginBox.querySelector('form').reset();
   loginBox.classList.remove("animate__fadeIn");
   loginBox.classList.toggle("animate__fadeOut");
   setTimeout(function() {
@@ -66,6 +67,7 @@ signIn.addEventListener('click', function(e) {
 });
 
 signUp.addEventListener('click', function(e) {
+  signupBox.querySelector('form').reset();
   signupBox.classList.remove("animate__fadeIn");
   signupBox.classList.toggle("animate__fadeOut");
   backgroundPhoto.classList.toggle("animate__flip");
