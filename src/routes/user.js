@@ -19,7 +19,7 @@ router.post("/login", async (req, res) => {
       })
       .redirect("/user/profile");
   } catch (e) {
-    res.render("login", { error: e });
+    res.render("login", { error: e,...req.body });
   }
 });
 

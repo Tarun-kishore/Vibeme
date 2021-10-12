@@ -166,8 +166,13 @@
                         <!-- Taking email -->
                         <div class="mb-3 email container-fluid">
                             <label for="exampleInputEmail1" class="form-label">Email address</label>
-                            <input type="email" name="email" class="form-control" id="exampleInputEmail1"
+                            {{#if email}}
+                                <input type="email" name="email" class="form-control" id="exampleInputEmail1"
+                                aria-describedby="emailHelp" value="{{email}}" placeholder="abc@email.com" required>
+                            {{else}}
+                                <input type="email" name="email" class="form-control" id="exampleInputEmail1"
                                 aria-describedby="emailHelp" placeholder="abc@email.com" required>
+                            {{/if}}
                             {{#if error}}
                             <input type="email" name="email" class="form-control" id="exampleInputEmail1"
                                 aria-describedby="emailHelp" placeholder="abc@email.com" required>
