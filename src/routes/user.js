@@ -42,10 +42,9 @@ router.post("/signup", async (req, res) => {
 
     const token  = await user.generateConfirmationToken()
 
-    res.send(`${request.headers.host}/user/verify/${user.id}/${token}`)
+    res.send(`${req.headers.host}/user/verify/${user.id}/${token}`)
 
   } catch (e) {
-    console.log(e)
     res.status(400).send(e);
   }
 });
