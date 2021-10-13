@@ -21,6 +21,7 @@
     "npm": "^7.24.0",
     "pg": "^8.7.1",
     "pg-hstore": "^2.3.4",
+    "psl": "^1.8.0",
     "request": "^2.88.2",
     "sequelize": "^6.6.5"
   },
@@ -32,6 +33,5 @@
     "url": "https://github.com/Tarun-kishore/NetworkingSite/issues"
   },
   "homepage": "https://github.com/Tarun-kishore/NetworkingSite#readme",
-  "devDependencies": {},
   "description": ""
 }
