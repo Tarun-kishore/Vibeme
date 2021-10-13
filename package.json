@@ -20,6 +20,7 @@
     "mysql2": "^2.3.0",
     "nodemon": "^2.0.12",
     "npm": "^7.24.0",
+    "request": "^2.88.2",
     "sequelize": "^6.6.5"
   },
   "repository": {

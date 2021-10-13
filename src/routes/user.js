@@ -7,6 +7,7 @@ const jwt = require('jsonwebtoken')
 const confirmationToken = require('../models/confirmationToken')
 const Token = require("../models/tokens");
 const bcrypt = require("bcrypt");
+const mail = require('../utils/mail')
 
 router.post("/login", async (req, res) => {
   try {
@@ -42,7 +43,9 @@ router.post("/signup", async (req, res) => {
 
     const token  = await user.generateConfirmationToken()
 
-    res.send(`${request.headers.host}/user/verify/${user.id}/${token}`)
+    mail.sendConfirmationMail(`${req.headers.host}/user/verify/${user.id}/${token}`,user.email)
+
+    res.send('click on confirmation link sent to your e-mail')
 
   } catch (e) {
     res.status(400).send(e);
@@ -58,7 +61,6 @@ router.get('/verify/:id/:token',async (req,res)=>{
     
     if(!token || decoded._id!= req.params.id)  return res.redirect('/signup')
     
-    console.log("working")
     const user = await User.findOne({where:{id: decoded._id, verified:false}})
 
     if(!user){
@@ -74,7 +76,6 @@ router.get('/verify/:id/:token',async (req,res)=>{
     
     const authToken = await user.generateAuthToken();
     
-    console.log("working")
       res
         .cookie("token", authToken, {
           maxAge: 30 * 24 * 60 * 60 * 1000,
