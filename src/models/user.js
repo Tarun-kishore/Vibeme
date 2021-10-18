@@ -242,7 +242,8 @@ Reply.belongsTo(User, {
 User.hasMany(Connection, {
   foreignKey:"sentTo",
   onDelete: "CASCADE",
-  onUpdate: "CASCADE"
+  onUpdate: "CASCADE",
+  as:'receivedConnection'
 })
 
 
@@ -254,7 +255,8 @@ Connection.belongsTo(User,{
 User.hasMany(Connection, {
   foreignKey:"sentBy",
   onDelete: "CASCADE",
-  onUpdate: "CASCADE"
+  onUpdate: "CASCADE",
+  as:'sentConnection'
 })
 
 Connection.belongsTo(User,{
