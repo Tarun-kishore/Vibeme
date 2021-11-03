@@ -167,7 +167,10 @@ User.prototype.generateConfirmationToken = async function () {
 };
 
 User.beforeFind((options)=>{
-  if(options.where.verified === undefined){
+  if(!options.where){
+    options.where ={}
+  }
+  if(!options.where || options.where.verified === undefined){
     options.where.verified = true;
   }
 })
