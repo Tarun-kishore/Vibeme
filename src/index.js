@@ -12,7 +12,7 @@ const userRoutes = require("./routes/user");
 const indexRouter = require("./routes/index");
 const postRouter = require("./routes/post");
 const commentRouter = require("./routes/comments");
-const connectionRouter = require("./routes/connection")
+const connectionRouter = require("./routes/connection");
 
 app.set("view engine", "hbs");
 app.set("views", "src/templates/views");
