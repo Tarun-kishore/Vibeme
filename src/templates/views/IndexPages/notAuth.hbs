@@ -28,22 +28,16 @@
         href="https://fonts.googleapis.com/css2?family=Lato:wght@300&family=Nunito+Sans:wght@600&family=Roboto:wght@500&display=swap"
         rel="stylesheet">
 
-    <!-- Font Style -> Inter 900 -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@900&display=swap" rel="stylesheet">
-
     <!-- Custom CSS stylesheet -->
-    <link rel="stylesheet" href="/css/style.css">
-    <link rel="stylesheet" href="/css/Help Page/HelpPageStyles.css">
+    <link rel="stylesheet" href="/css/Login Page/style.css">
+    <link rel="stylesheet" href="/css/base.css">
 </head>
 
 <body>
 
-    <!-- About Page -->
-    <div class="HelpPage">
+    <!-- making a grid for this div -->
+    <div class="loginPage">
 
-        <!-- Navbar -->
         <header>
             <!-- Navbar -->
             <nav class="navbar navbar-expand-lg navbar-mainbg">
@@ -58,7 +52,7 @@
                 </button>
                 <!-- Links -->
                 {{#if loggedIn}}
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                  <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav ms-auto">
                         <!-- For Styling -->
                         <div class="hori-selector">
@@ -76,37 +70,37 @@
                                 Features
                             </a>
                         </li>
-                        <li class="nav-item active">
+                        <li class="nav-item">
                             <a class="nav-link" href="/help">
                                 Help
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" id="navbarContent" href="/post/all">
+                            <a class="nav-link" id="navbarContent"href="/post/all">
                                 All Post
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" id="navbarContent" href="/post/my">
+                            <a class="nav-link" id="navbarContent"href="/post/my">
                                 myPost
                             </a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link" id="navbarContent" href="/user/profile">
+                        <li class="nav-item active">
+                            <a class="nav-link" id="navbarContent"href="/user/profile">
                                 my Profile
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" id="navbarContent" href="/user/logout">
+                            <a class="nav-link" id="navbarContent"href="/user/logout">
                                 Logout
                             </a>
                         </li>
-                    </ul>
-                </div>
+                    </ul> 
+                  </div>
 
                 {{else}}
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <ul class="navbar-nav ms-auto">
+                  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                      <ul class="navbar-nav ms-auto">
                         <!-- For Styling -->
                         <div class="hori-selector">
                             <div class="left"></div>
@@ -123,31 +117,31 @@
                                 Features
                             </a>
                         </li>
-                        <li class="nav-item active">
+                        <li class="nav-item">
                             <a class="nav-link" href="/help">
                                 Help
                             </a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link" id="navbarContent" href="/login">
+                        <li class="nav-item active">
+                            <a class="nav-link" id="navbarContent"href="/login">
                                 Sign in
                             </a>
                         </li>
-                    </ul>
-                </div>
-                {{/if}}
+                    </ul>  
+                  </div>
+              {{/if}}
             </nav>
         </header>
 
-        <main>
-            <h1>Help Page</h1>
-        </main>
 
-        <footer>
+<h1>You are not authorised</h1>
+
+<footer>
             <p class="text-center">&copy; 2021 All rights Reserved</p>
         </footer>
 
     </div>
+
 
     <!-- Bootstrap Script -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js"
