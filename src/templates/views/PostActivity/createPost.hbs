@@ -29,7 +29,7 @@
         rel="stylesheet">
 
     <!-- Custom CSS stylesheet -->
-    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/Login Page/style.css">
     <link rel="stylesheet" href="/css/base.css">
 </head>
 
@@ -133,8 +133,36 @@
             </nav>
         </header>
 
+<link href="https://unpkg.com/filepond/dist/filepond.css" rel="stylesheet" />
+<link href="https://unpkg.com/filepond-plugin-image-preview/dist/filepond-plugin-image-preview.css" rel="stylesheet">
+<link href="/css/Filepond/filepond.css" rel="stylesheet">
+<form action="/post/create" method="post">
 
-{{>changePasswordSection}}
+
+{{!-- do not change class filepond here --}}
+
+<div class="container-md">
+
+<input type="file" name="image" placeholder="image" required>    Upload image
+</div>
+{{#if error}}
+    {{error}}
+{{/if}}
+<textarea name="content" style="border: 2px solid black;" cols="30" rows="10" required></textarea>
+<button type="submit">Create</button>
+</form>
+<script src="https://unpkg.com/filepond@^4/dist/filepond.js"></script>
+
+<script src="https://unpkg.com/filepond-plugin-image-preview/dist/filepond-plugin-image-preview.js"></script>
+<script src="https://unpkg.com/filepond-plugin-file-encode/dist/filepond-plugin-file-encode.js"></script>
+<script src="https://unpkg.com/filepond-plugin-image-resize/dist/filepond-plugin-image-resize.js"></script>
+
+<script src="https://unpkg.com/filepond-plugin-image-transform/dist/filepond-plugin-image-transform.js"></script>
+
+<script src="/script/Filepond/filepond.js"></script>
+
+
+
 
 <footer>
             <p class="text-center">&copy; 2021 All rights Reserved</p>

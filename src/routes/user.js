@@ -22,7 +22,7 @@ router.post("/login", async (req, res) => {
       })
       .redirect("/user/profile");
   } catch (e) {
-    res.render("login", { error: e,...req.body });
+    res.render("UserActivity\\login", { error: e,...req.body });
   }
 });
 
@@ -117,7 +117,7 @@ router.post("/exist", async (req, res) => {
 
 router.get("/profile", auth, (req, res) => {
   try {
-    res.render("profile", { loggedIn: true, ...req.user.getPublicProfile() });
+    res.render("UserActivity\\profile", { loggedIn: true, ...req.user.getPublicProfile() });
   } catch (e) {
     res.status(500).send();
   }
@@ -135,7 +135,7 @@ router.delete("/delete", auth, async (req, res) => {
 
 router.post("/update", auth, (req, res) => {
   const data = { loggedIn: true, ...req.user.getPublicProfile() };
-  res.render("updateProfile", data);
+  res.render("UserActivity\\updateProfile", data);
 });
 
 router.put("/update", auth, async (req, res) => {
@@ -150,14 +150,14 @@ router.put("/update", auth, async (req, res) => {
 });
 
 router.post("/change", auth, (req, res) => {
-  res.render("changePassword", { loggedIn: true });
+  res.render("UserActivity\\changePassword", { loggedIn: true });
 });
 
 router.put("/change", auth, async (req, res) => {
   try {
     isMatch = await bcrypt.compare(req.body.oldPassword, req.user.password);
     if (!isMatch)
-      return res.render("changePassword", {
+      return res.render("UserActivity\\changePassword", {
         error: "Wrong Old Password",
         loggedIn: true,
       });
@@ -177,7 +177,7 @@ router.get("/view/:id", async (req, res) => {
     const user = await User.findByPk(req.params.id);
     const userObject = user.getPublicProfile();
     delete userObject.email;
-    res.render("publicProfile", { ...options, ...userObject });
+    res.render("UserActivity\\publicProfile", { ...options, ...userObject });
   } catch (e) {
     res.status(500).send();
   }

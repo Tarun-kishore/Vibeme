@@ -4,20 +4,20 @@ const router = express.Router();
 router.get("/login", (req, res) => {
   if (req.cookies.token) return res.redirect("/user/profile");
   
-  res.render("login");
+  res.render("UserActivity\\login");
 });
 
 router.get("/signup", (req, res) => {
   if (req.cookies.token) return res.redirect("/user/profile");
   
-  res.render("login");
+  res.render("UserActivity\\login");
 });
 
 router.get("/success", (req, res) => {
   const options = {};
   if (req.cookies.token) options.loggedIn = true;
   
-  res.render("success", options);
+  res.render("IndexPages\\success", options);
 });
 
 
@@ -25,37 +25,38 @@ router.get("/about", (req, res) => {
   const options = {};
   if (req.cookies.token) options.loggedIn = true;
   
-  res.render("about", options);
+  res.render("indexPages\\about", options);
 })
 
 router.get("/feature", (req, res) => {
   const options = {};
   if (req.cookies.token) options.loggedIn = true;
   
-  res.render("feature", options);
+  res.render("IndexPages\\feature", options);
 })
 
 router.get("/help", (req, res) => {
   const options = {};
   if (req.cookies.token) options.loggedIn = true;
   
-  res.render("help", options);
+  res.render("indexPages\\help", options);
 })
 
 router.get("/", (req, res) => {
+ 
   res.redirect('/login')
   // const options = {};
   // if (req.cookies.token) options.loggedIn = true;
 
   
-  // res.render("index", options);
+  // res.render("IndexPages\\index", options);
 });
 
 router.get("*", (req, res) => {
   const options = {};
   if (req.cookies.token) options.loggedIn = true;
 
-  res.render("404", options);
+  res.render("indexPages\\404", options);
 });
 
 module.exports = router;

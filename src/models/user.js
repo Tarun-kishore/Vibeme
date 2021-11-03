@@ -167,7 +167,10 @@ User.prototype.generateConfirmationToken = async function () {
 };
 
 User.beforeFind((options)=>{
-  if(options.where.verified === undefined){
+  if(!options.where){
+    options.where ={}
+  }
+  if(!options.where || options.where.verified === undefined){
     options.where.verified = true;
   }
 })
@@ -242,7 +245,8 @@ Reply.belongsTo(User, {
 User.hasMany(Connection, {
   foreignKey:"sentTo",
   onDelete: "CASCADE",
-  onUpdate: "CASCADE"
+  onUpdate: "CASCADE",
+  as:'receivedConnection'
 })
 
 
@@ -254,7 +258,8 @@ Connection.belongsTo(User,{
 User.hasMany(Connection, {
   foreignKey:"sentBy",
   onDelete: "CASCADE",
-  onUpdate: "CASCADE"
+  onUpdate: "CASCADE",
+  as:'sentConnection'
 })
 
 Connection.belongsTo(User,{
