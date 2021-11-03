@@ -29,7 +29,7 @@
         rel="stylesheet">
 
     <!-- Custom CSS stylesheet -->
-    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/Login Page/style.css">
     <link rel="stylesheet" href="/css/base.css">
 </head>
 
@@ -134,32 +134,23 @@
         </header>
 
 
+{{#if post}}
 
-<link href="https://unpkg.com/filepond/dist/filepond.css" rel="stylesheet" />
-<link href="https://unpkg.com/filepond-plugin-image-preview/dist/filepond-plugin-image-preview.css" rel="stylesheet">
-<link href="/css/filepond.css" rel="stylesheet">
+    {{#each post}}
 
-<h1>{{creator}}</h1>
-<form action="/post/edit/{{id}}?_method=PUT" method="post">
-    
-Leave the image if you don't want to change
+        {{>post this}}
 
-<div class="container-md">
-<input type="file" name="image" placeholder="image" class="filepond" value="{{image}}">    Upload image
-    <input type="textarea" value="{{content}}" name="content" style="border: 2px solid black;" cols="30" rows="10" required>
-    <button type="submit">Edit</button>
-</form>
-</div>
-<script src="https://unpkg.com/filepond@^4/dist/filepond.js"></script>
+    {{/each}}
 
-<script src="https://unpkg.com/filepond-plugin-image-preview/dist/filepond-plugin-image-preview.js"></script>
-<script src="https://unpkg.com/filepond-plugin-file-encode/dist/filepond-plugin-file-encode.js"></script>
-<script src="https://unpkg.com/filepond-plugin-image-resize/dist/filepond-plugin-image-resize.js"></script>
+{{else}}
+    <h1>no post yet</h1>
 
-<script src="https://unpkg.com/filepond-plugin-image-transform/dist/filepond-plugin-image-transform.js"></script>
+{{/if}}
 
-<script src="/script/filepond.js"></script>
 
+{{! This script takes care of likes functionality }}
+
+<script src="/script/Likes/likes.js"></script>
 <footer>
             <p class="text-center">&copy; 2021 All rights Reserved</p>
         </footer>
