@@ -29,7 +29,7 @@
         rel="stylesheet">
 
     <!-- Custom CSS stylesheet -->
-    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/Login Page/style.css">
     <link rel="stylesheet" href="/css/base.css">
 </head>
 
@@ -133,36 +133,59 @@
             </nav>
         </header>
 
-<link href="https://unpkg.com/filepond/dist/filepond.css" rel="stylesheet" />
-<link href="https://unpkg.com/filepond-plugin-image-preview/dist/filepond-plugin-image-preview.css" rel="stylesheet">
-<link href="/css/filepond.css" rel="stylesheet">
-<form action="/post/create" method="post">
 
+<h2>My Connections</h2>
 
-{{!-- do not change class filepond here --}}
+{{#if myConnections}}
 
-<div class="container-md">
+    {{#each myConnections}}
+        <a href="/user/view/{{this.connector.id}}">{{this.connector.firstName}} {{this.connector.lastName}}</a>
+        
+        <form action="/connect/remove/{{this.id}}?_method=delete" method="post">
+        <button type="submit">remove</button></form>
+    {{/each}}
 
-<input type="file" name="image" placeholder="image" required>    Upload image
-</div>
-{{#if error}}
-    {{error}}
+{{else}}
+
+    <h3>No connections yet</h3>
+
 {{/if}}
-<textarea name="content" style="border: 2px solid black;" cols="30" rows="10" required></textarea>
-<button type="submit">Create</button>
-</form>
-<script src="https://unpkg.com/filepond@^4/dist/filepond.js"></script>
 
-<script src="https://unpkg.com/filepond-plugin-image-preview/dist/filepond-plugin-image-preview.js"></script>
-<script src="https://unpkg.com/filepond-plugin-file-encode/dist/filepond-plugin-file-encode.js"></script>
-<script src="https://unpkg.com/filepond-plugin-image-resize/dist/filepond-plugin-image-resize.js"></script>
+<h2>My Sent Connections</h2>
 
-<script src="https://unpkg.com/filepond-plugin-image-transform/dist/filepond-plugin-image-transform.js"></script>
+{{#if sentConnections}}
 
-<script src="/script/filepond.js"></script>
+    {{#each sentConnections}}
+        <a href="/user/view/{{this.receiver.id}}">{{this.receiver.firstName}} {{this.receiver.lastName}}</a>
 
+        <h5>status pending</h5>
 
+        <form action="/connect/remove/{{this.id}}?_method=delete" method="post">
+        <button type="submit">delete request</button></form>
+    {{/each}}
 
+{{else}}
+
+    <h3>No connections sent yet</h3>
+
+{{/if}}
+
+<h2>My received Connections</h2>
+{{#if receivedConnections}}
+    {{#each receivedConnections}}
+        <a href="/user/view/{{this.sender.id}}">{{this.sender.firstName}} {{this.sender.lastName}}</a>
+
+        <form action="/connect/accept/{{this.id}}?_method=patch" method="post">
+        <button type="submit">Accept</button></form>
+
+        <form action="/connect/remove/{{this.id}}?_method=delete" method="post">
+        <button type="submit">reject</button></form>
+    {{/each}}
+{{else}}
+
+    <h3>No connections sent yet</h3>
+
+{{/if}}
 
 <footer>
             <p class="text-center">&copy; 2021 All rights Reserved</p>

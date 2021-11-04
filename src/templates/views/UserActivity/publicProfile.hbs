@@ -29,7 +29,7 @@
         rel="stylesheet">
 
     <!-- Custom CSS stylesheet -->
-    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/Login Page/style.css">
     <link rel="stylesheet" href="/css/base.css">
 </head>
 
@@ -52,7 +52,7 @@
                 </button>
                 <!-- Links -->
                 {{#if loggedIn}}
-                  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav ms-auto">
                         <!-- For Styling -->
                         <div class="hori-selector">
@@ -76,31 +76,31 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" id="navbarContent"href="/post/all">
+                            <a class="nav-link" id="navbarContent" href="/post/all">
                                 All Post
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" id="navbarContent"href="/post/my">
+                            <a class="nav-link" id="navbarContent" href="/post/my">
                                 myPost
                             </a>
                         </li>
                         <li class="nav-item active">
-                            <a class="nav-link" id="navbarContent"href="/user/profile">
+                            <a class="nav-link" id="navbarContent" href="/user/profile">
                                 my Profile
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" id="navbarContent"href="/user/logout">
+                            <a class="nav-link" id="navbarContent" href="/user/logout">
                                 Logout
                             </a>
                         </li>
-                    </ul> 
-                  </div>
+                    </ul>
+                </div>
 
                 {{else}}
-                  <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                      <ul class="navbar-nav ms-auto">
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav ms-auto">
                         <!-- For Styling -->
                         <div class="hori-selector">
                             <div class="left"></div>
@@ -123,97 +123,35 @@
                             </a>
                         </li>
                         <li class="nav-item active">
-                            <a class="nav-link" id="navbarContent"href="/login">
+                            <a class="nav-link" id="navbarContent" href="/login">
                                 Sign in
                             </a>
                         </li>
-                    </ul>  
-                  </div>
-              {{/if}}
+                    </ul>
+                </div>
+                {{/if}}
             </nav>
         </header>
 
+        <div id="profile" class="container-md mt-5">
 
-<div class="d-grid gap-2 col-6 mt-3 mx-auto">
-<a class="btn btn-primary" href="/post/create" role="button">Create Post</a>
-</div>
-
-<style> img{
-    height: 10vh;
-    object-fit: contain;
-}
-</style>
-
-<h2>My replied Posts</h2>
-{{#if repliedPosts}}
-
-    {{#each repliedPosts}}
-
-    {{>post this}}
-
-    {{/each}}
-
-{{else}}
-<h1>you have not replied on any posts</h1>
-
-{{/if}}
-
-<h2>My commented Posts</h2>
-{{#if commentedPosts}}
-
-    {{#each commentedPosts}}
-
-    {{>post this}}
-
-    {{/each}}
-
-{{else}}
-<h1>you have not commented on any posts</h1>
-
-{{/if}}
-
-<h2>My Liked Posts</h2>
-{{#if likedPosts}}
-
-    {{#each likedPosts}}
-
-    {{>post this}}
-
-    {{/each}}
-
-{{else}}
-<h1>you have not liked any posts</h1>
-
-{{/if}}
-
-<h2>My Posts</h2>
-{{#if posts}}
-
-    {{#each posts}}
-
-    {{>post this}}
-
-    <form action="/post/edit/{{this.id}}" method="post">
-        <button type="submit">Edit post</button>
-    </form>
-
-    <form action="/post/delete/{{this.id}}?_method=DELETE" method="post" onsubmit="return confirm('Are You Sure you want to delete this Post. Action cannot be reverted')">
-        <button type="submit">Delete post</button>
-    </form>
-
-    {{/each}}
-
-{{else}}
-<h1>you have not created any posts</h1>
-
-{{/if}}
-
-
-{{! This script takes care of likes functionality }}
-
-<script src="/script/likes.js"></script>
-
-<footer>
+            <div class="mb-3 row">
+                <label for="staticEmail" class="col-sm-2 col-form-label">first Name:</label>
+                <div class="col-sm-10">
+                    <input type="text" readonly class="form-control-plaintext" id="staticEmail" value="{{firstName}}">
+                </div>
+            </div>
+            <div class="mb-3 row">
+                <label for="staticEmail" class="col-sm-2 col-form-label">Last Name:</label>
+                <div class="col-sm-10">
+                    <input type="text" readonly class="form-control-plaintext" id="staticEmail" value="{{lastName}}">
+                </div>
+            </div>
+        </div>
+        <form action="/connect/send/{{id}}" method="post">
+            <button type="submit">Connect</button>
+        </form>
+        <footer>
             <p class="text-center">&copy; 2021 All rights Reserved</p>
         </footer>
 

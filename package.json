@@ -5,7 +5,7 @@
   "scripts": {
     "start": "node src/index.js",
     "devstart": "nodemon src/index.js -e js,hbs",
-    "debug" : "nodemon --inspect-brk src/index.js -e js,hbs"
+    "debug": "nodemon --inspect-brk src/index.js -e js,hbs"
   },
   "author": "",
   "license": "ISC",
@@ -19,7 +19,7 @@
     "jsonwebtoken": "^8.5.1",
     "method-override": "^3.0.0",
     "mysql2": "^2.3.0",
-    "nodemon": "^2.0.13",
+    "nodemon": "^2.0.14",
     "npm": "^7.24.0",
     "request": "^2.88.2",
     "sequelize": "^6.6.5"
