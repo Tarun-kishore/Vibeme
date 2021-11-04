@@ -153,7 +153,7 @@
                             <h1 class="stunning-header-title">About us</h1>
                         </div>
                         <div class="stunning-content-item">
-                            <p class="stunning-paragraph-title">Home</p>
+                            <a class="stunning-paragraph-title" href="/login">Home</a>
                         </div>
                     </div>
 
@@ -282,34 +282,39 @@
             <section id="stunning-team-members">
                 <div class="row">
                     <div class="col-lg-4 col-md-6" data-aos="fade-up">
-                        <img src="/image/About Page Images/Team Member/team1.jpg" alt="Member Photo">
+                        <div class="members-zoom">
+                            <img src="/image/About Page Images/Team Member/team1.jpg" alt="Member Photo">
+                        </div>
                         <h5>Yash Bansal</h5>
                         <p>Lead Developer</p>
                         <ul>
                             <li>
-                                <a class="social-item linkedIn" href="#">
+                                <a class="social-item linkedIn" href="https://www.linkedin.com/in/yash-bansal-057b9a203/" target="_blank">
                                     <i class="fab fa-linkedin"></i>
                                 </a>
                             </li>
-                            <li><a class="social-item instagram" href="#">
+                            <li><a class="social-item instagram" href="https://www.instagram.com/yashban14/" target="_blank">
                                     <i class="fab fa-instagram"></i>
                                 </a></li>
-                            <li><a class="social-item twitter" href="#">
+                            <li><a class="social-item twitter" href="https://twitter.com/YashBan51702775" target="_blank">
                                     <i class="fab fa-twitter"></i>
                                 </a></li>
                         </ul>
                     </div>
                     <div class="col-lg-4 col-md-6" data-aos="fade-up">
-                        <img src="/image/About Page Images/Team Member/team2.jpg" alt="Member Photo">
+                        <div class="members-zoom">
+                            <img src="/image/About Page Images/Team Member/team2.jpg" alt="Member Photo">
+                        </div>
+
                         <h5>Himanshu Rathore</h5>
                         <p>Lead Designer</p>
                         <ul>
                             <li>
-                                <a class="social-item linkedIn" href="#">
+                                <a class="social-item linkedIn" href="https://www.linkedin.com/in/himanshu-rathore-629705206/" target="_blank">
                                     <i class="fab fa-linkedin"></i>
                                 </a>
                             </li>
-                            <li><a class="social-item instagram" href="#">
+                            <li><a class="social-item instagram" href="https://www.instagram.com/hhimanshu.r/" target="_blank">
                                     <i class="fab fa-instagram"></i>
                                 </a></li>
                             <li><a class="social-item facebook" href="#">
@@ -318,12 +323,14 @@
                         </ul>
                     </div>
                     <div class="col-lg-4 col-md-6" data-aos="fade-up">
-                        <img src="/image/About Page Images/Team Member/team3.jpg" alt="Member Photo">
+                        <div class="members-zoom">
+                            <img src="/image/About Page Images/Team Member/team3.jpg" alt="Member Photo">
+                        </div>
                         <h5>Tarun Kishore</h5>
                         <p>Backend Developer</p>
                         <ul>
                             <li>
-                                <a class="social-item linkedIn" href="#">
+                                <a class="social-item linkedIn" href="https://www.linkedin.com/in/tarun-kishore-b589b2201" target="_blank">
                                     <i class="fab fa-linkedin"></i>
                                 </a>
                             </li>
@@ -336,16 +343,18 @@
                         </ul>
                     </div>
                     <div class="col-lg-4 offset-lg-4 col-md-6" data-aos="fade-up">
-                        <img src="/image/About Page Images/Team Member/team4.jpg" alt="Member Photo">
+                        <div class="members-zoom">
+                            <img src="/image/About Page Images/Team Member/team4.jpg" alt="Member Photo">
+                        </div>
                         <h5>Mohit </h5>
                         <p>Operation Manager</p>
                         <ul>
                             <li>
-                                <a class="social-item linkedIn" href="#">
+                                <a class="social-item linkedIn" href="https://www.linkedin.com/in/mohit-kumar-47381a215/" target="_blank">
                                     <i class="fab fa-linkedin"></i>
                                 </a>
                             </li>
-                            <li><a class="social-item instagram" href="#">
+                            <li><a class="social-item instagram" href="https://www.instagram.com/mohit_aesthetic__/" target="_blank">
                                     <i class="fab fa-instagram"></i>
                                 </a></li>
                             <li><a class="social-item facebook" href="#">
@@ -364,7 +373,9 @@
                         <img class="join-rocket" src="/image/About Page Images/Join/rocket1.png" alt="rocket">
                     </div>
                     <div class="col-lg-4 col-md-4">
-                        <button class="btn .btn-lg join-button">Start Making Friends Now</button>
+                        <button class="btn .btn-lg join-button" onclick="location.href = '\login';">
+                            Start Making Friends Now
+                        </button>
                     </div>
                 </div>
             </section>
@@ -393,8 +404,7 @@
     <script>
         AOS.init({
             offset: 200,
-            duration: 800,
-            once: true
+            duration: 800
         });
     </script>
 

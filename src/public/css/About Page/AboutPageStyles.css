@@ -59,8 +59,16 @@ section {
 }
 
 .stunning-paragraph-title {
+    opacity: 0.7;
+    text-decoration: none;
     font-weight: 200;
     font-size: 1.2rem;
+    color: #ffffff;
+}
+
+.stunning-paragraph-title:hover {
+    opacity: 1;
+    color: #ffffff;
 }
 
 #stunning-question {
@@ -255,9 +263,29 @@ section {
     padding: 10px 0;
 }
 
-#stunning-team-members .row div img {
+#stunning-team-members .row .members-zoom {
+    padding: 0;
     margin-bottom: 20px;
+    margin-left: 10px;
     max-width: 95%;
+    overflow: hidden;
+}
+
+
+#stunning-team-members .row .members-zoom img {
+    margin: 0;
+    padding: 0;
+    max-width: 100%;
+    transition: 0.5s all ease-in-out;
+}
+
+#stunning-team-members .row .members-zoom img:hover {
+    transform: scale(1.2);
+}
+
+#stunning-team-members .row div img {
+    max-width: 95%;
+    transition: 0.5s all ease-in-out;
 }
 
 #stunning-team-members .row div h5 {
