@@ -99,7 +99,7 @@ router.get('/view',auth,async(req,res)=>{
         }
 
 
-        res.render('UserActivity\\connections',options)
+        res.render('UserActivity/connections',options)
     } catch (e) {
         console.log(e)
         res.status(404).send(e)
