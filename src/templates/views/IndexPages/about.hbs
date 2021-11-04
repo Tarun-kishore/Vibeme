@@ -31,10 +31,15 @@
     <!-- Font Style -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@900&display=swap" rel="stylesheet"> 
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@900&display=swap" rel="stylesheet">
 
-    <!-- Custom CSS stylesheet -->
+    <!-- AOS library stylesheet -->
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+
+    <!-- Custom CSS stylesheet for navbar and footer-->
     <link rel="stylesheet" href="/css/Login Page/style.css">
+
+    <!-- New CSS stylesheet -->
     <link rel="stylesheet" href="/css/About Page/AboutPageStyles.css">
 </head>
 
@@ -58,7 +63,7 @@
                 </button>
                 <!-- Links -->
                 {{#if loggedIn}}
-                  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav ms-auto">
                         <!-- For Styling -->
                         <div class="hori-selector">
@@ -82,31 +87,31 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" id="navbarContent"href="/post/all">
+                            <a class="nav-link" id="navbarContent" href="/post/all">
                                 All Post
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" id="navbarContent"href="/post/my">
+                            <a class="nav-link" id="navbarContent" href="/post/my">
                                 myPost
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" id="navbarContent"href="/user/profile">
+                            <a class="nav-link" id="navbarContent" href="/user/profile">
                                 my Profile
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" id="navbarContent"href="/user/logout">
+                            <a class="nav-link" id="navbarContent" href="/user/logout">
                                 Logout
                             </a>
                         </li>
-                    </ul> 
-                  </div>
+                    </ul>
+                </div>
 
                 {{else}}
-                  <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                      <ul class="navbar-nav ms-auto">
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav ms-auto">
                         <!-- For Styling -->
                         <div class="hori-selector">
                             <div class="left"></div>
@@ -129,23 +134,249 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" id="navbarContent"href="/login">
+                            <a class="nav-link" id="navbarContent" href="/login">
                                 Sign in
                             </a>
                         </li>
-                    </ul>  
-                  </div>
-              {{/if}}
+                    </ul>
+                </div>
+                {{/if}}
             </nav>
         </header>
-    
+
         <main>
-            <h1>About Page</h1>
+            <section id="stunning-header">
+                <div class="background-image"></div>
+                <div class="container">
+                    <div class="stunning-header-content">
+                        <div class="stunning-content-item">
+                            <h1 class="stunning-header-title">About us</h1>
+                        </div>
+                        <div class="stunning-content-item">
+                            <p class="stunning-paragraph-title">Home</p>
+                        </div>
+                    </div>
+
+                </div>
+            </section>
+            <section id="stunning-question">
+                <section class="py-5 text-center container">
+                    <div class="row py-lg-5">
+                        <div class="col-lg-6 col-md-8 mx-auto stunning-question-text">
+                            <h6>SOCIAL NETWORK</h6>
+                            <h1 class="fw-light">Why Choose VibeMe?</h1>
+                            <p class="lead text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
+                                eiusmod tempor
+                                incididunt ut labore</p>
+                        </div>
+                    </div>
+                </section>
+            </section>
+            <section id="stunning-features">
+                <div class="row">
+                    <div class="col-lg-4 col-md-6" data-aos="zoom-in">
+                        <img src="/image/About Page Images/Features Image/info1.png" alt="Feature Photo">
+                        <h3>The Best Interface</h3>
+                        <p>Lorem ipsum dolor sit amet, consectetur cing elit, sed do eiusmod tempor incididunt ut la
+                            etere dolore magna aliqua. </p>
+                    </div>
+                    <div class="col-lg-4 col-md-6" data-aos="zoom-in">
+                        <img src="/image/About Page Images/Features Image/info2.png" alt="Feature Photo">
+                        <h3>Messaging System</h3>
+                        <p>Lorem ipsum dolor sit amet, consectetur cing elit, sed do eiusmod tempor incididunt ut la
+                            etere dolore magna aliqua.</p>
+                    </div>
+                    <div class="col-lg-4 col-md-6" data-aos="zoom-in">
+                        <img src="/image/About Page Images/Features Image/info3.png" alt="Feature Photo">
+                        <h3>Gamification</h3>
+                        <p>Lorem ipsum dolor sit amet, consectetur cing elit, sed do eiusmod tempor incididunt ut la
+                            etere dolore magna aliqua.</p>
+                    </div>
+                    <div class="col-lg-4 col-md-6" data-aos="zoom-in">
+                        <img src="/image/About Page Images/Features Image/info4.png" alt="Feature Photo">
+                        <h3>Incredible Features</h3>
+                        <p>Lorem ipsum dolor sit amet, consectetur cing elit, sed do eiusmod tempor incididunt ut la
+                            etere dolore magna aliqua. </p>
+                    </div>
+                    <div class="col-lg-4 col-md-6" data-aos="zoom-in">
+                        <img src="/image/About Page Images/Features Image/info5.png" alt="Feature Photo">
+                        <h3>Beautifully Coded</h3>
+                        <p>Lorem ipsum dolor sit amet, consectetur cing elit, sed do eiusmod tempor incididunt ut la
+                            etere dolore magna aliqua. </p>
+                    </div>
+                    <div class="col-lg-4 col-md-6" data-aos="zoom-in">
+                        <img src="/image/About Page Images/Features Image/info6.png" alt="Feature Photo">
+                        <h3>Friendly Support</h3>
+                        <p>Lorem ipsum dolor sit amet, consectetur cing elit, sed do eiusmod tempor incididunt ut la
+                            etere dolore magna aliqua. </p>
+                    </div>
+                </div>
+            </section>
+            <section id="stunning-counting">
+                <div class="row" data-aos="zoom-out">
+                    <div class="col-lg-3 col-md-6">
+                        <span class="counting-number"></span>
+                        &nbsp;
+                        <div class="units">
+                            K<div>+</div>
+                        </div>
+                        <h3>Registered Members</h3>
+                    </div>
+                    <div class="col-lg-3 col-md-6">
+                        <span class="counting-number"></span>
+                        &nbsp;
+                        <div class="units">
+                            <div>+</div>
+                        </div>
+                        <h3>Features Available</h3>
+                    </div>
+                    <div class="col-lg-3 col-md-6">
+                        <span class="counting-number"></span>
+                        &nbsp;
+                        <div class="units">
+                            <div>K</div>
+                        </div>
+                        <h3>Friend Groups</h3>
+                    </div>
+                    <div class="col-lg-3 col-md-6">
+                        <span class="counting-number"></span>
+                        &nbsp;
+                        <div class="units">
+                            <div>K</div>
+                        </div>
+                        <h3>Favourite Pages</h3>
+                    </div>
+                </div>
+            </section>
+            <section id="learn-more">
+                <div class="content row">
+                    <div class="col-lg-6" data-aos="fade-right">
+                        <div>
+                            <div class="decoration-div">
+                                <h6>The VibeMe</h6>
+                                <h2>Learn a little more about <span>VibeMe</span> and how we started </h2>
+                                <hr class="learn-more-decoration">
+                            </div>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor
+                                incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
+                                exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                        </div>
+                    </div>
+                    <div class="col-lg-6" data-aos="fade-left">
+                        <img src="/image/About Page Images/Learn More/screen.png" alt="Learn Image">
+                    </div>
+                </div>
+            </section>
+            <section id="stunning-question">
+                <section class="py-5 text-center container">
+                    <div class="row py-lg-5" data-aos="fade-down">
+                        <div class="col-lg-6 col-md-8 mx-auto stunning-question-text">
+                            <h6>The VibeMe</h6>
+                            <h1 class="fw-light">Meet our Team</h1>
+                            <p class="lead text-muted">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit
+                                tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo.</p>
+                        </div>
+                    </div>
+                </section>
+            </section>
+            <section id="stunning-team-members">
+                <div class="row">
+                    <div class="col-lg-4 col-md-6" data-aos="fade-up">
+                        <img src="/image/About Page Images/Team Member/team1.jpg" alt="Member Photo">
+                        <h5>Yash Bansal</h5>
+                        <p>Lead Developer</p>
+                        <ul>
+                            <li>
+                                <a class="social-item linkedIn" href="#">
+                                    <i class="fab fa-linkedin"></i>
+                                </a>
+                            </li>
+                            <li><a class="social-item instagram" href="#">
+                                    <i class="fab fa-instagram"></i>
+                                </a></li>
+                            <li><a class="social-item twitter" href="#">
+                                    <i class="fab fa-twitter"></i>
+                                </a></li>
+                        </ul>
+                    </div>
+                    <div class="col-lg-4 col-md-6" data-aos="fade-up">
+                        <img src="/image/About Page Images/Team Member/team2.jpg" alt="Member Photo">
+                        <h5>Himanshu Rathore</h5>
+                        <p>Lead Designer</p>
+                        <ul>
+                            <li>
+                                <a class="social-item linkedIn" href="#">
+                                    <i class="fab fa-linkedin"></i>
+                                </a>
+                            </li>
+                            <li><a class="social-item instagram" href="#">
+                                    <i class="fab fa-instagram"></i>
+                                </a></li>
+                            <li><a class="social-item facebook" href="#">
+                                    <i class="fab fa-facebook-square"></i>
+                                </a></li>
+                        </ul>
+                    </div>
+                    <div class="col-lg-4 col-md-6" data-aos="fade-up">
+                        <img src="/image/About Page Images/Team Member/team3.jpg" alt="Member Photo">
+                        <h5>Tarun Kishore</h5>
+                        <p>Backend Developer</p>
+                        <ul>
+                            <li>
+                                <a class="social-item linkedIn" href="#">
+                                    <i class="fab fa-linkedin"></i>
+                                </a>
+                            </li>
+                            <li><a class="social-item instagram" href="#">
+                                    <i class="fab fa-instagram"></i>
+                                </a></li>
+                            <li><a class="social-item google" href="#">
+                                    <i class="fab fa-google-plus-g"></i>
+                                </a></li>
+                        </ul>
+                    </div>
+                    <div class="col-lg-4 offset-lg-4 col-md-6" data-aos="fade-up">
+                        <img src="/image/About Page Images/Team Member/team4.jpg" alt="Member Photo">
+                        <h5>Mohit </h5>
+                        <p>Operation Manager</p>
+                        <ul>
+                            <li>
+                                <a class="social-item linkedIn" href="#">
+                                    <i class="fab fa-linkedin"></i>
+                                </a>
+                            </li>
+                            <li><a class="social-item instagram" href="#">
+                                    <i class="fab fa-instagram"></i>
+                                </a></li>
+                            <li><a class="social-item facebook" href="#">
+                                    <i class="fab fa-facebook-square"></i>
+                                </a></li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+            <section id="stunning-join">
+                <div class="join-box row">
+                    <div class="col-lg-4 col-md-4">
+                        <img class="join-person" src="/image/About Page Images/Join/guy.png" alt="person saying hi">
+                    </div>
+                    <div class="col-lg-4 col-md-4">
+                        <img class="join-rocket" src="/image/About Page Images/Join/rocket1.png" alt="rocket">
+                    </div>
+                    <div class="col-lg-4 col-md-4">
+                        <button class="btn .btn-lg join-button">Start Making Friends Now</button>
+                    </div>
+                </div>
+            </section>
         </main>
 
         <footer>
             <p class="text-center">&copy; 2021 All rights Reserved</p>
         </footer>
+
+        <a id="back-to-top" class="Invisible" href="#">
+            <i class="fas fa-arrow-up"></i>
+        </a>
 
     </div>
 
@@ -157,8 +388,21 @@
     <!-- JQuery Script -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 
+    <!-- AOS library script -->
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script>
+        AOS.init({
+            offset: 200,
+            duration: 800,
+            once: true
+        });
+    </script>
+
     <!-- Custom Script -->
     <script src="/script/script.js"></script>
+
+    <!-- New Script -->
+    <script src="/script/AboutPageScript/script.js"></script>
 </body>
 
 
