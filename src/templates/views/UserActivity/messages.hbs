@@ -144,6 +144,15 @@
 
 {{/if}}
 
+<form action='message/send/:id' method="post">
+    <input name="message"/>
+    <button type="submit">Send</button>
+</form>
+
+{{!-- !do not remove this script --}}
+<script src="/socket.io/socket.io.js"></script>
+<script src="/script/realtimeChatting/chat.js"></script>
+
 <footer>
             <p class="text-center">&copy; 2021 All rights Reserved</p>
         </footer>

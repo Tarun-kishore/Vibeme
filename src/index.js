@@ -6,6 +6,8 @@ const cookieParser = require("cookie-parser");
 const hbs = require("hbs");
 const methodOverride = require("method-override");
 require("./db/sql");
+const http=require('http')
+const socketIO = require('socket.io') 
 
 //Routes
 const userRoutes = require("./routes/user");
@@ -14,7 +16,6 @@ const postRouter = require("./routes/post");
 const commentRouter = require("./routes/comments");
 const connectionRouter = require("./routes/connection")
 const messageRouter = require("./routes/messages");
-const messageThreads = require("./models/messageThreads");
 
 app.set("view engine", "hbs");
 app.set("views", "src/templates/views");
@@ -36,6 +37,12 @@ app.use("/", indexRouter);
 
 const port = process.env.PORT || 3000;
 
-app.listen(port, () => {
+const server = http.Server(app)
+server.listen(port, () => {
   console.log("server runnning");
+});
+
+const io = socketIO(server)
+io.on('connection', function (socket) {
+  require('./utils/chat')(socket)
 });

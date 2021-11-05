@@ -97,6 +97,7 @@ router.get('/view/:id', auth, async (req, res) => {
             }
             else return res.render('IndexActivity/notAuth', { loggedIn: true })
             // todo: load messages
+            options.id = messageThread.id
             return res.render('UserActivity/messages', options);
         }
 
