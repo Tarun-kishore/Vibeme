@@ -141,7 +141,7 @@
     {{#each myConnections}}
         <a href="/user/view/{{this.connector.id}}">{{this.connector.firstName}} {{this.connector.lastName}}</a>
         
-        <form action="/message/create/{{this.id}}" method="post">
+        <form action="/message/create/{{this.connector.id}}" method="post">
         <button type="submit">message</button></form>
         
         <form action="/connect/remove/{{this.id}}?_method=delete" method="post">

@@ -68,6 +68,7 @@ router.post('/create/:id', auth, async (req, res) => {
         await newMessageThread.save();
         res.redirect(`/message/view/${newMessageThread.id}`)
     } catch (e) {
+        console.log(e)
         res.send(e)
     }
 
