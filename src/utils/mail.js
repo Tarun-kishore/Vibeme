@@ -24,6 +24,6 @@ const sendConfirmationMail = (link,email)=>{
         if (error) throw new Error(error);
     });
 
-}
+};
 
-module.exports = {sendConfirmationMail}
+module.exports = {sendConfirmationMail};
