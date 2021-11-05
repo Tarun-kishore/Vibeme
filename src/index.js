@@ -13,6 +13,8 @@ const indexRouter = require("./routes/index");
 const postRouter = require("./routes/post");
 const commentRouter = require("./routes/comments");
 const connectionRouter = require("./routes/connection")
+const messageRouter = require("./routes/messages");
+const messageThreads = require("./models/messageThreads");
 
 app.set("view engine", "hbs");
 app.set("views", "src/templates/views");
@@ -29,6 +31,7 @@ app.use("/user", userRoutes);
 app.use("/post", postRouter);
 app.use("/post/comment", commentRouter);
 app.use("/connect",connectionRouter );
+app.use("/message",messageRouter );
 app.use("/", indexRouter);
 
 const port = process.env.PORT || 3000;
