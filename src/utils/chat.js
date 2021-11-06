@@ -1,4 +1,4 @@
-const io =socket => {
+const chatFunction =(socket,io) => {
     socket.emit('greeting-from-server', {
         greeting: 'Hello Client'
     });
@@ -7,4 +7,4 @@ const io =socket => {
     });
 } 
 
-module.exports = io
+module.exports = chatFunction

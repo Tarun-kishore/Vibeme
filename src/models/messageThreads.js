@@ -1,5 +1,6 @@
 const { DataTypes, where } = require('sequelize');
 const sequelize = require('../db/sql')
+const messages = require('./messages')
 
 const messageThreads = sequelize.define('messageThreads',{
     member1:{
@@ -18,6 +19,16 @@ const messageThreads = sequelize.define('messageThreads',{
         },
         allowNull:false
     }
+})
+
+messageThreads.hasMany(messages,{
+    foreignKey:'thread',
+    onDelete:'CASCADE',
+    onUpdate:'CASCADE'
+})
+
+messages.belongsTo(messageThreads,{
+    foreignKey:'thread'
 })
 
 messageThreads.sync()

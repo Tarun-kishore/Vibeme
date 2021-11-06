@@ -1,9 +1,10 @@
 const express = require('express')
+const User = require('../models/user')
 const router = express.Router()
 const messageThreads = require('../models/messageThreads')
+const messages = require('../models/messages')
 const auth = require('../middlewares/auth')
 const { Op } = require('sequelize')
-const User = require('../models/user')
 
 router.get('/viewAll', auth, async (req, res) => {
     const options = {
@@ -96,7 +97,11 @@ router.get('/view/:id', auth, async (req, res) => {
                 options.member = `${messageThread.firstMember.firstName} ${messageThread.firstMember.lastName}`
             }
             else return res.render('IndexActivity/notAuth', { loggedIn: true })
-            // todo: load messages
+            
+            options.messages = await messages.findMessages(req.params.id,req.user.id,User)
+
+            options.me = req.user.getFullName()
+
             options.id = messageThread.id
             return res.render('UserActivity/messages', options);
         }
@@ -106,6 +111,31 @@ router.get('/view/:id', auth, async (req, res) => {
     } catch (e) {
         console.log(e)
         res.send()
+    }
+})
+
+router.post('/send/:id',auth,async (req,res)=>{
+    try{
+    const messageThread = await messageThreads.findByPk(req.params.id)
+    const options = { loggedIn: true }
+
+    
+    if (messageThread) {
+        if (req.user.id != messageThread.member1 && req.user.id != messageThread.member2) {
+            return res.render('IndexActivity/notAuth', { loggedIn: true })
+        }
+
+        const receiver = (req.user.id == messageThread.member1 ? messageThread.member2 : messageThread.member1)
+        const message = await messages.build({thread : req.params.id , sender : req.user.id , receiver : receiver , content : req.body.message})
+        await message.save()
+        return res.status(200).send()
+    }
+    
+    res.redirect('/404')
+    
+    } catch (e) {
+    console.log(e)
+    res.send()
     }
 })
 

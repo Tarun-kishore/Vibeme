@@ -44,5 +44,5 @@ server.listen(port, () => {
 
 const io = socketIO(server)
 io.on('connection', function (socket) {
-  require('./utils/chat')(socket)
+  require('./utils/chat')(socket,io)
 });
