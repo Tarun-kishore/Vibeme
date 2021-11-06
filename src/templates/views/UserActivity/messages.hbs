@@ -162,14 +162,15 @@
                   {{this.name}}
                   . YOU
 
-                  <span>{{this.createdAt}}</span>
-                </p>
               {{else}}
                 <p>
                   {{this.name}}
-                  <span>{{this.createdAt}}</span>
-                </p>
               {{/if}}
+                  {{! this script will change the time interpreting  }}
+                  <span
+                    class="time"
+                  >{{this.createdAt}}</span>
+                </p>
               <div> {{this.content}}</div>
             </div>
 
@@ -195,7 +196,6 @@
 
       {{! * for realtime chatting }}
       <script defer src="/script/realtimeChatting/chat.js"></script>
-     
 
       {{! *for time interpolating}}
       <script

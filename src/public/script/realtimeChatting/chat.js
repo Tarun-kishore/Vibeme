@@ -10,22 +10,20 @@ const user = document.getElementById('myName').innerText
 
 
 socket.on('receiveMessage', ({ user, message, createdAt }) => {
-    console.log(user, message, createdAt)
-    if ($messageBox.childElementCount == 1) {
+    if ($messageBox.childElementCount === 1) {
         $messageBox.innerHTML = ''
     }
-
+    
     const html = ` <div>
-                    <p>
-                    ${user}
-                    <span>
-                        ${moment(createdAt).format('h:mm a')}
-                    </span>
-                    </p>
-                <div>${message}</div>
-                </div>`
+    <p>
+    ${user}
+    <span>
+    ${moment(createdAt).format('h:mm a')}
+    </span>
+    </p>
+    <div>${message}</div>
+    </div>`
     $messageBox.insertAdjacentHTML('beforeend', html)
-    // autoscroll();
 })
 
 
@@ -36,7 +34,7 @@ $messageForm.addEventListener('submit', (e) => {
         return
     }
     $messageFormButton.setAttribute('disabled', 'disabled')
-
+    
     const message = $messageFormInput.value
     socket.emit('sendMessage', { message: $messageFormInput.value, user, room }, (error) => {
         $messageFormButton.removeAttribute('disabled')
@@ -46,24 +44,27 @@ $messageForm.addEventListener('submit', (e) => {
             return alert("Message should not contain Profanity")
         }
         
-    const html = ` <div>
-                <p>
-                ${user} . YOU
-                <span>
-                    ${moment(new Date().getTime()).format('h:mm a')}
-                </span>
-                </p>
-            <div>${message}</div>
-            </div>`
-    $messageBox.insertAdjacentHTML('beforeend', html)
-
+        if ($messageBox.childElementCount === 1) {
+            $messageBox.innerHTML = ''
+        }
+        const html = ` <div>
+        <p>
+        ${user} . YOU
+        <span>
+        ${moment(new Date().getTime()).format('h:mm a')}
+        </span>
+        </p>
+        <div>${message}</div>
+        </div>`
+        $messageBox.insertAdjacentHTML('beforeend', html)
+            
+        })
     })
-})
-
-
-socket.emit('join', { room }, (error) => {
-    if (error) {
-        alert(error)
-        location.href = '/message/viewAll'
+    
+    
+    socket.emit('join', { room }, (error) => {
+        if (error) {
+            alert(error)
+            location.href = '/message/viewAll'
     }
 })

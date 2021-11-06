@@ -19,3 +19,13 @@ $messageForm.addEventListener('submit',(e)=>{
         })
     })
 })
+
+// *changing time interpretation
+const $timeBoxes = document.getElementsByClassName('time')
+
+for (const timeBox of $timeBoxes) {
+    const s= timeBox.childNodes[0].nodeValue;
+    
+    const b = s.split(/\D+/);
+    timeBox.childNodes[0].nodeValue=moment(new Date(Date.UTC(b[0], --b[1], b[2], b[3], b[4], b[5], b[6]))).format('h:mm a');
+}
