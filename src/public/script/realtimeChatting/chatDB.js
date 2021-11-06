@@ -1,10 +1,13 @@
 const $messageForm = document.getElementById('message-form')
-const $messageBox = $messageForm.querySelector('input')
-
+const $messageFormInput = $messageForm.querySelector('input')
 
 $messageForm.addEventListener('submit',(e)=>{
     e.preventDefault()
 
+    if(!$messageFormInput.value){
+        alert('You cannot send empty message')
+        return
+    }
 
     fetch($messageForm.action,{
         headers:{
@@ -12,7 +15,7 @@ $messageForm.addEventListener('submit',(e)=>{
         },
         method:'post',
         body:JSON.stringify({
-            message : $messageBox.value
+            message : $messageFormInput.value
         })
     })
 })

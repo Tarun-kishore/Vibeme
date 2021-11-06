@@ -149,33 +149,39 @@
         </nav>
       </header>
 
-      <h2>{{me}} - {{member}}</h2>
+      <h2> <span id="myName">{{me}}</span> - {{member}}</h2>
+      <div id="message-box">
 
-      {{#if messages}}
+        {{#if messages}}
 
-        {{#each messages}}
+          {{#each messages}}
 
             <div>
-          {{#if this.isMine}}
+              {{#if this.isMine}}
                 <p>
-                    {{this.name}} . YOU
+                  {{this.name}}
+                  . YOU
+
+                  <span>{{this.createdAt}}</span>
                 </p>
-          {{else}}
+              {{else}}
                 <p>
-                    {{this.name}} 
+                  {{this.name}}
+                  <span>{{this.createdAt}}</span>
                 </p>
-          {{/if}}
-                <div> {{this.content}}</div>
+              {{/if}}
+              <div> {{this.content}}</div>
             </div>
 
-        {{/each}}
+          {{/each}}
 
-      {{else}}
+        {{else}}
 
-        <h3>No messages yet</h3>
+          <h3>No messages yet</h3>
 
-      {{/if}}
+        {{/if}}
 
+      </div>
       <form action="/message/send/{{id}}" id="message-form">
         <input name="message" />
         <button type="submit">Send</button>
@@ -185,10 +191,16 @@
       <script src="/socket.io/socket.io.js"></script>
 
       {{! *for database management }}
-      <script src="/script/realtimeChatting/chatDB.js"></script>
+      <script defer src="/script/realtimeChatting/chatDB.js"></script>
 
       {{! * for realtime chatting }}
-      <script src="/script/realtimeChatting/chat.js"></script>
+      <script defer src="/script/realtimeChatting/chat.js"></script>
+     
+
+      {{! *for time interpolating}}
+      <script
+        src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.2/moment.min.js"
+      ></script>
 
       <footer>
         <p class="text-center">&copy; 2021 All rights Reserved</p>
