@@ -106,7 +106,7 @@ router.get("/view/:id", async (req, res) => {
     });
   } catch (e) {
     console.log(e)
-    res.status(400).render("indexPages/404", options);
+    res.status(400).render("IndexPages/404", options);
   }
 });
 
@@ -124,7 +124,7 @@ router.post("/edit/:id", auth, async (req, res) => {
     const creator = `${req.user.firstName} ${req.user.lastName}`;
     res.render("PostActivity/editPost", { loggedIn: true, ...postData, creator });
   } catch (e) {
-    res.status(500).render("indexPages/404", { loggedIn: true });
+    res.status(500).render("IndexPages/404", { loggedIn: true });
   }
 });
 
@@ -155,7 +155,7 @@ router.put("/edit/:id", auth, async (req, res) => {
 
     res.redirect("/post/my");
   } catch (e) {
-    res.status(500).render("indexPages/404", { loggedIn: true });
+    res.status(500).render("IndexPages/404", { loggedIn: true });
   }
 });
 
@@ -172,7 +172,7 @@ router.delete("/delete/:id", auth, async (req, res) => {
 
     res.redirect("/post/my");
   } catch (e) {
-    res.status(500).render("indexPages/404", { loggedIn: true });
+    res.status(500).render("IndexPages/404", { loggedIn: true });
   }
 });
 
