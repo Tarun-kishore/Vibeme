@@ -39,7 +39,7 @@ router.get("/help", (req, res) => {
   const options = {};
   if (req.cookies.token) options.loggedIn = true;
   
-  res.render("indexPages/help", options);
+  res.render("/indexPages/help", options);
 })
 
 router.get("/", (req, res) => {
