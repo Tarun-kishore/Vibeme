@@ -10,7 +10,7 @@ const user = document.getElementById('myName').innerText
 
 
 socket.on('receiveMessage', ({ user, message, createdAt }) => {
-    if ($messageBox.tagName === 'H3') {
+    if ($messageBox.firstElementChild.tagName === 'H3') {
         $messageBox.innerHTML = ''
     }
     
