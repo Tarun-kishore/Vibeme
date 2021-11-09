@@ -35,7 +35,6 @@ router.get("/all", async (req, res) => {
 router.get("/my", auth, async (req, res) => {
   try {
     const send = [];
-    send.loggedIn = true;
     const options = await req.user.getPosts();
     const likedPost = await req.user.getLikedPosts();
     const commentedPosts = await req.user.getCommentedPosts();
