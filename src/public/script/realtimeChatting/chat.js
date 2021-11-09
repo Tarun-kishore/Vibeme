@@ -10,7 +10,7 @@ const user = document.getElementById('myName').innerText
 
 
 socket.on('receiveMessage', ({ user, message, createdAt }) => {
-    if ($messageBox.childElementCount === 1) {
+    if ($messageBox.tagName === 'H3') {
         $messageBox.innerHTML = ''
     }
     
@@ -44,7 +44,7 @@ $messageForm.addEventListener('submit', (e) => {
             return alert("Message should not contain Profanity")
         }
         
-        if ($messageBox.tagName === 'DIV') {
+        if ($messageBox.tagName === 'H3') {
             $messageBox.innerHTML = ''
         }
         const html = ` <div>
