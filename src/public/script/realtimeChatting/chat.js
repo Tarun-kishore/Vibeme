@@ -44,7 +44,7 @@ $messageForm.addEventListener('submit', (e) => {
             return alert("Message should not contain Profanity")
         }
         
-        if ($messageBox.tagName === 'H3') {
+        if ($messageBox.firstElementChild.tagName === 'H3') {
             $messageBox.innerHTML = ''
         }
         const html = ` <div>
