@@ -45,7 +45,7 @@ router.get("/my", auth, async (req, res) => {
     send.commentedPosts = commentedPosts;
     send.repliedPosts = repliedPosts;
 
-    return res.render("PostActivity/myPosts.hbs", send);
+    return res.json(send);
   } catch (error) {
     res.status(500).send();
   }

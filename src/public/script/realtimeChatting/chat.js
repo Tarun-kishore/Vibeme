@@ -44,7 +44,7 @@ $messageForm.addEventListener('submit', (e) => {
             return alert("Message should not contain Profanity")
         }
         
-        if ($messageBox.childElementCount === 1) {
+        if ($messageBox.tagName === 'DIV') {
             $messageBox.innerHTML = ''
         }
         const html = ` <div>
