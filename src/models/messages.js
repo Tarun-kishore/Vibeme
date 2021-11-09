@@ -60,6 +60,6 @@ message.findMessages = async (threadId, userId,User) => {
 
 }
 
-message.sync()
+message.sync({force : true})
 
 module.exports = message
