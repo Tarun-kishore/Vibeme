@@ -10,6 +10,8 @@ const Comment = require("./comments");
 const Reply = require("./replies");
 const Connection = require("./connections")
 const confirmationToken = require("./confirmationToken")
+const messageThreads = require('../models/messageThreads')
+const messages = require('../models/messages')
 
 const User = sequelize.define("User", {
 	firstName: {
@@ -281,6 +283,58 @@ Connection.belongsTo(User, {
 	as: 'sender'
 })
 
+
+User.hasMany(messageThreads, {
+	foreignKey: "member1",
+	onDelete: "CASCADE",
+	onUpdate: "CASCADE",
+	as: 'member1Thread'
+})
+
+
+messageThreads.belongsTo(User, {
+	foreignKey: "member1",
+	as: 'firstMember'
+})
+
+User.hasMany(messageThreads, {
+	foreignKey: "member2",
+	onDelete: "CASCADE",
+	onUpdate: "CASCADE",
+	as: 'member2Thread'
+})
+
+
+messageThreads.belongsTo(User, {
+	foreignKey: "member2",
+	as: 'secondMember'
+})
+
+User.hasMany(messages, {
+	foreignKey: "sender",
+	onDelete: "CASCADE",
+	onUpdate: "CASCADE",
+	as: 'sentMessage'
+})
+
+
+messages.belongsTo(User, {
+	foreignKey: "sender",
+	as: 'senderUser'
+})
+
+User.hasMany(messages, {
+	foreignKey: "receiver",
+	onDelete: "CASCADE",
+	onUpdate: "CASCADE",
+	as: 'receivedMessage'
+})
+
+
+messages.belongsTo(User, {
+	foreignKey: "receiver",
+	as: 'receiverUser'
+})
 
 User.sync();
 

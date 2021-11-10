@@ -1,8 +1,8 @@
 const express = require("express");
 const router = express.Router();
+const User = require("../models/user");
 const auth = require("../middlewares/auth");
 const Post = require("../models/posts");
-const User = require("../models/user");
 const Likes = require("../models/likes");
 const Comment = require("../models/comments");
 const jwt = require("jsonwebtoken");
@@ -35,7 +35,6 @@ router.get("/all", async (req, res) => {
 router.get("/my", auth, async (req, res) => {
   try {
     const send = [];
-    send.loggedIn = true;
     const options = await req.user.getPosts();
     const likedPost = await req.user.getLikedPosts();
     const commentedPosts = await req.user.getCommentedPosts();
@@ -45,7 +44,7 @@ router.get("/my", auth, async (req, res) => {
     send.commentedPosts = commentedPosts;
     send.repliedPosts = repliedPosts;
 
-    return res.render("PostActivity/myPosts.hbs", send);
+    return res.json(send);
   } catch (error) {
     res.status(500).send();
   }
@@ -106,7 +105,7 @@ router.get("/view/:id", async (req, res) => {
     });
   } catch (e) {
     console.log(e)
-    res.status(400).render("indexPages/404", options);
+    res.status(400).render("IndexPages/404", options);
   }
 });
 
@@ -124,7 +123,7 @@ router.post("/edit/:id", auth, async (req, res) => {
     const creator = `${req.user.firstName} ${req.user.lastName}`;
     res.render("PostActivity/editPost", { loggedIn: true, ...postData, creator });
   } catch (e) {
-    res.status(500).render("indexPages/404", { loggedIn: true });
+    res.status(500).render("IndexPages/404", { loggedIn: true });
   }
 });
 
@@ -155,7 +154,7 @@ router.put("/edit/:id", auth, async (req, res) => {
 
     res.redirect("/post/my");
   } catch (e) {
-    res.status(500).render("indexPages/404", { loggedIn: true });
+    res.status(500).render("IndexPages/404", { loggedIn: true });
   }
 });
 
@@ -172,7 +171,7 @@ router.delete("/delete/:id", auth, async (req, res) => {
 
     res.redirect("/post/my");
   } catch (e) {
-    res.status(500).render("indexPages/404", { loggedIn: true });
+    res.status(500).render("IndexPages/404", { loggedIn: true });
   }
 });
 

@@ -20,7 +20,7 @@ router.get("/view/:commentId", async (req, res) => {
     const comment = await Comment.findByPk(req.params.commentId, {
       include: [{ model: Reply }, { model: Post }],
     });
-    if (!comment) res.render("indexPages/404", options);
+    if (!comment) res.render("IndexPages/404", options);
 
     const postObject = await comment.Post.getPost();
     const user = await User.findByPk(postObject.owner);
@@ -35,7 +35,7 @@ router.get("/view/:commentId", async (req, res) => {
       comments: commentData,
     });
   } catch (e) {
-    res.status(400).render("indexPages/404", options);
+    res.status(400).render("IndexPages/404", options);
   }
 });
 

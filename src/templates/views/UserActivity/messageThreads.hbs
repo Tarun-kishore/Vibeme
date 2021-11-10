@@ -134,59 +134,18 @@
         </header>
 
 
-<h2>My Connections</h2>
+<h2>My messageThreads</h2>
 
-{{#if myConnections}}
+{{#if messageThreads}}
 
-    {{#each myConnections}}
-        <a href="/user/view/{{this.connector.id}}">{{this.connector.firstName}} {{this.connector.lastName}}</a>
-        
-        <form action="/message/create/{{this.connector.id}}" method="post">
-        <button type="submit">message</button></form>
-        
-        <form action="/connect/remove/{{this.id}}?_method=delete" method="post">
-        <button type="submit">remove</button></form>
+    {{#each messageThreads}}
+        <a href="/user/view/{{this.member.id}}">{{this.member.firstName}} {{this.member.lastName}}</a>
+        <a href="/message/view/{{this.id}}"> view message</a>
     {{/each}}
 
 {{else}}
 
-    <h3>No connections yet</h3>
-
-{{/if}}
-
-<h2>My Sent Connections</h2>
-
-{{#if sentConnections}}
-
-    {{#each sentConnections}}
-        <a href="/user/view/{{this.receiver.id}}">{{this.receiver.firstName}} {{this.receiver.lastName}}</a>
-
-        <h5>status pending</h5>
-
-        <form action="/connect/remove/{{this.id}}?_method=delete" method="post">
-        <button type="submit">delete request</button></form>
-    {{/each}}
-
-{{else}}
-
-    <h3>No connections sent yet</h3>
-
-{{/if}}
-
-<h2>My received Connections</h2>
-{{#if receivedConnections}}
-    {{#each receivedConnections}}
-        <a href="/user/view/{{this.sender.id}}">{{this.sender.firstName}} {{this.sender.lastName}}</a>
-
-        <form action="/connect/accept/{{this.id}}?_method=patch" method="post">
-        <button type="submit">Accept</button></form>
-
-        <form action="/connect/remove/{{this.id}}?_method=delete" method="post">
-        <button type="submit">reject</button></form>
-    {{/each}}
-{{else}}
-
-    <h3>No connections sent yet</h3>
+    <h3>No message Threads yet</h3>
 
 {{/if}}
 

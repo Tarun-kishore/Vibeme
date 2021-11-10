@@ -25,7 +25,7 @@ router.get("/about", (req, res) => {
   const options = {};
   if (req.cookies.token) options.loggedIn = true;
   
-  res.render("indexPages/about", options);
+  res.render("IndexPages/about", options);
 })
 
 router.get("/feature", (req, res) => {
@@ -39,24 +39,24 @@ router.get("/help", (req, res) => {
   const options = {};
   if (req.cookies.token) options.loggedIn = true;
   
-  res.render("indexPages/help", options);
+  res.render("IndexPages/help", options);
 })
 
 router.get("/", (req, res) => {
  
-  res.redirect('/login')
-  // const options = {};
-  // if (req.cookies.token) options.loggedIn = true;
+  // res.redirect('/login')
+  const options = {};
+  if (req.cookies.token) options.loggedIn = true;
 
   
-  // res.render("IndexPages/index", options);
+  res.render("IndexPages/index", options);
 });
 
 router.get("*", (req, res) => {
   const options = {};
   if (req.cookies.token) options.loggedIn = true;
 
-  res.render("indexPages/404", options);
+  res.render("IndexPages/404", options);
 });
 
 module.exports = router;

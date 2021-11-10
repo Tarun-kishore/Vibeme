@@ -10,6 +10,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "bad-words": "^3.0.4",
     "bcrypt": "^5.0.1",
     "body-parser": "^1.19.0",
     "cookie-parser": "^1.4.5",
@@ -18,11 +19,13 @@
     "hbs": "^4.1.2",
     "jsonwebtoken": "^8.5.1",
     "method-override": "^3.0.0",
-    "mysql2": "^2.3.0",
-    "nodemon": "^2.0.14",
+    "mysql2": "^2.3.3-rc.0",
+    "nodemon": "^2.0.12",
     "npm": "^7.24.0",
+    "psl": "^1.8.0",
     "request": "^2.88.2",
-    "sequelize": "^6.6.5"
+    "sequelize": "^6.6.5",
+    "socket.io": "^4.3.1"
   },
   "repository": {
     "type": "git",
