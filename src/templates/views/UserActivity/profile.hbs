@@ -3,171 +3,329 @@
 
 <head>
 
-    <!-- Meta tags -->
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- Meta tags -->
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <!-- Website Name -->
-    <title>VibeMe</title>
+  <!-- Website Name -->
+  <title>VibeMe</title>
 
-    <!-- Website icon on title bar -->
-    <link rel="icon" href="/image/Logo/title.png" type="image/png">
+  <!-- Website icon on title bar -->
+  <link rel="icon" href="/image/Logo/title.png" type="image/png">
 
-    <!-- Bootstraps CDN -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
+  <!-- Bootstraps CDN -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
 
-    <!-- Font Awesome -->
-    <script src="https://kit.fontawesome.com/d021e746cf.js" crossorigin="anonymous"></script>
+  <!-- Font Awesome -->
+  <script src="https://kit.fontawesome.com/d021e746cf.js" crossorigin="anonymous"></script>
 
-    <!-- Font Style -> Space Mono Regular 400 -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Lato:wght@300&family=Nunito+Sans:wght@600&family=Roboto:wght@500&display=swap"
-        rel="stylesheet">
+  <!-- Font Style -> Space Mono Regular 400 -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Lato:wght@300&family=Nunito+Sans:wght@600&family=Roboto:wght@500&display=swap"
+    rel="stylesheet">
+  <!-- Google Fonts -->
+  <link
+    href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i"
+    rel="stylesheet">
 
-    <!-- Custom CSS stylesheet -->
-    <link rel="stylesheet" href="/css/Login Page/style.css">
-    <link rel="stylesheet" href="/css/base.css">
+  <!-- Vendor CSS Files -->
+  <link href="/css/vendor userbase/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="/css/vendor userbase/icofont/icofont.min.css" rel="stylesheet">
+  <link href="/css/vendor userbase/boxicons/css/boxicons.min.css" rel="stylesheet">
+  <link href="/css/vendor userbase/venobox/venobox.css" rel="stylesheet">
+  <link href="/css/vendor userbase/owl.carousel/assets/owl.carousel.min.css" rel="stylesheet">
+  <link href="/css/vendor userbase/aos/aos.css" rel="stylesheet">
+
+  <!-- New CSS stylesheet -->
+  <link rel="stylesheet" href="/css/profile page/style.css">
 </head>
 
 <body>
-
-    <!-- making a grid for this div -->
-    <div class="loginPage">
-
-        <header>
-            <!-- Navbar -->
-            <nav class="navbar navbar-expand-lg navbar-mainbg">
-                <!-- Logo -->
-                <a class="navbar-brand navbar-logo" href="#">VibeMe</a>
-                <!-- Collapse Button -->
-                <button id="tog" class="navbar-toggler button" type="button" data-bs-toggle="collapse"
-                    data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
-                    aria-expanded="false" aria-label="Toggle navigation">
-                    <!-- Hamburger Icon when screen size is less -->
-                    <span class="navbar-toggler-icon"><i class="fas fa-bars nav-button"></i></span>
-                </button>
-                <!-- Links -->
-                {{#if loggedIn}}
-                  <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <ul class="navbar-nav ms-auto">
-                        <!-- For Styling -->
-                        <div class="hori-selector">
-                            <div class="left"></div>
-                            <div class="right"></div>
-                        </div>
-                        <!-- Nav Links -->
-                        <li class="nav-item">
-                            <a class="nav-link" href="/about">
-                                About
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="/feature">
-                                Features
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="/help">
-                                Help
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" id="navbarContent"href="/post/all">
-                                All Post
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" id="navbarContent"href="/post/my">
-                                myPost
-                            </a>
-                        </li>
-                        <li class="nav-item active">
-                            <a class="nav-link" id="navbarContent"href="/user/profile">
-                                my Profile
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" id="navbarContent"href="/user/logout">
-                                Logout
-                            </a>
-                        </li>
-                    </ul> 
-                  </div>
-
-                {{else}}
-                  <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                      <ul class="navbar-nav ms-auto">
-                        <!-- For Styling -->
-                        <div class="hori-selector">
-                            <div class="left"></div>
-                            <div class="right"></div>
-                        </div>
-                        <!-- Nav Links -->
-                        <li class="nav-item">
-                            <a class="nav-link" href="/about">
-                                About
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="/feature">
-                                Features
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="/help">
-                                Help
-                            </a>
-                        </li>
-                        <li class="nav-item active">
-                            <a class="nav-link" id="navbarContent"href="/login">
-                                Sign in
-                            </a>
-                        </li>
-                    </ul>  
-                  </div>
-              {{/if}}
-            </nav>
-        </header>
+  <!-- nav bar -->
+  <div id="nav">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top pt-0 pb-0">
+      <div class="container-fluid">
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+          aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="/post/all"><i class="fas fa-home"></i></a>
+            </li>
+            <li class="nav-item">
 
 
-{{>profileSection}}
+              {{!-- this is blank --}}
 
 
-    <div class="mb-3 row">
-        <form action="/user/update" method="post" class="d-inline mb-2">
-            <button type="submit" class="btn btn-primary">Edit Profile</button>
-        </form>
-        <form action="/user/change" method="post">
-            <button type="submit" class="btn btn-secondary mb-3">Change Password</button>
-        </form>
-        <form action="/user/delete?_method=DELETE" onsubmit="return confirm('Are you sure you want to delete this account? This cannot be reversed.');" method="post">
-            <button type="submit" class="btn btn-danger ">Delete My Account</button>
-        </form>
-    </div>
+              <a class="nav-link" href="#"><i class="fas fa-compass"></i></a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="/post/all"><i class="fas fa-plus"></i></a>
+            </li>
+            <li class="nav-item">
 
-    <a href="/connect/view"> <button>View connections</button></a>
 
-<footer>
-            <p class="text-center">&copy; 2021 All rights Reserved</p>
-        </footer>
+              {{!-- this is blank --}}
+
+
+              <a class="nav-link text-capitalize" href="#"><i class="fab fa-facebook-messenger"></i></a>
+            </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-bs-toggle="dropdown"
+                aria-expanded="false">
+                <i class="fas fa-user"></i>
+              </a>
+              <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <li><a class="dropdown-item" href="/user/profile">PROFILE</a></li>
+                <li><a class="dropdown-item" href="/user/logout">LOGOUT</a></li>
+                <li><a class="dropdown-item" href="/user/update">EDIT PROFILE</a></li>
+                <li><a class="dropdown-item" href="/user/delete?_method=DELETE">DELETE ACCOUNT</a></li>
+                <li><a class="dropdown-item" href="/user/change">CHANGE PASSWORD</a></li>
+                <li><a class="dropdown-item" href="/connect/view">VIEW CONN</a></li>
+                <li>
+                  <hr class="dropdown-divider">
+                </li>
+              </ul>
+          </ul>
+        </div>
+    </nav>
+  </div>
+
+  <div>
+
+  </div>
+  <!-- nav bar end  -->
+
+  <!-- ======= Mobile nav toggle button ======= -->
+  <button type="button" class="mobile-nav-toggle d-xl-none"><i class="icofont-navigation-menu"></i></button>
+
+  <!-- ======= Header ======= -->
+  <header id="header">
+    <div class="d-flex flex-column">
+
+      <div class="profile">
+        <img src="/image/Userprofile images/profile-img.jpg" alt="" class="img-fluid rounded-circle">
+        <h1 class="text"><a href="index.html">Username</a></h1>
+        <div id="followerscount">
+          <div class="wrap">
+            <p class="count">23</p>
+            <span class="small">Followers</span>
+          </div>
+          <div class="wrap">
+            <p class="count">45</p>
+            <span class="small">Following</span>
+          </div>
+          <div class="wrap">
+            <p class="count">9</p>
+            <span class="small">posts</span>
+          </div>
+        </div>
+        <div id="status">
+          <span>
+            this is some random text to examine thi section
+            this is some random text to examine
+            this is some random text to examine thi section
+          </span>
+        </div>
+      </div>
+
 
     </div>
+  </header><!-- End Header -->
+
+  <!-- ======= Hero Section ======= -->
+  <section id="hero" class="d-flex flex-column justify-content-center align-items-center">
+    <div class="hero-container" data-aos="fade-in">
+      <h1>Username</h1>
+      <p>I'm <span class="typed" data-typed-items="Smart, fit, Photographer, qualities"></span></p>
+    </div>
+  </section><!-- End Hero -->
+
+  <main id="main">
+    <!-- ======= Post ======= -->
+    <section id="portfolio" class="portfolio section-bg">
+      <div class="container">
 
 
-    <!-- Bootstrap Script -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ"
-        crossorigin="anonymous"></script>
+        <div class="row" data-aos="fade-up">
+          <div class="col-lg-12 d-flex justify-content-center">
+            <ul id="portfolio-flters">
+              <li data-filter="*" class="filter-active">POSTS</li>
 
-    <!-- JQuery Script -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+            </ul>
+          </div>
+        </div>
 
-    <!-- Custom Script -->
-    <script src="/script/script.js"></script>
+        <div class="row portfolio-container" data-aos="fade-up" data-aos-delay="100">
+
+          <div class="col-lg-4 col-md-6 portfolio-item filter-app">
+            <div class="portfolio-wrap">
+              <img src="/image/Userprofile images/portfolio/portfolio-1.jpg" class="img-fluid" alt="">
+              <div class="portfolio-links">
+                <a href="/image/Userprofile images/portfolio/portfolio-1.jpg" data-gall="portfolioGallery"
+                  class="venobox" title="App 1"><i class="fas fa-heart"></i></a>
+                <a href="comments.html" title="More Details"><i class="fas fa-comment"></i></a>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-4 col-md-6 portfolio-item filter-web">
+            <div class="portfolio-wrap">
+              <img src="/image/Userprofile images/portfolio/portfolio-2.jpg" class="img-fluid" alt="">
+              <div class="portfolio-links">
+                <a href="/image/Userprofile images/portfolio/portfolio-2.jpg" data-gall="portfolioGallery"
+                  class="venobox" title="Web 3"><i class="fas fa-heart"></i></a>
+                <a href="comments.html" title="More Details"><i class="fas fa-comment"></i></a>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-4 col-md-6 portfolio-item filter-app">
+            <div class="portfolio-wrap">
+              <img src="/image/Userprofile images/portfolio/portfolio-3.jpg" class="img-fluid" alt="">
+              <div class="portfolio-links">
+                <a href="/image/Userprofile images/portfolio/portfolio-3.jpg" data-gall="portfolioGallery"
+                  class="venobox" title="App 2"><i class="fas fa-heart"></i></a>
+                <a href="comments.html" title="More Details"><i class="fas fa-comment"></i></a>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-4 col-md-6 portfolio-item filter-card">
+            <div class="portfolio-wrap">
+              <img src="/image/Userprofile images/portfolio/portfolio-4.jpg" class="img-fluid" alt="">
+              <div class="portfolio-links">
+                <a href="/image/Userprofile images/portfolio/portfolio-4.jpg" data-gall="portfolioGallery"
+                  class="venobox" title="Card 2"><i class="fas fa-heart"></i></a>
+                <a href="comments.html" title="More Details"><i class="fas fa-comment"></i></a>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-4 col-md-6 portfolio-item filter-web">
+            <div class="portfolio-wrap">
+              <img src="/image/Userprofile images/portfolio/portfolio-5.jpg" class="img-fluid" alt="">
+              <div class="portfolio-links">
+                <a href="/image/Userprofile images/portfolio/portfolio-5.jpg" data-gall="portfolioGallery"
+                  class="venobox" title="Web 2"><i class="fas fa-heart"></i></a>
+                <a href="comments.html" title="More Details"><i class="fas fa-comment"></i></a>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-4 col-md-6 portfolio-item filter-app">
+            <div class="portfolio-wrap">
+              <img src="/image/Userprofile images/portfolio/portfolio-6.jpg" class="img-fluid" alt="">
+              <div class="portfolio-links">
+                <a href="/image/Userprofile images/portfolio/portfolio-6.jpg" data-gall="portfolioGallery"
+                  class="venobox" title="App 3"><i class="fas fa-heart"></i></i></a>
+                <a href="comments.html" title="More Details"><i class="fas fa-comment"></i></a>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-4 col-md-6 portfolio-item filter-card">
+            <div class="portfolio-wrap">
+              <img src="/image/Userprofile images/portfolio/portfolio-7.jpg" class="img-fluid" alt="">
+              <div class="portfolio-links">
+                <a href="/image/Userprofile images/portfolio/portfolio-7.jpg" data-gall="portfolioGallery"
+                  class="venobox" title="Card 1"><i class="fas fa-heart"></i></a>
+                <a href="comments.html" title="More Details"><i class="fas fa-comment"></i></a>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-4 col-md-6 portfolio-item filter-card">
+            <div class="portfolio-wrap">
+              <img src="/image/Userprofile images/portfolio/portfolio-8.jpg" class="img-fluid" alt="">
+              <div class="portfolio-links">
+                <a href="/image/Userprofile images/portfolio/portfolio-8.jpg" data-gall="portfolioGallery"
+                  class="venobox" title="Card 3"><i class="fas fa-heart"></i></a>
+                <a href="comments.html" title="More Details"><i class="fas fa-comment"></i></a>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-4 col-md-6 portfolio-item filter-web">
+            <div class="portfolio-wrap">
+              <img src="/image/Userprofile images/portfolio/portfolio-9.jpg" class="img-fluid" alt="">
+              <div class="portfolio-links">
+                <a href="/image/Userprofile images/portfolio/portfolio-9.jpg" data-gall="portfolioGallery"
+                  class="venobox" title="Web 3"><i class="fas fa-heart"></i> </a>
+                <a href="comments.html" title="More Details"><i class="fas fa-comment"></i></a>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section><!-- POST -->
+
+
+
+  </main><!-- End #main -->
+
+  <footer id="foot">
+    <a href="/about">About</a>
+    <a href="/help">Help</a>
+    <a href="/feature">landing</a>
+  </footer>
+
+
+  <a href="#" class="back-to-top"><i class="icofont-simple-up"></i></a>
+
+
+
+
+  <!-- Bootstrap Script -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ"
+    crossorigin="anonymous"></script>
+
+  <!-- JQuery Script -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+  <!-- Vendor JS Files -->
+  <script src="/css/vendor userbase/jquery/jquery.min./css/vendor userbase
+  <script src=" /css/vendor userbase/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="/css/vendor userbase/jquery.easing/jquery.easing.min.js"></script>
+  <script src="/css/vendor userbase/php-email-form/validate.js"></script>
+  <script src="/css/vendor userbase/waypoints/jquery.waypoints.min.js"></script>
+  <script src="/css/vendor userbase/counterup/counterup.min.js"></script>
+  <script src="/css/vendor userbase/isotope-layout/isotope.pkgd.min.js"></script>
+  <script src="/css/vendor userbase/venobox/venobox.min.js"></script>
+  <script src="/css/vendor userbase/owl.carousel/owl.carousel.min.js"></script>
+  <script src="/css/vendor userbase/typed.js/typed.min.js"></script>
+  <script src="/css/vendor userbase/aos/aos.js"></script>
+
+  <script src="https://kit.fontawesome.com/af8d79b3d6.js" crossorigin="anonymous"></script>
+
+  <!-- countup -->
+  <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/waypoints/4.0.1/jquery.waypoints.min.js"
+    integrity="sha512-CEiA+78TpP9KAIPzqBvxUv8hy41jyI3f2uHi7DGp/Y/Ka973qgSdybNegWFciqh6GrN2UePx2KkflnQUbUhNIA=="
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Counter-Up/1.0.0/jquery.counterup.min.js"
+    integrity="sha512-d8F1J2kyiRowBB/8/pAWsqUl0wSEOkG5KATkVV4slfblq9VRQ6MyDZVxWl2tWd+mPhuCbpTB4M7uU/x9FlgQ9Q=="
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <script>
+    $('.count').counterUp({
+      delay: 10,
+      time: 2000
+    });
+  </script> -->
+
+  <!-- New Script -->
+
+  <script src="/script/Userprofile script/main.js"></script>
 </body>
 
 

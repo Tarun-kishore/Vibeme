@@ -107,13 +107,13 @@ emailAlert.querySelector("i").addEventListener('click', function() {
   setTimeout(function() {
     emailAlert.querySelector("p").classList.add("Invisible");
   }, 5000);
-})
+});
 passwordAlert.querySelector("i").addEventListener('click', function() {
   passwordAlert.querySelector("p").classList.remove("Invisible");
   setTimeout(function() {
     passwordAlert.querySelector("p").classList.add("Invisible");
   }, 5000);
-})
+});
 
 if(invalidAlert)
 {
@@ -122,5 +122,5 @@ if(invalidAlert)
   setTimeout(function() {
     invalidAlert.querySelector("p").classList.add("Invisible");
   }, 5000);
-})
+});
 }

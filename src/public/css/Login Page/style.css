@@ -1,208 +1,216 @@
-  /* For whole webpage setting width and height to take 100% screen size */
-  /* .body {
-    height: 100vh;
-    width: 100vw;
-  } */
-
+ /* For navbar and footer styles */
  
-  /* Change the font style of navbar text */
-  .navbar-logo {
-    font-family: 'Nunito Sans', sans-serif;
-    padding: 0 0 0 30px;
-    color: white;
-    font-size: 2.7rem;
-    font-weight: 400;
-  }
+ /* Change the font style of navbar text */
+ .navbar-logo {
+   font-family: 'Nunito Sans', sans-serif;
+   padding: 0 0 0 30px;
+   color: white;
+   font-size: 2.7rem;
+   font-weight: 400;
+ }
 
-  /* brand name hover section. On hovering, color of text changes to gradient */
-  .navbar-logo:hover {
-    background: #F4C4F3;
-    background: -webkit-linear-gradient(to left, #F4C4F3 0%, #fc67fa 100%);
-    background: -moz-linear-gradient(to left, #F4C4F3 0%, #fc67fa 100%);
-    background: linear-gradient(to left, #F4C4F3 0%, #fc67fa 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-  }
-
-
-  /* setting navbar background color */
-  .navbar-mainbg {
-    background-color: #8d71d1;
-    padding: 0;
-  }
-
-  /* navigation button colour */
-  .nav-button {
-    background-color: transparent;
-    color: white;
-    padding-top: 5px;
-  }
-
-  /* To remove the button outline of nav button */
-  .navbar-toggler:focus,
-  .navbar-toggler:active,
-  .navbar-toggler-icon:focus {
-      outline: none;
-      box-shadow: none;
-  }
-
-  /* allowing cursor to become pointer on hovering on hamburger icon */
-  .navbar .button {
-    cursor: pointer;
-  }
-
-  /* when button gets clicked, shadow appears */
-  .navbar .button:active{
-    box-shadow: 0 0 10px 2px rgba(0, 0, 0, 0.4);
-    transform: scale(0.9);
-  }
+ /* brand name hover section. On hovering, color of text changes to gradient */
+ .navbar-logo:hover {
+   background: #F4C4F3;
+   background: -webkit-linear-gradient(to left, #F4C4F3 0%, #fc67fa 100%);
+   background: -moz-linear-gradient(to left, #F4C4F3 0%, #fc67fa 100%);
+   background: linear-gradient(to left, #F4C4F3 0%, #fc67fa 100%);
+   -webkit-background-clip: text;
+   -webkit-text-fill-color: transparent;
+ }
 
 
-  /* to remove overflow content */
-  #navbarSupportedContent {
-    overflow: hidden;
-    position: relative;
-  }
+ /* setting navbar background color */
+ .navbar-mainbg {
+   background-color: #8d71d1;
+   padding: 0;
+ }
 
-  /* giving margin and padding to unordered list */
-  #navbarSupportedContent ul {
-    padding: 0px;
-    margin: 0px;
-  }
+ /* navigation button colour */
+ .nav-button {
+   background-color: transparent;
+   color: white;
+   padding-top: 5px;
+ }
 
-  /* Removing bullets and placing them left */
-  #navbarSupportedContent li {
-    list-style-type: none;
-    float: left;
-  }
+ /* To remove the button outline of nav button */
+ .navbar-toggler:focus,
+ .navbar-toggler:active,
+ .navbar-toggler-icon:focus {
+   outline: none;
+   box-shadow: none;
+ }
 
-  /* Formating links of nav menu */
-  #navbarSupportedContent ul li a {
-    font-family: 'Lato', sans-serif;
-    color: white;
-    text-decoration: none;
-    font-size: 16px;
-    display: block;
-    padding: 20px 20px 21px 20px;
-    transition-duration: 0.6s;
-    transition-timing-function: cubic-bezier(0.68, -0.55, 0.265, 1.55);
-    position: relative;
-  }
+ /* allowing cursor to become pointer on hovering on hamburger icon */
+ .navbar .button {
+   cursor: pointer;
+ }
 
-  /* I have used css selectors to select the elements */
-  /* changing color of options upon selecting */
-  #navbarSupportedContent > ul > li.active > a {
-    background: #FF00CC;
-    background: -webkit-linear-gradient(to right, #FF00CC 0%, #333399 100%);
-    background: -moz-linear-gradient(to right, #FF00CC 0%, #333399 100%);
-    background: linear-gradient(to right, #FF00CC 0%, #333399 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-color: transparent;
-    transition: all 1s;
-  }
+ /* when button gets clicked, shadow appears */
+ .navbar .button:active {
+   box-shadow: 0 0 10px 2px rgba(0, 0, 0, 0.4);
+   transform: scale(0.9);
+ }
 
-  /* making animation for the button */
-  .hori-selector {
-    display: inline-block;
-    position: absolute;
-    height: 100%;
-    top: 0px;
-    left: 0px;
-    transition-duration: 0.4s;
-    transition-timing-function: cubic-bezier(0.68, -0.55, 0.265, 1.55);
-    background-color: #ffd4e2;
-    border-top-left-radius: 15px;
-    border-top-right-radius: 15px;
-    margin-top: 10px;
-  }
-  /* left and right curves*/
-  .hori-selector .right,
-  .hori-selector .left {
-    position: absolute;
-    width: 25px;
-    height: 25px;
-    background-color: #ffd4e2;
-    bottom: 10px;
-  }
-  /* aligning them */
-  .hori-selector .right {
-    right: -25px;
-  }
-  .hori-selector .left {
-    left: -25px;
-  }
-  /* putting circle before them to make curve */
-  .hori-selector .right:before,
-  .hori-selector .left:before {
-    content: '';
-    position: absolute;
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
-    background-color: #8d71d1;
-  }
-  
-  .hori-selector .right:before {
-    bottom: 0;
-    right: -25px;
-  }
-  .hori-selector .left:before {
-    bottom: 0;
-    left: -25px;
-  }
 
-/* designing when the screen size is less*/
-@media (max-width: 991px) {
-    #navbarSupportedContent ul li a {
-      padding: 12px 30px;
-    }
-    .hori-selector {
-      margin-top: 0px;
-      margin-left: 10px;
-      border-radius: 0;
-      border-top-left-radius: 25px;
-      border-bottom-left-radius: 25px;
-    }
-    .hori-selector .left,
-    .hori-selector .right {
-      right: 10px;
-    }
-    .hori-selector .left {
-      top: -25px;
-      left: auto;
-    }
-    .hori-selector .right {
-      bottom: -25px;
-    }
-    .hori-selector .left:before {
-      left: -25px;
-      top: -25px;
-    }
-    .hori-selector .right:before {
-      bottom: -25px;
-      left: -25px;
-    }
-    #navbarSupportedContent > ul > li.active > a {
-      background: #FF00CC;
-      background: -webkit-linear-gradient(to bottom, #FF00CC 0%, #333399 100%);
-      background: -moz-linear-gradient(to bottom, #FF00CC 0%, #333399 100%);
-      background: linear-gradient(to bottom, #FF00CC 0%, #333399 100%);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-color: transparent;
-      transition: all 1s;
-    }
-  }
+ /* to remove overflow content */
+ #navbarSupportedContent {
+   overflow: hidden;
+   position: relative;
+ }
 
- 
-  /* footer */
-  footer {
-    text-align: center;
-  }
+ /* giving margin and padding to unordered list */
+ #navbarSupportedContent ul {
+   padding: 0px;
+   margin: 0px;
+ }
 
-  footer p {
-    margin-bottom: 0;
-    background-color: #8d71d1;;
-    color: white;
-  }
+ /* Removing bullets and placing them left */
+ #navbarSupportedContent li {
+   list-style-type: none;
+   float: left;
+ }
+
+ /* Formating links of nav menu */
+ #navbarSupportedContent ul li a {
+   font-family: 'Lato', sans-serif;
+   color: white;
+   text-decoration: none;
+   font-size: 16px;
+   display: block;
+   padding: 20px 20px 21px 20px;
+   transition-duration: 0.6s;
+   transition-timing-function: cubic-bezier(0.68, -0.55, 0.265, 1.55);
+   position: relative;
+ }
+
+ /* I have used css selectors to select the elements */
+ /* changing color of options upon selecting */
+ #navbarSupportedContent>ul>li.active>a {
+   background: #FF00CC;
+   background: -webkit-linear-gradient(to right, #FF00CC 0%, #333399 100%);
+   background: -moz-linear-gradient(to right, #FF00CC 0%, #333399 100%);
+   background: linear-gradient(to right, #FF00CC 0%, #333399 100%);
+   -webkit-background-clip: text;
+   -webkit-text-fill-color: transparent;
+   background-color: transparent;
+   transition: all 1s;
+ }
+
+ /* making animation for the button */
+ .hori-selector {
+   display: inline-block;
+   position: absolute;
+   height: 100%;
+   top: 0px;
+   left: 0px;
+   transition-duration: 0.4s;
+   transition-timing-function: cubic-bezier(0.68, -0.55, 0.265, 1.55);
+   background-color: #ffd4e2;
+   border-top-left-radius: 15px;
+   border-top-right-radius: 15px;
+   margin-top: 10px;
+ }
+
+ /* left and right curves*/
+ .hori-selector .right,
+ .hori-selector .left {
+   position: absolute;
+   width: 25px;
+   height: 25px;
+   background-color: #ffd4e2;
+   bottom: 10px;
+ }
+
+ /* aligning them */
+ .hori-selector .right {
+   right: -25px;
+ }
+
+ .hori-selector .left {
+   left: -25px;
+ }
+
+ /* putting circle before them to make curve */
+ .hori-selector .right:before,
+ .hori-selector .left:before {
+   content: '';
+   position: absolute;
+   width: 50px;
+   height: 50px;
+   border-radius: 50%;
+   background-color: #8d71d1;
+ }
+
+ .hori-selector .right:before {
+   bottom: 0;
+   right: -25px;
+ }
+
+ .hori-selector .left:before {
+   bottom: 0;
+   left: -25px;
+ }
+
+ /* designing when the screen size is less*/
+ @media (max-width: 991px) {
+   #navbarSupportedContent ul li a {
+     padding: 12px 30px;
+   }
+
+   .hori-selector {
+     margin-top: 0px;
+     margin-left: 10px;
+     border-radius: 0;
+     border-top-left-radius: 25px;
+     border-bottom-left-radius: 25px;
+   }
+
+   .hori-selector .left,
+   .hori-selector .right {
+     right: 10px;
+   }
+
+   .hori-selector .left {
+     top: -25px;
+     left: auto;
+   }
+
+   .hori-selector .right {
+     bottom: -25px;
+   }
+
+   .hori-selector .left:before {
+     left: -25px;
+     top: -25px;
+   }
+
+   .hori-selector .right:before {
+     bottom: -25px;
+     left: -25px;
+   }
+
+   #navbarSupportedContent>ul>li.active>a {
+     background: #FF00CC;
+     background: -webkit-linear-gradient(to bottom, #FF00CC 0%, #333399 100%);
+     background: -moz-linear-gradient(to bottom, #FF00CC 0%, #333399 100%);
+     background: linear-gradient(to bottom, #FF00CC 0%, #333399 100%);
+     -webkit-background-clip: text;
+     -webkit-text-fill-color: transparent;
+     background-color: transparent;
+     transition: all 1s;
+   }
+ }
+
+
+ /* footer */
+ footer {
+   text-align: center;
+ }
+
+ footer p {
+   margin-bottom: 0;
+   background-color: #8d71d1;
+   ;
+   color: white;
+ }
