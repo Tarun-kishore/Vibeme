@@ -44,12 +44,12 @@ router.get("/help", (req, res) => {
 
 router.get("/", (req, res) => {
  
-  res.redirect('/login')
-  // const options = {};
-  // if (req.cookies.token) options.loggedIn = true;
+  // res.redirect('/login')
+  const options = {};
+  if (req.cookies.token) options.loggedIn = true;
 
   
-  // res.render("IndexPages/index", options);
+  res.render("IndexPages/index", options);
 });
 
 router.get("*", (req, res) => {
