@@ -96,7 +96,7 @@ router.get('/verify/:id/:token',async (req,res)=>{
     try {
       await req.token.destroy();
       
-    res.clearCookie("token").redirect("/");
+    res.clearCookie("token").redirect("/login");
   } catch (e) {
     res.status(500).send(e);
   }
