@@ -45,6 +45,7 @@
 </head>
 
 <body>
+  
   <!-- nav bar -->
   <div id="nav">
     <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top pt-0 pb-0">
@@ -64,10 +65,10 @@
               {{!-- this is blank --}}
 
 
-              <a class="nav-link" href="#"><i class="fas fa-compass"></i></a>
+              <a class="nav-link" href="/post/my"><i class="fas fa-compass"></i></a>
             </li>
             <li class="nav-item">
-              <a class="nav-link active" aria-current="page" href="/post/all"><i class="fas fa-plus"></i></a>
+              <a class="nav-link active" aria-current="page" href="/post/create"><i class="fas fa-plus"></i></a>
             </li>
             <li class="nav-item">
 
@@ -75,7 +76,7 @@
               {{!-- this is blank --}}
 
 
-              <a class="nav-link text-capitalize" href="#"><i class="fab fa-facebook-messenger"></i></a>
+              <a class="nav-link text-capitalize" href="/message/viewAll"><i class="fab fa-facebook-messenger"></i></a>
             </li>
             <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-bs-toggle="dropdown"
@@ -85,9 +86,20 @@
               <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                 <li><a class="dropdown-item" href="/user/profile">PROFILE</a></li>
                 <li><a class="dropdown-item" href="/user/logout">LOGOUT</a></li>
-                <li><a class="dropdown-item" href="/user/update">EDIT PROFILE</a></li>
-                <li><a class="dropdown-item" href="/user/delete?_method=DELETE">DELETE ACCOUNT</a></li>
-                <li><a class="dropdown-item" href="/user/change">CHANGE PASSWORD</a></li>
+                <li>
+                  <form action="/user/update" method="post">
+                  <button class="dropdown-item">EDIT PROFILE</button>
+                  </form>
+                  </li>
+                <li>
+                  <form action="/user/delete?_method=DELETE" method="post" onsubmit="return confirm('Are you sure you want to delete the account')">
+                  <button class="dropdown-item">DELETE ACCOUNT</button>
+                  </form>
+                </li>
+                <li>
+                  <form action="/user/change" method="post">
+                  <button class="dropdown-item">CHANGE PASSWORD</button>
+                  </form></li>
                 <li><a class="dropdown-item" href="/connect/view">VIEW CONN</a></li>
                 <li>
                   <hr class="dropdown-divider">
