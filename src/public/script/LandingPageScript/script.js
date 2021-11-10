@@ -8,7 +8,7 @@ const $videoElement = document.querySelector('video')
 
 window.addEventListener('load', () => {
     console.log('checkpoint');
-    $videoElement.addEventListener('loadeddata',()=>{
+    $videoElement.addEventListener('load',()=>{
     console.log('checkpoint');
         if($videoElement.readyState >= 3){
     console.log('checkpoint');
