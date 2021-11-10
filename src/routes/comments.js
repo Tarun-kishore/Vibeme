@@ -20,7 +20,7 @@ router.get("/view/:commentId", async (req, res) => {
     const comment = await Comment.findByPk(req.params.commentId, {
       include: [{ model: Reply }, { model: Post }],
     });
-    if (!comment) res.render("indexPages\\404", options);
+    if (!comment) res.render("IndexPages/404", options);
 
     const postObject = await comment.Post.getPost();
     const user = await User.findByPk(postObject.owner);
@@ -29,13 +29,13 @@ router.get("/view/:commentId", async (req, res) => {
     const commentData = await comment.getCommentWithReplies(userId);
 
     if (commentData.replies.length === 0) delete commentData.replies;
-    res.render("PostActivity\\publicPostWithComment", {
+    res.render("PostActivity/publicPostWithComment", {
       ...options,
       postData: { ...postObject, creator },
       comments: commentData,
     });
   } catch (e) {
-    res.status(400).render("indexPages\\404", options);
+    res.status(400).render("IndexPages/404", options);
   }
 });
 
@@ -61,7 +61,7 @@ router.delete("/delete/:commentId", auth, async (req, res) => {
   try {
     const comment = await Comment.findByPk(req.params.commentId);
     if (comment.commentedBy !== req.user.id)
-      return res.render("IndexPages\\notAuth", { loggedIn: true });
+      return res.render("IndexPages/notAuth", { loggedIn: true });
     const postId = comment.commentedOn;
 
     await comment.destroy();
@@ -76,7 +76,7 @@ router.put("/edit/:commentId", auth, async (req, res) => {
   try {
     const comment = await Comment.findByPk(req.params.commentId);
     if (comment.commentedBy !== req.user.id)
-      return res.render("IndexPages\\notAuth", { loggedIn: true });
+      return res.render("IndexPages/notAuth", { loggedIn: true });
     const postId = comment.commentedOn;
 
     if (req.body.comment === "") throw Error("empty comment");
@@ -120,7 +120,7 @@ router.delete("/reply/delete/:replyId", auth, async (req, res) => {
   try {
     const reply = await Reply.findByPk(req.params.replyId);
     if (reply.repliedBy !== req.user.id)
-      return res.render("IndexPages\\notAuth", { loggedIn: true });
+      return res.render("IndexPages/notAuth", { loggedIn: true });
     const commentId = reply.repliedOn;
 
     await reply.destroy();
@@ -135,7 +135,7 @@ router.put("/reply/edit/:replyId", auth, async (req, res) => {
   try {
     const reply = await Reply.findByPk(req.params.replyId);
     if (reply.repliedBy !== req.user.id)
-      return res.render("IndexPages\\notAuth", { loggedIn: true });
+      return res.render("IndexPages/notAuth", { loggedIn: true });
     const postId = reply.repliedOn;
 
     if (req.body.comment === "") throw Error("empty comment");

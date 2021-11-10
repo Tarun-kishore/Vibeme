@@ -1,0 +1,212 @@
+<html lang="en" dir="ltr">
+
+  <head>
+
+    <!-- Meta tags -->
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- Website Name -->
+    <title>VibeMe</title>
+
+    <!-- Website icon on title bar -->
+    <link rel="icon" href="/image/Logo/title.png" type="image/png" />
+
+    <!-- Bootstraps CDN -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We"
+      crossorigin="anonymous"
+    />
+
+    <!-- Font Awesome -->
+    <script
+      src="https://kit.fontawesome.com/d021e746cf.js"
+      crossorigin="anonymous"
+    ></script>
+
+    <!-- Font Style -> Space Mono Regular 400 -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Lato:wght@300&family=Nunito+Sans:wght@600&family=Roboto:wght@500&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Custom CSS stylesheet -->
+    <link rel="stylesheet" href="/css/Login Page/style.css" />
+    <link rel="stylesheet" href="/css/base.css" />
+  </head>
+
+  <body>
+
+    <!-- making a grid for this div -->
+    <div class="loginPage">
+
+      <header>
+        <!-- Navbar -->
+        <nav class="navbar navbar-expand-lg navbar-mainbg">
+          <!-- Logo -->
+          <a class="navbar-brand navbar-logo" href="/">VibeMe</a>
+          <!-- Collapse Button -->
+          <button
+            id="tog"
+            class="navbar-toggler button"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
+            <!-- Hamburger Icon when screen size is less -->
+            <span class="navbar-toggler-icon"><i
+                class="fas fa-bars nav-button"
+              ></i></span>
+          </button>
+          <!-- Links -->
+          {{#if loggedIn}}
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+              <ul class="navbar-nav ms-auto">
+                <!-- For Styling -->
+                <div class="hori-selector">
+                  <div class="left"></div>
+                  <div class="right"></div>
+                </div>
+                <!-- Nav Links -->
+                <li class="nav-item">
+                  <a class="nav-link" href="/about">
+                    About
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="/help">
+                    Help
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" id="navbarContent" href="/post/all">
+                    All Post
+                  </a>
+                </li>
+                <li class="nav-item active">
+                  <a class="nav-link" id="navbarContent" href="/user/profile">
+                    my Profile
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" id="navbarContent" href="/user/logout">
+                    Logout
+                  </a>
+                </li>
+              </ul>
+            </div>
+
+          {{else}}
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+              <ul class="navbar-nav ms-auto">
+                <!-- For Styling -->
+                <div class="hori-selector">
+                  <div class="left"></div>
+                  <div class="right"></div>
+                </div>
+                <!-- Nav Links -->
+                <li class="nav-item">
+                  <a class="nav-link" href="/about">
+                    About
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="/help">
+                    Help
+                  </a>
+                </li>
+                <li class="nav-item active">
+                  <a class="nav-link" id="navbarContent" href="/login">
+                    Sign in
+                  </a>
+                </li>
+              </ul>
+            </div>
+          {{/if}}
+        </nav>
+      </header>
+
+      <h2> <span id="myName">{{me}}</span> - {{member}}</h2>
+      <div id="message-box">
+
+        {{#if messages}}
+
+          {{#each messages}}
+
+            <div>
+              {{#if this.isMine}}
+                <p>
+                  {{this.name}}
+                  . YOU
+
+              {{else}}
+                <p>
+                  {{this.name}}
+              {{/if}}
+                  {{! this script will change the time interpreting  }}
+                  <span
+                    class="time"
+                  >{{this.createdAt}}</span>
+                </p>
+              <div> {{this.content}}</div>
+            </div>
+
+          {{/each}}
+
+        {{else}}
+
+          <h3>No messages yet</h3>
+
+        {{/if}}
+
+      </div>
+      <form action="/message/send/{{id}}" id="message-form">
+        <input name="message" />
+        <button type="submit">Send</button>
+      </form>
+
+      {{! !do not remove this script }}
+      <script src="/socket.io/socket.io.js"></script>
+
+      {{! *for database management }}
+      <script defer src="/script/realtimeChatting/chatDB.js"></script>
+
+      {{! * for realtime chatting }}
+      <script defer src="/script/realtimeChatting/chat.js"></script>
+
+      {{! *for time interpolating}}
+      <script
+        src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.2/moment.min.js"
+      ></script>
+
+      <footer>
+        <p class="text-center">&copy; 2021 All rights Reserved</p>
+      </footer>
+
+    </div>
+
+    <!-- Bootstrap Script -->
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ"
+      crossorigin="anonymous"
+    ></script>
+
+    <!-- JQuery Script -->
+    <script
+      src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"
+    ></script>
+
+    <!-- Custom Script -->
+    <script src="/script/script.js"></script>
+  </body>
+
+</html>

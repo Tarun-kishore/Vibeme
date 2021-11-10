@@ -1,8 +1,8 @@
 const express = require("express");
 const router = express.Router();
+const User = require("../models/user");
 const auth = require("../middlewares/auth");
 const Post = require("../models/posts");
-const User = require("../models/user");
 const Likes = require("../models/likes");
 const Comment = require("../models/comments");
 const jwt = require("jsonwebtoken");
@@ -23,8 +23,8 @@ router.get("/all", async (req, res) => {
     }
 
     options.post = posts;
-    if (posts) return res.render("PostActivity\\feed", options);
-    res.render("PostActivity\\feed", ...options);
+    if (posts) return res.render("PostActivity/feed", options);
+    res.render("PostActivity/feed", ...options);
   } catch (e) {
     console.log(e)
     res.status(400).send();
@@ -35,7 +35,6 @@ router.get("/all", async (req, res) => {
 router.get("/my", auth, async (req, res) => {
   try {
     const send = [];
-    send.loggedIn = true;
     const options = await req.user.getPosts();
     const likedPost = await req.user.getLikedPosts();
     const commentedPosts = await req.user.getCommentedPosts();
@@ -45,7 +44,7 @@ router.get("/my", auth, async (req, res) => {
     send.commentedPosts = commentedPosts;
     send.repliedPosts = repliedPosts;
 
-    return res.render("PostActivity\\myPosts.hbs", send);
+    return res.json(send);
   } catch (error) {
     res.status(500).send();
   }
@@ -53,7 +52,7 @@ router.get("/my", auth, async (req, res) => {
 
 //rendering create post page
 router.get("/create", auth, (req, res) => {
-  res.render("PostActivity\\createPost", { loggedIn: true });
+  res.render("PostActivity/createPost", { loggedIn: true });
 });
 
 // Creating post by a user
@@ -71,7 +70,7 @@ router.post("/create", auth, async (req, res) => {
 
     res.redirect("/post/my");
   } catch (e) {
-    res.status(400).render("PostActivity\\createPost", { loggedIn: true, error: e });
+    res.status(400).render("PostActivity/createPost", { loggedIn: true, error: e });
   }
 });
 
@@ -95,18 +94,18 @@ router.get("/view/:id", async (req, res) => {
     const comments = await post.getComments((decoded ? decoded._id : undefined));
 
     if (comments.length !== 0)
-      return res.render("PostActivity\\publicPost", {
+      return res.render("PostActivity/publicPost", {
         ...options,
         postData: { ...postObject, creator },
         comments: { ...comments },
       });
-    res.render("PostActivity\\publicPost", {
+    res.render("PostActivity/publicPost", {
       ...options,
       postData: { ...postObject, creator },
     });
   } catch (e) {
     console.log(e)
-    res.status(400).render("indexPages\\404", options);
+    res.status(400).render("IndexPages/404", options);
   }
 });
 
@@ -116,15 +115,15 @@ router.post("/edit/:id", auth, async (req, res) => {
     const post = await Post.findByPk(req.params.id);
 
     if (post.owner !== req.user.id) {
-      return res.render("IndexPages\\notAuth", { loggedIn: true });
+      return res.render("IndexPages/notAuth", { loggedIn: true });
     }
 
     const postData = await post.getPost();
 
     const creator = `${req.user.firstName} ${req.user.lastName}`;
-    res.render("PostActivity\\editPost", { loggedIn: true, ...postData, creator });
+    res.render("PostActivity/editPost", { loggedIn: true, ...postData, creator });
   } catch (e) {
-    res.status(500).render("indexPages\\404", { loggedIn: true });
+    res.status(500).render("IndexPages/404", { loggedIn: true });
   }
 });
 
@@ -134,7 +133,7 @@ router.put("/edit/:id", auth, async (req, res) => {
     const post = await Post.findByPk(req.params.id);
 
     if (post.owner !== req.user.id) {
-      return res.render("IndexPages\\notAuth", { loggedIn: true });
+      return res.render("IndexPages/notAuth", { loggedIn: true });
     }
 
     let changed = false;
@@ -155,7 +154,7 @@ router.put("/edit/:id", auth, async (req, res) => {
 
     res.redirect("/post/my");
   } catch (e) {
-    res.status(500).render("indexPages\\404", { loggedIn: true });
+    res.status(500).render("IndexPages/404", { loggedIn: true });
   }
 });
 
@@ -165,14 +164,14 @@ router.delete("/delete/:id", auth, async (req, res) => {
     const post = await Post.findByPk(req.params.id);
 
     if (post.owner !== req.user.id) {
-      return res.render("IndexPages\\notAuth", { loggedIn: true });
+      return res.render("IndexPages/notAuth", { loggedIn: true });
     }
 
     await post.destroy();
 
     res.redirect("/post/my");
   } catch (e) {
-    res.status(500).render("indexPages\\404", { loggedIn: true });
+    res.status(500).render("IndexPages/404", { loggedIn: true });
   }
 });
 
