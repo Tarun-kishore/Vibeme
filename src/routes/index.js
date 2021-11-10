@@ -8,9 +8,7 @@ router.get("/login", (req, res) => {
 });
 
 router.get("/signup", (req, res) => {
-  if (req.cookies.token) return res.redirect("/user/profile");
-  
-  res.render("UserActivity/login");
+  res.redirect('/login')
 });
 
 router.get("/success", (req, res) => {
