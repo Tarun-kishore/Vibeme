@@ -74,9 +74,9 @@ server.listen(port, () => {
   console.log("server runnning");
 });
 
-// *Setting up a websocket server for real time messaging
+// *Setting up a websocket and attaching it to server for real time messaging
 const io = socketIO(server)
-// *defining web socket
+// *defining web socket 
 io.on('connection', function (socket) {
   require('./utils/chat')(socket,io)
 });
