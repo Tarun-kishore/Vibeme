@@ -1,8 +1,14 @@
+// *bcrypt library is used for password hashing
 const bcrypt = require("bcrypt");
+
+// *jsonwebtoken library is used to generate and verify authentication tokens
 const jwt = require("jsonwebtoken");
-const { nextTick } = require("process");
+
+// *database related imports
 const { DataTypes, where } = require("sequelize");
 const sequelize = require("../db/sql");
+
+// *importing models from other files
 const Token = require("./tokens");
 const Post = require("./posts");
 const Like = require("./likes");
@@ -13,6 +19,7 @@ const confirmationToken = require("./confirmationToken")
 const messageThreads = require('../models/messageThreads')
 const messages = require('../models/messages')
 
+// *defining user schema
 const User = sequelize.define("User", {
 	firstName: {
 		type: DataTypes.STRING,
@@ -46,6 +53,7 @@ const User = sequelize.define("User", {
 	}
 );
 
+// *This function return user having email and password passed to it in object
 User.findByCredentials = async function ({ email, password }) {
 	email = email.trim();
 	email = email.toLowerCase();
@@ -60,12 +68,14 @@ User.findByCredentials = async function ({ email, password }) {
 	return user;
 };
 
+// *This function just concatenate first Name and last name to generate full name
 User.prototype.getFullName = function () {
 	const user = this.toJSON();
 
 	return `${user.firstName} ${user.lastName}`;
 };
 
+// *This function handles abstraction and remove sensitive data before passing it to client
 User.prototype.getPublicProfile = function () {
 	const userObject = this.toJSON();
 
@@ -73,6 +83,7 @@ User.prototype.getPublicProfile = function () {
 	return userObject;
 };
 
+// *This function return all posts of a user
 User.prototype.getPosts = async function () {
 	const userObject = this.toJSON();
 
@@ -92,6 +103,7 @@ User.prototype.getPosts = async function () {
 	return options;
 };
 
+// *This function return posts liked by the user
 User.prototype.getLikedPosts = async function () {
 	const user = this.toJSON();
 
@@ -111,6 +123,7 @@ User.prototype.getLikedPosts = async function () {
 	return options;
 };
 
+// *This function return post on which the user commented
 User.prototype.getCommentedPosts = async function () {
 	const user = this.toJSON();
 	const comments = await Comment.findAll({
@@ -129,6 +142,7 @@ User.prototype.getCommentedPosts = async function () {
 	return options;
 };
 
+// *This function return all posts on which the user replied
 User.prototype.getRepliedPosts = async function () {
 	const user = this.toJSON();
 	const replies = await Reply.findAll({
@@ -146,6 +160,7 @@ User.prototype.getRepliedPosts = async function () {
 	return options;
 };
 
+// *This function generate authentication token to start its session
 User.prototype.generateAuthToken = async function () {
 	const user = this;
 	const token = await jwt.sign({ _id: user.id }, process.env.SECRET);
@@ -157,6 +172,7 @@ User.prototype.generateAuthToken = async function () {
 	return token;
 };
 
+// *This function generate token which is sent to user to confirm their account
 User.prototype.generateConfirmationToken = async function () {
 	const user = this;
 	const token = await jwt.sign({ _id: user.id }, process.env.EMAIL_SECRET);
@@ -168,6 +184,7 @@ User.prototype.generateConfirmationToken = async function () {
 	return token;
 };
 
+// *This function handles the queries for non-verified users
 User.beforeFind((options) => {
 	if (!options.where) {
 		options.where = {}
@@ -177,6 +194,8 @@ User.beforeFind((options) => {
 	}
 })
 
+// *This function makes sure the hash of password is saved before saving 
+// !we do not save password without hashing because of security reasons because in case of database breach someone don't get access to user
 User.beforeSave(async (user, options) => {
 	if (user.changed("password")) {
 		user.password = await bcrypt.hash(user.password, 8);
@@ -197,6 +216,7 @@ User.beforeSave(async (user, options) => {
 	}
 });
 
+// *defining the relations between various models
 User.hasMany(Token, {
 	foreignKey: "user",
 	onDelete: "CASCADE",
@@ -336,6 +356,7 @@ messages.belongsTo(User, {
 	as: 'receiverUser'
 })
 
+//*this command keeps the database in sync with server 
 User.sync();
 
 module.exports = User;

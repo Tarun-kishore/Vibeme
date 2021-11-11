@@ -1,7 +1,13 @@
+// *This files handles database related tasks for connections of replies
+
+// *importing database library and connection 
 const { DataTypes, where } = require("sequelize");
 const sequelize = require("../db/sql");
+
+// *importing comment model from file
 const Comment = require("./comments");
 
+// *defining reply model schema
 const Reply = sequelize.define("Reply",{
     postId: {
       type: DataTypes.INTEGER,
@@ -41,6 +47,7 @@ const Reply = sequelize.define("Reply",{
   }
 );
 
+// *This command allows database to be in sync with server
 Reply.sync();
 
 module.exports = Reply;

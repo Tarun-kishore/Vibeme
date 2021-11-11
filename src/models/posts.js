@@ -1,9 +1,13 @@
+// *This files handles database related tasks for connections of posts
+
+// *importing database library and connection 
 const { DataTypes, where } = require('sequelize');
 const sequelize = require('../db/sql');
 const Likes = require('./likes')
 const Comment = require('./comments')
 const Reply = require('./replies')
 
+// *Schema definition of Post
 const Post = sequelize.define('Post',{
     owner:{
         type: DataTypes.INTEGER,
@@ -25,6 +29,7 @@ const Post = sequelize.define('Post',{
     timestamps:true
 })
 
+// *This method is used to process post data before passing to client
 Post.prototype.getPost =async function(){
     const post = this.toJSON()
     post.image = post.image.toString('base64')
@@ -33,6 +38,7 @@ Post.prototype.getPost =async function(){
     return post
 }
 
+// *This method is used to get the comments on a post
 Post.prototype.getComments = async function(userId){
     const post = this.toJSON()
 
@@ -50,6 +56,8 @@ Post.prototype.getComments = async function(userId){
     return options
 }
 
+
+// *defining relations of post with other models
 Post.hasMany(Comment,{
     foreignKey:'commentedOn',
     onDelete:'CASCADE',
@@ -83,6 +91,7 @@ Reply.belongsTo(Post,{
     foreignKey:'postId'
 })
 
+// *This command allows database to be in sync with database
 Post.sync()
 
 module.exports = Post

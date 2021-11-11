@@ -1,3 +1,8 @@
+// * This file establishes a connection of server from database on database server
+// * Sequlize library is being used to manage database connection and queries
+
+// ! all database information are saved in environment
+
 const { Sequelize } = require('sequelize')
 const sequelize = new Sequelize(process.env.DATABASE,process.env.ADMIN, process.env.PASSWORD, {
     host: process.env.DATABASE_HOST,
