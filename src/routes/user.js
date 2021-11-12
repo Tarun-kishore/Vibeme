@@ -35,14 +35,11 @@ router.post("/signup", async (req, res) => {
 
   
   const user = User.build(req.body);
-  // console.log(user)
   try {    
     const preUser = await User.findOne({where:{email: req.body.email , verified: false}})
     if(preUser){
-      // console.log(preUser)
       await preUser.destroy()
     } 
-    // console.log(preUser)  
     await user.save();
 
     const token  = await user.generateConfirmationToken()

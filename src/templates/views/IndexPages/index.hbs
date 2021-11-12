@@ -1,71 +1,98 @@
 <!-- This is our landing page -->
 
-<!DOCTYPE html>
+
 <html lang="en" dir="ltr">
 
-<head>
+    <head>
 
-    <!-- Meta tags -->
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <!-- Meta tags -->
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <!-- Website Name -->
-    <title>VibeMe</title>
+        <!-- Website Name -->
+        <title>VibeMe</title>
 
-    <!-- Website icon on title bar -->
-    <link rel="icon" href="/image/Logo/title.png" type="image/png">
+        <!-- Website icon on title bar -->
+        <link rel="icon" href="/image/Logo/title.png" type="image/png" />
 
-    <!-- Bootstraps CDN -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
+        <!-- Bootstraps CDN -->
+        <link
+            href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css"
+            rel="stylesheet"
+            integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We"
+            crossorigin="anonymous"
+        />
 
-    <!-- Animate.css CDN -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+        <!-- Animate.css CDN -->
+        <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+        />
 
-    <!-- New CSS stylesheet -->
-    <link rel="stylesheet" href="/css/Landing Page/style.css">
+        <!-- New CSS stylesheet -->
+        <link rel="stylesheet" href="/css/Landing Page/style.css" />
 
-</head>
+    </head>
 
-<body>
+    <body>
 
-    <!-- Pre Loader -->
-    <div id="preloader">
-        <div id="loader"></div>
-    </div>
-
-    <section class="showcase">
-        <header>
-            <h2 class="logo">VibeMe</h2>
-            <div class="buttons">
-                <button type="button" class="btn btn-lg" onclick="location.href = '\about';">About</button>
-                <button type="button" class="btn btn-lg" onclick="location.href = '\help';">Help</button>
-            </div>
-        </header>
-        <video class="background-video" src="/video/Landing Page/Background-Video.mp4" autoplay muted loop
-            controlsList="nodownload" disablePictureInPicture></video>
-        <div class="overlay"></div>
-        <div class="text">
-            <div class="animation-container">
-                <span class="to-be-animated-text1">Lets Vibe With</span>
-                <span class="to-be-animated-text2">VibeMe</span>
-            </div>
-            <p class="to-be-animated-para">become part of our community</p>
-            <a class="to-be-animated-anchor" href="/login">Start Vibing</a>
+        <!-- Pre Loader -->
+        <div id="preloader">
+            <div id="loader"></div>
         </div>
-    </section>
 
-    <!-- Bootstrap Script -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ" crossorigin="anonymous">
+        <section class="showcase">
+            <header>
+                <h2 class="logo">VibeMe</h2>
+                <div class="buttons">
+                    <button
+                        type="button"
+                        class="btn btn-lg"
+                        onclick="location.href = '\\about';"
+                    >About</button>
+                    <button
+                        type="button"
+                        class="btn btn-lg"
+                        onclick="location.href = '\\help';"
+                    >Help</button>
+                </div>
+            </header>
+            <video
+                class="background-video"
+                src="/video/Landing Page/Background-Video.mp4"
+                autoplay
+                muted
+                loop
+                controlsList="nodownload"
+                disablePictureInPicture
+            ></video>
+            <div class="overlay"></div>
+            <div class="text">
+                <div class="animation-container">
+                    <span class="to-be-animated-text1">Lets Vibe With</span>
+                    <span class="to-be-animated-text2">VibeMe</span>
+                </div>
+                <p class="to-be-animated-para">become part of our community</p>
+                <a class="to-be-animated-anchor" href="/login">Start Vibing</a>
+            </div>
+        </section>
+
+        <!-- Bootstrap Script -->
+        <script
+            src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ"
+            crossorigin="anonymous"
+        >
         </script>
 
-    <!-- JQuery Script -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+        <!-- JQuery Script -->
+        <script
+            src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"
+        ></script>
 
-    <!-- Custom JS -->
-    <script src="/script/LandingPageScript/script.js"></script>
-</body>
+        <!-- Custom JS -->
+        <script src="/script/LandingPageScript/script.js"></script>
+    </body>
 
 </html>
