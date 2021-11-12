@@ -6,7 +6,7 @@
     top: 0;
     left: 0;
     width: 100%;
-    height: 100vh;
+    height: 100%;
     z-index: 1000;
 }
 
@@ -267,9 +267,9 @@ header .logo {
     animation-delay: 1s;
 }
 
-.animate__animated.animate__fadeInRightBig {
+.animate__animated.animate__jackInTheBox {
     animation-duration: 1.5s;
-    animation-delay: 1.8s;
+    animation-delay: 2.3s;
 }
 
 @media (max-width: 991px) {

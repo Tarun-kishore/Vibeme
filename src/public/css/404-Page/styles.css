@@ -94,3 +94,9 @@
     width: 120%;
     left: -10%;
 }
+
+@media (max-height: 700px) {
+    .main-content {
+        margin-top: 30px;
+    }
+}
