@@ -1,3 +1,6 @@
+// *This files handles database related tasks for likes
+
+// *importing database library and connection 
 const { DataTypes, where } = require('sequelize');
 const sequelize = require('../db/sql');
 
@@ -22,7 +25,7 @@ const Likes = sequelize.define('Likes',{
     timestamps:true
 })
 
+// *This line allows the server to automatically create database table if it does not exist already
 Likes.sync()
-
 
 module.exports = Likes

@@ -6,7 +6,7 @@
     top: 0;
     left: 0;
     width: 100%;
-    height: 100vh;
+    height: 100%;
     z-index: 1000;
 }
 
@@ -21,7 +21,6 @@
     border-radius: 50%;
     border: 3px solid transparent;
     border-top-color: #9370DB;
-    -webkit-animation: spin 2s linear infinite;
     animation: spin 2s linear infinite;
 }
 #loader:before {
@@ -268,9 +267,9 @@ header .logo {
     animation-delay: 1s;
 }
 
-.animate__animated.animate__fadeInRightBig {
+.animate__animated.animate__jackInTheBox {
     animation-duration: 1.5s;
-    animation-delay: 1.8s;
+    animation-delay: 2.3s;
 }
 
 @media (max-width: 991px) {

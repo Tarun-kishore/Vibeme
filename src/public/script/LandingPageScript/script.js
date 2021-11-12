@@ -12,4 +12,5 @@ window.addEventListener('load', () => {
     text2.classList.add('text2');
     para.classList.add('animate__animated', 'animate__fadeInLeftBig');
     anchor.classList.add('animate__animated', 'animate__fadeInRightBig');
+    anchor.classList.add('animate__animated', 'animate__jackInTheBox');
 });

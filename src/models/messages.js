@@ -1,6 +1,10 @@
+// *This files handles database related tasks for messages
+
+// *importing database library and connection 
 const { DataTypes, where } = require('sequelize');
 const sequelize = require('../db/sql')
 
+// *Schema definitions
 const message = sequelize.define('message', {
     thread: {
         type: DataTypes.INTEGER,
@@ -33,6 +37,7 @@ const message = sequelize.define('message', {
     }
 })
 
+// *Schema statics for finding messages in a given message thread
 message.findMessages = async (threadId, userId,User) => {
     const messages = await message.findAll({
         where: { thread: threadId }, include: {
@@ -60,6 +65,7 @@ message.findMessages = async (threadId, userId,User) => {
 
 }
 
+// *This line allows the server to automatically create database table if it does not exist already
 message.sync()
 
 module.exports = message

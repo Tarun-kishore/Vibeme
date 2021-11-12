@@ -1,9 +1,15 @@
+// *This files contains the definition of schema of comment
+
+// *importing database library and connection
 const { DataTypes, where } = require('sequelize');
 const sequelize = require('../db/sql')
+
+// * importing other models from files
 const Reply = require('./replies')
 const User = require('./user')
 const Post = require('./posts')
 
+// *Schema definition
 const Comment =sequelize.define('Comment',{
     commentedOn :{
         type: DataTypes.INTEGER,
@@ -33,6 +39,7 @@ const Comment =sequelize.define('Comment',{
     timestamps:true
 })
 
+// *Schema statics definitions
 Comment.getCount =async function(postId){
     const comments = await Comment.findAll({where:{commentedOn:postId}})
 
@@ -47,6 +54,7 @@ Comment.getCount =async function(postId){
     return count
 }
 
+// *Comments methods definitions
 Comment.prototype.getCommentData = async function(){
     let comment = this.toJSON()
     comment.repliesCount = 0
@@ -80,7 +88,7 @@ Comment.prototype.getCommentWithReplies = function(userId){
     return comment
 }
 
-
+// *defining the relationship between comment and reply model
 Comment.hasMany(Reply,{
     foreignKey:'repliedOn',
     onDelete:'CASCADE',
@@ -91,6 +99,7 @@ Reply.belongsTo(Comment,{
     foreignKey:'repliedOn'
 })
 
+// *This line allows the server to automatically create database table if it does not exist already
 Comment.sync()
 
 module.exports = Comment
