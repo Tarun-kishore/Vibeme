@@ -21,7 +21,6 @@
     border-radius: 50%;
     border: 3px solid transparent;
     border-top-color: #9370DB;
-    -webkit-animation: spin 2s linear infinite;
     animation: spin 2s linear infinite;
 }
 #loader:before {
