@@ -15,7 +15,7 @@ const sendConfirmationMail = (link, email) => {
       <div
           style="background-image: url(https://i.ibb.co/WWvmk18/title.png); margin: 30px auto 30px auto; background-size: contain; width: 50px; height: 50px; background-repeat: no-repeat;">
       </div>
-      <div style="background-color: white; margin: 0 auto 3% auto; width: 571px; height:667px; border-radius: 10px; overflow: hidden; box-shadow: 0 0 10px 3px rgba(0, 0, 0, 0.1) ;">
+      <div style="background-color: white; margin: 0 auto 3% auto; width: 571px; height:667px; border-radius: 10px; overflow: hidden; box-shadow: 0 0 10px 3px rgba(0, 0, 0, 0.1);">
           <div
               style="width: 100%; background-image: url(https://i.ibb.co/74PFPCX/1.png); height: 300px; background-repeat: no-repeat; object-fit: cover;">
           </div>
