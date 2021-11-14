@@ -12,6 +12,7 @@ const confirmationToken = sequelize.define('confirmationToken',{
           model: "Users",
           key: "id",
         },
+        unique:true
     },
     token: {
     type: DataTypes.STRING,
