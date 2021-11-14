@@ -1,0 +1,112 @@
+body {
+    background-color: #f2f8fd;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-family: Helvetica, sans-serif;
+}
+
+.top-text {
+    text-align: center;
+    margin-top: 30px;
+}
+
+.top-text h1 {
+    font-size: 40px;
+    margin-bottom: 10px;
+}
+
+.top-text p {
+    font-size: 16px;
+    opacity: 0.7;
+    margin-bottom: 10px;
+}
+
+.background-photo {
+    background-image: url(/image/Verify-Email-Images/1.webp);
+    height: 60vh;
+    width: 100%;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center center;
+}
+
+.bottom-text {
+    text-align: center;
+}
+
+.bottom-text p {
+    font-size: 14px;
+    opacity: 0.6;
+}
+
+.bottom-buttons {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    min-width: 40%;
+    margin-top: 10px;
+}
+
+.bottom-buttons button {
+    margin-left: 20px;
+    margin-right: 20px;
+}
+
+.cool-button-1 {
+    color: #fefefe;
+    background-color: #0d6efd;
+    border-radius: 3px;
+    font-size: 13px;
+    padding: 10px 15px;
+    font-weight: 700;
+    text-transform: uppercase;
+    width: 90%;
+    letter-spacing: 1px;
+}
+
+.cool-button-1:hover {
+    transition-timing-function: cubic-bezier(0.6, 4, 0.3, 0.8);
+    animation: gelatine 0.5s 1;
+    color: #fefefe;
+}
+
+@keyframes gelatine {
+    0% {
+        transform: scale(1,1);
+    }
+    25% {
+        transform: scale(0.9,1.1);
+    }
+    50% {
+        transform: scale(1.1,0.9);
+    }
+    75% {
+        transform: scale(0.95,1.01);
+    }
+    100% {
+        transform: scale(1,1);
+    }
+    
+}
+
+.cool-button-2 {
+    padding: 10px 15px;
+    border: 1px solid #0d6efd;
+    color: #0d6efd;
+    font-weight: 700;
+    text-transform: uppercase;
+    font-size: 13px;
+    transition: all .2s ease-in-out;
+    width: 90%;
+    letter-spacing: 1px;
+}
+
+.cool-button-2:hover {
+    background: #0d6efd;
+    border: 1px solid #0d6efd;
+    color: #fefefe;
+    border-radius: 30px;
+}
