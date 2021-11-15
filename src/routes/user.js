@@ -45,7 +45,7 @@ router.post("/signup", async (req, res) => {
 
         mail.sendConfirmationMail(`${req.headers.host}/user/verify/${user.id}/${token}`,user.email)
 
-        res.render('indexPages/verifyEmail', { email: user.email })
+        res.render('IndexPages/verifyEmail', { email: user.email })
     } catch (e) {
         res.status(400).send(e);
     }
