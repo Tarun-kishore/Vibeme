@@ -16,6 +16,7 @@
    background: -moz-linear-gradient(to left, #F4C4F3 0%, #fc67fa 100%);
    background: linear-gradient(to left, #F4C4F3 0%, #fc67fa 100%);
    -webkit-background-clip: text;
+   background-clip: text;
    -webkit-text-fill-color: transparent;
  }
 
@@ -92,6 +93,7 @@
    background: -moz-linear-gradient(to right, #FF00CC 0%, #333399 100%);
    background: linear-gradient(to right, #FF00CC 0%, #333399 100%);
    -webkit-background-clip: text;
+   background-clip: text;
    -webkit-text-fill-color: transparent;
    background-color: transparent;
    transition: all 1s;
@@ -196,6 +198,7 @@
      background: -moz-linear-gradient(to bottom, #FF00CC 0%, #333399 100%);
      background: linear-gradient(to bottom, #FF00CC 0%, #333399 100%);
      -webkit-background-clip: text;
+     background-clip: text;
      -webkit-text-fill-color: transparent;
      background-color: transparent;
      transition: all 1s;
@@ -211,6 +214,5 @@
  footer p {
    margin-bottom: 0;
    background-color: #8d71d1;
-   ;
    color: white;
  }

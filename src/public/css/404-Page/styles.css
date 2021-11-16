@@ -86,7 +86,6 @@
 .button:hover {
     cursor: pointer;
     color: white;
-
 }
 
 .button:hover:after {
