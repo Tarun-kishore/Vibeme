@@ -124,26 +124,24 @@
 
       <div class="profile">
           <img src="{{profilePicture}}" alt="" class="img-fluid rounded-circle">
-        <h1 class="text"><a href="index.html">Username</a></h1>
+          <h1 class="text"><a href="index.html">{{firstName}} {{lastName}}</a></h1>
         <div id="followerscount">
           <div class="wrap">
-            <p class="count">23</p>
-            <span class="small">Followers</span>
+              <p class="count">{{connectionsCount}}</p>
+            <span class="small">Connections</span>
           </div>
           <div class="wrap">
             <p class="count">45</p>
             <span class="small">Following</span>
           </div>
           <div class="wrap">
-            <p class="count">9</p>
+              <p class="count">{{postCount}}</p>
             <span class="small">posts</span>
           </div>
         </div>
         <div id="status">
           <span>
-            this is some random text to examine thi section
-            this is some random text to examine
-            this is some random text to examine thi section
+              {{bio}}
           </span>
         </div>
       </div>
@@ -155,8 +153,8 @@
   <!-- ======= Hero Section ======= -->
   <section id="hero" class="d-flex flex-column justify-content-center align-items-center">
     <div class="hero-container" data-aos="fade-in">
-      <h1>Username</h1>
-      <p>I'm <span class="typed" data-typed-items="Smart, fit, Photographer, qualities"></span></p>
+        <h1>{{firstName}} {{lastName}}</h1>
+        <p>I'm <span class="typed" data-typed-items="{{qualities.[0]}},{{qualities.[1]}},{{qualities.[2]}},{{qualities.[3]}}"></span></p>
     </div>
   </section><!-- End Hero -->
 

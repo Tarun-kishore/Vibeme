@@ -1,3 +1,7 @@
+<link href="https://unpkg.com/filepond/dist/filepond.css" rel="stylesheet" />
+<link href="https://unpkg.com/filepond-plugin-image-preview/dist/filepond-plugin-image-preview.css" rel="stylesheet">
+<link href="/css/Filepond/filepond.css" rel="stylesheet">
+
 <div id="profile" class="container-md mt-5">
     <form action="/user/update?_method=PUT" method="post">
         <div class="mb-3 row">
@@ -20,9 +24,36 @@
                 <input type="text" readonly  class="form-control" id="staticEmail" name="email" value="{{email}}">
                 <div class="form-error">email cannot be changed</div>
             </div>
+        <div class="container-md">
+       <input type="file" name="profilePicture" placeholder="Profile Picture" class="filepond" value="{{profilePicture}}">    Upload image
+       </div>
+       <div>
+
+       User Bio
+       <input type="textarea" value="{{bio}}" name="bio" style="border: 2px solid black;" cols="30" rows="10" >
+        
+       </div>
+
+       <div>
+            Define Yourself:
+            <input type="text" name="qualities[]" value="{{qualities.[0]}}">
+            <input type="text" name="qualities[]" value="{{qualities.[1]}}">
+            <input type="text" name="qualities[]" value="{{qualities.[2]}}">
+            <input type="text" name="qualities[]" value="{{qualities.[3]}}">
         </div>
+       </div>
         <button type="submit" class="btn btn-primary">Update Profile</button>
 
     </form>
 
     </div>
+
+    <script src="https://unpkg.com/filepond@^4/dist/filepond.js"></script>
+    
+    <script src="https://unpkg.com/filepond-plugin-image-preview/dist/filepond-plugin-image-preview.js"></script>
+    <script src="https://unpkg.com/filepond-plugin-file-encode/dist/filepond-plugin-file-encode.js"></script>
+    <script src="https://unpkg.com/filepond-plugin-image-resize/dist/filepond-plugin-image-resize.js"></script>
+    
+    <script src="https://unpkg.com/filepond-plugin-image-transform/dist/filepond-plugin-image-transform.js"></script>
+    
+    <script src="/script/Filepond/filepond.js"></script>

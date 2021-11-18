@@ -136,11 +136,12 @@ router.post("/exist", async (req, res) => {
   }
 });
 
-router.get("/profile", auth, (req, res) => {
+router.get("/profile", auth, async (req, res) => {
+  const userObject = await req.user.getPublicProfile();
   try {
     res.render("UserActivity/profile", {
       loggedIn: true,
-      ...req.user.getPublicProfile(),
+      ...userObject,
     });
   } catch (e) {
     res.status(500).send();
@@ -157,14 +158,22 @@ router.delete("/delete", auth, async (req, res) => {
   }
 });
 
-router.post("/update", auth, (req, res) => {
+router.post("/update", auth, async (req, res) => {
   const data = { loggedIn: true, ...req.user.getPublicProfile() };
   res.render("UserActivity/updateProfile", data);
 });
 
 router.put("/update", auth, async (req, res) => {
   const updates = Object.keys(req.body);
-  updates.forEach((update) => (req.user[update] = req.body[update]));
+  if (req.body.profilePicture) {
+    const img = JSON.parse(req.body.profilePicture);
+    const buffer = new Buffer.from(img.data, "base64");
+
+    req.user.profilePicture = buffer;
+  }
+  updates.forEach((update) => {
+    if (update != "profilePicture") req.user[update] = req.body[update];
+  });
   try {
     await req.user.save();
     res.redirect("/success");
@@ -199,7 +208,7 @@ router.get("/view/:id", async (req, res) => {
 
   try {
     const user = await User.findByPk(req.params.id);
-    const userObject = user.getPublicProfile();
+    const userObject = await user.getPublicProfile();
     delete userObject.email;
     res.render("UserActivity/publicProfile", { ...options, ...userObject });
   } catch (e) {

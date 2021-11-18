@@ -5,7 +5,7 @@ const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 
 // *database related imports
-const { DataTypes, where } = require("sequelize");
+const { DataTypes, Op, where } = require("sequelize");
 const sequelize = require("../db/sql");
 
 // *importing models from other files
@@ -54,6 +54,17 @@ const User = sequelize.define(
       defaultValue: "",
       allowNull: false,
     },
+    qualities: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      defaultValue: ";;;",
+      get() {
+        return this.getDataValue("qualities").split(";");
+      },
+      set(val) {
+        this.setDataValue("qualities", val.join(";"));
+      },
+    },
     verified: {
       type: DataTypes.BOOLEAN,
       allowNull: false,
@@ -69,6 +80,7 @@ User.prototype.toJSON = function () {
   const user = this.dataValues;
   user.profilePicture =
     "data:image/png;base64," + user.profilePicture.toString("base64");
+  user.qualities = this.qualities;
   return user;
 };
 
@@ -95,9 +107,27 @@ User.prototype.getFullName = function () {
 };
 
 // *This function handles abstraction and remove sensitive data before passing it to client
-User.prototype.getPublicProfile = function () {
+User.prototype.getPublicProfile = async function () {
   const userObject = this.toJSON();
+  try {
+    const post = await Post.findAll({
+      where: {
+        owner: this.id,
+      },
+    });
+    userObject.postCount = post.length;
 
+    const connections = await Connection.findAll({
+      where: {
+        pending: false,
+        [Op.or]: [{ sentTo: this.id }, { sentBy: this.id }],
+      },
+    });
+
+    userObject.connectionsCount = connections.length;
+  } catch (e) {
+    console.log(e);
+  }
   delete userObject.password;
   return userObject;
 };
