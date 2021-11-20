@@ -119,7 +119,7 @@
             <form action="/user/update?_method=PUT" method="post">
                 <div class="content-box">
                     <div class="photo-box">
-                        <img src="/image/Edit-Profile-Page-Images/profile.jpeg" alt="">
+                        <img src="{{profilePicture}}" alt="">
                         <div class="upload-photo-button">
                             <i class="fas fa-pencil-alt"></i>
                         </div>
@@ -173,8 +173,6 @@
         </div>
     </div>
 
-    {{!-- {{>updateProfileSection}} --}}
-
     <!-- Bootstrap Script -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ"
@@ -183,18 +181,16 @@
     <!-- JQuery Script -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 
+    <!-- FilePond Script -->
     <script src="https://unpkg.com/filepond@^4/dist/filepond.js"></script>
-
     <script src="https://unpkg.com/filepond-plugin-image-preview/dist/filepond-plugin-image-preview.js"></script>
     <script src="https://unpkg.com/filepond-plugin-file-encode/dist/filepond-plugin-file-encode.js"></script>
     <script src="https://unpkg.com/filepond-plugin-image-resize/dist/filepond-plugin-image-resize.js"></script>
-
     <script src="https://unpkg.com/filepond-plugin-image-transform/dist/filepond-plugin-image-transform.js"></script>
 
+    <!-- Custom JS-->
     <script src="/script/Filepond/filepond.js"></script>
-
     <script src="/script/editProfileScript/script.js"></script>
-
 
 </body>
 
