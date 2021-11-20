@@ -21,112 +21,93 @@
     <!-- Font Awesome -->
     <script src="https://kit.fontawesome.com/d021e746cf.js" crossorigin="anonymous"></script>
 
-    <!-- Font Style -> Space Mono Regular 400 -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Lato:wght@300&family=Nunito+Sans:wght@600&family=Roboto:wght@500&display=swap"
-        rel="stylesheet">
+    <!-- Vendor CSS Files -->
+    <link href="/css/vendor userbase/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/css/vendor userbase/icofont/icofont.min.css" rel="stylesheet">
+    <link href="/css/vendor userbase/boxicons/css/boxicons.min.css" rel="stylesheet">
+    <link href="/css/vendor userbase/venobox/venobox.css" rel="stylesheet">
+    <link href="/css/vendor userbase/owl.carousel/assets/owl.carousel.min.css" rel="stylesheet">
+    <link href="/css/vendor userbase/aos/aos.css" rel="stylesheet">
 
     <!-- Custom CSS stylesheet -->
-    <link rel="stylesheet" href="/css/Login Page/style.css">
-    <link rel="stylesheet" href="/css/base.css">
+    <link rel="stylesheet" href="/css/profile page/navbar.css">
+
+
 </head>
 
 <body>
 
-    <!-- making a grid for this div -->
-    <div class="loginPage">
-
-        <header>
-            <!-- Navbar -->
-            <nav class="navbar navbar-expand-lg navbar-mainbg">
-                <!-- Logo -->
-                <a class="navbar-brand navbar-logo" href="/">VibeMe</a>
-                <!-- Collapse Button -->
-                <button id="tog" class="navbar-toggler button" type="button" data-bs-toggle="collapse"
+    <!-- nav bar -->
+    <div id="nav">
+        <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top pt-0 pb-0">
+            <div class="container-fluid">
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                     data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
                     aria-expanded="false" aria-label="Toggle navigation">
-                    <!-- Hamburger Icon when screen size is less -->
-                    <span class="navbar-toggler-icon"><i class="fas fa-bars nav-button"></i></span>
+                    <span class="navbar-toggler-icon"></span>
                 </button>
-                <!-- Links -->
-                {{#if loggedIn}}
-                  <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <ul class="navbar-nav ms-auto">
-                        <!-- For Styling -->
-                        <div class="hori-selector">
-                            <div class="left"></div>
-                            <div class="right"></div>
-                        </div>
-                        <!-- Nav Links -->
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
                         <li class="nav-item">
-                            <a class="nav-link" href="/about">
-                                About
-                            </a>
+                            <a class="nav-link active" aria-current="page" href="/post/all"><i
+                                    class="fas fa-home"></i></a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="/help">
-                                Help
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" id="navbarContent"href="/post/all">
-                                All Post
-                            </a>
-                        </li>
-                        <li class="nav-item active">
-                            <a class="nav-link" id="navbarContent"href="/user/profile">
-                                my Profile
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" id="navbarContent"href="/user/logout">
-                                Logout
-                            </a>
-                        </li>
-                    </ul> 
-                  </div>
-
-                {{else}}
-                  <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                      <ul class="navbar-nav ms-auto">
-                        <!-- For Styling -->
-                        <div class="hori-selector">
-                            <div class="left"></div>
-                            <div class="right"></div>
-                        </div>
-                        <!-- Nav Links -->
-                        <li class="nav-item">
-                            <a class="nav-link" href="/about">
-                                About
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="/help">
-                                Help
-                            </a>
-                        </li>
-                        <li class="nav-item active">
-                            <a class="nav-link" id="navbarContent"href="/login">
-                                Sign in
-                            </a>
-                        </li>
-                    </ul>  
-                  </div>
-              {{/if}}
-            </nav>
-        </header>
 
 
-{{>updateProfileSection}}
+                            {{!-- this is blank --}}
 
-<footer>
-            <p class="text-center">&copy; 2021 All rights Reserved</p>
-        </footer>
 
+                            <a class="nav-link" href="/post/my"><i class="fas fa-compass"></i></a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href="/post/create"><i
+                                    class="fas fa-plus"></i></a>
+                        </li>
+                        <li class="nav-item">
+
+
+                            {{!-- this is blank --}}
+
+
+                            <a class="nav-link text-capitalize" href="/message/viewAll"><i
+                                    class="fab fa-facebook-messenger"></i></a>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button"
+                                data-bs-toggle="dropdown" aria-expanded="false">
+                                <i class="fas fa-user"></i>
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <li><a class="dropdown-item" href="/user/profile">PROFILE</a></li>
+                                <li><a class="dropdown-item" href="/user/logout">LOGOUT</a></li>
+                                <li>
+                                    <form action="/user/update" method="post">
+                                        <button class="dropdown-item">EDIT PROFILE</button>
+                                    </form>
+                                </li>
+                                <li>
+                                    <form action="/user/delete?_method=DELETE" method="post"
+                                        onsubmit="return confirm('Are you sure you want to delete the account')">
+                                        <button class="dropdown-item">DELETE ACCOUNT</button>
+                                    </form>
+                                </li>
+                                <li>
+                                    <form action="/user/change" method="post">
+                                        <button class="dropdown-item">CHANGE PASSWORD</button>
+                                    </form>
+                                </li>
+                                <li><a class="dropdown-item" href="/connect/view">VIEW CONN</a></li>
+                                <li>
+                                    <hr class="dropdown-divider">
+                                </li>
+                            </ul>
+                    </ul>
+                </div>
+        </nav>
     </div>
-
+    
+    {{>updateProfileSection}}
 
     <!-- Bootstrap Script -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js"
@@ -136,8 +117,7 @@
     <!-- JQuery Script -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 
-    <!-- Custom Script -->
-    <script src="/script/script.js"></script>
+
 </body>
 
 
