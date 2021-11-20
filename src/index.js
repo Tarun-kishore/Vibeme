@@ -30,7 +30,8 @@ const postRouter = require("./routes/post");
 const commentRouter = require("./routes/comments");
 const connectionRouter = require("./routes/connection")
 const messageRouter = require("./routes/messages");
-const searchRouter = require('./routes/search')
+const searchRouter = require('./routes/search');
+const {request} = require("https");
 
 // *setting the templating engine to handlebars
 app.set("view engine", "hbs");
