@@ -159,7 +159,8 @@ router.delete("/delete", auth, async (req, res) => {
 });
 
 router.post("/update", auth, async (req, res) => {
-  const data = { loggedIn: true, ...req.user.getPublicProfile() };
+  const userData = await req.user.getPublicProfile();
+  const data = { loggedIn: true, ...userData };
   res.render("UserActivity/updateProfile", data);
 });
 
