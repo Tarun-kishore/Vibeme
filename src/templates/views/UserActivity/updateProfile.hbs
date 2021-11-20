@@ -29,85 +29,151 @@
     <link href="/css/vendor userbase/owl.carousel/assets/owl.carousel.min.css" rel="stylesheet">
     <link href="/css/vendor userbase/aos/aos.css" rel="stylesheet">
 
+    <!-- FilePond -->
+    <link href="https://unpkg.com/filepond/dist/filepond.css" rel="stylesheet" />
+    <link href="https://unpkg.com/filepond-plugin-image-preview/dist/filepond-plugin-image-preview.css"
+        rel="stylesheet">
+    <link href="/css/Filepond/filepond.css" rel="stylesheet">
+
+
     <!-- Custom CSS stylesheet -->
-    <link rel="stylesheet" href="/css/profile page/navbar.css">
+    <link rel="stylesheet" href="/css/Edit-Profile-Page/styles.css">
 
 
 </head>
 
 <body>
 
-    <!-- nav bar -->
-    <div id="nav">
-        <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top pt-0 pb-0">
-            <div class="container-fluid">
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-                    data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
-                    aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-                        <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href="/post/all"><i
-                                    class="fas fa-home"></i></a>
-                        </li>
-                        <li class="nav-item">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">Navbar</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="#">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Link</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                            Dropdown
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <li><a class="dropdown-item" href="#">Action</a></li>
+                            <li><a class="dropdown-item" href="#">Another action</a></li>
+                            <li>
+                                <hr class="dropdown-divider">
+                            </li>
+                            <li><a class="dropdown-item" href="#">Something else here</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link disabled">Disabled</a>
+                    </li>
+                </ul>
+                <form class="d-flex">
+                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                    <button class="btn btn-outline-success" type="submit">Search</button>
+                </form>
+            </div>
+        </div>
+    </nav>
 
-
-                            {{!-- this is blank --}}
-
-
-                            <a class="nav-link" href="/post/my"><i class="fas fa-compass"></i></a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href="/post/create"><i
-                                    class="fas fa-plus"></i></a>
-                        </li>
-                        <li class="nav-item">
-
-
-                            {{!-- this is blank --}}
-
-
-                            <a class="nav-link text-capitalize" href="/message/viewAll"><i
-                                    class="fab fa-facebook-messenger"></i></a>
-                        </li>
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button"
-                                data-bs-toggle="dropdown" aria-expanded="false">
-                                <i class="fas fa-user"></i>
-                            </a>
-                            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <li><a class="dropdown-item" href="/user/profile">PROFILE</a></li>
-                                <li><a class="dropdown-item" href="/user/logout">LOGOUT</a></li>
-                                <li>
-                                    <form action="/user/update" method="post">
-                                        <button class="dropdown-item">EDIT PROFILE</button>
-                                    </form>
-                                </li>
-                                <li>
-                                    <form action="/user/delete?_method=DELETE" method="post"
-                                        onsubmit="return confirm('Are you sure you want to delete the account')">
-                                        <button class="dropdown-item">DELETE ACCOUNT</button>
-                                    </form>
-                                </li>
-                                <li>
-                                    <form action="/user/change" method="post">
-                                        <button class="dropdown-item">CHANGE PASSWORD</button>
-                                    </form>
-                                </li>
-                                <li><a class="dropdown-item" href="/connect/view">VIEW CONN</a></li>
-                                <li>
-                                    <hr class="dropdown-divider">
-                                </li>
-                            </ul>
-                    </ul>
+    <div class="main-frame">
+        <div class="sidebar-div">
+            <div class="sidebar-heading-outer">
+                <div class="sidebar-heading">
+                    <h1>User Profile</h1>
                 </div>
-        </nav>
+            </div>
+            <div class="sidebar-edit-profile-outer" onclick="window.location.href='#'">
+                <div class="sidebar-content">
+                    <i class="fas fa-user-edit"></i>
+                    <p>Edit Profile</p>
+                </div>
+                <div class="border-decoration"></div>
+            </div>
+            <div class="sidebar-change-password-outer" onclick="window.location.href='#'">
+                <div class="sidebar-content">
+                    <i class="fas fa-key"></i>
+                    <p>Change Password</p>
+                </div>
+                <div class="border-decoration Invisible"></div>
+            </div>
+            <div class="sidebar-delete-account-outer" onclick="window.location.href='#'">
+                <div class="sidebar-content">
+                    <i class="fas fa-trash"></i>
+                    <p>Delete Account</p>
+                </div>
+                <div class="border-decoration Invisible"></div>
+            </div>
+        </div>
+        <div class="content-div">
+            <form action="/user/update?_method=PUT" method="post">
+                <div class="content-box">
+                    <div class="photo-box">
+                        <img src="/image/Edit-Profile-Page-Images/profile.jpeg" alt="">
+                        <div class="upload-photo-button">
+                            <i class="fas fa-pencil-alt"></i>
+                        </div>
+                        <div class="overlay Invisible">
+                        <div class="upload-div">
+                            <div class="upload-heading">
+                                <h1>Upload Photo</h1>
+                            </div>
+                            <div class="upload-button-container">
+                                <input type="file" name="profilePicture" placeholder="Profile Picture" class="filepond" value="{{profilePicture}}">
+                            </div>
+                            <div class="closing-button">
+                                <p>Close</p>
+                            </div>
+                        </div>
+                    </div> 
+                    </div>
+                    <div class="name-box">
+                        <div class="first-name-div">
+                            <label for="first-name" class="form-label">First Name</label>
+                            <input type="text" class="form-control" id="first-name" name="firstName"
+                                value="{{firstName}}" required>
+                        </div>
+                        <div class="last-name-div">
+                            <label for="last-name" class="form-label">Last Name</label>
+                            <input type="text" class="form-control" id="last-name" name="lastName" value="{{lastName}}"
+                                required>
+                        </div>
+                    </div>
+                    <div class="email-box">
+                        <div class="mb-3">
+                            <label for="user-email" class="form-label">Email address</label>
+                            <input type="email" class="form-control" id="user-email" name="email" value="{{email}}"
+                                disabled>
+                        </div>
+                    </div>
+                    <div class="user-bio-box">
+                        <label for="user-bio" class="form-label">Bio</label>
+                        <textarea class="form-control" id="user-bio" rows="5" name="bio">{{bio}}</textarea>
+                    </div>
+                    <div class="define-yourself-box">
+                        <label for="define-yourself"  class="form-label">Define Yourself (separate them with ;)</label>
+                        <input type="text" class="form-control" id="define-yourself"
+                            value="Programmer; Frontend Developer; Gamer">
+                    </div>
+                    <div class="submit-button-box">
+                        <button type="submit" class="btn-hover color-4">Save Changes</button>
+                    </div>
+                </div>
+            </form>
+        </div>
     </div>
-    
-    {{>updateProfileSection}}
+
+    {{!-- {{>updateProfileSection}} --}}
 
     <!-- Bootstrap Script -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js"
@@ -116,6 +182,18 @@
 
     <!-- JQuery Script -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+    <script src="https://unpkg.com/filepond@^4/dist/filepond.js"></script>
+
+    <script src="https://unpkg.com/filepond-plugin-image-preview/dist/filepond-plugin-image-preview.js"></script>
+    <script src="https://unpkg.com/filepond-plugin-file-encode/dist/filepond-plugin-file-encode.js"></script>
+    <script src="https://unpkg.com/filepond-plugin-image-resize/dist/filepond-plugin-image-resize.js"></script>
+
+    <script src="https://unpkg.com/filepond-plugin-image-transform/dist/filepond-plugin-image-transform.js"></script>
+
+    <script src="/script/Filepond/filepond.js"></script>
+
+    <script src="/script/editProfileScript/script.js"></script>
 
 
 </body>
