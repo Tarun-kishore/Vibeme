@@ -108,16 +108,31 @@
             </div>
         </div>
         <div class="content-div">
-            <div class="content-box">
-                <form action="/user/delete?_method=DELETE" method="post"
-                onsubmit="return confirm('Are you sure you want to delete the account')">
-                <div class="delete-account-div">
-                    <i class="fas fa-trash"></i>
-                    <p>Delete Account</p>
+
+            <form action="/user/delete?_method=DELETE" method="post"
+                onsubmit="return true">
+                <div class="content-box">
+                    <div class="overlay Invisible">
+                        <div class="delete-account-confirmation-box">
+                            <div class="delete-account-heading">
+                                <h1>Are you sure?</h1>
+                                <p>We are sorry to see you go. If you want to permanently delete your account, click
+                                    Delete Account</p>
+                            </div>
+                            <div class="delete-account-confirmation-button">
+                                <button type="button" class="btn btn-outline-primary button1">Keep Account</button>
+                                <button class="btn btn-danger button2">Delete Account</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="delete-account-box">
+                        <button type="button" class="btn-hover color-4">
+                            <i class="fas fa-trash"></i>
+                            <p>Delete Account</p>
+                        </button>
+                    </div>
                 </div>
-                {{!-- <button>DELETE ACCOUNT</button> --}}
             </form>
-            </div>
         </div>
     </div>
 
@@ -129,7 +144,7 @@
     <!-- JQuery Script -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 
-
+    <script src="/script/deleteAccountScript/script.js"></script>
 </body>
 
 
