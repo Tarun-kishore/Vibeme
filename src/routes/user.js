@@ -149,7 +149,7 @@ router.get("/profile", auth, async (req, res) => {
 });
 
 router.get("/delete", auth, async (req, res) => {
-  res.render("/UserActivity/delete", { loggedIn: true });
+  res.render("UserActivity/delete", { loggedIn: true });
 });
 router.delete("/delete", auth, async (req, res) => {
   try {
