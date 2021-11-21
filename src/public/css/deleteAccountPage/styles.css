@@ -96,59 +96,8 @@ body {
     margin-right: 100px;
 }
 
-.content-box > div {
-    width: 100%;
-    margin-top: 20px;
-}
-
-.submit-button-box {
-    text-align: center;
-}
-
-.content-div label {
-    font-size: 13px;
-    opacity: 0.5;
-}
-
-.content-div input {
-    border-radius: 5px;
-    background-color: rgba(236, 236, 236, 0.2);
-}
-
-.content-div input:focus {
-    background-color: white;
-    border-color: orange;
-    box-shadow: none;
-    box-shadow:0 0 0 1.5px orange;
-}
-
-.btn-hover {
-    width: 200px;
-    font-size: 16px;
-    font-weight: 600;
-    color: #fff;
-    cursor: pointer;
-    margin: 20px;
-    height: 55px;
-    text-align:center;
-    border: none;
-    background-size: 300% 100%;
-    border-radius: 50px;
-    transition: all .4s ease-in-out;
-}
-
-.btn-hover:hover {
-    background-position: 100% 0;
-    transition: all .4s ease-in-out;
-}
-
-.btn-hover:focus {
-    outline: none;
-}
-
-.btn-hover.color-4 {
-    background-image: linear-gradient(to right, #fc6076, #ff9a44, #ef9d43, #e75516);
-    box-shadow: 0 4px 15px 0 rgba(252, 104, 110, 0.75);
+.delete-account-div {
+    display: flex;
 }
 
 @media (max-width: 991px) {

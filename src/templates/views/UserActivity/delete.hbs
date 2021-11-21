@@ -108,10 +108,16 @@
             </div>
         </div>
         <div class="content-div">
-            <form action="/user/delete?_method=DELETE" method="post"
+            <div class="content-box">
+                <form action="/user/delete?_method=DELETE" method="post"
                 onsubmit="return confirm('Are you sure you want to delete the account')">
-                <button>DELETE ACCOUNT</button>
+                <div class="delete-account-div">
+                    <i class="fas fa-trash"></i>
+                    <p>Delete Account</p>
+                </div>
+                {{!-- <button>DELETE ACCOUNT</button> --}}
             </form>
+            </div>
         </div>
     </div>
 
