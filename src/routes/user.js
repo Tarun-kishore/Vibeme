@@ -148,6 +148,9 @@ router.get("/profile", auth, async (req, res) => {
   }
 });
 
+router.get("/delete", auth, async (req, res) => {
+  res.render("/UserActivity/delete", { loggedIn: true });
+});
 router.delete("/delete", auth, async (req, res) => {
   try {
     await req.user.destroy();
@@ -158,7 +161,7 @@ router.delete("/delete", auth, async (req, res) => {
   }
 });
 
-router.post("/update", auth, async (req, res) => {
+router.get("/update", auth, async (req, res) => {
   const userData = await req.user.getPublicProfile();
   const data = { loggedIn: true, ...userData };
   res.render("UserActivity/updateProfile", data);
@@ -183,7 +186,7 @@ router.put("/update", auth, async (req, res) => {
   }
 });
 
-router.post("/change", auth, (req, res) => {
+router.get("/change", auth, (req, res) => {
   res.render("UserActivity/changePassword", { loggedIn: true });
 });
 
