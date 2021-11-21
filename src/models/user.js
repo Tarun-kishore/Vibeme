@@ -61,9 +61,9 @@ const User = sequelize.define(
       get() {
         return this.getDataValue("qualities").split(";");
       },
-      set(val) {
-        this.setDataValue("qualities", val.join(";"));
-      },
+      // set(val) {
+      //   this.setDataValue("qualities", val.join(";"));
+      // },
     },
     verified: {
       type: DataTypes.BOOLEAN,
