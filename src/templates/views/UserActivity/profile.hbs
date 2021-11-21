@@ -87,19 +87,14 @@
                 <li><a class="dropdown-item" href="/user/profile">PROFILE</a></li>
                 <li><a class="dropdown-item" href="/user/logout">LOGOUT</a></li>
                 <li>
-                  <form action="/user/update" method="post">
-                  <button class="dropdown-item">EDIT PROFILE</button>
-                  </form>
+                  <a href="/user/update" class="dropdown-item">EDIT PROFILE</a>
                   </li>
                 <li>
-                  <form action="/user/delete?_method=DELETE" method="post" onsubmit="return confirm('Are you sure you want to delete the account')">
-                  <button class="dropdown-item">DELETE ACCOUNT</button>
-                  </form>
+                  <a href="/user/delete" class="dropdown-item">DELETE ACCOUNT</button>
                 </li>
                 <li>
-                  <form action="/user/change" method="post">
-                  <button class="dropdown-item">CHANGE PASSWORD</button>
-                  </form></li>
+                  <a href="/user/change" class="dropdown-item">CHANGE PASSWORD</button>
+                  </li>
                 <li><a class="dropdown-item" href="/connect/view">VIEW CONN</a></li>
                 <li>
                   <hr class="dropdown-divider">

@@ -29,16 +29,8 @@
     <link href="/css/vendor userbase/owl.carousel/assets/owl.carousel.min.css" rel="stylesheet">
     <link href="/css/vendor userbase/aos/aos.css" rel="stylesheet">
 
-    <!-- FilePond -->
-    <link href="https://unpkg.com/filepond/dist/filepond.css" rel="stylesheet" />
-    <link href="https://unpkg.com/filepond-plugin-image-preview/dist/filepond-plugin-image-preview.css"
-        rel="stylesheet">
-    <link href="/css/Filepond/filepond.css" rel="stylesheet">
-
-
     <!-- Custom CSS stylesheet -->
-    <link rel="stylesheet" href="/css/Edit-Profile-Page/styles.css">
-
+    <link rel="stylesheet" href="/css/deleteAccountPage/styles.css">
 
 </head>
 
@@ -98,7 +90,7 @@
                     <i class="fas fa-user-edit"></i>
                     <p>Edit Profile</p>
                 </div>
-                <div class="border-decoration"></div>
+                <div class="border-decoration Invisible"></div>
             </div>
             <div class="sidebar-change-password-outer" onclick="window.location.href='/user/change'">
                 <div class="sidebar-content">
@@ -112,63 +104,13 @@
                     <i class="fas fa-trash"></i>
                     <p>Delete Account</p>
                 </div>
-                <div class="border-decoration Invisible"></div>
+                <div class="border-decoration"></div>
             </div>
         </div>
         <div class="content-div">
-            <form action="/user/update?_method=PUT" method="post">
-                <div class="content-box">
-                    <div class="photo-box">
-                        <img src="{{profilePicture}}" alt="">
-                        <div class="upload-photo-button">
-                            <i class="fas fa-pencil-alt"></i>
-                        </div>
-                        <div class="overlay Invisible">
-                        <div class="upload-div">
-                            <div class="upload-heading">
-                                <h1>Upload Photo</h1>
-                            </div>
-                            <div class="upload-button-container">
-                                <input type="file" name="profilePicture" placeholder="Profile Picture" class="filepond" value="{{profilePicture}}">
-                            </div>
-                            <div class="closing-button">
-                                <p>Close</p>
-                            </div>
-                        </div>
-                    </div> 
-                    </div>
-                    <div class="name-box">
-                        <div class="first-name-div">
-                            <label for="first-name" class="form-label">First Name</label>
-                            <input type="text" class="form-control" id="first-name" name="firstName"
-                                value="{{firstName}}" required>
-                        </div>
-                        <div class="last-name-div">
-                            <label for="last-name" class="form-label">Last Name</label>
-                            <input type="text" class="form-control" id="last-name" name="lastName" value="{{lastName}}"
-                                required>
-                        </div>
-                    </div>
-                    <div class="email-box">
-                        <div class="mb-3">
-                            <label for="user-email" class="form-label">Email address</label>
-                            <input type="email" class="form-control" id="user-email" name="email" value="{{email}}"
-                                disabled>
-                        </div>
-                    </div>
-                    <div class="user-bio-box">
-                        <label for="user-bio" class="form-label">Bio</label>
-                        <textarea class="form-control" id="user-bio" rows="5" name="bio">{{bio}}</textarea>
-                    </div>
-                    <div class="define-yourself-box">
-                        <label for="define-yourself"  class="form-label">Define Yourself (separate them with ;)</label>
-                        <input type="text" class="form-control" id="define-yourself"
-                            name="qualities" value="{{qualities}}">
-                    </div>
-                    <div class="submit-button-box">
-                        <button type="submit" class="btn-hover color-4">Save Changes</button>
-                    </div>
-                </div>
+            <form action="/user/delete?_method=DELETE" method="post"
+                onsubmit="return confirm('Are you sure you want to delete the account')">
+                <button>DELETE ACCOUNT</button>
             </form>
         </div>
     </div>
@@ -181,16 +123,6 @@
     <!-- JQuery Script -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 
-    <!-- FilePond Script -->
-    <script src="https://unpkg.com/filepond@^4/dist/filepond.js"></script>
-    <script src="https://unpkg.com/filepond-plugin-image-preview/dist/filepond-plugin-image-preview.js"></script>
-    <script src="https://unpkg.com/filepond-plugin-file-encode/dist/filepond-plugin-file-encode.js"></script>
-    <script src="https://unpkg.com/filepond-plugin-image-resize/dist/filepond-plugin-image-resize.js"></script>
-    <script src="https://unpkg.com/filepond-plugin-image-transform/dist/filepond-plugin-image-transform.js"></script>
-
-    <!-- Custom JS-->
-    <script src="/script/Filepond/filepond.js"></script>
-    <script src="/script/editProfileScript/script.js"></script>
 
 </body>
 
