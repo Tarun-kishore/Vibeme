@@ -57,13 +57,7 @@ const User = sequelize.define(
     qualities: {
       type: DataTypes.STRING,
       allowNull: false,
-      defaultValue: ";;;",
-      get() {
-        return this.getDataValue("qualities").split(";");
-      },
-      // set(val) {
-      //   this.setDataValue("qualities", val.join(";"));
-      // },
+      defaultValue: "",
     },
     verified: {
       type: DataTypes.BOOLEAN,
@@ -80,7 +74,6 @@ User.prototype.toJSON = function () {
   const user = this.dataValues;
   user.profilePicture =
     "data:image/png;base64," + user.profilePicture.toString("base64");
-  user.qualities = this.qualities;
   return user;
 };
 

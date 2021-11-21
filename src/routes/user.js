@@ -168,6 +168,7 @@ router.get("/update", auth, async (req, res) => {
 });
 
 router.put("/update", auth, async (req, res) => {
+  console.log(req.body);
   const updates = Object.keys(req.body);
   if (req.body.profilePicture) {
     const img = JSON.parse(req.body.profilePicture);
