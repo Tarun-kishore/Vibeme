@@ -1,0 +1,36 @@
+body.is-white {
+    background: #fff;
+}
+
+body.is-dark {
+    background: #2f3b50;
+}
+
+body {
+    background: #f4f4f4;
+    height: 100%;
+    width: 100%;
+    min-height: 100vh;
+    font-family: "Roboto", system-ui, "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+    color: #344258;
+    overflow: hidden;
+    font-size: 1em;
+    font-weight: 400;
+    line-height: 1.5;
+}
+
+.app-overlay.is-active {
+    opacity: 1 !important;
+    z-index: 1000 !important;
+}
+
+.app-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background: rgba(0, 0, 0, .6);
+    z-index: -1;
+    opacity: 0;
+}
