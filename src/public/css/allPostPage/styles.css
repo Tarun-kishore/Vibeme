@@ -55,10 +55,11 @@ body {
 }
 
 .card-image img {
-    object-fit: cover;
     border-top-left-radius: .25rem;
     border-top-right-radius: .25rem;
     transition: 0.3s;
+    height: 361.6px;
+    object-fit: contain;
 }
 
 .card-image img:hover {
