@@ -8,7 +8,7 @@ const Comment = require("../models/comments");
 const jwt = require("jsonwebtoken");
 
 //getting all posts
-router.get("/all", async (req, res) => {
+router.get("/all", auth, async (req, res) => {
   const options = {};
   if (req.cookies.token) options.loggedIn = true;
 
@@ -24,9 +24,13 @@ router.get("/all", async (req, res) => {
 
     options.post = posts;
     if (posts) return res.render("PostActivity/feed", options);
-    res.render("PostActivity/feed", ...options);
+    res.render("PostActivity/feed", {
+      ...options,
+      name: req.user.getFullName(),
+      image: req.user.profilePicture,
+    });
   } catch (e) {
-    console.log(e)
+    console.log(e);
     res.status(400).send();
   }
 });
@@ -70,7 +74,9 @@ router.post("/create", auth, async (req, res) => {
 
     res.redirect("/post/my");
   } catch (e) {
-    res.status(400).render("PostActivity/createPost", { loggedIn: true, error: e });
+    res
+      .status(400)
+      .render("PostActivity/createPost", { loggedIn: true, error: e });
   }
 });
 
@@ -78,7 +84,7 @@ router.post("/create", auth, async (req, res) => {
 router.get("/view/:id", async (req, res) => {
   const options = {};
   let userId = "";
-  let decoded
+  let decoded;
   if (req.cookies.token) {
     options.loggedIn = true;
     decoded = jwt.verify(req.cookies.token, process.env.SECRET);
@@ -91,7 +97,7 @@ router.get("/view/:id", async (req, res) => {
     const user = await User.findByPk(postObject.owner);
     const creator = user.getFullName();
 
-    const comments = await post.getComments((decoded ? decoded._id : undefined));
+    const comments = await post.getComments(decoded ? decoded._id : undefined);
 
     if (comments.length !== 0)
       return res.render("PostActivity/publicPost", {
@@ -104,7 +110,7 @@ router.get("/view/:id", async (req, res) => {
       postData: { ...postObject, creator },
     });
   } catch (e) {
-    console.log(e)
+    console.log(e);
     res.status(400).render("IndexPages/404", options);
   }
 });
@@ -121,7 +127,11 @@ router.post("/edit/:id", auth, async (req, res) => {
     const postData = await post.getPost();
 
     const creator = `${req.user.firstName} ${req.user.lastName}`;
-    res.render("PostActivity/editPost", { loggedIn: true, ...postData, creator });
+    res.render("PostActivity/editPost", {
+      loggedIn: true,
+      ...postData,
+      creator,
+    });
   } catch (e) {
     res.status(500).render("IndexPages/404", { loggedIn: true });
   }
