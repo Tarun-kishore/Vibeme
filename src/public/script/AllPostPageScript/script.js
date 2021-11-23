@@ -1,11 +1,3 @@
-let likeButton = document.querySelectorAll('.media-right .like-button');
-
-likeButton.forEach(element => {
-    element.addEventListener('click', () => {
-        element.classList.toggle('is-liked');
-    });
-});
-
 let imageModal = document.querySelector('#myModal');
 let allImages = document.querySelectorAll('.card-image figure img');
 let modalContent = document.querySelector('#img01');
@@ -24,3 +16,9 @@ imageCloseButton.addEventListener('click', () => {
     imageModal.classList.remove('is-active');
 });
 
+const $timeBoxes = document.getElementsByClassName('created-date');
+
+for (const timeBox of $timeBoxes) {
+    const s= timeBox.childNodes[0].nodeValue;
+    timeBox.childNodes[0].nodeValue=moment(new Date(s)).fromNow();
+}

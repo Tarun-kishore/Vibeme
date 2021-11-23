@@ -4,11 +4,12 @@ body {
 
 .main-frame {
     width: 100%;
-    min-height: 92vh;
+    min-height: 95vh;
     display: grid;
     grid-template-columns: 300px 1fr;
     grid-template-rows: 1fr;
     border-top: 1px solid rgba(0, 0, 0, 0.1);
+    margin-top: 50px;
 }
 
 .sidebar-div {
