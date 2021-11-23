@@ -23,12 +23,10 @@ router.get("/all", auth, async (req, res) => {
     }
 
     options.post = posts;
+    options.name = req.user.getFullName();
+    options.image = req.user.profilePicture;
     if (posts) return res.render("PostActivity/feed", options);
-    res.render("PostActivity/feed", {
-      ...options,
-      name: req.user.getFullName(),
-      image: req.user.profilePicture,
-    });
+    res.render("PostActivity/feed", ...options);
   } catch (e) {
     console.log(e);
     res.status(400).send();
