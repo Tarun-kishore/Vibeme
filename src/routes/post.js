@@ -22,6 +22,7 @@ router.get("/all", auth, async (req, res) => {
       posts = posts.concat(userPosts);
     }
 
+    console.log(posts);
     options.post = posts;
     options.name = req.user.getFullName();
     options.image = req.user.profilePicture;

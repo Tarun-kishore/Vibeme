@@ -72,8 +72,9 @@ const User = sequelize.define(
 
 User.prototype.toJSON = function () {
   const user = this.dataValues;
-  user.profilePicture =
-    "data:image/png;base64," + user.profilePicture.toString("base64");
+  if (typeof user.profilePicture !== "string")
+    user.profilePicture =
+      "data:image/png;base64," + user.profilePicture.toString("base64");
   return user;
 };
 
@@ -127,10 +128,8 @@ User.prototype.getPublicProfile = async function () {
 
 // *This function return all posts of a user
 User.prototype.getPosts = async function () {
-  const userObject = this.toJSON();
-
   let posts;
-  posts = await Post.findAll({ where: { owner: userObject.id } });
+  posts = await Post.findAll({ where: { owner: this.id } });
 
   let options = [];
   let postData;
