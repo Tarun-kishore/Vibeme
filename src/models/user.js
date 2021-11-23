@@ -139,7 +139,11 @@ User.prototype.getPosts = async function () {
     post = posts[i];
     postData = await post.getPost();
 
-    options = options.concat({ ...postData, creator: this.getFullName() });
+    options = options.concat({
+      ...postData,
+      creator: this.getFullName(),
+      userImage: this.profilePicture,
+    });
   }
 
   return options;
