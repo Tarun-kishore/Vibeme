@@ -61,7 +61,7 @@
                 <div class="navbar-end-items">
                     <div class="account-dropdown">
                         <div class="user-image">
-                            <img src="{{image}}" alt="">
+                            <img src="{{image}}" alt="user-photo">
                         </div>
                         <div class="nav-dropdown">
                             <div class="inner">
@@ -215,8 +215,8 @@
             <div class="navbar-mobile-menu">
                 <div class="navbar-item has-dropdown">
                     <a class="navbar-link" href="/user/profile">
-                        <img src="https://friendkit.cssninja.io/assets/img/avatars/jenna.png" alt="">
-                        <span class="is-heading">Jenna Davis</span>
+                        <img src="{{image}}" alt="user photo">
+                        <span class="is-heading">{{name}}</span>
                     </a>
                     <div class="mobile-navbar-dropdown">
                         <a class="navbar-item" href="/post/all">
@@ -711,7 +711,7 @@
 
         <img class="modal-content" id="img01" src="https://friendkit.cssninja.io/assets/img/demo/unsplash/39.jpg">
 
-        <div id="caption"></div>
+        <div id="caption">hello</div>
     </div>
 
     {{!-- {{#if post}}
