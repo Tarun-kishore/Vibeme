@@ -13,7 +13,7 @@ router.get("/all", auth, async (req, res) => {
   if (req.cookies.token) options.loggedIn = true;
 
   try {
-    const users = await User.findAll({ include: Post });
+    const users = await User.findAll();
 
     let posts = [];
 
