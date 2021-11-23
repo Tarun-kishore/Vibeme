@@ -22,7 +22,6 @@ router.get("/all", auth, async (req, res) => {
       posts = posts.concat(userPosts);
     }
 
-    console.log(posts);
     options.post = posts;
     options.name = req.user.getFullName();
     options.image = req.user.profilePicture;
@@ -71,7 +70,7 @@ router.post("/create", auth, async (req, res) => {
     });
     await post.save();
 
-    res.redirect("/post/my");
+    res.redirect("/user/profile");
   } catch (e) {
     res
       .status(400)
