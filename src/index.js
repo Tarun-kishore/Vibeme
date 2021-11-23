@@ -46,7 +46,7 @@ app.use(cookieParser());
 
 // *Instructing server to use json and extended url encoded data
 app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
+app.use(express.urlencoded({ extended: true, limit: "10 mb" }));
 
 // *Setting up method override library
 app.use(methodOverride("_method"));
