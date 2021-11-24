@@ -53,6 +53,25 @@ router.post("/my", auth, async (req, res) => {
   }
 });
 
+//geting user posts with id
+router.post("/user", auth, async (req, res) => {
+  try {
+    const user = await User.findByPk(req.body.id);
+    const send = [];
+    const options = await user.getPosts();
+    const likedPost = await user.getLikedPosts();
+    const commentedPosts = await user.getCommentedPosts();
+    const repliedPosts = await user.getRepliedPosts();
+    send.posts = options;
+    send.likedPosts = likedPost;
+    send.commentedPosts = commentedPosts;
+    send.repliedPosts = repliedPosts;
+
+    return res.send({ ...send });
+  } catch (error) {
+    res.status(500).send();
+  }
+});
 //rendering create post page
 router.get("/create", auth, (req, res) => {
   res.render("PostActivity/createPost", {
