@@ -1,19 +1,17 @@
 //Elemets in document
-$likeButtons = document.getElementsByClassName('like')
+$likeButtons = document.getElementsByClassName('like');
 
 //utility functions
 const setLiked = function($likeButton){
-    $likeButton.style.background = 'red'
-    $likeButton.style.color = 'white'
-}
+    $likeButton.classList.add('is-liked');
+};
 
 const unsetLiked = function($likeButton){
-    $likeButton.style.background = 'white'
-    $likeButton.style.color = 'black'
-}
+    $likeButton.classList.remove('is-liked');
+};
 
 for(let i=0;i<$likeButtons.length;i++){
-    const postId = $likeButtons[i].attributes.id.value
+    const postId = $likeButtons[i].attributes.id.value;
     fetch(`/post/isLiked`,{
         method: 'post',
         headers:{
@@ -24,18 +22,16 @@ for(let i=0;i<$likeButtons.length;i++){
         })
     }).then((response)=>response.json())
     .then((data)=>{
-        if(data.liked)  setLiked($likeButtons[i])
-        else unsetLiked($likeButtons[i])
+        if(data.liked) $likeButtons[i].classList.toggle('is-liked');
     })
     .catch((e)=> {
     
-    } )
+    } );
 }
 
-
 const hitlike = function(button){
-    const $likesCount =button.parentElement.childNodes[3]
-    const postId = button.attributes.id.value
+    const $likesCount =button.parentElement.childNodes[1];
+    const postId = button.attributes.id.value;
     fetch('/post/hit',{
         method:'post',
         headers:{
@@ -47,16 +43,12 @@ const hitlike = function(button){
     }).then((data)=> data.json())
     .then(data => {
         if(data.like){
-            setLiked(button)
-            $likesCount.innerHTML++
+            setLiked(button);
+            $likesCount.innerHTML++;
         }
         else{
-            unsetLiked(button)
-            $likesCount.innerHTML--
+            unsetLiked(button);
+            $likesCount.innerHTML--;
         }
-    })
-}
-// $likeButton.addEventListener('click',(e)=>{
-
-// })
-// 
+    });
+};

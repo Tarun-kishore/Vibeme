@@ -27,6 +27,7 @@ body {
 
 .view-wrapper .container {
     width: 80%;
+    /* width: 50%; */
     margin-top: 50px;
     margin-bottom: 50px;
 }
@@ -34,17 +35,30 @@ body {
 .post-feed-item {
     padding: 0.75rem;
     box-sizing: border-box;
+    /* box-shadow: 0 14px 26px -12px rgba(0, 0, 0, 0.42), 0 4px 23px 0px rgba(0, 0, 0, .12), 0 8px 10px -5px rgba(247, 20, 22, .2) !important; */
+
+    /* extra */
+    /* border: 1px solid rgba(82, 81, 81, 0.3);
+    margin-top: 10px; */
+    /* margin-left: 5px; */
 }
 
 .post-feed-item .card {
     border: none;
     background: none !important;
     margin-bottom: .75rem;
+    box-shadow:
+        0 10px 26px -8px rgba(0, 0, 0, 0.2),
+        0 4px 23px 0px rgba(0, 0, 0, .12),
+        0 8px 10px -5px rgba(15, 4, 4, 0.2) !important;
+
 }
 
 .card-image {
     display: block;
     position: relative;
+    height: 361.6px;
+    overflow: hidden;
 }
 
 .card-image a {
@@ -55,10 +69,11 @@ body {
 }
 
 .card-image img {
-    object-fit: cover;
     border-top-left-radius: .25rem;
     border-top-right-radius: .25rem;
     transition: 0.3s;
+    height: 361.6px;
+    /* object-fit: contain; */
 }
 
 .card-image img:hover {
@@ -68,6 +83,11 @@ body {
 .card .card-body {
     padding: 0;
     background-color: transparent;
+    border: 1px solid lightgrey;
+    border-top: none;
+    border-bottom-left-radius: .25rem;
+    border-bottom-right-radius: .25rem;
+    padding: 0 10px;
 }
 
 .card-body .media {
@@ -125,6 +145,7 @@ body {
 .media-content span {
     display: block;
     font-family: "Roboto", sans-serif;
+    margin-left: 10px;
 }
 
 .media-content span:first-child {
@@ -240,9 +261,22 @@ body {
     max-width: 700px;
 }
 
-.modal-content {
+.modal-content,
+#caption {
     animation-name: zoom;
     animation-duration: 0.6s;
+}
+
+#caption {
+    margin: auto;
+    display: block;
+    width: 80%;
+    max-width: 700px;
+    text-align: center;
+    color: #ccc;
+    font-weight: 500;
+    padding: 10px 0;
+    height: 150px;
 }
 
 .close {
