@@ -136,12 +136,8 @@ router.post("/exist", async (req, res) => {
   }
 });
 
-<<<<<<< HEAD
-router.get("/profile", auth,(req, res) => {
-=======
 router.get("/profile", auth, async (req, res) => {
   const userObject = await req.user.getPublicProfile();
->>>>>>> main
   try {
     res.render("UserActivity/profile", {
       loggedIn: true,
