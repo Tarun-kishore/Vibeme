@@ -1,0 +1,36 @@
+.connect-button-div {
+    width: 100%;
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.connect-button-div .btn {
+    border-width: 1px solid transparent;
+    font-size: .8rem;
+    font-weight: 500;
+    padding: 10px 0;
+    transition: all .3s;
+    /* background: #41d6c3;
+    border-color: #41d6c3; */
+    background: orange;
+    border-color: orange;
+    border-radius: 5px;
+    color: #fff;
+    width: 80%;
+    transition: all 0.3s ease-in-out;
+    box-shadow: none;
+
+}
+
+.connect-button-div .btn:hover {
+    color: #fff;
+    opacity: 0.8 !important;
+    box-shadow: 0px 14px 26px -12px rgba(255, 166, 0, 0.575) ,
+        0 4px 23px 0 rgba(0, 0, 0, 0.12),
+        0 8px 10px -5px rgba(255, 230, 2, 0.336);
+    transition: all 0.3s ease-in-out;
+
+}

@@ -346,9 +346,10 @@ section {
 
 .portfolio .portfolio-item {
   box-sizing: border-box;
-  /* margin-bottom: 30px; */
   padding: 0.5rem;
   display: block;
+  border: none !important;
+  background-color: transparent;
 }
 
 .portfolio .profile-post {
@@ -356,11 +357,12 @@ section {
   color: #4a4a4a;
   max-width: 100%;
   position: relative;
-  border: 1px solid #e8e8e8;
-  background: #fff;
+  background: transparent;
+  border: none !important;
   border-radius: 6px;
   box-shadow: none;
   margin-bottom: 0;
+  
 }
 
 .portfolio .card .card-image {
