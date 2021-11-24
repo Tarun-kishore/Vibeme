@@ -1,3 +1,5 @@
+let heroSection = document.querySelector('#hero');
+
 
 !(function($) {
   "use strict";
@@ -5,7 +7,7 @@
   // Hero typed
   if ($('.typed').length) {
     var typed_strings = $(".typed").data('typed-items');
-    typed_strings = typed_strings.split(',')
+    typed_strings = typed_strings.split(',');
     new Typed('.typed', {
       strings: typed_strings,
       loop: true,
@@ -57,7 +59,7 @@
 
   $(document).on('click', '.mobile-nav-toggle', function(e) {
     $('body').toggleClass('mobile-nav-active');
-    $('.mobile-nav-toggle i').toggleClass('icofont-navigation-menu icofont-close');
+    $('.mobile-nav-toggle').toggleClass('is-active');
   });
 
   $(document).click(function(e) {
@@ -95,10 +97,10 @@
 
   // Back to top button
   $(window).scroll(function() {
-    if ($(this).scrollTop() > 100) {
-      $('.back-to-top').fadeIn('slow');
+    if ($(this).scrollTop() > 200) {
+      $('.back-to-top').removeClass('invisible');
     } else {
-      $('.back-to-top').fadeOut('slow');
+      $('.back-to-top').addClass('invisible');
     }
   });
 
@@ -182,7 +184,7 @@
     if(current > $this.data('count')){
         $this.html($this.data('count'));
     } else {    
-        setTimeout(function(){count($this)}, 5);
+        setTimeout(function(){count($this);}, 5);
     }
 }        
 

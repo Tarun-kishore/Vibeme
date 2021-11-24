@@ -27,7 +27,6 @@ body {
 
 .view-wrapper .container {
     width: 80%;
-    /* width: 50%; */
     margin-top: 50px;
     margin-bottom: 50px;
 }
@@ -35,18 +34,18 @@ body {
 .post-feed-item {
     padding: 0.75rem;
     box-sizing: border-box;
-    /* box-shadow: 0 14px 26px -12px rgba(0, 0, 0, 0.42), 0 4px 23px 0px rgba(0, 0, 0, .12), 0 8px 10px -5px rgba(247, 20, 22, .2) !important; */
-
-    /* extra */
-    /* border: 1px solid rgba(82, 81, 81, 0.3);
-    margin-top: 10px; */
-    /* margin-left: 5px; */
+    display: block;
 }
 
 .post-feed-item .card {
+    color: #4a4a4a;
+    max-width: 100%;
+    position: relative;
+    box-sizing: inherit;
+    background: #fff;
+    box-shadow: none;
+    margin-bottom: 0;
     border: none;
-    background: none !important;
-    margin-bottom: .75rem;
     box-shadow:
         0 10px 26px -8px rgba(0, 0, 0, 0.2),
         0 4px 23px 0px rgba(0, 0, 0, .12),
@@ -55,10 +54,23 @@ body {
 }
 
 .card-image {
+    box-sizing: inherit;
     display: block;
     position: relative;
-    height: 361.6px;
-    overflow: hidden;
+}
+
+.image {
+    display: block;
+    position: relative;
+}
+
+.image.is-4by3 {
+    padding-top: 75%;
+    margin: 0;
+}
+
+.image a {
+    transition: all .3s;
 }
 
 .card-image a {
@@ -68,12 +80,21 @@ body {
     text-decoration: none;
 }
 
-.card-image img {
+.card .card-image img {
     border-top-left-radius: .25rem;
     border-top-right-radius: .25rem;
     transition: 0.3s;
-    height: 361.6px;
-    /* object-fit: contain; */
+    object-fit: cover;
+}
+
+.image.is-4by3 img {
+    bottom: 0;
+    left: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+    height: 100%;
+    width: 100%;
 }
 
 .card-image img:hover {
