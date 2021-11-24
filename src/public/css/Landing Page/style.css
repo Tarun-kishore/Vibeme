@@ -1,5 +1,7 @@
+/* Google font Oswald imported */
 @import url('https://fonts.googleapis.com/css2?family=Lobster&family=Oswald:wght@200;300;400;500;600;700&family=Rampart+One&display=swap');
 
+/* Pre loader background */
 #preloader {
     background-color: #ffd4e2;
     position: fixed;
@@ -10,6 +12,7 @@
     z-index: 1000;
 }
 
+/* Middle Most line (only showing topmost border color and others are transparent) */
 #loader {
     display: block;
     position: relative;
@@ -23,6 +26,8 @@
     border-top-color: #9370DB;
     animation: spin 2s linear infinite;
 }
+
+/* Outer most line (used before psuedo class so that topmost border line aligns in top position) */
 #loader:before {
     content: "";
     position: absolute;
@@ -33,9 +38,10 @@
     border-radius: 50%;
     border: 3px solid transparent;
     border-top-color: #BA55D3;
-    -webkit-animation: spin 3s linear infinite;
     animation: spin 3s linear infinite;
 }
+
+/* Lower most line (used after psuedo class so that topmost border of it aligns in lower most position) */
 #loader:after {
     content: "";
     position: absolute;
@@ -46,34 +52,20 @@
     border-radius: 50%;
     border: 3px solid transparent;
     border-top-color: #FF00FF;
-    -webkit-animation: spin 1.5s linear infinite;
     animation: spin 1.5s linear infinite;
 }
-@-webkit-keyframes spin {
-    0%   {
-        -webkit-transform: rotate(0deg);
-        -ms-transform: rotate(0deg);
-        transform: rotate(0deg);
-    }
-    100% {
-        -webkit-transform: rotate(360deg);
-        -ms-transform: rotate(360deg);
-        transform: rotate(360deg);
-    }
-}
+
+/* Spin animation for pre loader */
 @keyframes spin {
     0%   {
-        -webkit-transform: rotate(0deg);
-        -ms-transform: rotate(0deg);
         transform: rotate(0deg);
     }
     100% {
-        -webkit-transform: rotate(360deg);
-        -ms-transform: rotate(360deg);
         transform: rotate(360deg);
     }
 }
 
+/* Applying it all elements using all selector */
 * {
     margin: 0;
     padding: 0;
@@ -81,6 +73,8 @@
     font-family: 'Oswald', sans-serif;
 }
 
+/* For the navbar */
+/* Used flex so that to align items */
 header {
     position: absolute;
     top: 0;
@@ -93,12 +87,20 @@ header {
     align-items: center;
 }
 
+/* VibeMe in the navbar */
 header .logo {
     color: #fff;
     text-transform: uppercase;
     cursor: pointer;
+    transition: all 0.2s ease-in-out;
 }
 
+/* VibeMe text size increases on hover due to scale */
+.logo:hover {
+    transform: scale(1.2);
+}
+
+/* Giving it the size of browser screen */
 .showcase {
     position: absolute;
     right: 0;
@@ -113,6 +115,7 @@ header .logo {
     z-index: 2;
 }
 
+/* Making video position behind everyone and used object fit so that video dimension can easily match up with browser screen */
 .showcase video {
     position: absolute;
     top: 0;
@@ -123,11 +126,13 @@ header .logo {
     opacity: 0.8;
 }
 
+/* to make them responsive and have space b/w them */
 .buttons {
     display: flex;
     justify-content: space-around;
 }
 
+/* designing the buttons */
 .buttons button {
     margin-left: 10px;
     color: white;
@@ -135,11 +140,13 @@ header .logo {
     transition: all .2s ease-in-out;
 }
 
+/* hover feature on button */
 .buttons button:hover {
     color: #39c8df;
     border-color: #39c8df;
 }
 
+/* just to give the complete size of that window */
 .overlay {
     position: absolute;
     top: 0;
@@ -148,11 +155,13 @@ header .logo {
     height: 100%;
 }
 
+/* container containing the text and we have give its some z-index so that it remains above the video */
 .text {
     position: relative;
     z-index: 10;
 }
 
+/* styling h2 tag */
 .text h2 {
     font-size: 5em;
     font-weight: 500;
@@ -161,14 +170,7 @@ header .logo {
     text-transform: uppercase;
 }
 
-.logo {
-    transition: all 0.2s ease-in-out;
-}
-
-.logo:hover {
-    transform: scale(1.2);
-}
-
+/* Styling h3 tag */
 .text h3 {
     font-size: 4em;
     font-weight: 500;
@@ -177,6 +179,7 @@ header .logo {
     text-transform: uppercase;
 }
 
+/* Styling p tag */
 .text p {
     font-size: 1.8rem;
     color: #fff;
@@ -185,6 +188,7 @@ header .logo {
     max-width: 700px;
 }
 
+/* styling a tag */
 .text a {
     display: inline-block;
     font-size: 1em;
@@ -199,20 +203,23 @@ header .logo {
     transition: 0.2s;
 }
 
+/* Hover section of anchor tag so that on hovering letter spacing b/w them increases and looks like it expand */
 .text a:hover {
     letter-spacing: 3px;
 }
 
-
+/* Animation container */
 .animation-container {
     position: relative;
 }
 
+/* Styling span tag  */
 .animation-container span {
     text-transform: uppercase;
     display: block;
 }
 
+/* Styling Lets Vibe With section */
 .text1 {
     font-size: 5em;
     font-weight: 500;
@@ -226,6 +233,7 @@ header .logo {
     animation: text1 2s ease-in-out 1;
 }
 
+/* Styling VibeMe section */
 .text2 {
     font-size: 4em;
     font-weight: 400;
@@ -236,6 +244,7 @@ header .logo {
     animation: text2 2s ease-in-out 1;
 }
 
+/* to make the text1 go upward with inc. and dec. in letter spacing  */
 @keyframes text1 {
     0% {
         opacity: 0;
@@ -252,6 +261,7 @@ header .logo {
     }
 }
 
+/* Just to make sure text2 becomes visible after some time */
 @keyframes text2 {
     0% {
         opacity: 0;
@@ -262,16 +272,19 @@ header .logo {
     }
 }
 
+/* animate.css fade in left animation and putting it on delay so that all animation looks synchronous */
 .animate__animated.animate__fadeInLeftBig {
     animation-duration: 1.5s;
     animation-delay: 1s;
 }
 
+/* animate.css jack in the box animation */
 .animate__animated.animate__jackInTheBox {
     animation-duration: 1.5s;
     animation-delay: 2.3s;
 }
 
+/* For making the landing page responsive */
 @media (max-width: 991px) {
 
     .showcase,

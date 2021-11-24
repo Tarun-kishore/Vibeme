@@ -98,6 +98,7 @@ signUp.addEventListener('click', function(e) {
   }, 550);
 });
 
+// adding feature to see which alert has come
 const emailAlert = document.querySelector('#emailAlert');
 const passwordAlert = document.querySelector('#passAlert');
 const invalidAlert = document.querySelector("#InvalidAlert");

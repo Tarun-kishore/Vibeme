@@ -1,9 +1,11 @@
 /* About Page Styles */
 
+/* For all section tag */
 section {
     display: block;
 }
 
+/* 1st section */
 #stunning-header {
     background-color: #ffd4e2;
     color: #ffffff;
@@ -11,6 +13,7 @@ section {
     padding: 60px 0;
 }
 
+/* we are allowing the image to be repeated in x-direction */
 #stunning-header .background-image {
     background-image: url(/image/About\ Page\ Images/Image/landing-bg\ 2.webp);
     background-position: center center;
@@ -33,6 +36,7 @@ section {
     margin-left: auto;
 }
 
+/* giving z-index so that the text can be on top of image */
 .stunning-header-content {
     text-align: center;
     width: 60%;
@@ -47,6 +51,7 @@ section {
     text-align: center;
 }
 
+/* styling h1 tag in stunning header section */
 .stunning-header-title {
     line-height: 1.3;
     font-weight: 300;
@@ -54,10 +59,12 @@ section {
     text-align: center;
 }
 
+/* selecting 2nd div with stunning-content-item name */
 .stunning-content-item:nth-child(2) {
     margin-top: 2.5em;
 }
 
+/* Styling anchor tag */
 .stunning-paragraph-title {
     opacity: 0.7;
     text-decoration: none;
@@ -71,6 +78,7 @@ section {
     color: #ffffff;
 }
 
+/* 2nd section */
 #stunning-question {
     background-color: #ffecf3;
     color: #ffffff;
@@ -110,6 +118,7 @@ section {
     line-height: 1.3em;
 }
 
+/* 3rd Section */
 #stunning-features {
     background-color: #ffecf3;
     padding: 0 10%;
@@ -145,6 +154,7 @@ section {
     margin-bottom: 10px;
 }
 
+/* 4th section */
 #stunning-counting {
     background-color: #ffecf3;
     padding: 120px 10%;
@@ -183,6 +193,7 @@ section {
     font-size: 1.2rem;
 }
 
+/* 5th section */
 #learn-more {
     background-color: #d4c2ff;
 }
@@ -230,6 +241,7 @@ section {
     padding-bottom: 0;
 }
 
+/* used horizontal line for this animation */
 #learn-more .content .decoration-div:hover .learn-more-decoration {
     width: 100%;
 }
@@ -253,6 +265,7 @@ section {
     font-size: 0.85rem;
 }
 
+/* 7th section */
 #stunning-team-members {
     background-color: #ffecf3;
     padding: 0 10%;
@@ -362,6 +375,7 @@ section {
     background: #dd4b39;
 }
 
+/* 8th section */
 #stunning-join {
     background-color: #ffecf3;
     background-image: url(/image/About\ Page\ Images/Join/bg-section1.png);
@@ -374,7 +388,6 @@ section {
 #stunning-join .join-box {
     margin: 0 10%;
     position: relative;
-    /* text-align: center; */
 }
 
 #stunning-join .join-box div {
@@ -415,6 +428,7 @@ section {
     font-size: 15px;
 }
 
+/* for responsive nature */
 @media screen and (max-width:767px) {
     #stunning-join .join-box {
         height: 150px;
@@ -434,6 +448,7 @@ section {
     }
 }
 
+/* button to go on top */
 #back-to-top {
     opacity: .3;
     position: fixed;

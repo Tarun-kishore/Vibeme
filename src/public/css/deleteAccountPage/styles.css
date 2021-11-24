@@ -1,0 +1,210 @@
+body {
+    background-color: white;
+}
+
+.main-frame {
+    width: 100%;
+    min-height: 95vh;
+    display: grid;
+    grid-template-columns: 300px 1fr;
+    grid-template-rows: 1fr;
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+    margin-top: 50px;
+}
+
+.sidebar-div {
+    border-right: 1px solid rgba(0, 0, 0, 0.1);
+    grid-column: 1/span 1;
+    grid-row: 1/-1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.sidebar-div > div {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin-top: 30px;
+}
+
+.Invisible {
+    display: none;
+    transition: all 0.1s ease-in-out;
+}
+
+.border-decoration {
+    position: relative;
+    height: 120%;
+    top:-25%;
+    z-index: 2;
+    right: -1px;
+    width: 2px; 
+    background-color: orange;
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+}
+
+.sidebar-heading-outer {
+    margin-top: 50px !important;
+} 
+
+.sidebar-heading {
+    width: calc(100% - 1px);
+    text-align: center;
+}
+
+.sidebar-heading h1 {
+    font-size: 25px;
+    opacity: 0.8;
+}
+
+.sidebar-content {
+    width: calc(100% - 1px);
+    display: flex;
+    flex-direction: row;
+    padding-left: 25%; 
+}
+
+.sidebar-content i {
+    padding-top: 5px;
+    font-size: 15px;
+    color: rgba(0, 0, 0, 0.5);
+    margin-right: 15px;
+}
+
+.sidebar-content p {
+    font-size: 18px;
+    margin-top: auto;
+}
+
+.sidebar-edit-profile-outer, .sidebar-change-password-outer, .sidebar-delete-account-outer {
+    cursor: pointer;
+}
+
+.content-div { 
+    grid-column: span 1/-1;
+    grid-row: 1/-1;
+}
+
+.content-box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width:500px;
+    height: 100%;
+    margin-left: 100px;
+    margin-top: 30px;
+    margin-right: 100px;
+}
+
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 10000;
+    background-color: rgba(0,0,0,.5);
+    width: 100vw;
+    height: 100vh;
+}
+
+.delete-account-confirmation-box {
+    position: relative;
+    margin: 100px auto;
+    background-color: white;
+    width: 400px;
+    display: flex;
+    flex-direction: column;
+    padding: 30px 30px;
+    border-radius: 10px;
+    transition: all 0.1s ease-in-out;
+}
+
+.delete-account-heading h1 {
+    font-size: 29px;
+    opacity: 0.9;
+    margin-bottom: 10px;
+}
+
+.delete-account-heading p {
+    margin-top: 0;
+    font-size: 17px;
+    opacity: 0.8;
+    margin-bottom: 10px;
+}
+
+.delete-account-confirmation-button {
+    margin-top: 5px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.delete-account-confirmation-button > button {
+    width: 45% !important;
+}
+
+.delete-account-box {
+    position: relative;
+    left: 0px;
+    top: 100px;
+    transition: all 0.2s ease-in-out;
+}
+
+.delete-account-box.active {
+    position: relative;
+    left: 60px;
+    top: 300px;
+    transition: all 0.2s ease-in-out;
+}
+
+.btn-hover {
+    /* position: relative; */
+    width: 200px;
+    font-size: 16px;
+    font-weight: 600;
+    color: #fff;
+    cursor: pointer;
+    /* margin-top: 50%; */
+    /* left: 60px;
+    top: 300px; */
+    height: 55px;
+    border: none;
+    background-size: 300% 100%;
+    border-radius: 50px;
+    transition: all .4s ease-in-out;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.btn-hover:hover {
+    background-position: 100% 0;
+    transition: all .4s ease-in-out;
+}
+
+.btn-hover:focus {
+    outline: none;
+}
+
+.btn-hover.color-4 {
+    background-image: linear-gradient(to right, #fc6076, #ff9a44, #ef9d43, #e75516);
+    box-shadow: 0 4px 15px 0 rgba(252, 104, 110, 0.75);
+}
+
+.delete-account-box i {
+    font-size: 20px;
+}
+
+.delete-account-box p {
+    margin-left: 10px;
+    margin-top: 16px;
+    font-size: 17px;
+}
+
+@media (max-width: 991px) {
+    .content-div {
+        width: 100%;
+    }
+}

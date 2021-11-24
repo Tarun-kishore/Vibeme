@@ -151,6 +151,7 @@
                         <!-- Taking email -->
                         <div class="mb-3 email container-fluid">
                             <label for="exampleInputEmail1" class="form-label">Email address</label>
+                            <!-- if sign in fails then this box gets the previous value entered by the user at that time -->
                             {{#if email}}
                                 <input type="email" name="email" class="form-control" id="exampleInputEmail1"
                                 aria-describedby="emailHelp" value="{{email}}" placeholder="abc@email.com" required>

@@ -5,6 +5,8 @@ function test(){
   var activeItemNewAnim = tabsNewAnim.find('.active');
   var activeWidthNewAnimHeight = activeItemNewAnim.innerHeight();
   var activeWidthNewAnimWidth = activeItemNewAnim.innerWidth();
+
+  // return the top and left value by a object
   var itemPosNewAnimTop = activeItemNewAnim.position();
   var itemPosNewAnimLeft = activeItemNewAnim.position();
   $(".hori-selector").css({
@@ -13,6 +15,8 @@ function test(){
     "height": activeWidthNewAnimHeight + "px",
     "width": activeWidthNewAnimWidth + "px"
   });
+
+  // adding event listener to all li of navbarSupportedContent
   $("#navbarSupportedContent").on("click","li",function(e){
     $('#navbarSupportedContent ul li').removeClass("active");
     $(this).addClass('active');

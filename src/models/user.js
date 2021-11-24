@@ -5,7 +5,7 @@ const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 
 // *database related imports
-const { DataTypes, where } = require("sequelize");
+const { DataTypes, Op, where } = require("sequelize");
 const sequelize = require("../db/sql");
 
 // *importing models from other files
@@ -48,11 +48,24 @@ const User = sequelize.define(
     },
     profilePicture: {
       type: DataTypes.BLOB("long"),
+      get() {
+        if (typeof this.getDataValue("profilePicture") !== "string")
+          return (
+            "data:image/png;base64," +
+            this.getDataValue("profilePicture").toString("base64")
+          );
+        return this.getDataValue("profilePicture");
+      },
     },
     bio: {
       type: DataTypes.STRING,
       defaultValue: "",
       allowNull: false,
+    },
+    qualities: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      defaultValue: "",
     },
     verified: {
       type: DataTypes.BOOLEAN,
@@ -67,8 +80,9 @@ const User = sequelize.define(
 
 User.prototype.toJSON = function () {
   const user = this.dataValues;
-  user.profilePicture =
-    "data:image/png;base64," + user.profilePicture.toString("base64");
+  if (typeof user.profilePicture !== "string")
+    user.profilePicture =
+      "data:image/png;base64," + user.profilePicture.toString("base64");
   return user;
 };
 
@@ -95,19 +109,35 @@ User.prototype.getFullName = function () {
 };
 
 // *This function handles abstraction and remove sensitive data before passing it to client
-User.prototype.getPublicProfile = function () {
+User.prototype.getPublicProfile = async function () {
   const userObject = this.toJSON();
+  try {
+    const post = await Post.findAll({
+      where: {
+        owner: this.id,
+      },
+    });
+    userObject.postCount = post.length;
 
+    const connections = await Connection.findAll({
+      where: {
+        pending: false,
+        [Op.or]: [{ sentTo: this.id }, { sentBy: this.id }],
+      },
+    });
+
+    userObject.connectionsCount = connections.length;
+  } catch (e) {
+    console.log(e);
+  }
   delete userObject.password;
   return userObject;
 };
 
 // *This function return all posts of a user
 User.prototype.getPosts = async function () {
-  const userObject = this.toJSON();
-
   let posts;
-  posts = await Post.findAll({ where: { owner: userObject.id } });
+  posts = await Post.findAll({ where: { owner: this.id } });
 
   let options = [];
   let postData;
@@ -116,7 +146,11 @@ User.prototype.getPosts = async function () {
     post = posts[i];
     postData = await post.getPost();
 
-    options = options.concat({ ...postData, creator: this.getFullName() });
+    options = options.concat({
+      ...postData,
+      creator: this.getFullName(),
+      userImage: this.profilePicture,
+    });
   }
 
   return options;

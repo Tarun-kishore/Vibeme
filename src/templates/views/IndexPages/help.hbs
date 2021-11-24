@@ -1,3 +1,5 @@
+<!-- Help page code -->
+
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
 
@@ -38,6 +40,7 @@
 
     <!-- New CSS stylesheet -->
     <link rel="stylesheet" href="/css/Help Page/HelpPageStyles.css">
+
 </head>
 
 <body>
@@ -79,18 +82,8 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" id="navbarContent" href="/post/all">
-                                All Post
-                            </a>
-                        </li>
-                        <li class="nav-item">
                             <a class="nav-link" id="navbarContent" href="/user/profile">
-                                my Profile
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" id="navbarContent" href="/user/logout">
-                                Logout
+                                Profile
                             </a>
                         </li>
                     </ul>
@@ -127,26 +120,42 @@
         </header>
 
         <main>
+
+            <!-- Outer div containing text and images -->
             <div id="background">
+
+                <!-- containing images which will be shown on a min-width -->
                 <div class="faq-container-desktop-illustrations flex-column-center">
+                    
                     <img src="/image/Help Page Images/illustration-woman-online-desktop.svg"
                         alt="illustration of woman operating a computer" class="desktop-illustration-main-image">
                     <img src="/image/Help Page Images/bg-pattern-desktop.svg" alt="background shadow for illustration"
                         class="desktop-illustration-background-image">
+                
                 </div>
+
+                <!-- containing images which will be shown when above images are not shown -->
                 <div class="faq-container-mobile-illustrations">
                     <img src="/image/Help Page Images/illustration-woman-online-mobile.svg"
                         alt="illustration of woman operating a computer" class="mobile-illustration-main-image">
                     <img src="/image/Help Page Images/bg-pattern-mobile.svg" alt="background shadow for illustration"
                         class="mobile-illustration-background-image">
                 </div>
+
+                <!-- contains text -->
                 <div class="faq-text accordion-container ">
+                    
                     <h1>Frequently asked questions</h1>
                     <p>Learn more about our service</p>
+
+                    <!-- unordered list containing the points which we have written -->
                     <ul class="accordion-list">
+
                         <li>
                             <div class="accordion-title">
                                 <h2>How do I create my VibeMe account?</h2>
+
+                                <!-- icon of down arrow -->
                                 <figure class="up-down-arrow">
                                     <svg width="10" height="7" xmlns="http://www.w3.org/2000/svg">
                                         <path d="M1 .799l4 4 4-4" stroke="#F47B56" stroke-width="2" fill="none"
@@ -165,6 +174,7 @@
                                 consectetur adipisicing elit. Maiores libero quibusdam Lorem ipsum dolor sit amet
                                 consectetur adipisicing elit. Maiores libero quibusdam</p>
                         </li>
+
                         <li>
                             <div class="accordion-title">
                                 <h2>Is my account free? Do I have to pay anything?</h2>
@@ -186,6 +196,7 @@
                                 consectetur adipisicing elit. Maiores libero quibusdam Lorem ipsum dolor sit amet
                                 consectetur adipisicing elit. Maiores libero quibusdam</p>
                         </li>
+
                         <li>
                             <div class="accordion-title">
                                 <h2>Can anyone create an account?</h2>
@@ -207,6 +218,7 @@
                                 consectetur adipisicing elit. Maiores libero quibusdam Lorem ipsum dolor sit amet
                                 consectetur adipisicing elit. Maiores libero quibusdam</p>
                         </li>
+
                         <li>
                             <div class="accordion-title">
                                 <h2>How can I close my VibeMe account?</h2>
@@ -228,6 +240,7 @@
                                 consectetur adipisicing elit. Maiores libero quibusdam Lorem ipsum dolor sit amet
                                 consectetur adipisicing elit. Maiores libero quibusdam</p>
                         </li>
+
                         <li>
                             <div class="accordion-title">
                                 <h2>Why should I use your service?</h2>
@@ -249,13 +262,19 @@
                                 consectetur adipisicing elit. Maiores libero quibusdam Lorem ipsum dolor sit amet
                                 consectetur adipisicing elit. Maiores libero quibusdam</p>
                         </li>
+
                     </ul>
+
                 </div>
+
+                <!-- separate box image -->
                 <img src="/image/Help Page Images/illustration-box-desktop.svg" alt="illustration box"
                     class="illustration-box-desktop">
             </div>
+
         </main>
 
+        <!-- footer -->
         <footer>
             <p class="text-center">&copy; 2021 All rights Reserved</p>
         </footer>

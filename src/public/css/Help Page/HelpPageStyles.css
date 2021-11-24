@@ -1,5 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Kumbh+Sans:wght@300;600&display=swap');
 
+/* styling main tag */
 main {
     min-height: 100vh;
     max-height: auto;
@@ -14,6 +15,7 @@ main {
     transition: color .15s ease;
 }
 
+/* background for outer div */
 #background {
     position: relative;
     display: flex;
@@ -26,6 +28,7 @@ main {
     margin-bottom: 100px;
 }
 
+/* so that elements become horizontally and vertically align */
 .flex-column-center {
     display: flex;
     flex-direction: column;

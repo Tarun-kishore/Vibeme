@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+
+    <!-- Meta tags -->
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Website Name -->
+    <title>VibeMe</title>
+
+    <!-- Website icon on title bar -->
+    <link rel="icon" href="/image/Logo/title.png" type="image/png">
+
+    <!-- Bootstraps CDN -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
+
+    <!-- Font Awesome -->
+    <script src="https://kit.fontawesome.com/d021e746cf.js" crossorigin="anonymous"></script>
+
+    <!-- Vendor CSS Files -->
+    <link href="/css/vendor userbase/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/css/vendor userbase/icofont/icofont.min.css" rel="stylesheet">
+    <link href="/css/vendor userbase/boxicons/css/boxicons.min.css" rel="stylesheet">
+    <link href="/css/vendor userbase/venobox/venobox.css" rel="stylesheet">
+    <link href="/css/vendor userbase/owl.carousel/assets/owl.carousel.min.css" rel="stylesheet">
+    <link href="/css/vendor userbase/aos/aos.css" rel="stylesheet">
+
+    <!-- Custom CSS stylesheet -->
+    <link rel="stylesheet" href="/css/allPostPage/navbar.css">
+    <link rel="stylesheet" href="/css/deleteAccountPage/styles.css">
+
+</head>
+
+<body>
+
+    <nav class="navbar navbar-expand-lg navbar-v1 navbar-desktop">
+        <div class="container-fluid">
+            <div class="navbar-brand-div">
+                <a class="navbar-brand" href="/">VibeMe</a>
+            </div>
+            <div class="navbar-menu">
+                <div class="navbar-start-items">
+                    <div class="navbar-start-icons">
+                        <a href="/post/all">
+                            <i class="fas fa-home"></i>
+                        </a>
+                    </div>
+                    <div class="navbar-start-icons">
+                        <a href="/post/create">
+                            <i class="fas fa-plus"></i>
+                        </a>
+                    </div>
+                    <div class="navbar-start-icons">
+                        <a href="/message/viewAll">
+                            <i class="fab fa-facebook-messenger"></i>
+                        </a>
+                    </div>
+
+                </div>
+                <div class="navbar-end-items">
+                    <div class="account-dropdown">
+                        <div class="user-image">
+                            <img src="{{image}}" alt="user-photo">
+                        </div>
+                        <div class="nav-dropdown">
+                            <div class="inner">
+                                <div class="nav-drop-header">
+                                    <span class="username">{{name}}</span>
+                                    <!-- <label class="theme-toggle">
+                                        <input type="checkbox">
+                                        <span class="toggler">
+                                            <span class="dark">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                                    viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                                    stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                                                    class="feather feather-moon">
+                                                    <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                                                </svg>
+                                            </span>
+                                            <span class="light">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                                    viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                                    stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                                                    class="feather feather-sun">
+                                                    <circle cx="12" cy="12" r="5"></circle>
+                                                    <line x1="12" y1="1" x2="12" y2="3"></line>
+                                                    <line x1="12" y1="21" x2="12" y2="23"></line>
+                                                    <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                                                    <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                                                    <line x1="1" y1="12" x2="3" y2="12"></line>
+                                                    <line x1="21" y1="12" x2="23" y2="12"></line>
+                                                    <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                                                    <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                                                </svg>
+                                            </span>
+                                        </span>
+                                    </label> -->
+                                </div>
+                                <div class="nav-drop-body account-items">
+                                    <a href="/user/profile" class="account-item">
+                                        <div class="media">
+                                            <div class="icon-wrap">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                                    viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                                    stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                                                    class="feather feather-user">
+                                                    <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                                                    <circle cx="12" cy="7" r="4"></circle>
+                                                </svg>
+                                            </div>
+                                            <div class="media-content">
+                                                <h3>Profile</h3>
+                                                <small>View your profile</small>
+                                            </div>
+                                        </div>
+                                    </a>
+                                    <a href="/connect/view" class="account-item">
+                                        <div class="media">
+                                            <div class="icon-wrap">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                                    viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                                    stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                                                    class="feather feather-heart">
+                                                    <path
+                                                        d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z">
+                                                    </path>
+                                                </svg>
+                                            </div>
+                                            <div class="media-content">
+                                                <h3>Friends</h3>
+                                                <small>View your connection</small>
+                                            </div>
+                                        </div>
+                                    </a>
+                                    <a href="/user/update" class="account-item">
+                                        <div class="media">
+                                            <div class="icon-wrap">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                                    viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                                    stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                                                    class="feather feather-settings">
+                                                    <circle cx="12" cy="12" r="3"></circle>
+                                                    <path
+                                                        d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z">
+                                                    </path>
+                                                </svg>
+                                            </div>
+                                            <div class="media-content">
+                                                <h3>Settings</h3>
+                                                <small>Edit your profile, change password </small>
+                                            </div>
+                                        </div>
+                                    </a>
+                                    <a href="/help" class="account-item">
+                                        <div class="media">
+                                            <div class="icon-wrap">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                                    viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                                    stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                                                    class="feather feather-life-buoy">
+                                                    <circle cx="12" cy="12" r="10"></circle>
+                                                    <circle cx="12" cy="12" r="4"></circle>
+                                                    <line x1="4.93" y1="4.93" x2="9.17" y2="9.17"></line>
+                                                    <line x1="14.83" y1="14.83" x2="19.07" y2="19.07"></line>
+                                                    <line x1="14.83" y1="9.17" x2="19.07" y2="4.93"></line>
+                                                    <line x1="14.83" y1="9.17" x2="18.36" y2="5.64"></line>
+                                                    <line x1="4.93" y1="19.07" x2="9.17" y2="14.83"></line>
+                                                </svg>
+                                            </div>
+                                            <div class="media-content">
+                                                <h3>Help</h3>
+                                                <small>Read FAQs</small>
+                                            </div>
+                                        </div>
+                                    </a>
+                                    <a href="/user/logout" class="account-item">
+                                        <div class="media">
+                                            <div class="icon-wrap">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                                    viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                                    stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                                                    class="feather feather-power">
+                                                    <path d="M18.36 6.64a9 9 0 1 1-12.73 0"></path>
+                                                    <line x1="12" y1="2" x2="12" y2="12"></line>
+                                                </svg>
+                                            </div>
+                                            <div class="media-content">
+                                                <h3>Log out</h3>
+                                                <small>Log out from your account.</small>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <nav class="navbar navbar-expand-lg navbar-v1 navbar-mobile">
+        <div class="container-fluid">
+            <div class="navbar-brand-div">
+                <a class="navbar-brand" href="/">VibeMe</a>
+            </div>
+            <div class="navbar-burger-div">
+                <div class="navbar-burger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+            <div class="navbar-mobile-menu">
+                <div class="navbar-item has-dropdown">
+                    <a class="navbar-link" href="/user/profile">
+                        <img src="{{image}}" alt="user photo">
+                        <span class="is-heading">{{name}}</span>
+                    </a>
+                    <div class="mobile-navbar-dropdown">
+                        <a class="navbar-item" href="/post/all">
+                            <span>
+                                <i class="fas fa-home"></i>
+                                All Post
+                            </span>
+                        </a>
+                        <a class="navbar-item" href="/post/create">
+                            <span>
+                                <i class="fas fa-plus"></i>
+                                Create Post
+                            </span>
+                        </a>
+                        <a class="navbar-item" href="/message/viewAll">
+                            <span>
+                                <i class="fab fa-facebook-messenger"></i>
+                                Messaging
+                            </span>
+                        </a>
+                        <a class="navbar-item" href="/user/profile">
+                            <span>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round" class="feather feather-user">
+                                    <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                                    <circle cx="12" cy="7" r="4"></circle>
+                                </svg>
+                                Profile
+                            </span>
+                        </a>
+                        <a class="navbar-item" href="/connect/view">
+                            <span>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round" class="feather feather-heart">
+                                    <path
+                                        d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z">
+                                    </path>
+                                </svg>
+                                Friends
+                            </span>
+                        </a>
+                        <a class="navbar-item" href="/user/update">
+                            <span>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round" class="feather feather-settings">
+                                    <circle cx="12" cy="12" r="3"></circle>
+                                    <path
+                                        d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z">
+                                    </path>
+                                </svg>
+                                Settings
+                            </span>
+                        </a>
+                        <a class="navbar-item" href="/help">
+                            <span>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round" class="feather feather-life-buoy">
+                                    <circle cx="12" cy="12" r="10"></circle>
+                                    <circle cx="12" cy="12" r="4"></circle>
+                                    <line x1="4.93" y1="4.93" x2="9.17" y2="9.17"></line>
+                                    <line x1="14.83" y1="14.83" x2="19.07" y2="19.07"></line>
+                                    <line x1="14.83" y1="9.17" x2="19.07" y2="4.93"></line>
+                                    <line x1="14.83" y1="9.17" x2="18.36" y2="5.64"></line>
+                                    <line x1="4.93" y1="19.07" x2="9.17" y2="14.83"></line>
+                                </svg>
+                                Help
+                            </span>
+                        </a>
+                        <a class="navbar-item" href="/user/logout">
+                            <span>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round" class="feather feather-power">
+                                    <path d="M18.36 6.64a9 9 0 1 1-12.73 0"></path>
+                                    <line x1="12" y1="2" x2="12" y2="12"></line>
+                                </svg>
+                                Log out
+                            </span>
+                        </a>
+                    </div>
+                </div>
+                <div class="navbar-item has-dropdown"></div>
+            </div>
+        </div>
+    </nav>
+
+    <div class="main-frame">
+        <div class="sidebar-div">
+            <div class="sidebar-heading-outer">
+                <div class="sidebar-heading">
+                    <h1>User Profile</h1>
+                </div>
+            </div>
+            <div class="sidebar-edit-profile-outer" onclick="window.location.href='/user/update'">
+                <div class="sidebar-content">
+                    <i class="fas fa-user-edit"></i>
+                    <p>Edit Profile</p>
+                </div>
+                <div class="border-decoration Invisible"></div>
+            </div>
+            <div class="sidebar-change-password-outer" onclick="window.location.href='/user/change'">
+                <div class="sidebar-content">
+                    <i class="fas fa-key"></i>
+                    <p>Change Password</p>
+                </div>
+                <div class="border-decoration Invisible"></div>
+            </div>
+            <div class="sidebar-delete-account-outer" onclick="window.location.href='/user/delete'">
+                <div class="sidebar-content">
+                    <i class="fas fa-trash"></i>
+                    <p>Delete Account</p>
+                </div>
+                <div class="border-decoration"></div>
+            </div>
+        </div>
+        <div class="content-div">
+
+            <form action="/user/delete?_method=DELETE" method="post"
+                onsubmit="return true">
+                <div class="content-box">
+                    <div class="overlay Invisible">
+                        <div class="delete-account-confirmation-box">
+                            <div class="delete-account-heading">
+                                <h1>Are you sure?</h1>
+                                <p>We are sorry to see you go. If you want to permanently delete your account, click
+                                    Delete Account</p>
+                            </div>
+                            <div class="delete-account-confirmation-button">
+                                <button type="button" class="btn btn-outline-primary button1">Keep Account</button>
+                                <button class="btn btn-danger button2">Delete Account</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="delete-account-box">
+                        <button type="button" class="btn-hover color-4">
+                            <i class="fas fa-trash"></i>
+                            <p>Delete Account</p>
+                        </button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Bootstrap Script -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ"
+        crossorigin="anonymous"></script>
+
+    <!-- JQuery Script -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+    <!-- Custom Script -->
+    <script src="/script/AllPostPageScript/navbarScript.js"></script>
+    <script src="/script/deleteAccountScript/script.js"></script>
+</body>
+
+
+
+</html>

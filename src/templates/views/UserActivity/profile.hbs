@@ -2,300 +2,386 @@
 <html lang="en" dir="ltr">
 
 <head>
-
   <!-- Meta tags -->
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
   <!-- Website Name -->
   <title>VibeMe</title>
 
   <!-- Website icon on title bar -->
-  <link rel="icon" href="/image/Logo/title.png" type="image/png">
+  <link rel="icon" href="/image/Logo/title.png" type="image/png" />
 
   <!-- Bootstraps CDN -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet"
-    integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
+    integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous" />
 
   <!-- Font Awesome -->
   <script src="https://kit.fontawesome.com/d021e746cf.js" crossorigin="anonymous"></script>
 
-  <!-- Font Style -> Space Mono Regular 400 -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link
-    href="https://fonts.googleapis.com/css2?family=Lato:wght@300&family=Nunito+Sans:wght@600&family=Roboto:wght@500&display=swap"
-    rel="stylesheet">
   <!-- Google Fonts -->
   <link
     href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i"
-    rel="stylesheet">
+    rel="stylesheet" />
 
   <!-- Vendor CSS Files -->
-  <link href="/css/vendor userbase/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-  <link href="/css/vendor userbase/icofont/icofont.min.css" rel="stylesheet">
-  <link href="/css/vendor userbase/boxicons/css/boxicons.min.css" rel="stylesheet">
-  <link href="/css/vendor userbase/venobox/venobox.css" rel="stylesheet">
-  <link href="/css/vendor userbase/owl.carousel/assets/owl.carousel.min.css" rel="stylesheet">
-  <link href="/css/vendor userbase/aos/aos.css" rel="stylesheet">
+  <link href="/css/vendor userbase/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+  <link href="/css/vendor userbase/icofont/icofont.min.css" rel="stylesheet" />
+  <link href="/css/vendor userbase/boxicons/css/boxicons.min.css" rel="stylesheet" />
+  <link href="/css/vendor userbase/venobox/venobox.css" rel="stylesheet" />
+  <link href="/css/vendor userbase/owl.carousel/assets/owl.carousel.min.css" rel="stylesheet" />
+  <link href="/css/vendor userbase/aos/aos.css" rel="stylesheet" />
 
   <!-- New CSS stylesheet -->
-  <link rel="stylesheet" href="/css/profile page/style.css">
+  <link rel="stylesheet" href="/css/allPostPage/navbar.css" />
+  <link rel="stylesheet" href="/css/profile page/style.css" />
 </head>
 
 <body>
-  
   <!-- nav bar -->
-  <div id="nav">
-    <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top pt-0 pb-0">
-      <div class="container-fluid">
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
-          aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-          <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-            <li class="nav-item">
-              <a class="nav-link active" aria-current="page" href="/post/all"><i class="fas fa-home"></i></a>
-            </li>
-            <li class="nav-item">
-
-
-              {{!-- this is blank --}}
-
-
-              <a class="nav-link" href="/post/my"><i class="fas fa-compass"></i></a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link active" aria-current="page" href="/post/create"><i class="fas fa-plus"></i></a>
-            </li>
-            <li class="nav-item">
-
-
-              {{!-- this is blank --}}
-
-
-              <a class="nav-link text-capitalize" href="/message/viewAll"><i class="fab fa-facebook-messenger"></i></a>
-            </li>
-            <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-bs-toggle="dropdown"
-                aria-expanded="false">
-                <i class="fas fa-user"></i>
-              </a>
-              <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                <li><a class="dropdown-item" href="/user/profile">PROFILE</a></li>
-                <li><a class="dropdown-item" href="/user/logout">LOGOUT</a></li>
-                <li>
-                  <form action="/user/update" method="post">
-                  <button class="dropdown-item">EDIT PROFILE</button>
-                  </form>
-                  </li>
-                <li>
-                  <form action="/user/delete?_method=DELETE" method="post" onsubmit="return confirm('Are you sure you want to delete the account')">
-                  <button class="dropdown-item">DELETE ACCOUNT</button>
-                  </form>
-                </li>
-                <li>
-                  <form action="/user/change" method="post">
-                  <button class="dropdown-item">CHANGE PASSWORD</button>
-                  </form></li>
-                <li><a class="dropdown-item" href="/connect/view">VIEW CONN</a></li>
-                <li>
-                  <hr class="dropdown-divider">
-                </li>
-              </ul>
-          </ul>
+  <nav class="navbar navbar-expand-lg navbar-v1 navbar-desktop">
+    <div class="container-fluid">
+      <div class="navbar-brand-div">
+        <a class="navbar-brand" href="/">VibeMe</a>
+      </div>
+      <div class="navbar-menu">
+        <div class="navbar-start-items">
+          <div class="navbar-start-icons">
+            <a href="/post/all">
+              <i class="fas fa-home"></i>
+            </a>
+          </div>
+          <div class="navbar-start-icons">
+            <a href="/post/create">
+              <i class="fas fa-plus"></i>
+            </a>
+          </div>
+          <div class="navbar-start-icons">
+            <a href="/message/viewAll">
+              <i class="fab fa-facebook-messenger"></i>
+            </a>
+          </div>
         </div>
-    </nav>
-  </div>
+        <div class="navbar-end-items">
+          <div class="account-dropdown">
+            <div class="user-image">
+              <img src="{{ image }}" alt="user-photo" />
+            </div>
+            <div class="nav-dropdown">
+              <div class="inner">
+                <div class="nav-drop-header">
+                  <span class="username">{{ name }}</span>
+                  <!-- <label class="theme-toggle">
+                                        <input type="checkbox">
+                                        <span class="toggler">
+                                            <span class="dark">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                                    viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                                    stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                                                    class="feather feather-moon">
+                                                    <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                                                </svg>
+                                            </span>
+                                            <span class="light">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                                    viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                                    stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                                                    class="feather feather-sun">
+                                                    <circle cx="12" cy="12" r="5"></circle>
+                                                    <line x1="12" y1="1" x2="12" y2="3"></line>
+                                                    <line x1="12" y1="21" x2="12" y2="23"></line>
+                                                    <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                                                    <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                                                    <line x1="1" y1="12" x2="3" y2="12"></line>
+                                                    <line x1="21" y1="12" x2="23" y2="12"></line>
+                                                    <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                                                    <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                                                </svg>
+                                            </span>
+                                        </span>
+                                    </label> -->
+                </div>
+                <div class="nav-drop-body account-items">
+                  <a href="/user/profile" class="account-item">
+                    <div class="media">
+                      <div class="icon-wrap">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                          stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                          class="feather feather-user">
+                          <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                          <circle cx="12" cy="7" r="4"></circle>
+                        </svg>
+                      </div>
+                      <div class="media-content">
+                        <h3>Profile</h3>
+                        <small>View your profile</small>
+                      </div>
+                    </div>
+                  </a>
+                  <a href="/connect/view" class="account-item">
+                    <div class="media">
+                      <div class="icon-wrap">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                          stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                          class="feather feather-heart">
+                          <path
+                            d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z">
+                          </path>
+                        </svg>
+                      </div>
+                      <div class="media-content">
+                        <h3>Friends</h3>
+                        <small>View your connection</small>
+                      </div>
+                    </div>
+                  </a>
+                  <a href="/user/update" class="account-item">
+                    <div class="media">
+                      <div class="icon-wrap">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                          stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                          class="feather feather-settings">
+                          <circle cx="12" cy="12" r="3"></circle>
+                          <path
+                            d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z">
+                          </path>
+                        </svg>
+                      </div>
+                      <div class="media-content">
+                        <h3>Settings</h3>
+                        <small>Edit your profile, change password </small>
+                      </div>
+                    </div>
+                  </a>
+                  <a href="/help" class="account-item">
+                    <div class="media">
+                      <div class="icon-wrap">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                          stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                          class="feather feather-life-buoy">
+                          <circle cx="12" cy="12" r="10"></circle>
+                          <circle cx="12" cy="12" r="4"></circle>
+                          <line x1="4.93" y1="4.93" x2="9.17" y2="9.17"></line>
+                          <line x1="14.83" y1="14.83" x2="19.07" y2="19.07"></line>
+                          <line x1="14.83" y1="9.17" x2="19.07" y2="4.93"></line>
+                          <line x1="14.83" y1="9.17" x2="18.36" y2="5.64"></line>
+                          <line x1="4.93" y1="19.07" x2="9.17" y2="14.83"></line>
+                        </svg>
+                      </div>
+                      <div class="media-content">
+                        <h3>Help</h3>
+                        <small>Read FAQs</small>
+                      </div>
+                    </div>
+                  </a>
+                  <a href="/user/logout" class="account-item">
+                    <div class="media">
+                      <div class="icon-wrap">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                          stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                          class="feather feather-power">
+                          <path d="M18.36 6.64a9 9 0 1 1-12.73 0"></path>
+                          <line x1="12" y1="2" x2="12" y2="12"></line>
+                        </svg>
+                      </div>
+                      <div class="media-content">
+                        <h3>Log out</h3>
+                        <small>Log out from your account.</small>
+                      </div>
+                    </div>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </nav>
 
-  <div>
+  <nav class="navbar navbar-expand-lg navbar-v1 navbar-mobile">
+    <div class="container-fluid">
+      <div class="navbar-brand-div">
+        <a class="navbar-brand" href="/">VibeMe</a>
+      </div>
+      <div class="navbar-burger-div">
+        <div class="navbar-burger">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+      </div>
+      <div class="navbar-mobile-menu">
+        <div class="navbar-item has-dropdown">
+          <a class="navbar-link" href="/user/profile">
+            <img src="{{ image }}" alt="user photo" />
+            <span class="is-heading">{{ name }}</span>
+          </a>
+          <div class="mobile-navbar-dropdown">
+            <a class="navbar-item" href="/post/all">
+              <span>
+                <i class="fas fa-home"></i>
+                All Post
+              </span>
+            </a>
+            <a class="navbar-item" href="/post/create">
+              <span>
+                <i class="fas fa-plus"></i>
+                Create Post
+              </span>
+            </a>
+            <a class="navbar-item" href="/message/viewAll">
+              <span>
+                <i class="fab fa-facebook-messenger"></i>
+                Messaging
+              </span>
+            </a>
+            <a class="navbar-item" href="/user/profile">
+              <span>
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                  stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                  class="feather feather-user">
+                  <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                  <circle cx="12" cy="7" r="4"></circle>
+                </svg>
+                Profile
+              </span>
+            </a>
+            <a class="navbar-item" href="/connect/view">
+              <span>
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                  stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                  class="feather feather-heart">
+                  <path
+                    d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z">
+                  </path>
+                </svg>
+                Friends
+              </span>
+            </a>
+            <a class="navbar-item" href="/user/update">
+              <span>
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                  stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                  class="feather feather-settings">
+                  <circle cx="12" cy="12" r="3"></circle>
+                  <path
+                    d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z">
+                  </path>
+                </svg>
+                Settings
+              </span>
+            </a>
+            <a class="navbar-item" href="/help">
+              <span>
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                  stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                  class="feather feather-life-buoy">
+                  <circle cx="12" cy="12" r="10"></circle>
+                  <circle cx="12" cy="12" r="4"></circle>
+                  <line x1="4.93" y1="4.93" x2="9.17" y2="9.17"></line>
+                  <line x1="14.83" y1="14.83" x2="19.07" y2="19.07"></line>
+                  <line x1="14.83" y1="9.17" x2="19.07" y2="4.93"></line>
+                  <line x1="14.83" y1="9.17" x2="18.36" y2="5.64"></line>
+                  <line x1="4.93" y1="19.07" x2="9.17" y2="14.83"></line>
+                </svg>
+                Help
+              </span>
+            </a>
+            <a class="navbar-item" href="/user/logout">
+              <span>
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                  stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                  class="feather feather-power">
+                  <path d="M18.36 6.64a9 9 0 1 1-12.73 0"></path>
+                  <line x1="12" y1="2" x2="12" y2="12"></line>
+                </svg>
+                Log out
+              </span>
+            </a>
+          </div>
+        </div>
+        <div class="navbar-item has-dropdown"></div>
+      </div>
+    </div>
+  </nav>
 
-  </div>
   <!-- nav bar end  -->
 
   <!-- ======= Mobile nav toggle button ======= -->
-  <button type="button" class="mobile-nav-toggle d-xl-none"><i class="icofont-navigation-menu"></i></button>
+  <button type="button" class="mobile-nav-toggle">
+    {{!-- <i class="icofont-navigation-menu"></i> --}}
+    <div class="navbar-burger">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+  </button>
 
   <!-- ======= Header ======= -->
   <header id="header">
     <div class="d-flex flex-column">
-
       <div class="profile">
-          <img src="{{profilePicture}}" alt="" class="img-fluid rounded-circle">
-        <h1 class="text"><a href="index.html">Username</a></h1>
+        <div class="profile-image-container">
+            <img src="{{ profilePicture }}" alt="user profile photo" />
+        </div>
+        <h1 class="text">{{ firstName }} {{ lastName }}</h1>
         <div id="followerscount">
           <div class="wrap">
-            <p class="count">23</p>
-            <span class="small">Followers</span>
+            <p class="count">{{ connectionsCount }}</p>
+            <span class="small">Connections</span>
           </div>
           <div class="wrap">
-            <p class="count">45</p>
-            <span class="small">Following</span>
-          </div>
-          <div class="wrap">
-            <p class="count">9</p>
-            <span class="small">posts</span>
+            <p class="count">{{ postCount }}</p>
+            <span class="small">Posts</span>
           </div>
         </div>
         <div id="status">
-          <span>
-            this is some random text to examine thi section
-            this is some random text to examine
-            this is some random text to examine thi section
-          </span>
+          <p>
+            {{ bio }}
+          </p>
         </div>
       </div>
-
-
     </div>
-  </header><!-- End Header -->
+  </header>
+  <!-- End Header -->
 
   <!-- ======= Hero Section ======= -->
-  <section id="hero" class="d-flex flex-column justify-content-center align-items-center">
+  <section id="hero" class="d-flex flex-column justify-content-center align-items-center" style="background: url('{{
+        profilePicture
+      }}') center center; background-attachment: fixed; background-repeat: no-repeat; background-size: cover;">
     <div class="hero-container" data-aos="fade-in">
-      <h1>Username</h1>
-      <p>I'm <span class="typed" data-typed-items="Smart, fit, Photographer, qualities"></span></p>
+      <h1>{{ firstName }} {{ lastName }}</h1>
+      <p>
+        I'm <span class="typed" data-typed-items="{{ qualities }}"></span>
+      </p>
     </div>
-  </section><!-- End Hero -->
+  </section>
+  <!-- End Hero -->
 
   <main id="main">
     <!-- ======= Post ======= -->
-    <section id="portfolio" class="portfolio section-bg">
+    <section class="portfolio section-bg">
       <div class="container">
-
-
         <div class="row" data-aos="fade-up">
           <div class="col-lg-12 d-flex justify-content-center">
             <ul id="portfolio-flters">
-              <li data-filter="*" class="filter-active">POSTS</li>
-
+              <li class="filter-active">Posts</li>
             </ul>
           </div>
         </div>
-
-        <div class="row portfolio-container" data-aos="fade-up" data-aos-delay="100">
-
-          <div class="col-lg-4 col-md-6 portfolio-item filter-app">
-            <div class="portfolio-wrap">
-              <img src="/image/Userprofile images/portfolio/portfolio-1.jpg" class="img-fluid" alt="">
-              <div class="portfolio-links">
-                <a href="/image/Userprofile images/portfolio/portfolio-1.jpg" data-gall="portfolioGallery"
-                  class="venobox" title="App 1"><i class="fas fa-heart"></i></a>
-                <a href="comments.html" title="More Details"><i class="fas fa-comment"></i></a>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-lg-4 col-md-6 portfolio-item filter-web">
-            <div class="portfolio-wrap">
-              <img src="/image/Userprofile images/portfolio/portfolio-2.jpg" class="img-fluid" alt="">
-              <div class="portfolio-links">
-                <a href="/image/Userprofile images/portfolio/portfolio-2.jpg" data-gall="portfolioGallery"
-                  class="venobox" title="Web 3"><i class="fas fa-heart"></i></a>
-                <a href="comments.html" title="More Details"><i class="fas fa-comment"></i></a>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-lg-4 col-md-6 portfolio-item filter-app">
-            <div class="portfolio-wrap">
-              <img src="/image/Userprofile images/portfolio/portfolio-3.jpg" class="img-fluid" alt="">
-              <div class="portfolio-links">
-                <a href="/image/Userprofile images/portfolio/portfolio-3.jpg" data-gall="portfolioGallery"
-                  class="venobox" title="App 2"><i class="fas fa-heart"></i></a>
-                <a href="comments.html" title="More Details"><i class="fas fa-comment"></i></a>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-lg-4 col-md-6 portfolio-item filter-card">
-            <div class="portfolio-wrap">
-              <img src="/image/Userprofile images/portfolio/portfolio-4.jpg" class="img-fluid" alt="">
-              <div class="portfolio-links">
-                <a href="/image/Userprofile images/portfolio/portfolio-4.jpg" data-gall="portfolioGallery"
-                  class="venobox" title="Card 2"><i class="fas fa-heart"></i></a>
-                <a href="comments.html" title="More Details"><i class="fas fa-comment"></i></a>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-lg-4 col-md-6 portfolio-item filter-web">
-            <div class="portfolio-wrap">
-              <img src="/image/Userprofile images/portfolio/portfolio-5.jpg" class="img-fluid" alt="">
-              <div class="portfolio-links">
-                <a href="/image/Userprofile images/portfolio/portfolio-5.jpg" data-gall="portfolioGallery"
-                  class="venobox" title="Web 2"><i class="fas fa-heart"></i></a>
-                <a href="comments.html" title="More Details"><i class="fas fa-comment"></i></a>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-lg-4 col-md-6 portfolio-item filter-app">
-            <div class="portfolio-wrap">
-              <img src="/image/Userprofile images/portfolio/portfolio-6.jpg" class="img-fluid" alt="">
-              <div class="portfolio-links">
-                <a href="/image/Userprofile images/portfolio/portfolio-6.jpg" data-gall="portfolioGallery"
-                  class="venobox" title="App 3"><i class="fas fa-heart"></i></i></a>
-                <a href="comments.html" title="More Details"><i class="fas fa-comment"></i></a>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-lg-4 col-md-6 portfolio-item filter-card">
-            <div class="portfolio-wrap">
-              <img src="/image/Userprofile images/portfolio/portfolio-7.jpg" class="img-fluid" alt="">
-              <div class="portfolio-links">
-                <a href="/image/Userprofile images/portfolio/portfolio-7.jpg" data-gall="portfolioGallery"
-                  class="venobox" title="Card 1"><i class="fas fa-heart"></i></a>
-                <a href="comments.html" title="More Details"><i class="fas fa-comment"></i></a>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-lg-4 col-md-6 portfolio-item filter-card">
-            <div class="portfolio-wrap">
-              <img src="/image/Userprofile images/portfolio/portfolio-8.jpg" class="img-fluid" alt="">
-              <div class="portfolio-links">
-                <a href="/image/Userprofile images/portfolio/portfolio-8.jpg" data-gall="portfolioGallery"
-                  class="venobox" title="Card 3"><i class="fas fa-heart"></i></a>
-                <a href="comments.html" title="More Details"><i class="fas fa-comment"></i></a>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-lg-4 col-md-6 portfolio-item filter-web">
-            <div class="portfolio-wrap">
-              <img src="/image/Userprofile images/portfolio/portfolio-9.jpg" class="img-fluid" alt="">
-              <div class="portfolio-links">
-                <a href="/image/Userprofile images/portfolio/portfolio-9.jpg" data-gall="portfolioGallery"
-                  class="venobox" title="Web 3"><i class="fas fa-heart"></i> </a>
-                <a href="comments.html" title="More Details"><i class="fas fa-comment"></i></a>
-              </div>
-            </div>
-          </div>
-
+        <div id="post-container"  class=" row row-cols-1 row-cols-sm-1 row-cols-md-2 row-cols-lg-2 row-cols-xl-3 portfolio-container" data-aos="fade-up" data-aos-delay="100">
         </div>
-
       </div>
-    </section><!-- POST -->
+    </section>
+    <!-- POST -->
+  </main>
+  <!-- End #main -->
 
-
-
-  </main><!-- End #main -->
-
-  <footer id="foot">
-    <a href="/about">About</a>
-    <a href="/help">Help</a>
-    <a href="/feature">landing</a>
-  </footer>
-
-
-  <a href="#" class="back-to-top"><i class="icofont-simple-up"></i></a>
-
-
-
+  <a href="/" class="back-to-top invisible">
+    <i class="icofont-simple-up"></i>
+  </a>
 
   <!-- Bootstrap Script -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js"
@@ -306,7 +392,7 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 
   <!-- Vendor JS Files -->
-  <script src="/css/vendor userbase/jquery/jquery.min./css/vendor userbase
+  <script src="/css/vendor userbase/jquery/jquery.min.js"></script>
   <script src=" /css/vendor userbase/bootstrap/js/bootstrap.bundle.min.js"></script>
   <script src="/css/vendor userbase/jquery.easing/jquery.easing.min.js"></script>
   <script src="/css/vendor userbase/php-email-form/validate.js"></script>
@@ -317,8 +403,6 @@
   <script src="/css/vendor userbase/owl.carousel/owl.carousel.min.js"></script>
   <script src="/css/vendor userbase/typed.js/typed.min.js"></script>
   <script src="/css/vendor userbase/aos/aos.js"></script>
-
-  <script src="https://kit.fontawesome.com/af8d79b3d6.js" crossorigin="anonymous"></script>
 
   <!-- countup -->
   <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
@@ -336,10 +420,9 @@
   </script> -->
 
   <!-- New Script -->
-
+  <script src="/script/AllPostPageScript/navbarScript.js"></script>
   <script src="/script/Userprofile script/main.js"></script>
+  <script src="/script/Userprofile script/postFetch.js"></script>
 </body>
-
-
 
 </html>

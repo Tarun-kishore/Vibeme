@@ -1,3 +1,6 @@
+<!-- About Page code-->
+<!-- Reason for using handle bar is to make our navbar dynamic so that the content of navbar changes depending on user is logged in or not-->
+
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
 
@@ -21,14 +24,14 @@
     <!-- Font Awesome -->
     <script src="https://kit.fontawesome.com/d021e746cf.js" crossorigin="anonymous"></script>
 
-    <!-- Font Style -> Space Mono Regular 400 -->
+    <!-- Font Style -> Space Mono Regular 400 for navbar and footer -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
         href="https://fonts.googleapis.com/css2?family=Lato:wght@300&family=Nunito+Sans:wght@600&family=Roboto:wght@500&display=swap"
         rel="stylesheet">
 
-    <!-- Font Style -->
+    <!-- Font Style for navbar and footer -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@900&display=swap" rel="stylesheet">
@@ -63,6 +66,8 @@
                     <span class="navbar-toggler-icon"><i class="fas fa-bars nav-button"></i></span>
                 </button>
                 <!-- Links -->
+                <!-- If user is logged in then this part of navbar will be shown to him -->
+                <!-- Value of loggedIn is sent by backend telling the status of user-->
                 {{#if loggedIn}}
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav ms-auto">
@@ -83,23 +88,14 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" id="navbarContent" href="/post/all">
-                                All Post
-                            </a>
-                        </li>
-                        <li class="nav-item">
                             <a class="nav-link" id="navbarContent" href="/user/profile">
-                                my Profile
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" id="navbarContent" href="/user/logout">
-                                Logout
+                                Profile
                             </a>
                         </li>
                     </ul>
                 </div>
 
+                <!-- Else this section of code will be displayed -->
                 {{else}}
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav ms-auto">
@@ -126,80 +122,125 @@
                         </li>
                     </ul>
                 </div>
+                <!-- End of if statement -->
                 {{/if}}
             </nav>
         </header>
 
+        <!-- Main code -->
         <main>
+            <!-- 1st section Background image which changes it position depending how much user has scroll -->
             <section id="stunning-header">
+
+                <!-- Div containing the image -->
                 <div class="background-image"></div>
+
+                <!-- Contains the text -->
                 <div class="container">
+
                     <div class="stunning-header-content">
+                    
                         <div class="stunning-content-item">
                             <h1 class="stunning-header-title">About us</h1>
                         </div>
+
                         <div class="stunning-content-item">
+                            <!-- Goes to login page after clicking home text on the image -->
                             <a class="stunning-paragraph-title" href="/login">Home</a>
                         </div>
+                        
                     </div>
 
                 </div>
             </section>
+
+            <!-- 2nd section which contains the text after the background image -->
             <section id="stunning-question">
+
                 <section class="py-5 text-center container">
+
+                    <!-- Using bootstrap to make our website responsive -->
                     <div class="row py-lg-5">
+
                         <div class="col-lg-6 col-md-8 mx-auto stunning-question-text">
+
                             <h6>SOCIAL NETWORK</h6>
                             <h1 class="fw-light">Why Choose VibeMe?</h1>
+
+                            <!-- Just written random text using loren ipsum generator -->
                             <p class="lead text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
                                 eiusmod tempor
                                 incididunt ut labore</p>
+
                         </div>
+
                     </div>
+
                 </section>
+
             </section>
+
+            <!-- 3rd section which contain feature images -->
             <section id="stunning-features">
+
+                <!-- here also used bootstrap for responsive nature -->
                 <div class="row">
+
+                    <!-- Here data-aos is element to javascript AOS library which provide onscroll animation -->
+                    <!-- So here we are using zoom-in animation for each feature image -->
                     <div class="col-lg-4 col-md-6" data-aos="zoom-in">
                         <img src="/image/About Page Images/Features Image/info1.webp" alt="Feature Photo">
                         <h3>The Best Interface</h3>
                         <p>Lorem ipsum dolor sit amet, consectetur cing elit, sed do eiusmod tempor incididunt ut la
                             etere dolore magna aliqua. </p>
                     </div>
+
                     <div class="col-lg-4 col-md-6" data-aos="zoom-in">
                         <img src="/image/About Page Images/Features Image/info2.webp" alt="Feature Photo">
                         <h3>Messaging System</h3>
                         <p>Lorem ipsum dolor sit amet, consectetur cing elit, sed do eiusmod tempor incididunt ut la
                             etere dolore magna aliqua.</p>
                     </div>
+
                     <div class="col-lg-4 col-md-6" data-aos="zoom-in">
                         <img src="/image/About Page Images/Features Image/info3.webp" alt="Feature Photo">
                         <h3>Gamification</h3>
                         <p>Lorem ipsum dolor sit amet, consectetur cing elit, sed do eiusmod tempor incididunt ut la
                             etere dolore magna aliqua.</p>
                     </div>
+
                     <div class="col-lg-4 col-md-6" data-aos="zoom-in">
                         <img src="/image/About Page Images/Features Image/info4.webp" alt="Feature Photo">
                         <h3>Incredible Features</h3>
                         <p>Lorem ipsum dolor sit amet, consectetur cing elit, sed do eiusmod tempor incididunt ut la
                             etere dolore magna aliqua. </p>
                     </div>
+
                     <div class="col-lg-4 col-md-6" data-aos="zoom-in">
                         <img src="/image/About Page Images/Features Image/info5.webp" alt="Feature Photo">
                         <h3>Beautifully Coded</h3>
                         <p>Lorem ipsum dolor sit amet, consectetur cing elit, sed do eiusmod tempor incididunt ut la
                             etere dolore magna aliqua. </p>
                     </div>
+
                     <div class="col-lg-4 col-md-6" data-aos="zoom-in">
                         <img src="/image/About Page Images/Features Image/info6.webp" alt="Feature Photo">
                         <h3>Friendly Support</h3>
                         <p>Lorem ipsum dolor sit amet, consectetur cing elit, sed do eiusmod tempor incididunt ut la
                             etere dolore magna aliqua. </p>
                     </div>
+
                 </div>
+
             </section>
+
+            <!-- 4th section which gives counting animation whenever user scrolled this much then only it starts -->
             <section id="stunning-counting">
+
+                <!-- Used bootstrap for responsive and zoom-out animation-->
                 <div class="row" data-aos="zoom-out">
+
+                    <!-- The animation is done using JS -->
                     <div class="col-lg-3 col-md-6">
                         <span class="counting-number"></span>
                         &nbsp;
@@ -208,6 +249,7 @@
                         </div>
                         <h3>Registered Members</h3>
                     </div>
+
                     <div class="col-lg-3 col-md-6">
                         <span class="counting-number"></span>
                         &nbsp;
@@ -216,6 +258,7 @@
                         </div>
                         <h3>Features Available</h3>
                     </div>
+
                     <div class="col-lg-3 col-md-6">
                         <span class="counting-number"></span>
                         &nbsp;
@@ -224,6 +267,7 @@
                         </div>
                         <h3>Friend Groups</h3>
                     </div>
+
                     <div class="col-lg-3 col-md-6">
                         <span class="counting-number"></span>
                         &nbsp;
@@ -232,10 +276,18 @@
                         </div>
                         <h3>Favourite Pages</h3>
                     </div>
+
                 </div>
+
             </section>
+
+            <!-- 5th section telling more about VibeMe -->
             <section id="learn-more">
+
+                <!-- Bootstrap for responsive nature -->
                 <div class="content row">
+
+                    <!-- Used fade right animation for this div -->
                     <div class="col-lg-6" data-aos="fade-right">
                         <div>
                             <div class="decoration-div">
@@ -248,11 +300,17 @@
                                 exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
                         </div>
                     </div>
+
+                    <!-- used fade left animation for this div -->
                     <div class="col-lg-6" data-aos="fade-left">
                         <img src="/image/About Page Images/Learn More/screen.webp" alt="Learn Image">
                     </div>
+
                 </div>
+
             </section>
+
+            <!-- 6th section styling same as of 2nd section -->
             <section id="stunning-question">
                 <section class="py-5 text-center container">
                     <div class="row py-lg-5" data-aos="fade-down">
@@ -265,8 +323,14 @@
                     </div>
                 </section>
             </section>
+
+            <!-- 7th section containing details about the team member -->
             <section id="stunning-team-members">
+
+                <!-- Bootstrap used here -->
                 <div class="row">
+
+                    <!-- fade up animation to each of div -->
                     <div class="col-lg-4 col-md-6" data-aos="fade-up">
                         <div class="members-zoom">
                             <img src="/image/About Page Images/Team Member/team1.jpg" alt="Member Photo">
@@ -287,6 +351,7 @@
                                 </a></li>
                         </ul>
                     </div>
+
                     <div class="col-lg-4 col-md-6" data-aos="fade-up">
                         <div class="members-zoom">
                             <img src="/image/About Page Images/Team Member/team2.jpg" alt="Member Photo">
@@ -308,6 +373,7 @@
                                 </a></li>
                         </ul>
                     </div>
+
                     <div class="col-lg-4 col-md-6" data-aos="fade-up">
                         <div class="members-zoom">
                             <img src="/image/About Page Images/Team Member/team3.jpg" alt="Member Photo">
@@ -328,6 +394,7 @@
                                 </a></li>
                         </ul>
                     </div>
+
                     <div class="col-lg-4 offset-lg-4 col-md-6" data-aos="fade-up">
                         <div class="members-zoom">
                             <img src="/image/About Page Images/Team Member/team4.jpg" alt="Member Photo">
@@ -348,9 +415,15 @@
                                 </a></li>
                         </ul>
                     </div>
+
                 </div>
+
             </section>
+
+            <!-- 8th section containing an image telling to join -->
             <section id="stunning-join">
+
+                <!-- Bootstrap used -->
                 <div class="join-box row">
                     <div class="col-lg-4 col-md-4">
                         <img class="join-person" src="/image/About Page Images/Join/guy.png" alt="person saying hi">
@@ -364,13 +437,17 @@
                         </button>
                     </div>
                 </div>
+
             </section>
+
         </main>
 
+        <!-- Footer of page -->
         <footer>
             <p class="text-center">&copy; 2021 All rights Reserved</p>
         </footer>
 
+        <!-- Button to go on top of page -->
         <a id="back-to-top" class="Invisible" href="#">
             <i class="fas fa-arrow-up"></i>
         </a>
@@ -399,8 +476,7 @@
 
     <!-- New Script -->
     <script src="/script/AboutPageScript/script.js"></script>
+
 </body>
-
-
 
 </html>

@@ -136,11 +136,18 @@ router.post("/exist", async (req, res) => {
   }
 });
 
+<<<<<<< HEAD
 router.get("/profile", auth,(req, res) => {
+=======
+router.get("/profile", auth, async (req, res) => {
+  const userObject = await req.user.getPublicProfile();
+>>>>>>> main
   try {
     res.render("UserActivity/profile", {
       loggedIn: true,
-      ...req.user.getPublicProfile(),
+      ...userObject,
+      image: req.user.profilePicture,
+      name: req.user.getFullName(),
     });
   } catch (e) {
     console.log(e)
@@ -148,6 +155,13 @@ router.get("/profile", auth,(req, res) => {
   }
 });
 
+router.get("/delete", auth, async (req, res) => {
+  res.render("UserActivity/delete", {
+    loggedIn: true,
+    image: req.user.profilePicture,
+    name: req.user.getFullName(),
+  });
+});
 router.delete("/delete", auth, async (req, res) => {
   try {
     await req.user.destroy();
@@ -158,14 +172,28 @@ router.delete("/delete", auth, async (req, res) => {
   }
 });
 
-router.post("/update", auth, (req, res) => {
-  const data = { loggedIn: true, ...req.user.getPublicProfile() };
-  res.render("UserActivity/updateProfile", data);
+router.get("/update", auth, async (req, res) => {
+  const userData = await req.user.getPublicProfile();
+  const data = { loggedIn: true, ...userData };
+  res.render("UserActivity/updateProfile", {
+    ...data,
+    image: req.user.profilePicture,
+    name: req.user.getFullName(),
+  });
 });
 
 router.put("/update", auth, async (req, res) => {
+  console.log(req.body);
   const updates = Object.keys(req.body);
-  updates.forEach((update) => (req.user[update] = req.body[update]));
+  if (req.body.profilePicture) {
+    const img = JSON.parse(req.body.profilePicture);
+    const buffer = new Buffer.from(img.data, "base64");
+
+    req.user.profilePicture = buffer;
+  }
+  updates.forEach((update) => {
+    if (update != "profilePicture") req.user[update] = req.body[update];
+  });
   try {
     await req.user.save();
     res.redirect("/success");
@@ -174,8 +202,12 @@ router.put("/update", auth, async (req, res) => {
   }
 });
 
-router.post("/change", auth, (req, res) => {
-  res.render("UserActivity/changePassword", { loggedIn: true });
+router.get("/change", auth, (req, res) => {
+  res.render("UserActivity/changePassword", {
+    loggedIn: true,
+    image: req.user.profilePicture,
+    name: req.user.getFullName(),
+  });
 });
 
 router.put("/change", auth, async (req, res) => {
@@ -185,6 +217,8 @@ router.put("/change", auth, async (req, res) => {
       return res.render("UserActivity/changePassword", {
         error: "Wrong Old Password",
         loggedIn: true,
+        image: req.user.profilePicture,
+        name: req.user.getFullName(),
       });
     req.user.password = req.body.password;
     await req.user.save();
@@ -194,15 +228,20 @@ router.put("/change", auth, async (req, res) => {
   }
 });
 
-router.get("/view/:id", async (req, res) => {
+router.get("/view/:id", auth, async (req, res) => {
   const options = {};
   if (req.cookies.token) options.loggedIn = true;
 
   try {
     const user = await User.findByPk(req.params.id);
-    const userObject = user.getPublicProfile();
+    const userObject = await user.getPublicProfile();
     delete userObject.email;
-    res.render("UserActivity/publicProfile", { ...options, ...userObject });
+    res.render("UserActivity/publicProfile", {
+      ...options,
+      ...userObject,
+      image: req.user.profilePicture,
+      name: req.user.getFullName(),
+    });
   } catch (e) {
     res.status(500).send();
   }

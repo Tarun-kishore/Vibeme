@@ -1,0 +1,159 @@
+body {
+    background-color: white;
+}
+
+.main-frame {
+    width: 100%;
+    min-height: 95vh;
+    display: grid;
+    grid-template-columns: 300px 1fr;
+    grid-template-rows: 1fr;
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+    margin-top: 50px;
+}
+
+.sidebar-div {
+    border-right: 1px solid rgba(0, 0, 0, 0.1);
+    grid-column: 1/span 1;
+    grid-row: 1/-1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.sidebar-div > div {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin-top: 30px;
+}
+
+.Invisible {
+    display: none;
+}
+
+.border-decoration {
+    position: relative;
+    height: 120%;
+    top:-25%;
+    z-index: 2;
+    right: -1px;
+    width: 2px; 
+    background-color: orange;
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+}
+
+.sidebar-heading-outer {
+    margin-top: 50px !important;
+} 
+
+.sidebar-heading {
+    width: calc(100% - 1px);
+    text-align: center;
+}
+
+.sidebar-heading h1 {
+    font-size: 25px;
+    opacity: 0.8;
+}
+
+.sidebar-content {
+    width: calc(100% - 1px);
+    display: flex;
+    flex-direction: row;
+    padding-left: 25%; 
+}
+
+.sidebar-content i {
+    padding-top: 5px;
+    font-size: 15px;
+    color: rgba(0, 0, 0, 0.5);
+    margin-right: 15px;
+}
+
+.sidebar-content p {
+    font-size: 18px;
+    margin-top: auto;
+}
+
+.sidebar-edit-profile-outer, .sidebar-change-password-outer, .sidebar-delete-account-outer {
+    cursor: pointer;
+}
+
+.content-div { 
+    grid-column: span 1/-1;
+    grid-row: 1/-1;
+}
+
+.content-box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width:500px;
+    height: 100%;
+    margin-left: 100px;
+    margin-top: 30px;
+    margin-right: 100px;
+}
+
+.content-box > div {
+    width: 100%;
+    margin-top: 20px;
+}
+
+.submit-button-box {
+    text-align: center;
+}
+
+.content-div label {
+    font-size: 13px;
+    opacity: 0.5;
+}
+
+.content-div input {
+    border-radius: 5px;
+    background-color: rgba(236, 236, 236, 0.2);
+}
+
+.content-div input:focus {
+    background-color: white;
+    border-color: orange;
+    box-shadow: none;
+    box-shadow:0 0 0 1.5px orange;
+}
+
+.btn-hover {
+    width: 200px;
+    font-size: 16px;
+    font-weight: 600;
+    color: #fff;
+    cursor: pointer;
+    margin: 20px;
+    height: 55px;
+    text-align:center;
+    border: none;
+    background-size: 300% 100%;
+    border-radius: 50px;
+    transition: all .4s ease-in-out;
+}
+
+.btn-hover:hover {
+    background-position: 100% 0;
+    transition: all .4s ease-in-out;
+}
+
+.btn-hover:focus {
+    outline: none;
+}
+
+.btn-hover.color-4 {
+    background-image: linear-gradient(to right, #fc6076, #ff9a44, #ef9d43, #e75516);
+    box-shadow: 0 4px 15px 0 rgba(252, 104, 110, 0.75);
+}
+
+@media (max-width: 991px) {
+    .content-div {
+        width: 100%;
+    }
+}

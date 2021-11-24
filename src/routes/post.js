@@ -8,12 +8,12 @@ const Comment = require("../models/comments");
 const jwt = require("jsonwebtoken");
 
 //getting all posts
-router.get("/all", async (req, res) => {
+router.get("/all", auth, async (req, res) => {
   const options = {};
   if (req.cookies.token) options.loggedIn = true;
 
   try {
-    const users = await User.findAll({ include: Post });
+    const users = await User.findAll();
 
     let posts = [];
 
@@ -23,16 +23,19 @@ router.get("/all", async (req, res) => {
     }
 
     options.post = posts;
-    if (posts) return res.render("PostActivity/feed", options);
-    res.render("PostActivity/feed", ...options);
+    res.render("PostActivity/feed", {
+      ...options,
+      name: req.user.getFullName(),
+      image: req.user.profilePicture,
+    });
   } catch (e) {
-    console.log(e)
+    console.log(e);
     res.status(400).send();
   }
 });
 
 //geting user posts
-router.get("/my", auth, async (req, res) => {
+router.post("/my", auth, async (req, res) => {
   try {
     const send = [];
     const options = await req.user.getPosts();
@@ -44,15 +47,38 @@ router.get("/my", auth, async (req, res) => {
     send.commentedPosts = commentedPosts;
     send.repliedPosts = repliedPosts;
 
-    return res.json(send);
+    return res.send({ ...send });
   } catch (error) {
     res.status(500).send();
   }
 });
 
+//geting user posts with id
+router.post("/user", auth, async (req, res) => {
+  try {
+    const user = await User.findByPk(req.body.id);
+    const send = [];
+    const options = await user.getPosts();
+    const likedPost = await user.getLikedPosts();
+    const commentedPosts = await user.getCommentedPosts();
+    const repliedPosts = await user.getRepliedPosts();
+    send.posts = options;
+    send.likedPosts = likedPost;
+    send.commentedPosts = commentedPosts;
+    send.repliedPosts = repliedPosts;
+
+    return res.send({ ...send });
+  } catch (error) {
+    res.status(500).send();
+  }
+});
 //rendering create post page
 router.get("/create", auth, (req, res) => {
-  res.render("PostActivity/createPost", { loggedIn: true });
+  res.render("PostActivity/createPost", {
+    loggedIn: true,
+    name: req.user.getFullName(),
+    image: req.user.profilePicture,
+  });
 });
 
 // Creating post by a user
@@ -68,17 +94,17 @@ router.post("/create", auth, async (req, res) => {
     });
     await post.save();
 
-    res.redirect("/post/my");
+    res.redirect("/user/profile");
   } catch (e) {
-    res.status(400).render("PostActivity/createPost", { loggedIn: true, error: e });
+    res.status(400).redirect("/post/create");
   }
 });
 
 // Viewing a post
-router.get("/view/:id", async (req, res) => {
+router.get("/view/:id", auth, async (req, res) => {
   const options = {};
   let userId = "";
-  let decoded
+  let decoded;
   if (req.cookies.token) {
     options.loggedIn = true;
     decoded = jwt.verify(req.cookies.token, process.env.SECRET);
@@ -91,21 +117,25 @@ router.get("/view/:id", async (req, res) => {
     const user = await User.findByPk(postObject.owner);
     const creator = user.getFullName();
 
-    const comments = await post.getComments((decoded ? decoded._id : undefined));
+    const comments = await post.getComments(decoded ? decoded._id : undefined);
 
     if (comments.length !== 0)
       return res.render("PostActivity/publicPost", {
         ...options,
         postData: { ...postObject, creator },
         comments: { ...comments },
+        image: req.user.profilePicture,
+        name: req.user.getFullName(),
       });
     res.render("PostActivity/publicPost", {
       ...options,
       postData: { ...postObject, creator },
+      name: req.user.getFullName(),
+      image: req.user.profilePicture,
     });
   } catch (e) {
-    console.log(e)
-    res.status(400).render("IndexPages/404", options);
+    console.log(e);
+    res.status(400).redirect("/404");
   }
 });
 
@@ -115,13 +145,23 @@ router.post("/edit/:id", auth, async (req, res) => {
     const post = await Post.findByPk(req.params.id);
 
     if (post.owner !== req.user.id) {
-      return res.render("IndexPages/notAuth", { loggedIn: true });
+      return res.render("IndexPages/notAuth", {
+        loggedIn: true,
+        name: req.user.getFullName(),
+        image: req.user.profilePicture,
+      });
     }
 
     const postData = await post.getPost();
 
     const creator = `${req.user.firstName} ${req.user.lastName}`;
-    res.render("PostActivity/editPost", { loggedIn: true, ...postData, creator });
+    res.render("PostActivity/editPost", {
+      loggedIn: true,
+      ...postData,
+      creator,
+      name: req.user.getFullName(),
+      image: req.user.profilePicture,
+    });
   } catch (e) {
     res.status(500).render("IndexPages/404", { loggedIn: true });
   }

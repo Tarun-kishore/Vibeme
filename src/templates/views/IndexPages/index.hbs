@@ -37,6 +37,7 @@
 
     <body>
 
+<<<<<<< HEAD
         <!-- Pre Loader -->
         <div id="preloader">
             <div id="loader"></div>
@@ -84,6 +85,66 @@
             integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ"
             crossorigin="anonymous"
         >
+=======
+    <!-- Pre Loader -->
+    <div id="preloader">
+
+        <!-- For designing the 3 round lines using complete CSS -->
+        <div id="loader"></div>
+
+    </div>
+
+    <!-- -->
+    <section class="showcase">
+
+        <!-- Navbar for the landing page -->
+        <header>
+
+            <!-- Brand Name -->
+            <h2 class="logo">VibeMe</h2>
+
+            <!-- Buttons to be displayed on navbar -->
+            <div class="buttons">
+
+                <!-- Takes to about page. Used on click function as button don't have href tag like anchor tag-->
+                <button type="button" class="btn btn-lg" onclick="location.href = '\about';">About</button>
+
+                <!-- Takes to help page -->
+                <button type="button" class="btn btn-lg" onclick="location.href = '\help';">Help</button>
+
+            </div>
+
+        </header>
+
+        <!-- Background video which is muted and played in a loop with autoplay, no download and no PIP feature enable -->
+        <video class="background-video" src="/video/Landing Page/Background-Video.mp4" autoplay muted loop
+            controlsList="nodownload" disablePictureInPicture></video>
+
+        <!-- So that our video and text can be easily aligned as per our browser screen-->            
+        <div class="overlay"></div>
+
+        <!-- Text part of our landing page-->
+        <div class="text">
+
+            <!-- Lets Vibe with VibeMe container having animation-->
+            <div class="animation-container">
+
+                <!-- Used span so that we can easily animate every word easily -->
+                <span class="to-be-animated-text1">Lets Vibe With</span>
+
+                <span class="to-be-animated-text2">VibeMe</span>
+
+            </div>
+
+            <!-- In this we have used animate.css library just to use predefine animation -->
+            <p class="to-be-animated-para">become part of our community</p>
+
+            <!-- It goes to login page -->
+            <a class="to-be-animated-anchor" href="/login">Start Vibing</a>
+
+        </div>
+
+>>>>>>> main
     </section>
     
     <!-- Bootstrap Script -->
@@ -96,8 +157,15 @@
             src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"
         ></script>
 
+<<<<<<< HEAD
         <!-- Custom JS -->
         <script src="/script/LandingPageScript/script.js"></script>
     </body>
+=======
+    <!-- Custom JS -->
+    <script src="/script/LandingPageScript/script.js"></script>
+    
+</body>
+>>>>>>> main
 
 </html>

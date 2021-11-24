@@ -7,7 +7,7 @@ const User = require("../models/user");
 const Post = require("../models/posts");
 const Reply = require("../models/replies");
 
-router.get("/view/:commentId", async (req, res) => {
+router.get("/view/:commentId", auth, async (req, res) => {
   const options = {};
   let userId = "";
   if (req.cookies.token) {
@@ -33,6 +33,8 @@ router.get("/view/:commentId", async (req, res) => {
       ...options,
       postData: { ...postObject, creator },
       comments: commentData,
+      image: req.user.profilePicture,
+      name: req.user.getFullName(),
     });
   } catch (e) {
     res.status(400).render("IndexPages/404", options);

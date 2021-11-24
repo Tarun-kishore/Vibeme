@@ -1,0 +1,342 @@
+body.is-white {
+    background: #fff;
+}
+
+body.is-dark {
+    background: #2f3b50;
+}
+
+body {
+    background: #f4f4f4;
+    height: 100%;
+    width: 100%;
+    min-height: 100vh;
+    font-family: "Roboto", system-ui, "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+    color: #344258;
+    overflow: hidden;
+    font-size: 1em;
+    font-weight: 400;
+    line-height: 1.5;
+    overflow: visible;
+}
+
+.view-wrapper {
+    padding: 60px 12px;
+    transition: all .3s;
+}
+
+.view-wrapper .container {
+    width: 80%;
+    margin-top: 50px;
+    margin-bottom: 50px;
+}
+
+.post-feed-item {
+    padding: 0.75rem;
+    box-sizing: border-box;
+    display: block;
+}
+
+.post-feed-item .card {
+    color: #4a4a4a;
+    max-width: 100%;
+    position: relative;
+    box-sizing: inherit;
+    background: #fff;
+    box-shadow: none;
+    margin-bottom: 0;
+    border: none;
+    box-shadow:
+        0 10px 26px -8px rgba(0, 0, 0, 0.2),
+        0 4px 23px 0px rgba(0, 0, 0, .12),
+        0 8px 10px -5px rgba(15, 4, 4, 0.2) !important;
+
+}
+
+.card-image {
+    box-sizing: inherit;
+    display: block;
+    position: relative;
+}
+
+.image {
+    display: block;
+    position: relative;
+}
+
+.image.is-4by3 {
+    padding-top: 75%;
+    margin: 0;
+}
+
+.image a {
+    transition: all .3s;
+}
+
+.card-image a {
+    color: #3f88e3;
+    transition: all .3s;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.card .card-image img {
+    border-top-left-radius: .25rem;
+    border-top-right-radius: .25rem;
+    transition: 0.3s;
+    object-fit: cover;
+}
+
+.image.is-4by3 img {
+    bottom: 0;
+    left: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+    height: 100%;
+    width: 100%;
+}
+
+.card-image img:hover {
+    opacity: 0.8;
+}
+
+.card .card-body {
+    padding: 0;
+    background-color: transparent;
+    border: 1px solid lightgrey;
+    border-top: none;
+    border-bottom-left-radius: .25rem;
+    border-bottom-right-radius: .25rem;
+    padding: 0 10px;
+}
+
+.card-body .media {
+    padding: 10px 0;
+    align-items: center;
+    display: flex;
+}
+
+.card-body .media .media-left {
+    margin-right: .5rem;
+}
+
+.media-left,
+.media-right {
+    flex-basis: auto;
+    flex-grow: 0;
+    flex-shrink: 0;
+}
+
+.media-left .post-avatar {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 44px;
+    width: 44px;
+    background: #fff;
+    border-radius: 50%;
+    border: 1.6px solid #cecece;
+    cursor: pointer;
+    transition: all .3s;
+}
+
+.media-left .post-avatar img {
+    display: block;
+    height: 36px;
+    width: 36px;
+    min-width: 36px;
+    border-radius: 50%;
+    max-width: 100%;
+}
+
+.media-left .post-avatar:hover {
+    border: 1.6px solid orange;
+}
+
+.media .media-content {
+    flex-basis: auto;
+    flex-grow: 1;
+    flex-shrink: 1;
+    text-align: inherit;
+    line-height: 1.2;
+}
+
+.media-content span {
+    display: block;
+    font-family: "Roboto", sans-serif;
+    margin-left: 10px;
+}
+
+.media-content span:first-child {
+    font-weight: 500;
+    color: #393a4f;
+}
+
+.media-content span:nth-child(2) {
+    font-size: .85rem;
+    color: #a2a5b9;
+}
+
+.media .media-right {
+    flex-basis: auto;
+    flex-grow: 0;
+    flex-shrink: 0;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    margin-left: 1rem;
+}
+
+.media .media-right>span {
+    font-family: "Roboto", sans-serif;
+    font-weight: 500;
+    font-size: .85rem;
+    color: #393a4f;
+    margin-right: 12px;
+}
+
+.media .media-right .button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    white-space: nowrap;
+    height: 30px;
+    width: 30px;
+    font-size: .8rem;
+    font-weight: 500;
+    background-color: #fff;
+    border-width: 1px;
+    color: #363636;
+    cursor: pointer;
+    border-radius: 50%;
+    padding: 0;
+    margin-left: 2px;
+    border-color: transparent;
+    transition: all .3s;
+}
+
+.media .media-right .like-button:hover {
+    background: #e6122f;
+    box-shadow: 0 14px 26px -12px rgba(247, 20, 22, .42), 0 4px 23px 0px rgba(0, 0, 0, .12), 0 8px 10px -5px rgba(247, 20, 22, .2) !important;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 38px;
+    height: 38px;
+    transition: all .3s;
+}
+
+.media .media-right .comment-button:hover {
+    background: #3c87e4;
+    box-shadow: 0 14px 26px -12px rgba(85, 150, 230, .42), 0 4px 23px 0px rgba(0, 0, 0, .12), 0 8px 10px -5px rgba(85, 150, 230, .2) !important;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 38px;
+    height: 38px;
+    transition: all .3s;
+}
+
+.media .media-right .like-button.like-button.is-liked svg {
+    fill: #e6122f;
+    stroke: #e6122f;
+}
+
+.media .media-right .like-button:hover svg,
+.media .media-right .comment-button:hover svg {
+    fill: #fff !important;
+    stroke: #fafafa !important;
+}
+
+.app-overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    overflow: auto;
+    height: 100%;
+    width: 100%;
+    padding-top: 100px;
+    padding-left: 10px;
+    padding-right: 10px;
+    background-color: rgb(0, 0, 0);
+    background: rgba(0, 0, 0, .6);
+    /* opacity: 0; */
+}
+
+.app-overlay.is-active {
+    display: block;
+    /* opacity: 1 !important; */
+    z-index: 1000 !important;
+}
+
+.modal-content {
+    margin: auto;
+    display: block;
+    width: 80%;
+    max-width: 700px;
+}
+
+.modal-content,
+#caption {
+    animation-name: zoom;
+    animation-duration: 0.6s;
+}
+
+#caption {
+    margin: auto;
+    display: block;
+    width: 80%;
+    max-width: 700px;
+    text-align: center;
+    color: #ccc;
+    font-weight: 500;
+    padding: 10px 0;
+    height: 150px;
+}
+
+.close {
+    position: absolute;
+    top: 3px;
+    right: 22px;
+    color: #f1f1f1;
+    font-size: 35px;
+    transition: 0.3s;
+}
+
+.close:hover,
+.close:focus {
+    color: #bbb;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+@keyframes zoom {
+    from {
+        transform: scale(0)
+    }
+
+    to {
+        transform: scale(1)
+    }
+}
+
+@media screen and (max-width: 992px) {
+    .view-wrapper .container {
+        width: 100%;
+    }
+
+    .view-wrapper {
+        padding-left: 0;
+        padding-right: 0;
+    }
+
+    .modal-content {
+        width: 100%;
+    }
+}
