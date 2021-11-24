@@ -23,10 +23,11 @@ router.get("/all", auth, async (req, res) => {
     }
 
     options.post = posts;
-    options.name = req.user.getFullName();
-    options.image = req.user.profilePicture;
-    if (posts) return res.render("PostActivity/feed", options);
-    res.render("PostActivity/feed", ...options);
+    res.render("PostActivity/feed", {
+      ...options,
+      name: req.user.getFullName(),
+      image: req.user.profilePicture,
+    });
   } catch (e) {
     console.log(e);
     res.status(400).send();
@@ -54,7 +55,11 @@ router.get("/my", auth, async (req, res) => {
 
 //rendering create post page
 router.get("/create", auth, (req, res) => {
-  res.render("PostActivity/createPost", { loggedIn: true });
+  res.render("PostActivity/createPost", {
+    loggedIn: true,
+    name: req.user.getFullName(),
+    image: req.user.profilePicture,
+  });
 });
 
 // Creating post by a user
@@ -72,14 +77,12 @@ router.post("/create", auth, async (req, res) => {
 
     res.redirect("/user/profile");
   } catch (e) {
-    res
-      .status(400)
-      .render("PostActivity/createPost", { loggedIn: true, error: e });
+    res.status(400).redirect("/post/create");
   }
 });
 
 // Viewing a post
-router.get("/view/:id", async (req, res) => {
+router.get("/view/:id", auth, async (req, res) => {
   const options = {};
   let userId = "";
   let decoded;
@@ -102,14 +105,18 @@ router.get("/view/:id", async (req, res) => {
         ...options,
         postData: { ...postObject, creator },
         comments: { ...comments },
+        image: req.user.profilePicture,
+        name: req.user.getFullName(),
       });
     res.render("PostActivity/publicPost", {
       ...options,
       postData: { ...postObject, creator },
+      name: req.user.getFullName(),
+      image: req.user.profilePicture,
     });
   } catch (e) {
     console.log(e);
-    res.status(400).render("IndexPages/404", options);
+    res.status(400).redirect("/404");
   }
 });
 
@@ -119,7 +126,11 @@ router.post("/edit/:id", auth, async (req, res) => {
     const post = await Post.findByPk(req.params.id);
 
     if (post.owner !== req.user.id) {
-      return res.render("IndexPages/notAuth", { loggedIn: true });
+      return res.render("IndexPages/notAuth", {
+        loggedIn: true,
+        name: req.user.getFullName(),
+        image: req.user.profilePicture,
+      });
     }
 
     const postData = await post.getPost();
@@ -129,6 +140,8 @@ router.post("/edit/:id", auth, async (req, res) => {
       loggedIn: true,
       ...postData,
       creator,
+      name: req.user.getFullName(),
+      image: req.user.profilePicture,
     });
   } catch (e) {
     res.status(500).render("IndexPages/404", { loggedIn: true });

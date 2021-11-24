@@ -142,6 +142,8 @@ router.get("/profile", auth, async (req, res) => {
     res.render("UserActivity/profile", {
       loggedIn: true,
       ...userObject,
+      image: req.user.profilePicture,
+      name: req.user.getFullName(),
     });
   } catch (e) {
     res.status(500).send();
@@ -149,7 +151,11 @@ router.get("/profile", auth, async (req, res) => {
 });
 
 router.get("/delete", auth, async (req, res) => {
-  res.render("UserActivity/delete", { loggedIn: true });
+  res.render("UserActivity/delete", {
+    loggedIn: true,
+    image: req.user.profilePicture,
+    name: req.user.getFullName(),
+  });
 });
 router.delete("/delete", auth, async (req, res) => {
   try {
@@ -164,7 +170,11 @@ router.delete("/delete", auth, async (req, res) => {
 router.get("/update", auth, async (req, res) => {
   const userData = await req.user.getPublicProfile();
   const data = { loggedIn: true, ...userData };
-  res.render("UserActivity/updateProfile", data);
+  res.render("UserActivity/updateProfile", {
+    ...data,
+    image: req.user.profilePicture,
+    name: req.user.getFullName(),
+  });
 });
 
 router.put("/update", auth, async (req, res) => {
@@ -188,7 +198,11 @@ router.put("/update", auth, async (req, res) => {
 });
 
 router.get("/change", auth, (req, res) => {
-  res.render("UserActivity/changePassword", { loggedIn: true });
+  res.render("UserActivity/changePassword", {
+    loggedIn: true,
+    image: req.user.profilePicture,
+    name: req.user.getFullName(),
+  });
 });
 
 router.put("/change", auth, async (req, res) => {
@@ -198,6 +212,8 @@ router.put("/change", auth, async (req, res) => {
       return res.render("UserActivity/changePassword", {
         error: "Wrong Old Password",
         loggedIn: true,
+        image: req.user.profilePicture,
+        name: req.user.getFullName(),
       });
     req.user.password = req.body.password;
     await req.user.save();
@@ -207,7 +223,7 @@ router.put("/change", auth, async (req, res) => {
   }
 });
 
-router.get("/view/:id", async (req, res) => {
+router.get("/view/:id", auth, async (req, res) => {
   const options = {};
   if (req.cookies.token) options.loggedIn = true;
 
@@ -215,7 +231,12 @@ router.get("/view/:id", async (req, res) => {
     const user = await User.findByPk(req.params.id);
     const userObject = await user.getPublicProfile();
     delete userObject.email;
-    res.render("UserActivity/publicProfile", { ...options, ...userObject });
+    res.render("UserActivity/publicProfile", {
+      ...options,
+      ...userObject,
+      image: req.user.profilePicture,
+      name: req.user.getFullName(),
+    });
   } catch (e) {
     res.status(500).send();
   }
