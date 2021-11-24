@@ -13,14 +13,11 @@ fetch(`/post/user`, {
   .then((data) => {
     console.log(data.posts.content);
     data.posts.forEach((post) => {
-      const postData = `<div class="col portfolio-item filter-app">
+      const postData = `<div class="col portfolio-item">
       <div class="card portfolio-wrap profile-post">
           <div class="card-image">
               <figure class="image is-4by3">
-                  <a href="${post.image}" data-gall="portfolioGallery" class="venobox"
-                      title="${post.content}">
                       <img src="${post.image}" class="img-fluid" alt="user post">
-                  </a>
               </figure>
           </div>
           <div class="portfolio-links">
@@ -29,16 +26,10 @@ fetch(`/post/user`, {
           </div>
       </div>
   </div>`;
-      // console.log(postData);
-
       $container.insertAdjacentHTML("beforeend", postData);
-      $container.removeAttribute('height');
-    //   reloadJs('/css/vendor userbase/owl.carousel/owl.carousel.min.js');
-    //   reloadJs('/css/vendor userbase/aos/aos.js');
-    //   reloadJs('/css/vendor userbase/venobox/venobox.min.js');
-    //   reloadJs('/css/vendor userbase/isotope-layout/isotope.pkgd.min.js');
-    //   reloadJs('/css/vendor userbase/waypoints/jquery.waypoints.min.js');
-
     });
   });
 
+
+  // <a href="${post.image}" data-gall="portfolioGallery" class="venobox"
+  //                     title="${post.content}"></a>
