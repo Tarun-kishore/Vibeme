@@ -1,43 +1,51 @@
-let heroSection = document.querySelector('#hero');
+let heroSection = document.querySelector("#hero");
 
-
-!(function($) {
+!(function ($) {
   "use strict";
 
   // Hero typed
-  if ($('.typed').length) {
-    var typed_strings = $(".typed").data('typed-items');
-    typed_strings = typed_strings.split(',');
-    new Typed('.typed', {
+  if ($(".typed").length) {
+    var typed_strings = $(".typed").data("typed-items");
+    typed_strings = typed_strings.split(",");
+    new Typed(".typed", {
       strings: typed_strings,
       loop: true,
       typeSpeed: 100,
       backSpeed: 50,
-      backDelay: 2000
+      backDelay: 2000,
     });
   }
 
   // Smooth scroll for the navigation menu and links with .scrollto classes
-  $(document).on('click', '.nav-menu a, .scrollto', function(e) {
-    if (location.pathname.replace(/^\//, '') == this.pathname.replace(/^\//, '') && location.hostname == this.hostname) {
+  $(document).on("click", ".nav-menu a, .scrollto", function (e) {
+    if (
+      location.pathname.replace(/^\//, "") ==
+        this.pathname.replace(/^\//, "") &&
+      location.hostname == this.hostname
+    ) {
       e.preventDefault();
       var target = $(this.hash);
       if (target.length) {
-
         var scrollto = target.offset().top;
 
-        $('html, body').animate({
-          scrollTop: scrollto
-        }, 1500, 'easeInOutExpo');
+        $("html, body").animate(
+          {
+            scrollTop: scrollto,
+          },
+          1500,
+          "easeInOutExpo"
+        );
 
-        if ($(this).parents('.nav-menu, .mobile-nav').length) {
-          $('.nav-menu .active, .mobile-nav .active').removeClass('active');
-          $(this).closest('li').addClass('active');
+        if ($(this).parents(".nav-menu, .mobile-nav").length) {
+          $(".nav-menu .active, .mobile-nav .active").removeClass("active");
+          $(this).closest("li").addClass("active");
         }
 
-        if ($('body').hasClass('mobile-nav-active')) {
-          $('body').removeClass('mobile-nav-active');
-          $('.mobile-nav-toggle i').toggleClass('icofont-navigation-menu icofont-close');
+        if ($("body").hasClass("mobile-nav-active")) {
+          $("body").removeClass("mobile-nav-active");
+          $(".mobile-nav-toggle i").toggleClass(
+            "icofont-navigation-menu icofont-close"
+          );
         }
         return false;
       }
@@ -45,107 +53,123 @@ let heroSection = document.querySelector('#hero');
   });
 
   // Activate smooth scroll on page load with hash links in the url
-  $(document).ready(function() {
+  $(document).ready(function () {
     if (window.location.hash) {
       var initial_nav = window.location.hash;
       if ($(initial_nav).length) {
         var scrollto = $(initial_nav).offset().top;
-        $('html, body').animate({
-          scrollTop: scrollto
-        }, 1500, 'easeInOutExpo');
+        $("html, body").animate(
+          {
+            scrollTop: scrollto,
+          },
+          1500,
+          "easeInOutExpo"
+        );
       }
     }
   });
 
-  $(document).on('click', '.mobile-nav-toggle', function(e) {
-    $('body').toggleClass('mobile-nav-active');
-    $('.mobile-nav-toggle').toggleClass('is-active');
+  $(document).on("click", ".mobile-nav-toggle", function (e) {
+    $("body").toggleClass("mobile-nav-active");
+    $(".mobile-nav-toggle").toggleClass("is-active");
   });
 
-  $(document).click(function(e) {
+  $(document).click(function (e) {
     var container = $(".mobile-nav-toggle");
     if (!container.is(e.target) && container.has(e.target).length === 0) {
-      if ($('body').hasClass('mobile-nav-active')) {
-        $('body').removeClass('mobile-nav-active');
-        $('.mobile-nav-toggle i').toggleClass('icofont-navigation-menu icofont-close');
+      if ($("body").hasClass("mobile-nav-active")) {
+        $("body").removeClass("mobile-nav-active");
+        $(".mobile-nav-toggle i").toggleClass(
+          "icofont-navigation-menu icofont-close"
+        );
       }
     }
   });
 
   // Navigation active state on scroll
-  var nav_sections = $('section');
-  var main_nav = $('.nav-menu, .mobile-nav');
+  var nav_sections = $("section");
+  var main_nav = $(".nav-menu, .mobile-nav");
 
-  $(window).on('scroll', function() {
+  $(window).on("scroll", function () {
     var cur_pos = $(this).scrollTop() + 200;
 
-    nav_sections.each(function() {
+    nav_sections.each(function () {
       var top = $(this).offset().top,
         bottom = top + $(this).outerHeight();
 
       if (cur_pos >= top && cur_pos <= bottom) {
         if (cur_pos <= bottom) {
-          main_nav.find('li').removeClass('active');
+          main_nav.find("li").removeClass("active");
         }
-        main_nav.find('a[href="#' + $(this).attr('id') + '"]').parent('li').addClass('active');
+        main_nav
+          .find('a[href="#' + $(this).attr("id") + '"]')
+          .parent("li")
+          .addClass("active");
       }
       if (cur_pos < 300) {
-        $(".nav-menu ul:first li:first").addClass('active');
+        $(".nav-menu ul:first li:first").addClass("active");
       }
     });
   });
 
   // Back to top button
-  $(window).scroll(function() {
+  $(window).scroll(function () {
     if ($(this).scrollTop() > 200) {
-      $('.back-to-top').removeClass('invisible');
+      $(".back-to-top").removeClass("invisible");
     } else {
-      $('.back-to-top').addClass('invisible');
+      $(".back-to-top").addClass("invisible");
     }
   });
 
-  $('.back-to-top').click(function() {
-    $('html, body').animate({
-      scrollTop: 0
-    }, 150, 'easeInOutExpo');
+  $(".back-to-top").click(function () {
+    $("html, body").animate(
+      {
+        scrollTop: 0,
+      },
+      150,
+      "easeInOutExpo"
+    );
     return false;
   });
 
   // jQuery counterUp
   $('[data-toggle="counter-up"]').counterUp({
     delay: 10,
-    time: 1000
+    time: 1000,
   });
 
   // Skills section
-  $('.skills-content').waypoint(function() {
-    $('.progress .progress-bar').each(function() {
-      $(this).css("width", $(this).attr("aria-valuenow") + '%');
-    });
-  }, {
-    offset: '80%'
-  });
+  $(".skills-content").waypoint(
+    function () {
+      $(".progress .progress-bar").each(function () {
+        $(this).css("width", $(this).attr("aria-valuenow") + "%");
+      });
+    },
+    {
+      offset: "80%",
+    }
+  );
 
   // Porfolio isotope and filter
-  $(window).on('load', function() {
-    var portfolioIsotope = $('.portfolio-container').isotope({
-      itemSelector: '.portfolio-item',
-      layoutMode: 'fitRows'
+  $(window).on("load", function () {
+    var portfolioIsotope = $(".portfolio-container").isotope({
+      itemSelector: ".portfolio-item",
+      layoutMode: "fitRows",
     });
 
-    $('#portfolio-flters li').on('click', function() {
-      $("#portfolio-flters li").removeClass('filter-active');
-      $(this).addClass('filter-active');
+    $("#portfolio-flters li").on("click", function () {
+      $("#portfolio-flters li").removeClass("filter-active");
+      $(this).addClass("filter-active");
 
       portfolioIsotope.isotope({
-        filter: $(this).data('filter')
+        filter: $(this).data("filter"),
       });
       aos_init();
     });
 
     // Initiate venobox (lightbox feature used in portofilo)
-    $(document).ready(function() {
-      $('.venobox').venobox();
+    $(document).ready(function () {
+      $(".venobox").venobox();
     });
   });
 
@@ -156,15 +180,15 @@ let heroSection = document.querySelector('#hero');
     loop: true,
     responsive: {
       0: {
-        items: 1
+        items: 1,
       },
       768: {
-        items: 2
+        items: 2,
       },
       900: {
-        items: 3
-      }
-    }
+        items: 3,
+      },
+    },
   });
 
   // Portfolio details carousel
@@ -172,40 +196,82 @@ let heroSection = document.querySelector('#hero');
     autoplay: true,
     dots: true,
     loop: true,
-    items: 1
+    items: 1,
   });
-  
-  $(function() {
-    function count($this){
-        var current = parseInt($this.html(), 10);
-        current = current + 50; /* Where 50 is increment */
 
-    $this.html(++current);
-    if(current > $this.data('count')){
-        $this.html($this.data('count'));
-    } else {    
-        setTimeout(function(){count($this);}, 5);
+  $(function () {
+    function count($this) {
+      var current = parseInt($this.html(), 10);
+      current = current + 50; /* Where 50 is increment */
+
+      $this.html(++current);
+      if (current > $this.data("count")) {
+        $this.html($this.data("count"));
+      } else {
+        setTimeout(function () {
+          count($this);
+        }, 5);
+      }
     }
-}        
 
-$(".stat-count").each(function() {
-  $(this).data('count', parseInt($(this).html(), 10));
-  $(this).html('0');
-  count($(this));
- });
-
-});
+    $(".stat-count").each(function () {
+      $(this).data("count", parseInt($(this).html(), 10));
+      $(this).html("0");
+      count($(this));
+    });
+  });
 
   // Init AOS
   function aos_init() {
     AOS.init({
       duration: 1000,
       easing: "ease-in-out-back",
-      once: true
+      once: true,
     });
   }
-  $(window).on('load', function() {
+  $(window).on("load", function () {
     aos_init();
   });
-
 })(jQuery);
+
+const $container = document.getElementById("post-container");
+fetch(`/post/my`, {
+  method: "post",
+  headers: {
+    "Content-type": "application/json",
+  },
+  body: JSON.stringify({}),
+})
+  .then((response) => response.json())
+  .then((data) => {
+    console.log(data.posts.content);
+    data.posts.forEach((post) => {
+      const postData = `<div class="col portfolio-item filter-app">
+              <div class="card portfolio-wrap profile-post">
+                <div class="card-image">
+                  <figure class="image is-4by3">
+                    <a
+                      href="${post.image}"
+                      data-gall="portfolioGallery"
+                      class="venobox"
+                      title="${post.content}"
+                    >
+                      <img
+                        src="${post.image}"
+                        class="img-fluid"
+                        alt="user post"
+                      />
+                    </a>
+                  </figure>
+                </div>
+                <div class="portfolio-links">
+                  <a><i class="fas fa-heart"></i></a>
+                  <a><i class="fas fa-comment"></i></a>
+                </div>
+              </div>
+            </div>`;
+      console.log(postData);
+      $container.insertAdjacentHTML("beforeend", postData);
+    });
+  });
+

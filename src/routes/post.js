@@ -35,7 +35,7 @@ router.get("/all", auth, async (req, res) => {
 });
 
 //geting user posts
-router.get("/my", auth, async (req, res) => {
+router.post("/my", auth, async (req, res) => {
   try {
     const send = [];
     const options = await req.user.getPosts();
@@ -47,7 +47,7 @@ router.get("/my", auth, async (req, res) => {
     send.commentedPosts = commentedPosts;
     send.repliedPosts = repliedPosts;
 
-    return res.json(send);
+    return res.send({ ...send });
   } catch (error) {
     res.status(500).send();
   }
