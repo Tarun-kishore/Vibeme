@@ -1,5 +1,11 @@
 let heroSection = document.querySelector("#hero");
 
+function reloadJs(src) {
+  src = $('script[src$="' + src + '"]').attr("src");
+  $('script[src$="' + src + '"]').remove();
+  $('<script/>').attr('src', src).appendTo('head');
+}
+
 !(function ($) {
   "use strict";
 
@@ -268,10 +274,16 @@ fetch(`/post/my`, {
                   <a><i class="fas fa-heart"></i></a>
                   <a><i class="fas fa-comment"></i></a>
                 </div>
-              </div>
-            </div>`;
-      console.log(postData);
+              </div>`;
+      // console.log(postData);
+
       $container.insertAdjacentHTML("beforeend", postData);
+      reloadJs('/css/vendor userbase/owl.carousel/owl.carousel.min.js');
+      reloadJs('/css/vendor userbase/aos/aos.js');
+      reloadJs('/css/vendor userbase/venobox/venobox.min.js');
+      reloadJs('/css/vendor userbase/isotope-layout/isotope.pkgd.min.js');
+      reloadJs('/css/vendor userbase/waypoints/jquery.waypoints.min.js');
+
     });
   });
 
