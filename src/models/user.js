@@ -49,7 +49,7 @@ const User = sequelize.define(
     profilePicture: {
       type: DataTypes.BLOB("long"),
       get() {
-        if (typeof this.getDataValue("profilePicture") !== "string")
+        if (this.getDataValue('profilePicture') && typeof this.getDataValue("profilePicture") !== "string")
           return (
             "data:image/png;base64," +
             this.getDataValue("profilePicture").toString("base64")

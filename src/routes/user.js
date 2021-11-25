@@ -50,7 +50,9 @@ router.post("/signup", async (req, res) => {
     );
 
     res.render("IndexPages/verifyEmail", { email: user.email });
+
   } catch (e) {
+    console.log(e)
     res.status(400).send(e);
   }
 });
