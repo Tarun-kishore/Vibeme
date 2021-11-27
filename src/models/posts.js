@@ -33,11 +33,12 @@ const Post = sequelize.define(
 );
 
 // *This method is used to process post data before passing to client
-Post.prototype.getPost = async function () {
+Post.prototype.getPost = async function (id) {
   const post = this.toJSON();
   post.image = "data:image/png;base64," + post.image.toString("base64");
   post.likesCount = await Likes.count({ where: { likedPost: post.id } });
   post.commentCount = await Comment.getCount(post.id);
+  post.isMine = this.owner == id;
   return post;
 };
 
@@ -91,4 +92,3 @@ Reply.belongsTo(Post, {
 Post.sync();
 
 module.exports = Post;
-
