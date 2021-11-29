@@ -49,7 +49,14 @@ router.get("/", (req, res) => {
   
   res.render("IndexPages/index", options);
 });
+router.get('/notAuth'm (req,res)=>{
+    res.render('IndexPages/notAuth')
+})
 
+router.get('/success'm (req,res)=>{
+    res.render('IndexPages/success')
+})
+ 
 router.get("*", (req, res) => {
   const options = {};
   if (req.cookies.token) options.loggedIn = true;
