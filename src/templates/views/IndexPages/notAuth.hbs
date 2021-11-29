@@ -21,111 +21,23 @@
     <!-- Font Awesome -->
     <script src="https://kit.fontawesome.com/d021e746cf.js" crossorigin="anonymous"></script>
 
-    <!-- Font Style -> Space Mono Regular 400 -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Lato:wght@300&family=Nunito+Sans:wght@600&family=Roboto:wght@500&display=swap"
-        rel="stylesheet">
+    <!-- Animate CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
 
-    <!-- Custom CSS stylesheet -->
-    <link rel="stylesheet" href="/css/Login Page/style.css">
-    <link rel="stylesheet" href="/css/base.css">
+
+
 </head>
 
 <body>
 
-    <!-- making a grid for this div -->
-    <div class="loginPage">
-
-        <header>
-            <!-- Navbar -->
-            <nav class="navbar navbar-expand-lg navbar-mainbg">
-                <!-- Logo -->
-                <a class="navbar-brand navbar-logo" href="/">VibeMe</a>
-                <!-- Collapse Button -->
-                <button id="tog" class="navbar-toggler button" type="button" data-bs-toggle="collapse"
-                    data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
-                    aria-expanded="false" aria-label="Toggle navigation">
-                    <!-- Hamburger Icon when screen size is less -->
-                    <span class="navbar-toggler-icon"><i class="fas fa-bars nav-button"></i></span>
-                </button>
-                <!-- Links -->
-                {{#if loggedIn}}
-                  <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <ul class="navbar-nav ms-auto">
-                        <!-- For Styling -->
-                        <div class="hori-selector">
-                            <div class="left"></div>
-                            <div class="right"></div>
-                        </div>
-                        <!-- Nav Links -->
-                        <li class="nav-item">
-                            <a class="nav-link" href="/about">
-                                About
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="/help">
-                                Help
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" id="navbarContent"href="/post/all">
-                                All Post
-                            </a>
-                        </li>
-                        <li class="nav-item active">
-                            <a class="nav-link" id="navbarContent"href="/user/profile">
-                                my Profile
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" id="navbarContent"href="/user/logout">
-                                Logout
-                            </a>
-                        </li>
-                    </ul> 
-                  </div>
-
-                {{else}}
-                  <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                      <ul class="navbar-nav ms-auto">
-                        <!-- For Styling -->
-                        <div class="hori-selector">
-                            <div class="left"></div>
-                            <div class="right"></div>
-                        </div>
-                        <!-- Nav Links -->
-                        <li class="nav-item">
-                            <a class="nav-link" href="/about">
-                                About
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="/help">
-                                Help
-                            </a>
-                        </li>
-                        <li class="nav-item active">
-                            <a class="nav-link" id="navbarContent"href="/login">
-                                Sign in
-                            </a>
-                        </li>
-                    </ul>  
-                  </div>
-              {{/if}}
-            </nav>
-        </header>
-
-
-<h1>You are not authorised</h1>
-
-<footer>
-            <p class="text-center">&copy; 2021 All rights Reserved</p>
-        </footer>
-
-    </div>
+    <main>
+        <div class="container">
+            <h1 class="animate__animated animate__rubberBand">403</h1>
+            <p id="lowertext">This is a restricted space</p>
+            <p>Unforunately, you don't have the permissions required to access this page.</p>
+            <p>You will be redirected to login in 5 seconds</p>
+        </div>
+    </main>
 
 
     <!-- Bootstrap Script -->
@@ -136,8 +48,7 @@
     <!-- JQuery Script -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 
-    <!-- Custom Script -->
-    <script src="/script/script.js"></script>
+
 </body>
 
 
