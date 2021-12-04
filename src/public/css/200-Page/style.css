@@ -17,11 +17,12 @@ body {
 }
 
 h1 {
-    font-size: 16rem;
+    font-size: 7rem;
     font-weight: 900;
-    letter-spacing: 10px;
-    margin-bottom: 20px;
+    /* letter-spacing: 4px; */
+    margin-bottom: 10px;
     font-family: RalewayRegular, Helvetica, sans-serif;
+    /* color: green; */
     color: orange;
     text-align: center;
     text-shadow: 0 1px 0 #efefef,
@@ -35,8 +36,8 @@ p {
     font-family: RalewayRegular, Helvetica, sans-serif;
     text-align: center;
     color: rgba(0, 0, 0, 1);
-    font-size: 18px;
-    margin-top: 5px;
+    font-size: 20px;
+    margin-top: 90px;
     margin-bottom: 0;
 }
 
