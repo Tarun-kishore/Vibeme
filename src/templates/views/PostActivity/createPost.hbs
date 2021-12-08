@@ -34,7 +34,8 @@
 
     <!-- New CSS stylesheet -->
     <link rel="stylesheet" href="/css/allPostPage/pageLoader.css">
-    <link rel="stylesheet" href="/css/allPostPage/navbar.css" />
+    <link rel="stylesheet" href="/css/allPostPage/navbar.css">
+    <link rel="stylesheet" href="/css/Create-Post-Page/style.css">
 
 </head>
 
@@ -319,21 +320,38 @@
 
     <!-- nav bar end  -->
 
+    <div id="createPostModal" class="create-post-overlay is-active">
+        <span class="close">&times;</span>
+        <div class="form-div">
+            <form action="/post/create" method="post">
+                <div class="form-inner-div">
+                    <div class="heading-div">
+                        <div class="heading-para-div">
+                            <p>Create New Post</p>
+                        </div>
+                        <div class="create-button-div">
+                            <button type="submit">Create</button>
+                        </div>                        
+                    </div>
+                    <div class="modal-content">
+                        <div class="image-div">
+                            <input type="file" name="image" placeholder="image" required>
+                        </div>
+                        <div class="modal-caption">
+                            {{#if error}}
+                            {{error}}
+                            {{/if}}
+                            <textarea name="content" required placeholder="Write a caption..."></textarea>
+                            
+                        </div>
+                    </div>
+                </div>
 
-
-
-
-    <form action="/post/create" method="post">
-        {{!-- do not change class filepond here --}}
-        <div class="container-md">
-            <input type="file" name="image" placeholder="image" required> Upload image
+            </form>
         </div>
-        {{#if error}}
-        {{error}}
-        {{/if}}
-        <textarea name="content" style="border: 2px solid black;" cols="30" rows="10" required></textarea>
-        <button type="submit">Create</button>
-    </form>
+    </div>
+
+
 
 
 
@@ -357,6 +375,7 @@
     <!-- Custom Script -->
     <script src="/script/AllPostPageScript/pageLoaderScript.js"></script>
     <script src="/script/AllPostPageScript/navbarScript.js"></script>
+    <script src="/script/CreatePostScript/script.js"></script>
 </body>
 
 
