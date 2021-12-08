@@ -26,7 +26,17 @@
   </div>
 </div>
 --}}
+  {{#if isMine}}
+<div>
+    <form action="/post/edit/{{this.id}}" method="post">
+    <button type="submit">Edit post</button>
+    </form>
 
+    <form action="/post/delete/{{this.id}}?_method=DELETE" method="post" onsubmit="return confirm('Are You Sure you want to delete this Post. Action cannot be reverted')">
+    <button type="submit">Delete post</button>
+    </form>
+    </div>
+    {{/if}}
                 <div class="col post-feed-item">
                     <div class="card">
                         <div class="card-image">
@@ -43,7 +53,7 @@
                                     </div>
                                 </div>
                                 <div class="media-content">
-                                    <span>{{this.creator}}</span>
+                                   <a href="/user/view/{{this.owner}}"> <span>{{this.creator}}</span> </a>
                                     <span class="created-date">{{this.createdAt}}</span>
                                 </div>
                                 <div class="media-right">

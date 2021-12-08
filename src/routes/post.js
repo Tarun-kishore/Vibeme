@@ -18,7 +18,7 @@ router.get("/all", auth, async (req, res) => {
     let posts = [];
 
     for (let index = 0; index < users.length; index++) {
-      const userPosts = await users[index].getPosts();
+      const userPosts = await users[index].getPosts(req.user.id);
       posts = posts.concat(userPosts);
     }
 
@@ -105,19 +105,15 @@ router.get("/view/:id", auth, async (req, res) => {
   const options = {};
   let userId = "";
   let decoded;
-  if (req.cookies.token) {
-    options.loggedIn = true;
-    decoded = jwt.verify(req.cookies.token, process.env.SECRET);
-  }
 
   try {
     const post = await Post.findByPk(req.params.id);
-    const postObject = await post.getPost();
+    const postObject = await post.getPost(req.user.id);
 
     const user = await User.findByPk(postObject.owner);
     const creator = user.getFullName();
 
-    const comments = await post.getComments(decoded ? decoded._id : undefined);
+    const comments = await post.getComments(req.user.id);
 
     if (comments.length !== 0)
       return res.render("PostActivity/publicPost", {

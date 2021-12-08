@@ -135,7 +135,7 @@ User.prototype.getPublicProfile = async function () {
 };
 
 // *This function return all posts of a user
-User.prototype.getPosts = async function () {
+User.prototype.getPosts = async function (id) {
   let posts;
   posts = await Post.findAll({ where: { owner: this.id } });
 
@@ -168,9 +168,12 @@ User.prototype.getLikedPosts = async function () {
   for (let i = 0; i < likedPost.length; i++) {
     const post = await Post.findByPk(likedPost[i].likedPost);
 
-    postData = await post.getPost();
+    postData = await post.getPost(id);
 
-    options = options.concat({ ...postData, creator: this.getFullName() });
+    options = options.concat({
+      ...postData,
+      creator: this.getFullName(),
+    });
   }
 
   return options;

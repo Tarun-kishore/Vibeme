@@ -23,13 +23,12 @@ fetch(`/post/my`, {
                 </div>
                 <div class="portfolio-links">
                   <a><i class="fas fa-heart"></i></a>
-                  <a><i class="fas fa-comment"></i></a>
+                  <a href='/post/view/${post.id}'><i class="fas fa-comment"></i></a>
                 </div>
               </div>`;
       $container.insertAdjacentHTML("beforeend", postData);
     });
   });
-
 
 //   const postData = `<div class="col portfolio-item filter-app">
 //               <div class="card portfolio-wrap profile-post">
