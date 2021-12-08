@@ -39,7 +39,7 @@ router.post("/my", auth, async (req, res) => {
   try {
     const send = [];
     const options = await req.user.getPosts();
-    const likedPost = await req.user.getLikedPosts();
+    const likedPost = await req.user.getLikedPosts(req.user.id);
     const commentedPosts = await req.user.getCommentedPosts();
     const repliedPosts = await req.user.getRepliedPosts();
     send.posts = options;
@@ -49,6 +49,7 @@ router.post("/my", auth, async (req, res) => {
 
     return res.send({ ...send });
   } catch (error) {
+    console.log(error);
     res.status(500).send();
   }
 });
@@ -188,7 +189,7 @@ router.put("/edit/:id", auth, async (req, res) => {
 
     if (changed) await post.save();
 
-    res.redirect("/post/my");
+    res.redirect("/user/profile");
   } catch (e) {
     res.status(500).render("IndexPages/404", { loggedIn: true });
   }
@@ -205,7 +206,7 @@ router.delete("/delete/:id", auth, async (req, res) => {
 
     await post.destroy();
 
-    res.redirect("/post/my");
+    res.redirect("/user/profile");
   } catch (e) {
     res.status(500).render("IndexPages/404", { loggedIn: true });
   }

@@ -157,7 +157,7 @@ User.prototype.getPosts = async function (id) {
 };
 
 // *This function return posts liked by the user
-User.prototype.getLikedPosts = async function () {
+User.prototype.getLikedPosts = async function (id) {
   const user = this.toJSON();
 
   const likedPost = await Like.findAll({ where: { likedBy: user.id } });

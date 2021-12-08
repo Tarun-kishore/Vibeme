@@ -8,7 +8,6 @@ fetch(`/post/my`, {
 })
   .then((response) => response.json())
   .then((data) => {
-    console.log(data.posts.content);
     data.posts.forEach((post) => {
       const postData = `<div class="col portfolio-item">
               <div class="card portfolio-wrap profile-post">
