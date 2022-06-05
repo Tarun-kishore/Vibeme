@@ -1,21 +1,16 @@
-const nodemailer = require('nodemailer');
-
-
-const mailTransporter = nodemailer.createTransport({
-    service: 'gmail',
-    auth: {
-        user: `${process.env.EMAIL}`,
-        pass: `${process.env.EMAIL_PASSWORD}`
-    }
-});
+const request = require("request");
 
 const sendConfirmationMail = (link, email) => {
-    const mailDetails = {
-        from: 'Vibeme',
-        to: `${email}`,
-        subject: 'Confirmation Mail',
-        text: 'Thanks for joining Vibeme',
-        html: `<div
+  const options = {
+    method: "POST",
+    url: "https://email-sender1.p.rapidapi.com/",
+    qs: {
+      txt_msg: "Thank you for subscribing",
+      to: `${email}`,
+      from: "VibeMe",
+      subject: "Confirmation mail",
+      // html_msg: `<div>Thanks for creating your account on vibeme.</div><div>Please click on the following button to activate your account by confirming your mail address</div><div> <a href="http://${link}" target="_blank"> <button > Click here to confirm your email </button> </a></div> <div > Or alterantively you can <a href="http://${link}" target="_blank"> click here</a> </div>`,
+      html_msg: `<div
         style="@import url('https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@700&display=swap');
         @import url('https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400&display=swap'); margin: 0; background-color: #b8dfff; overflow: hidden;">
         <div
@@ -61,16 +56,21 @@ const sendConfirmationMail = (link, email) => {
             </div>
         </div>
         <p style="text-align: center; margin-bottom: 50px; font-family: 'Ubuntu', sans-serif; font-weight: 500; line-height: 1.3em; color: black; opacity: 0.5; font-size: 16px">Copyright &copy; 2021, VibeMe</p>
-    </div>`
-};
+    </div>`,
+    },
+    headers: {
+      "content-type": "application/json",
+      "x-rapidapi-host": "email-sender1.p.rapidapi.com",
+      "x-rapidapi-key": process.env.API_KEY,
+      useQueryString: true,
+    },
+    json: true,
+  };
 
-mailTransporter.sendMail(mailDetails, function (err, data) {
-    if (err) {
-        console.log(err);
-    } else {
-        console.log('Email sent successfully');
-    }
-});
-}
+  request(options, function (error, response, body) {
+    console.log(response.statusCode);
+    if (error) throw new Error(error);
+  });
+};
 
 module.exports = { sendConfirmationMail };
